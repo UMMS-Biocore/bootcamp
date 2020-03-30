@@ -26,11 +26,11 @@ In order to make an SSH connection to your account, you need to use program like
     - Port: 22 
     - Connection Type: SSH 
         
-<img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty_ghpcc.png" width="60%">
+<img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty_ghpcc.png" width="50%">
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A2.** If this is the first time that you have used PuTTY to log in to your account with SSH, a warning similar to the following one displays. If you are sure that you have entered the correct information, click Yes. 
 
-<img src="https://raw.githubusercontent.com/UMMS-Biocore/dolphinnext/master/docs/dolphinNext/dolphinnext_images/putty_warning.png" width="60%">
+<img src="https://raw.githubusercontent.com/UMMS-Biocore/dolphinnext/master/docs/dolphinNext/dolphinnext_images/putty_warning.png" width="40%">
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A4.** After you accept the warning, the terminal prompts you for your username and password. Please enter these values and press enter.
 
@@ -58,7 +58,7 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
     
         ssh yourusername@ghpcc06.umassrc.org
         
-<img src="https://raw.githubusercontent.com/UMMS-Biocore/dolphinnext/master/docs/dolphinNext/dolphinnext_images/terminal_ssh.png" width="95%">
+<img src="https://raw.githubusercontent.com/UMMS-Biocore/dolphinnext/master/docs/dolphinNext/dolphinnext_images/terminal_ssh.png" width="80%">
 
 &nbsp;&nbsp;&nbsp;&nbsp;**B3.** The terminal prompts you for your password. Please enter your password and press enter.
 
@@ -79,9 +79,11 @@ Caution:
 In order to use the pipelines in DolphinNext, you need to run a script in the cluster. This is a one time script that will allow DolphinNext to submit future jobs to the cluster on your behalf. 
 
 ### 1. Please enter following command to your terminal and press enter.
-    
-        /project/umw_biocore/bin/addKey.bash
-        
+
+```
+/project/umw_biocore/bin/addKey.bash
+```
+
 ### 2. Command will print following text: 
 ```
 [yourusername@ghpcc06 ~]$ /project/umw_biocore/bin/addKey.bash
@@ -93,3 +95,5 @@ ummsres03 key added
 
 Please send “the output” of this script and your cluster username to Biocore (biocore@umassmed.edu). We will make sure that you successfully added the keys to your cluster system.  
 
+## Step 5: Project Space Requirements
+Consult HPCC-Admins for your project space requirements. For example; typically 6 RNA-Seq libraries (5G to 10G each) require at least 500G of space to store the data and run the pipelines. Confirm you have the necessary space for your project. 
