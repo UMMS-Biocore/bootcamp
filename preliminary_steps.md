@@ -2,7 +2,7 @@
 
 Please follow these step to begin using Dolphin services:
 
-  * [Before you start](##Step-1-Register-for-access-to-the-HPCC)
+  * [Before you start](#step-1-register-for-access-to-the-hpcc)
   * [Getting Started](#getting-started)
   * [Exercise 1: Creating processes](#exercise-1---creating-processes)
     * [FastQC process](#1-fastqc-process)
@@ -12,9 +12,7 @@ Please follow these step to begin using Dolphin services:
   * [Exercise 3: Running a pipeline](#exercise-3---executing-a-pipeline)
   * [Exercise 4 (optional): Supporting single and paired end reads](#exercise-4-optional---supporting-both-single-and-paired-end-reads)
 
-## Step 1 Register for access to the HPCC
-
-(High Performance Computing Cluster)
+## Step 1: Register for access to the HPCC (High Performance Computing Cluster)
 
 The registration form can be found at <a href="https://www.umassrc.org/hpc/" target="_blank">MGHPC website</a>. Once the HPCC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPCC Admins group with your HPCC account user name.
 
