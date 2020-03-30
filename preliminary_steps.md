@@ -2,15 +2,14 @@
 
 Please follow these step to begin using Dolphin services:
 
-  * [Before you start](#step-1-register-for-access-to-the-hpcc)
-  * [Getting Started](#getting-started)
-  * [Exercise 1: Creating processes](#exercise-1---creating-processes)
-    * [FastQC process](#1-fastqc-process)
-    * [Hisat2 process](#2-hisat2-process)
-    * [RSeQC process](#3-rseqc-process)
-  * [Exercise 2: Building a pipeline](#exercise-2---building-a-pipeline)
-  * [Exercise 3: Running a pipeline](#exercise-3---executing-a-pipeline)
-  * [Exercise 4 (optional): Supporting single and paired end reads](#exercise-4-optional---supporting-both-single-and-paired-end-reads)
+  * [Step 1: Register for access to the HPCC](#step-1-register-for-access-to-the-hpcc-high-performance-computing-cluster)
+  * [Step 2: Send an email to the HPCC-Admins](#step-2-send-an-email-to-the-hpcc-admins)
+  * [Step 3: Connecting to your account](#step-3-connecting-to-your-account)
+    * [A. If you're using Windows](#a-if-youre-using-windows)
+    * [B. If you're using Linux or MacOS](#b-if-youre-using-linux-or-macos)
+  * [Step 4: Run a script for authorization](#step-4-run-a-script-for-authorization)
+  * [Step 5: Project Space Requirements](#step-5-project-space-requirements)
+  
 
 ## Step 1: Register for access to the HPCC (High Performance Computing Cluster)
 
