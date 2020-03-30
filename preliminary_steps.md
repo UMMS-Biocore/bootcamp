@@ -2,7 +2,19 @@
 
 Please follow these step to begin using Dolphin services:
 
-## Step 1: Register for access to the HPCC (High Performance Computing Cluster).
+  * [Before you start](##Step-1-Register-for-access-to-the-HPCC)
+  * [Getting Started](#getting-started)
+  * [Exercise 1: Creating processes](#exercise-1---creating-processes)
+    * [FastQC process](#1-fastqc-process)
+    * [Hisat2 process](#2-hisat2-process)
+    * [RSeQC process](#3-rseqc-process)
+  * [Exercise 2: Building a pipeline](#exercise-2---building-a-pipeline)
+  * [Exercise 3: Running a pipeline](#exercise-3---executing-a-pipeline)
+  * [Exercise 4 (optional): Supporting single and paired end reads](#exercise-4-optional---supporting-both-single-and-paired-end-reads)
+
+## Step 1 Register for access to the HPCC
+
+(High Performance Computing Cluster)
 
 The registration form can be found at <a href="https://www.umassrc.org/hpc/" target="_blank">MGHPC website</a>. Once the HPCC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPCC Admins group with your HPCC account user name.
 
@@ -78,20 +90,20 @@ Caution:
 
 In order to use the pipelines in DolphinNext, you need to run a script in the cluster. This is a one time script that will allow DolphinNext to submit future jobs to the cluster on your behalf. 
 
-### 1. Please enter following command to your terminal and press enter.
+#### 1. Please enter following command to your terminal and press enter.
 
 ```
 /project/umw_biocore/bin/addKey.bash
 ```
 
-### 2. Command will print following text: 
+#### 2. Command will print following text: 
 ```
 [yourusername@ghpcc06 ~]$ /project/umw_biocore/bin/addKey.bash
 ummsres15 key added
 ummsres03 key added
 ```    
 
-### 3. Send an email to the Biocore
+#### 3. Send an email to the Biocore
 
 Please send “the output” of this script and your cluster username to Biocore (biocore@umassmed.edu). We will make sure that you successfully added the keys to your cluster system.  
 
