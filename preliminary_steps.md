@@ -24,7 +24,7 @@ Send an email to the HPCC-Admins (HPCC-Admins@umassmed.edu) to set your account 
 In order to use the pipelines in DolphinNext, you need to run a script in the cluster. This is a one time script that will allow DolphinNext to submit future jobs to the cluster on your behalf. To connect cluster use your HPCC user ID and password sent by HPCC Admins.
 
 #### Tip: If you're getting connection errors, you might try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
-You can found the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
+You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
 
 ### A. If you're using Windows
 
