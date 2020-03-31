@@ -23,6 +23,9 @@ Send an email to the HPCC-Admins (HPCC-Admins@umassmed.edu) to set your account 
 
 In order to use the pipelines in DolphinNext, you need to run a script in the cluster. This is a one time script that will allow DolphinNext to submit future jobs to the cluster on your behalf. To connect cluster use your HPCC user ID and password sent by HPCC Admins.
 
+#### Troubleshooting: If you're getting "Operation timed out" errors, you might try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
+You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
+
 ### A. If you're using Windows
 
 In order to make an SSH connection to your account, you need to use program like PuTTY.
@@ -47,6 +50,7 @@ In order to make an SSH connection to your account, you need to use program like
 Caution:
 * The password is not echoed back to the screen as it is entered.
 * If you need to copy and paste your password, you can right-click (or use middle mouse button) to paste your password.
+* If you're getting "Access Denied" errors, you might entering your username or password incorrect.
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A5.** If this is the first time that you login to your account, you might need to reset your password. Please enter the new password and press Enter. Note that passwords are not echoed to the screen. After changing your password, you will be logged out and you need to reconnect to your host machine by re-opening Putty window.
@@ -82,6 +86,8 @@ Caution:
 &nbsp;&nbsp;&nbsp;&nbsp;**B5.** If you have entered the correct password, the prompt responds with a shell prompt::
 
         [yourusername@ghpcc06.umassrc.org ~]#
+	
+
 
 ## Step 4: Run a script for authorization
 
