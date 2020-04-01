@@ -52,6 +52,12 @@ Caution:
 * If you need to copy and paste your password, you can right-click (or use middle mouse button) to paste your password.
 * If you're getting "Access Denied" errors, you might entering your username or password incorrect.
 ```
+<pre>
+<b>Caution:</b>
+<b>* The password is not echoed back to the screen as it is entered.</b>
+* If you need to <b>copy and paste your password</b>, you can <b>right-click</b> (or use middle mouse button) to paste your password.
+* If you're getting "<b>Access Denied</b>" errors, you might entering your username or password incorrect.
+</pre>
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A5.** If this is the first time that you login to your account, you might need to reset your password. Please enter the new password and press Enter. Note that passwords are not echoed to the screen. After changing your password, you will be logged out and you need to reconnect to your host machine by re-opening Putty window.
 
@@ -75,11 +81,12 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
 &nbsp;&nbsp;&nbsp;&nbsp;**B3.** The terminal prompts you for your password. Please enter your password and press enter.
 
-```
-Caution:
-* The password is not echoed back to the screen as it is entered.
-* You can still **copy and paste your password**, but it won't appear in your screen.
-```
+<pre>
+<b>Caution:</b>
+<b>* The password is not echoed back to the screen as it is entered.</b>
+* You can still <b>copy and paste your password</b>, but it won't appear in your screen.
+* If you're getting "<b>Access Denied</b>" errors, you might entering your username or password incorrect.
+</pre>
 
 &nbsp;&nbsp;&nbsp;&nbsp;**B4.** If this is the first time that you login to your host machine, you might need to reset your password. Please enter the new password and press Enter. Note that passwords are not echoed to the screen. After changing your password, you will be logged out and you need to reconnect to your account.
 
