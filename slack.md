@@ -7,10 +7,10 @@ For us to keep discussions in the channel organized, here are a few tips we woul
 2. If you want to add another comment related to the same issue, instead of posting it to the main channel, please start a thread.
    - To  start a thread, use your cursor to hover over your initial message and choose the icon for starting a thread as shown in the picture below:
 
-    <img src="images/thread.png" width="50%">
+    <img src="images/thread.png" width="30%">
 
 
-<img src="images/threadGIF.gif" width="100%">
+<img src="images/threadGIF.gif" width="80%">
 
 
 3. If you want to reply to someone else's message or add your own related question, follow this same rule and do so with a thread.
@@ -26,7 +26,5 @@ For us to keep discussions in the channel organized, here are a few tips we woul
     - If you replied to the thread, or posted the original message, you will be notified automatically
     - If you want to follow a question from someone else, open the thread and click on more actions, then click on follow thread:
 
-    <img src="images/more.png" width="50%">
-
-
-    <img src="images/follow.png" width="50%">
+      <img src="images/more.png" width="30%">
+      <img src="images/follow.png" width="40%">
