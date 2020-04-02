@@ -35,7 +35,7 @@ In order to make an SSH connection to your account, you need to use program like
     - Port: 22 
     - Connection Type: SSH 
         
-<img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty_ghpcc.png" width="50%">
+<img src="images/putty_ghpcc.png" width="50%">
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A2.** If this is the first time that you have used PuTTY to log in to your account with SSH, a warning similar to the following one displays. If you are sure that you have entered the correct information, click Yes. 
 
