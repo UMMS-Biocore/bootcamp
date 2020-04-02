@@ -7,11 +7,10 @@ For us to keep discussions in the channel organized, here are a few tips we woul
 2. If you want to add another comment related to the same issue, instead of posting it to the main channel, please start a thread.
    - To  start a thread, use your cursor to hover over your initial message and choose the icon for starting a thread as shown in the picture below:
 
-    ![](images/thread.png)
+    <img src="images/thread.png" width="50%">
 
 
-![](images/threadGIF.gif)
-starting threads example
+<img src="images/threadGIF.gif" width="100%">
 
 
 3. If you want to reply to someone else's message or add your own related question, follow this same rule and do so with a thread.
@@ -19,15 +18,15 @@ starting threads example
 4. We will try to answer your questions on slack with messages first, but if it is not possible to solve the issue like that, we will start a direct call to you using slack.
 
 5. To view threads that are already open, simply click on the **reply** link that will show up under a message that has started a thread:
-![](images/messagereply.png)
+
+  <img src="images/messagereply.png" width="50%">
 
 
 6. You can also make sure you get notifications for any updates on a thread.
     - If you replied to the thread, or posted the original message, you will be notified automatically
     - If you want to follow a question from someone else, open the thread and click on more actions, then click on follow thread:
 
-    ![](images/more.png)
-    more actions
+    <img src="images/more.png" width="50%">
 
-    ![](images/follow.png)
-    follow thread
+
+    <img src="images/follow.png" width="50%">
