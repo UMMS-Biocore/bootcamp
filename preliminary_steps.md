@@ -118,4 +118,4 @@ ummsres03 key added
 Please send “the output” of this script and your cluster username to Biocore (biocore@umassmed.edu). We will make sure that you successfully added the keys to your cluster system.  
 
 ## Step 5: Project Space Requirements
-Consult HPCC-Admins for your project space requirements. For example; typically 6 RNA-Seq libraries (5G to 10G each) require at least 500G of space to store the data and run the pipelines. Confirm you have the necessary space for your project. 
+Consult HPCC-Admins (HPCC-Admins@umassmed.edu) for your project space requirements. For example; typically 6 RNA-Seq libraries (5G to 10G each) require at least 500G of space to store the data and run the pipelines. Confirm you have the necessary space for your project. 
