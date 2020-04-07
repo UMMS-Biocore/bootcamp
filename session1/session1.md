@@ -73,13 +73,22 @@ You will get this error "command not found". Because there is no any command cal
 
 
 ## Basic Commands
-  * [List a directory](#list-a-directory)
-  * [Locating Applications and Software Packages](locating-applications-and-software-packages)
+  * [List a directory (folder)](#list-a-directory-folder)
+  * [Locating Applications and Software Packages](#locating-applications-and-software-packages)
   * [Modular system](#modular-system)
-  * [Print working directory](print-working-directory)
-  * [Accessing Directories](accessing-directories)
-  * [Exploring the Filesystem](exploring-the-filesystem)
-  * [Creating a directory](creating-a-directory)
+  * [Print working directory](#print-working-directory)
+  * [Accessing Directories](#accessing-directories)
+  * [Exploring the Filesystem](#exploring-the-filesystem)
+  * [Creating a directory](#creating-a-directory)
+  * [Copying Files](#copying-files)
+  * [Copying Directories](#copying-directories)
+  * [Removing a file](#removing-a-file)
+  * [Removing a directory](#removing-a-directory)
+  * [Moving a directory or a file](#moving-a-directory-or-a-file)
+  * [Rename a directory or a file](#rename-a-directory-or-a-file)
+  * [Files](#file)
+  * [Directing Standard Output to a File](#directing-standard-output-to-a-file)
+  * [Viewing text files](#viewing-text-files)
 
 Before we explore the commands used to manipulate the Linux environment, we should take a quick look at the structure of the environment itself.
 
@@ -89,7 +98,7 @@ You can think of a Linux file system as an upside-down tree. See the diagram bel
 
 At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
 
-### List a directory
+### List a directory (folder)
 Probably the most often used command in Linux is the "ls" command. It is used to list the contents of a directory. 
 Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to director and file names, like "home" and "script.sh", as well.
 
@@ -183,18 +192,44 @@ The following commands are useful for directory navigation:
 |cd /	|Changes your current directory to the root (/) directory|
 |cd /project/umw_biocore/class|Changes your current directory to a specific directory|
 
+If a file path begins with /, then it is an absolute path. It doesn’t depend on the current working directory.
+If a file path begins WITHOUT /, then it is a relative path. The path is defined according to the current directory. So, the path depends on the current working directory.
+
+
+
+
+
 Please use all the commands in the table above and run "pwd" command after that to see which directory you are in and "ls" to see the content of the directory.
 
 	$ cd
 	$ pwd
+	$ls
 	$ cd ..
 	$ pwd
+	$ ls
 	$ cd -
 	$ pwd
 	$ ls
 	$ cd /
 	$ pwd
+	$ ls
+	
+Now we have to take a time to explain "pathnames". 
 
+So far we have only been listes files that are in our current directory. 
+Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
+
+	$ cd /project/umw_biocore/class
+	$ pwd
+	$ ls
+
+If you want to go back 
+	$ cd ~/bootcamp
+	$ pwd
+	$ ls
+	
+Please remember if it starts with "/". It is called full path or absolute path. You can use these paths while copying or moving the filed or folders.
+	
 ### Exploring the Filesystem
 The tree command is a good way to get a bird’s-eye view of the filesystem tree. The following commands can help in exploring the filesystem:
 
@@ -245,7 +280,9 @@ tree command shows all files and folders recursively. If you have many files jus
 List the Tree with only the folder names
 
 	$ tree -d /project/umw_biocore/class
-	
+
+
+
 ### Creating a directory
 
 Let's first go to our home directory.
@@ -320,4 +357,194 @@ You can also use tree command
 	│       └── dir3
 	├── first
 	└── second
+	
+### Copying Files
+
+You can copy the files from the source to the destination using a command like below. 
+
+	$ cp sourcefile(s) destination_path
+
+Lets copy funcs.R file to our ~/bootcamp/first directory 
+
+	$ cp /project/umw_biocore/class/funcs.R ~/bootcamp/first
+	$ ls -l /project/umw_biocore/class/funcs.R
+	$ ls -l ~/bootcamp/first
+
+Check the size;
+
+|Permissions|# of links|user name|user group|size|date|filename|
+|-------|-------|-------|-------|-------|-------|-------|
+|-rwxr-xr-x|1 |ak97w| umw\_manuel\_garber|5532|Apr  7 17:17| funcs.R|
+
+### Copying Directories
+
+To copy a directory with the files included we use -R option
+
+Before copying;
+
+	$ tree ~/bootcamp
+	/home/your_user/bootcamp
+	├── dir1
+	│   └── dir2
+	│       └── dir3
+	├── first
+	│   └── funcs.R
+	└── second
+
+Lets copy first directory into the second 
+
+	$ cp -R ~/bootcamp/first ~/bootcamp/second
+
+After copying;
+
+	$ tree ~/bootcamp
+	/home/your_user/bootcamp
+	├── dir1
+	│   └── dir2
+	│       └── dir3
+	├── first
+	│   └── funcs.R
+	└── second
+	    └── first
+	        └── funcs.R
+
+### Removing a file
+
+You can use "rm" command to remove a file. Lets remove funcs.R file under ~/bootcamp/second/first/funcs.R file. You can either use the full path or change the directory and remove the file in that directory.
+	
+	$ cd ~/bootcamp/second/first
+	$ rm funcs.R
+
+### Removing a directory
+
+If the directory is empty, you can use rmdir function. Let's remove ~/bootcamp/second/first
+
+	$ cd ~/bootcamp/second
+	$ rmdir first
+	
+Compare the tree
+
+	$ tree ~/bootcamp
+	/home/your_user/bootcamp
+	├── dir1
+	│   └── dir2
+	│       └── dir3
+	├── first
+	│   └── funcs.R
+	└── second
+	
+If the directory is not empty, you can use -rf parameter.
+
+***Please, be careful using rm commands. When a file or a directory deleted, there is no way to go back unless you have a backup***
+
+	$ rm -rf ~/bootcamp/first
+	$ tree ~/bootcamp
+	/home/your_user/bootcamp
+	├── dir1
+	│   └── dir2
+	│       └── dir3
+	└── second
+
+All first directory is gone!
+
+### Moving a directory or a file
+
+Let move all dir1 directory included with all sub directories into second folder.
+
+	$ mv ~/bootcamp/dir1 ~/bootcamp/second
+	$ tree ~/bootcamp
+	/home/your_user/bootcamp
+	└── second
+	    └── dir1
+	        └── dir2
+	            └── dir3
+
+Lets move dir3 to the same level to dir1 which is two directory above using relative paths. I will just go to dir2.
+
+	$ cd ~/bootcamp/second/dir1/dir2
+
+When you get the list; you will only see dir3 here;
+
+	$ ls
+	dir3
+
+I will move to two directory above
+
+	$ mv dir3 ../../
+	$ tree ~/bootcamp
+	/home/ak97w/bootcamp
+	└── second
+	    ├── dir1
+	    │   └── dir2
+	    └── dir3
+	    
+If it was one level I would just use "../". 
+
+You can use these commands with ls, cp or other commands too.
+	
+
+### Rename a directory or a file
+
+If change your working directory to ~/bootcamp
+
+	$ cd ~/bootcamp
+	$ ls -l 
+
+You will have only the "second" directory. Let's change the name to "first" using "mv source destination_path". 
+
+Using relativer paths;
+
+	$ mv second first
+	$ tree
+	.
+	└── first
+	    ├── dir1
+	    │   └── dir2
+	    └── dir3
+
+Or you could have used full paths (absolute paths) or starting with ~.
+
+
+### Files
+
+Technically, every file is a binary file.
+
+Yet, it is common practice to group them into two:
+
+- Text Files : Contains only printable characters.
+- Binary Files : Files that are not text files. (e.g. gz, bam) 
+
+### Directing Standard Output to a File
+
+You can direct an output of a command into a file using ">" symbol.
+
+Lets put the tree output into a file under bootcamp directory.
+
+	$ cd ~/bootcamp 
+	$ tree first > mytree.txt 
+	$ $ ls 
+	first  mytree.txt
+
+Lets put ls -l output to "list.txt" file.
+
+	$ ls -l > list.txt
+	$ cat 
+
+
+### Viewing text files
+Text files are of extreme importance in bioinformatics.
+There are many tools to view and edit text files.
+"less" is a very useful program that you can use. You check the manual (man less) for the details.
+	
+	$ cd ~/bootcamp
+	$ less mytree.txt 
+	
+Exit with "q" button in your keyboard.
+
+You can also use "more" command.
+
+	$ more mytree.txt	
+
+It is called "more" because after it has displayed a page of text, if the text is more than one page, it pauses and puts "-- More --" at the bottom of the screen to let you know that there is more text yet to be shown. To see the next page of text, you just hit the spacebar.
+
 
