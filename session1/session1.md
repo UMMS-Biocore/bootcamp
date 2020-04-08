@@ -46,7 +46,7 @@ One of the most popular shells being used today is called BASH (Bourne Again She
 
 	$ your_command
 
-Let's start running some commands. First command will be "ssh" to connect to the UMASS cluster.
+Let's start running some commands. First command will be "ssh" to connect to the UMASS cluster. If you're using windows, please use PuTTY or similar program to make SSH connection.
 
 	$ ssh username@ghpcc06.umassrc.org
 	
