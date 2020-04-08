@@ -87,8 +87,14 @@ You will get this error "command not found". Because there is no any command cal
   * [Moving a directory or a file](#moving-a-directory-or-a-file)
   * [Rename a directory or a file](#rename-a-directory-or-a-file)
   * [Files](#file)
-  * [Directing Standard Output to a File](#directing-standard-output-to-a-file)
+  * [Redirecting Standard Output to a File](#redirecting-standard-output-to-a-file)
   * [Viewing text files](#viewing-text-files)
+  * [Creating an empty file](#creating-an-empty-file)
+  * [File and Directory Security](#file-and-directory-security)
+  * [File Permissions](#file-permissions)
+  * [Wildcards](#wildcards)
+  * [Working with Compressed Files](#working-with-compressed-files)
+  * [Downloading a file from web](#downloading-a-file-from-web)
 
 Before we explore the commands used to manipulate the Linux environment, we should take a quick look at the structure of the environment itself.
 
@@ -192,18 +198,19 @@ The following commands are useful for directory navigation:
 |cd /	|Changes your current directory to the root (/) directory|
 |cd /project/umw_biocore/class|Changes your current directory to a specific directory|
 
+	~ : Home directory
+	. : current directory
+	.. : parent directory
+
 If a file path begins with /, then it is an absolute path. It doesn’t depend on the current working directory.
 If a file path begins WITHOUT /, then it is a relative path. The path is defined according to the current directory. So, the path depends on the current working directory.
-
-
-
 
 
 Please use all the commands in the table above and run "pwd" command after that to see which directory you are in and "ls" to see the content of the directory.
 
 	$ cd
 	$ pwd
-	$ls
+	$ ls
 	$ cd ..
 	$ pwd
 	$ ls
@@ -468,31 +475,31 @@ When you get the list; you will only see dir3 here;
 	$ ls
 	dir3
 
-I will move to two directory above
+I will move dir3 to two directory above
 
 	$ mv dir3 ../../
 	$ tree ~/bootcamp
-	/home/ak97w/bootcamp
+	/home/your_user/bootcamp
 	└── second
 	    ├── dir1
 	    │   └── dir2
 	    └── dir3
 	    
-If it was one level I would just use "../". 
+If it was one level above, I would just use "../"
 
-You can use these commands with ls, cp or other commands too.
+You can use these relative paths with ls, cp or other commands too.
 	
 
 ### Rename a directory or a file
 
-If change your working directory to ~/bootcamp
+First, please change your working directory to ~/bootcamp
 
 	$ cd ~/bootcamp
 	$ ls -l 
 
-You will have only the "second" directory. Let's change the name to "first" using "mv source destination_path". 
+You will see only "second" directory. Let's change its name to "first" using "mv source destination_path". 
 
-Using relativer paths;
+Using relative paths;
 
 	$ mv second first
 	$ tree
@@ -514,7 +521,7 @@ Yet, it is common practice to group them into two:
 - Text Files : Contains only printable characters.
 - Binary Files : Files that are not text files. (e.g. gz, bam) 
 
-### Directing Standard Output to a File
+### Redirecting Standard Output to a File
 
 You can direct an output of a command into a file using ">" symbol.
 
@@ -522,7 +529,7 @@ Lets put the tree output into a file under bootcamp directory.
 
 	$ cd ~/bootcamp 
 	$ tree first > mytree.txt 
-	$ $ ls 
+	$ ls 
 	first  mytree.txt
 
 Lets put ls -l output to "list.txt" file.
@@ -547,4 +554,200 @@ You can also use "more" command.
 
 It is called "more" because after it has displayed a page of text, if the text is more than one page, it pauses and puts "-- More --" at the bottom of the screen to let you know that there is more text yet to be shown. To see the next page of text, you just hit the spacebar.
 
+"head" and "tail" commands are also good to print head and tail of a file. If they used without a parameter, they will print 10 lines. When it is used with "-n X" parameter, it will print X # of lines.
+
+	$ head -n 5 /project/umw_biocore/class/funcs.R
+	$ tail -n 5 /project/umw_biocore/class/funcs.R
+
+### Creating an empty file
+
+"touch" command creates a file.
+
+	$ cd ~/bootcamp
+	$ touch my_new_file.txt
+	$ touch my_new_file2.txt
+	$ ls -l
+	total 31
+	drwxrwxr-x 4 your_user your_group 44 Apr  7 17:54 first
+	-rw-rw-r-- 1 your_user your_group  0 Apr  7 18:49 my_new_file2.txt
+	-rw-rw-r-- 1 your_user your_group  0 Apr  7 18:49 my_new_file.txt
+	-rw-rw-r-- 1 your_user your_group 83 Apr  7 18:01 mytree.txt
+	
+The first column here shows permissions and first character represents the type of the line. 
+	
+	- : file
+	d : directory
+	l : symbolic link (check below) 
+	
+### Creating a symbolic link 
+
+If you don't want to copy a file but use it in another directory you can use "ln" command.
+The command below will create a link to the current directory. Check how "." is used to represent current directory. This usage can be used in "cp" command too.
+
+	$ cd ~/bootcamp
+	$ ln -s  /project/umw_biocore/class/funcs.R .
+	
+When you use ls -l, funcs.R symbolic link will point the location of the original file.
+
+	$ ls -l
+	total 38
+	lrwxrwxrwx 1 your_user your_group  34 Apr  7 23:36 funcs.R -> /project/umw_biocore/class/funcs.R
+
+
+### File and Directory Security:
+
+Now it's time to talk about security. Linux is a multi-user operating system, so it has security to prevent people from accessing each other's confidential files. Please check File Permissions below to learn how to set the permissions for desired files and directories. 
+
+### File Permissions:
+
+<img src="images/permissions.png">
+
+Deciphering the security characters will take a bit more work.
+
+First, you must think of those nine characters as three sets of three characters (see bottom right). Each of the three "rwx" characters refers to a different operation you can perform on the file or directory.
+
+The 'r' means you can "read" the file's contents.
+The 'w' means you can "write", or modify, the file's contents.
+The 'x' means you can "execute" the file. This permission is given only if the file is a program.
+If any of the "rwx" characters is replaced by a '-', then that permission has been revoked.
+
+For example, the owner's permissions for our three primate files are "rw-". This means that the owner of the file ("mytree.txt", i.e. you) can "read" it (look at its contents) and "write" it (modify its contents). You cannot execute it because it is not a program; it is a text file.
+
+Members of the group "your_group" can only read the files ("r--"). We want to change the second permission character from '-' to 'w' so that those people in your group can modify the contents of these files as well.
+
+The final three characters show the permissions allowed to anyone who has a UserID on this Linux system. We prefer to refer to this set as "world" or "others". Our three files are "world-readable", that is, anyone in our Linux world can read their contents, but they cannot modify the contents of the files. This is the way we want to leave it.
+
+chmod: Change file mode bits.
+
+$ chmod filemode file
+
+To give only read access to other users,
+
+	$ chmod o=r my_new_file.txt
+
+To give read,write and execution access together,
+
+	$ chmod o=rwx my_new_file.txt
+	$ ls -l 
+	total 31
+	drwxrwxr-x 4 ak97w umw_manuel_garber 44 Apr  7 17:54 first
+	-rw-rw-r-- 1 ak97w umw_manuel_garber  0 Apr  7 18:49 my_new_file2.txt
+	-rw-rw-rwx 1 ak97w umw_manuel_garber  0 Apr  7 18:49 my_new_file.txt
+	-rw-rw-r-- 1 ak97w umw_manuel_garber 83 Apr  7 18:01 mytree.txt
+
+For more details and learning binary system check the link below;
+
+<https://www.linux.com/training-tutorials/understanding-linux-file-permissions/>
+
+### Wildcards
+
+We could get you to type two more "chmod" commands to modify the permissions of all text files one by one, but there's an easier way using "wildcards".
+
+A wildcard allows you to specify more than one file at the same time. The '*' matches any number of characters. For example, if you want to execute a command on all txt files in the ~/bootcamp directory, you would specify '*' as the filename. If you want to be more selective and match only files which end in "txt", you would use "*.txt". Note that the '*' can even match zero characters, so "*txt" would match "txt" as well as "mytree.txt".
+
+The other wildcard, '?', is not used very often, but it can be useful. It matches exactly one character. For example, if you want to match "mytree", but not "my_new_file2.txt", you would use "my????.txt". The first '?' matches the 't' in "tree", but the second 'r' and so on. Since there are 4 chartacthers there in tree, it will match that but it will faill to match to my_new_file2.txt file.
+
+So to copy only txt files to dir1 folder. 
+	
+	$ cd ~/bootcamp
+	$ cp *.txt dir1/.
+
+"dir/." usage also very common, the files will go under dir1 folder. However, it is not mandantory.
+ 
+
+### Working with Compressed Files
+
+We use gzip to compress / decompress files
+
+tar to pack files into one file for archiving purposes.
+
+To compress a directory (e.g. dir1)
+
+	$ cd ~/bootcamp
+	$ tar -cvf archive.tar dir1
+
+To pack a directory and some files in a zipped tar file
+
+	$ tar -cvf archive.tar.gz dir1 my_new_file.txt mytree.txt
+
+	
+To get our directory back from the tar.gz file and check what you get under back direcrory.
+
+	$ mkdir ~/bootcamp/back
+	$ cd ~/bootcamp/back
+	$ mv ~/bootcamp/archive.tar.gz ~/bootcamp/back
+	$ tar -xvzf archive.tar.gz
+	$ ls
+	$ pwd
+	$ tree
+	
+Usually we get the backups using this method. However, making these files too big would be a problematic since, while copying if this file is corrupted, you cannot unzip the file. So, having backups with smaller portions would reduce backup problems.
+
+### Disk Space
+
+To see how much disk space you have left on your system, you need to use the "df" command, which stands for "disk free". 
+
+df -h will show the space in human readable format. In this example  
+
+
+	$ df -h ~/.
+	Filesystem            Size  Used Avail Use% Mounted on
+	umassmghpcc-head.umassrc.org:/ifs/xdata/home/your_user
+	                       50G   23G   28G  46% /home/your_user
+
+"Size" is the disk allocated to you.
+
+"Used" is the used portion.
+
+"Avail" is the free space. 
+
+The "Use%" column shows the percentage of user space that is currently used.
+
+### Downloading a file from web
+
+In it’s simplest form when used without any option, "wget" will download the resource specified in the [url] to the current directory.
+
+In the following example we are downloading an annotation file from <https://bioinfo.umassmed.edu/pub/data/ucsc.gtf>
+
+	$ cd ~/bootcamp/
+	$ mkdir genome
+	$ cd genome
+	$ wget https://bioinfo.umassmed.edu/pub/data/ucsc.gtf
+	$ ls -l
+
+Print first 10 lines using head command to see the content of the file.
+
+	$ head ucsc.gtf 
+	
+### Homework:
+
+Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
+
+mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
+ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
+rsem.to.table.pl file is https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
+The read files are located /project/umw_biocore/pub/moustest/mm10/fastq.quantification/
+
+When you run tree function the output should look like below;
+
+	$ tree RNA-Seq/
+	RNA-Seq/
+	├── mm10
+	│   ├── mm10.fa -> /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
+	│   └── ucsc.gtf
+	├── progs
+	│   └── rsem.to.table.pl
+	└── reads
+	    ├── control_rep1.1.fq
+	    ├── control_rep1.2.fq
+	    ├── control_rep2.1.fq
+	    ├── control_rep2.2.fq
+	    ├── control_rep3.1.fq
+	    ├── control_rep3.2.fq
+	    ├── exper_rep1.1.fq
+	    ├── exper_rep1.2.fq
+	    ├── exper_rep2.1.fq
+	    ├── exper_rep2.2.fq
+	    ├── exper_rep3.1.fq
+	    └── exper_rep3.2.fq
 
