@@ -224,17 +224,12 @@ Please use all the commands in the table above and run "pwd" command after that 
 	
 Now we have to take a time to explain "pathnames". 
 
-So far we have only been listes files that are in our current directory. 
+So far we have only been listed files that are in our current directory. 
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
 
-	$ cd /project/umw_biocore/class
-	$ pwd
-	$ ls
-
-If you want to go back 
-	$ cd ~/bootcamp
-	$ pwd
-	$ ls
+	$ ls /project/umw_biocore/class
+	$ ls ~/bootcamp
+	
 	
 Please remember if it starts with "/". It is called full path or absolute path. You can use these paths while copying or moving the filed or folders.
 	
@@ -312,7 +307,7 @@ You can try going to another directory using the full path
 	$ pwd
 	$ ls
 	
-Please go back using full path, or using "~" symbol. "~" means your home directory.
+Please go back using full path, or using "\~" symbol. "\~" means your home directory.
 
 	$ cd ~/bootcamp
 	$ pwd
