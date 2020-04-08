@@ -40,6 +40,30 @@ A shell is a software that runs inside a terminal and interprets and executes us
 One of the most popular shells being used today is called BASH (Bourne Again Shell). In this tutorial we will use bash. There are other shells like zsh or sh. They can also be used if you need for a specific functionality that is supported by that shell. 
 
 ## Before you start
+
+There might be slightly differences according the operating system you use such as Windows, Linux or MacOS. 
+
+#### A. If you're using Windows
+
+In order to make an SSH connection to your account, you need to use program like <a href="https://www.putty.org/" target="_blank">PuTTY</a>. Use the following info to configure your connection and click **Open** to start the SSH session.
+    
+    - Host Name: ghpcc06.umassrc.org
+    - Port: 22 
+    - Connection Type: SSH 
+    
+<pre>
+<b>Caution:</b>
+* If you need to <b>copy and paste any text/command</b>, you should <b>right-click</b> (or use middle mouse button) to paste your text/command.
+</pre>
+
+If you have entered the correct password, the prompt responds with a shell prompt::
+
+	[yourusername@ghpcc06 ~]$
+
+#### B. If you're using Linux or MacOS
+
+If you are a MacOS or Linux user, you can make an SSH connection by using **Terminal**, a console program included with the operating system.
+
 ### Convention: 
 
 ***$*** denotes a prompt for the command line. It is not meant to be typed while running the commands in this tutorial. All Bash commands will appear in a gray box that you will run in your terminal. In this example below, you will only write "your\_command" in the terminal an press enter. It will then execute the command in your terminal. (Please only run commands in the lines starts with \"$\" symbol.)
@@ -67,7 +91,7 @@ To print something on the screen. We use echo command.
 	
 If you just run 
 
-	$ Hellow World
+	$ Hello World
 	-bash: Hello: command not found
 	
 You will get this error "command not found". Because there is no any command called "Hello". As you can see, this command is interpreted by "bash" and when there is an error, bash reports the error.
@@ -103,11 +127,16 @@ You can think of a Linux file system as an upside-down tree. See the diagram bel
  
 <img src="images/dir_structure.png">
 
-At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" or "Absolute Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
+At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access <b>Documents</b> directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called <b>Full Path</b> or <b>Absolute Path</b> of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
 
 ### List a directory (folder)
 Probably the most often used command in Linux is the "ls" command. It is used to list the contents of a directory. 
-Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to director and file names, like "home" and "script.sh", as well.
+Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to directory and file names, like "home" and "script.sh", as well
+
+<pre>
+<b>Caution:</b>
+Linux is case-sensitive, in order to avoid typing errors, you might copy and paste commands.
+</pre>
 
 Lets run some commands below one at a time and list the content of the directories. 
 
@@ -222,7 +251,7 @@ Please use all the commands in the table above and run "pwd" command after that 
 	$ pwd
 	$ ls
 	
-Now we have to take a time to explain "pathnames". 
+Now we have to take a time to explain <b>pathnames</b>. 
 
 So far we have only been listed files that are in our current directory. 
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
@@ -231,7 +260,7 @@ Sometimes you might want to manipulate or list files that are not in your curren
 	$ ls ~/bootcamp
 	
 	
-Please remember if it starts with "/". It is called full path or absolute path. You can use these paths while copying or moving the filed or folders.
+Please remember if it starts with "/". It is called full path (or absolute path). You can use these paths while copying or moving the files or folders.
 	
 ### Exploring the Filesystem
 The tree command is a good way to get a bird’s-eye view of the filesystem tree. The following commands can help in exploring the filesystem:
@@ -239,9 +268,9 @@ The tree command is a good way to get a bird’s-eye view of the filesystem tree
 |Command|Result|
 |-------|-----------|
 |ls 	  |List the contents of the present working directory|
-|ls –a  |List all files including hidden files and directories|
-|ls –l  |Detailed list of files and directories|
-|ls –lh  |Detailed list of files and directories where the file sizes are reported in human readable format|
+|ls -a  |List all files including hidden files and directories|
+|ls -l  |Detailed list of files and directories|
+|ls -lh  |Detailed list of files and directories where the file sizes are reported in human readable format|
 |tree   |Displays a tree view of the filesystem|
 |tree -d|Just list the directories and suppress listing file names|
 
@@ -257,20 +286,20 @@ To see the complete list of options of a command.
 Try commands below;
 
 	$ ls /project/umw_biocore/class
-	$ ls –a /project/umw_biocore/class
+	$ ls -a /project/umw_biocore/class
 
 Which file is different in the output of both commands above?
 
-The hidden files start with ".". 
+The hidden files start with "."
 
-	$ ls –l /project/umw_biocore/class
-	$ ls –lh /project/umw_biocore/class
+	$ ls -l /project/umw_biocore/class
+	$ ls -lh /project/umw_biocore/class
     
 You can also run -l -a command together
     
 	$ ls -a -l /project/umw_biocore/class
     
-ls command can also recognize the parameters together like in -lh suports in any order
+ls command can also recognize the parameters together like in the example ```ls -lh```, in any order
  
  	$ ls -al /project/umw_biocore/class
  	
