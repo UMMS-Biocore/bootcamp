@@ -70,7 +70,7 @@ If you just run
 	$ Hellow World
 	-bash: Hello: command not found
 	
-You will get this error "command not found". Because there is no any command called "Hello". As you can see, this command is interpreted by "bash" and when there is an error, -bash reported the error.
+You will get this error "command not found". Because there is no any command called "Hello". As you can see, this command is interpreted by "bash" and when there is an error, bash reports the error.
 
 
 ## Basic Commands
@@ -103,13 +103,13 @@ You can think of a Linux file system as an upside-down tree. See the diagram bel
  
 <img src="images/dir_structure.png">
 
-At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
+At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" or "Absolute Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
 
 ### List a directory (folder)
 Probably the most often used command in Linux is the "ls" command. It is used to list the contents of a directory. 
 Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to director and file names, like "home" and "script.sh", as well.
 
-Lets run some commands below one at a time and list the content of the directory. 
+Lets run some commands below one at a time and list the content of the directories. 
 
 	$ ls /
 	$ ls /project
@@ -167,7 +167,7 @@ Run "which" command again to see the location of the command;
 
 	$ which STAR
 	
-To unload a module;
+To unload a module when needed;
 
 	$ module unload star/2.7.0e  
 
@@ -285,7 +285,7 @@ tree command shows all files and folders recursively. If you have many files jus
 
 ***If any of your commands run too long. You can always use Ctrl+C in your keyboard to stop the execution.***
 	
-List the Tree with only the folder names
+List the tree with only the folder names
 
 	$ tree -d /project/umw_biocore/class
 
@@ -314,7 +314,6 @@ You can try going to another directory using the full path
 	
 Please go back using full path, or using "~" symbol. "~" means your home directory.
 
-
 	$ cd ~/bootcamp
 	$ pwd
 	
@@ -333,14 +332,13 @@ Or using the full path
 However, if you try the commands above, bash will give an error, since directory is already created.
 
 
-If you want to create a directory inside of another directory which is not created before, you can use "-p" command. For example, creating ~/bootcamp/dir1/dir2/dir3
+If you want to create a directory inside of another directory which is not created before, you can use "-p" command. For example, creating ~/bootcamp/dir1/dir2/dir3 without -p, This command will give an error.
 
 	$ mkdir ~/bootcamp/dir1/dir2/dir3
 	mkdir: cannot create directory `/home/your_user/bootcamp/dir1/dir2/dir3': No such file or directory
 
-This command will give an error.
 
-When you use -p option will create all those directories;
+When you use -p option, it will create all those directories;
 
 	$ mkdir -p ~/bootcamp/dir1/dir2/dir3
 	$ cd ~/bootcamp/dir1/dir2/dir3
@@ -370,9 +368,9 @@ You can also use tree command
 
 You can copy the files from the source to the destination using a command like below. 
 
-	$ cp sourcefile(s) destination_path
+cp sourcefile(s) destination_path
 
-Lets copy funcs.R file to our ~/bootcamp/first directory 
+Lets copy funcs.R file to our ~/bootcamp/first directory and compare them.
 
 	$ cp /project/umw_biocore/class/funcs.R ~/bootcamp/first
 	$ ls -l /project/umw_biocore/class/funcs.R
@@ -386,7 +384,7 @@ Check the size;
 
 ### Copying Directories
 
-To copy a directory with the files included we use -R option
+To copy a directory with the files included, we use -R option
 
 Before copying;
 
@@ -403,7 +401,7 @@ Lets copy first directory into the second
 
 	$ cp -R ~/bootcamp/first ~/bootcamp/second
 
-After copying;
+After copying check how second directory content looks like;
 
 	$ tree ~/bootcamp
 	/home/your_user/bootcamp
@@ -453,11 +451,11 @@ If the directory is not empty, you can use -rf parameter.
 	│       └── dir3
 	└── second
 
-All first directory is gone!
+All "first" directory is gone!
 
 ### Moving a directory or a file
 
-Let move all dir1 directory included with all sub directories into second folder.
+Lets move all dir1 directory included with all sub directories into "second" folder.
 
 	$ mv ~/bootcamp/dir1 ~/bootcamp/second
 	$ tree ~/bootcamp
@@ -498,9 +496,9 @@ First, please change your working directory to ~/bootcamp
 	$ cd ~/bootcamp
 	$ ls -l 
 
-You will see only "second" directory. Let's change its name to "first" using "mv source destination_path". 
+You will see only "second" directory. Let's change its name to "first" using 
 
-Using relative paths;
+"mv source destination_path". 
 
 	$ mv second first
 	$ tree
@@ -510,7 +508,7 @@ Using relative paths;
 	    │   └── dir2
 	    └── dir3
 
-Or you could have used full paths (absolute paths) or starting with ~.
+Or you could have used full paths (absolute paths) or starting with ~/.
 
 
 ### Files
@@ -519,7 +517,7 @@ Technically, every file is a binary file.
 
 Yet, it is common practice to group them into two:
 
-- Text Files : Contains only printable characters.
+- Text Files : Contains only printable characters (txt, bed, sam)
 - Binary Files : Files that are not text files. (e.g. gz, bam) 
 
 ### Redirecting Standard Output to a File
@@ -532,11 +530,12 @@ Lets put the tree output into a file under bootcamp directory.
 	$ tree first > mytree.txt 
 	$ ls 
 	first  mytree.txt
+	$ cat mytree.txt
 
 Lets put ls -l output to "list.txt" file.
 
 	$ ls -l > list.txt
-	$ cat 
+	$ cat list.txt
 
 
 ### Viewing text files
@@ -559,6 +558,10 @@ It is called "more" because after it has displayed a page of text, if the text i
 
 	$ head -n 5 /project/umw_biocore/class/funcs.R
 	$ tail -n 5 /project/umw_biocore/class/funcs.R
+	
+"cat" is another program that you can view the files. It dumps all file into the screen. So, if the file is big, prefer using "more" or "less".
+
+	$ cat /project/umw_biocore/class/funcs.R
 
 ### Creating an empty file
 
@@ -739,7 +742,7 @@ The information you need is below;
 
 ### Session1 Homework:
 
-Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
+1. Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
 
 mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
 ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
@@ -769,3 +772,4 @@ When you run tree function the output should look like below;
 	    ├── exper_rep3.1.fq
 	    └── exper_rep3.2.fq
 
+2. Please compress the RNA-Seq directory and create RNA-Seq.tar.gz file under your bootcamp directory. To check if it worked, create a ~/bootcamp/test directory, copy this RNA-Seq.tar.gz file there and extract. Use tree command to compare the same tree output like in #1. Get the size of RNA-Seq.tar.gz file and message it to one of us on slack (Alper, Onur or Elisa) 
