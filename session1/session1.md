@@ -742,12 +742,12 @@ The information you need is below;
 
 ### Session1 Homework:
 
-1. Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
+1. 	Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
 
-mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
-ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
-rsem.to.table.pl file is https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
-The read files are located /project/umw_biocore/pub/moustest/mm10/fastq.quantification/
+- mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
+- ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
+- rsem.to.table.pl file is https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
+- fastq files are located /project/umw_biocore/pub/moustest/mm10/fastq.quantification/
 
 When you run tree function the output should look like below;
 
