@@ -20,7 +20,8 @@ Overview
   * [Before you start](#before-you-start)
   * [Getting Started](#getting-started)
   * [Basic Commands](#basic-commands)
- 
+  * [File transfer from your laptop to cluster using FileZilla](#file-transfer-from-your-laptop-to-cluster-using-FileZilla)
+  * [Session1 Homework](#session1-homework)
 
 ## Introduction
 
@@ -719,7 +720,24 @@ Print first 10 lines using head command to see the content of the file.
 
 	$ head ucsc.gtf 
 	
-### Homework:
+### File transfer from your laptop to cluster using FileZilla
+
+Please install FileZilla to your computer from the linke below;
+
+<https://filezilla-project.org/download.php>
+
+Please check the link below to learn how to use FileZilla client.
+
+<https://wiki.filezilla-project.org/FileZilla_Client_Tutorial_(en)>
+
+The information you need is below;
+
+	Hostname: ghpcc06.umassrc.org
+	Username: Your_cluster_user
+	Password: Your_cluster_password
+	Port: 22
+
+### Session1 Homework:
 
 Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
 
