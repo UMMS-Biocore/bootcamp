@@ -121,7 +121,7 @@ For example, last command result will be
     $ ls /project/umw_biocore/class/
     class.html  class.R  data.tsv  funcs.R
 
-We will visit ls command later a couple of more time to learn about the size of a file or permissions, creation time, or owner of file or a directory.
+We will visit ls command later to learn about the sizes or permissions, creation times, or owner of the files or directories.
 
 ### Locating Applications and Software Packages
 Depending on the specific distribution, programs and software packages can be installed in various directories. In general, executable programs should live in the following directories
@@ -146,20 +146,20 @@ If which does not find the program, whereis is a good alternative because it loo
 
 ### Modular system
 
-Other software packages we will use in our cluster is installed in a modular structure to support multiple versions of a software in a single system. For example, "STAR" is a program  for splice aware genomic alignments. However, none of the STAR versions is loaded in the system. 
+The software packages in our cluster are installed in a modular structure to support multiple versions of the software in a single system. For example, "STAR" is a splice aware genomic aligner. It is installed as a module and initially it is not loaded in the system. 
 
 	$ which STAR
 	
 	/usr/bin/which: no STAR in (...)
 
-which command couldn't find the STAR command in any of our paths.
+which command couldn't find the STAR in any of our paths.
 
-Please write the command below and press "tab button" in your keyboard. It will list all available version of star. (Tab can also be used for auto-completion of any other command.)
+Please write the command below and press "tab button" in your keyboard. It will list all available versions of star. (Tab can also be used for auto-completion of any other commands.)
 
 	$ module load star/2.   #(Press tab button here)
 	star/2.3.0e  star/2.4.2a  star/2.5.3a  star/2.7.0e  
 
-To load the desired module  
+To load the desired version just complete it and press enter.  
 
 	$ module load star/2.7.0e  
 
@@ -175,7 +175,7 @@ To list all available modules in the cluster;
 
 	$ module avail 
 
-If a version of a software package you want to use is not installed in our cluster. You can always send an email to hpcc-admins to have it installed. 
+If a version of a software package you want to use is not installed in our cluster. You can always send an email to hpcc-admins to have it installed. We will use these and other modules, in other sessions.
 
 
 ### Print working directory
