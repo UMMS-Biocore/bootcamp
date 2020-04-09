@@ -41,6 +41,30 @@ A shell is a software that runs inside a terminal and interprets and executes us
 One of the most popular shells being used today is called BASH (Bourne Again Shell). In this tutorial we will use bash. There are other shells like zsh or sh. They can also be used if you need for a specific functionality that is supported by that shell. 
 
 ## Before you start
+
+There might be slightly differences according the operating system you use such as Windows, Linux or MacOS. 
+
+#### A. If you're using Windows
+
+In order to make an SSH connection to your account, you need to use program like <a href="https://www.putty.org/" target="_blank">PuTTY</a>. Use the following info to configure your connection and click **Open** to start the SSH session.
+    
+    - Host Name: ghpcc06.umassrc.org
+    - Port: 22 
+    - Connection Type: SSH 
+    
+<pre>
+<b>Caution:</b>
+* If you need to <b>copy and paste any text/command</b>, you should <b>right-click</b> (or use middle mouse button) to paste your text/command.
+</pre>
+
+If you have entered the correct password, the prompt responds with a shell prompt::
+
+	[yourusername@ghpcc06 ~]$
+
+#### B. If you're using Linux or MacOS
+
+If you are a MacOS or Linux user, you can make an SSH connection by using **Terminal**, a console program included with the operating system.
+
 ### Convention: 
 
 ***$*** denotes a prompt for the command line. It is not meant to be typed while running the commands in this tutorial. All Bash commands will appear in a gray box that you will run in your terminal. In this example below, you will only write "your\_command" in the terminal an press enter. It will then execute the command in your terminal. (Please only run commands in the lines starts with \"$\" symbol.)
@@ -68,7 +92,7 @@ To print something on the screen. We use echo command.
 	
 If you just run 
 
-	$ Hellow World
+	$ Hello World
 	-bash: Hello: command not found
 	
 You will get this error "command not found". Because there is no any command called "Hello". As you can see, this command is interpreted by "bash" and when there is an error, bash reports the error.
@@ -104,11 +128,16 @@ You can think of a Linux file system as an upside-down tree. See the diagram bel
  
 <img src="images/dir_structure.png">
 
-At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" or "Absolute Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
+At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access <b>Documents</b> directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called <b>Full Path</b> or <b>Absolute Path</b> of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
 
 ### List a directory (folder)
-Probably the most often used command in Linux is the "ls" command. It is used to list the contents of a directory. 
-Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to director and file names, like "home" and "script.sh", as well.
+Probably the most often used command in Linux is the **ls** command. It is used to list the contents of a directory. 
+Unlike many other operating systems, Linux is case-sensitive. In other words, if you type "LS" instead of "ls", Linux will not recognize the command. This applies to directory and file names, like "home" and "script.sh", as well
+
+<pre>
+<b>Caution:</b>
+Linux is case-sensitive, in order to avoid typing errors, you might copy and paste commands.
+</pre>
 
 Lets run some commands below one at a time and list the content of the directories. 
 
@@ -223,7 +252,7 @@ Please use all the commands in the table above and run "pwd" command after that 
 	$ pwd
 	$ ls
 	
-Now we have to take a time to explain "pathnames". 
+Now we have to take a time to explain <b>pathnames</b>. 
 
 So far we have only been listed files that are in our current directory. 
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
@@ -232,7 +261,7 @@ Sometimes you might want to manipulate or list files that are not in your curren
 	$ ls ~/bootcamp
 	
 	
-Please remember if it starts with "/". It is called full path or absolute path. You can use these paths while copying or moving the filed or folders.
+Please remember if it starts with "/". It is called full path (or absolute path). You can use these paths while copying or moving the files or folders.
 	
 ### Exploring the Filesystem
 The tree command is a good way to get a bird’s-eye view of the filesystem tree. The following commands can help in exploring the filesystem:
@@ -240,9 +269,9 @@ The tree command is a good way to get a bird’s-eye view of the filesystem tree
 |Command|Result|
 |-------|-----------|
 |ls 	  |List the contents of the present working directory|
-|ls –a  |List all files including hidden files and directories|
-|ls –l  |Detailed list of files and directories|
-|ls –lh  |Detailed list of files and directories where the file sizes are reported in human readable format|
+|ls -a  |List all files including hidden files and directories|
+|ls -l  |Detailed list of files and directories|
+|ls -lh  |Detailed list of files and directories where the file sizes are reported in human readable format|
 |tree   |Displays a tree view of the filesystem|
 |tree -d|Just list the directories and suppress listing file names|
 
@@ -258,28 +287,31 @@ To see the complete list of options of a command.
 Try commands below;
 
 	$ ls /project/umw_biocore/class
-	$ ls –a /project/umw_biocore/class
+	$ ls -a /project/umw_biocore/class
 
 Which file is different in the output of both commands above?
 
-The hidden files start with ".". 
+The hidden files start with "."
 
-	$ ls –l /project/umw_biocore/class
-	$ ls –lh /project/umw_biocore/class
+	$ ls -l /project/umw_biocore/class
+	$ ls -lh /project/umw_biocore/class
     
 You can also run -l -a command together
     
 	$ ls -a -l /project/umw_biocore/class
     
-ls command can also recognize the parameters together like in -lh suports in any order
+**ls** command can also recognize the parameters together like in the example ```ls -lh```, in any order
  
  	$ ls -al /project/umw_biocore/class
  	
-tree command shows all files and folders recursively. If you have many files just press Ctrl+C, in the directory you want to check the tree.
+**tree** command shows all files and folders recursively in the directory you want to check. If you run the command in the directory that too many files are located, printing files to terminal might take a long time. In that case, you can press Ctrl+C (Control+C) in your keyboard to stop the execution.
 
 	$ tree /project/umw_biocore/class
 
-***If any of your commands run too long. You can always use Ctrl+C in your keyboard to stop the execution.***
+<pre>
+<b>Caution:If any of your commands run too long. You can always use Ctrl+C in your keyboard to</br>stop the execution.</b>
+</pre>
+
 	
 List the tree with only the folder names
 
@@ -325,7 +357,7 @@ Or using the full path
 
 	$ mkdir /home/your_user_id/bootcamp
 
-However, if you try the commands above, bash will give an error, since directory is already created.
+However, if you try the commands above, bash will **give an error**, since directory is already created.
 
 
 If you want to create a directory inside of another directory which is not created before, you can use "-p" command. For example, creating ~/bootcamp/dir1/dir2/dir3 without -p, This command will give an error.
@@ -415,7 +447,9 @@ After copying check how second directory content looks like;
 You can use "rm" command to remove a file. Lets remove funcs.R file under ~/bootcamp/second/first/funcs.R file. You can either use the full path or change the directory and remove the file in that directory.
 	
 	$ cd ~/bootcamp/second/first
+	$ ls
 	$ rm funcs.R
+	$ ls
 
 ### Removing a directory
 
@@ -461,7 +495,7 @@ Lets move all dir1 directory included with all sub directories into "second" fol
 	        └── dir2
 	            └── dir3
 
-Lets move dir3 to the same level to dir1 which is two directory above using relative paths. I will just go to dir2.
+Lets move **dir3** to the same level of **dir1** which is two directory above using relative paths. First, I will just go to **dir2**.
 
 	$ cd ~/bootcamp/second/dir1/dir2
 
@@ -480,7 +514,7 @@ I will move dir3 to two directory above
 	    │   └── dir2
 	    └── dir3
 	    
-If it was one level above, I would just use "../"
+If it was one level above, I would just use ```../```
 
 You can use these relative paths with ls, cp or other commands too.
 	
@@ -492,9 +526,7 @@ First, please change your working directory to ~/bootcamp
 	$ cd ~/bootcamp
 	$ ls -l 
 
-You will see only "second" directory. Let's change its name to "first" using 
-
-"mv source destination_path". 
+You will see only "second" directory. Let's change its name to "first" using ```mv source destination_path```. 
 
 	$ mv second first
 	$ tree
@@ -504,7 +536,7 @@ You will see only "second" directory. Let's change its name to "first" using
 	    │   └── dir2
 	    └── dir3
 
-Or you could have used full paths (absolute paths) or starting with ~/.
+Or you could have used full paths (absolute paths) or starting with ```~/```
 
 
 ### Files
@@ -604,12 +636,15 @@ Now it's time to talk about security. Linux is a multi-user operating system, so
 
 Deciphering the security characters will take a bit more work.
 
-First, you must think of those nine characters as three sets of three characters (see bottom right). Each of the three "rwx" characters refers to a different operation you can perform on the file or directory.
+First, you must think of those nine characters as three sets of three characters (see below). Each of the three "rwx" characters refers to a different operation you can perform on the file or directory.
 
-The 'r' means you can "read" the file's contents.
-The 'w' means you can "write", or modify, the file's contents.
-The 'x' means you can "execute" the file. This permission is given only if the file is a program.
-If any of the "rwx" characters is replaced by a '-', then that permission has been revoked.
+	$ ls -l 
+	-rw-r--r-- 1 ak97w umw_manuel_garber 83 Apr  7 18:01 mytree.txt
+
+ * The 'r' means you can "read" the file's contents.
+ * The 'w' means you can "write", or modify, the file's contents.
+ * The 'x' means you can "execute" the file. This permission is given only if the file is a program.
+ * If any of the "rwx" characters is replaced by a '-', then that permission has been revoked.
 
 For example, the owner's permissions for our three primate files are "rw-". This means that the owner of the file ("mytree.txt", i.e. you) can "read" it (look at its contents) and "write" it (modify its contents). You cannot execute it because it is not a program; it is a text file.
 
@@ -617,9 +652,7 @@ Members of the group "your_group" can only read the files ("r--"). We want to ch
 
 The final three characters show the permissions allowed to anyone who has a UserID on this Linux system. We prefer to refer to this set as "world" or "others". Our three files are "world-readable", that is, anyone in our Linux world can read their contents, but they cannot modify the contents of the files. This is the way we want to leave it.
 
-chmod: Change file mode bits.
-
-$ chmod filemode file
+chmod: Change file mode bits. ```$ chmod filemode file```
 
 To give only read access to other users,
 
@@ -643,32 +676,32 @@ For more details and learning binary system check the link below;
 
 We could get you to type two more "chmod" commands to modify the permissions of all text files one by one, but there's an easier way using "wildcards".
 
-A wildcard allows you to specify more than one file at the same time. The '*' matches any number of characters. For example, if you want to execute a command on all txt files in the ~/bootcamp directory, you would specify '*' as the filename. If you want to be more selective and match only files which end in "txt", you would use "*.txt". Note that the '*' can even match zero characters, so "*txt" would match "txt" as well as "mytree.txt".
+A wildcard allows you to specify more than one file at the same time. The ```*``` matches any number of characters. For example, if you want to execute a command on all txt files in the ~/bootcamp directory, you would specify ```*``` as the filename. If you want to be more selective and match only files which end in "txt", you would use ```*.txt```. Note that the ```*``` can even match zero characters, so ```*txt``` would match "txt" as well as "mytree.txt".
 
-The other wildcard, '?', is not used very often, but it can be useful. It matches exactly one character. For example, if you want to match "mytree", but not "my_new_file2.txt", you would use "my????.txt". The first '?' matches the 't' in "tree", but the second 'r' and so on. Since there are 4 chartacthers there in tree, it will match that but it will faill to match to my_new_file2.txt file.
+The other wildcard, ```?```, is not used very often, but it can be useful. It matches exactly one character. For example, if you want to match "mytree", but not "my_new_file2.txt", you would use ```my????.txt```. The first ```?``` matches the 't' in "tree", but the second 'r' and so on. Since there are 4 characters there in the "tree", it will match that but it will fail to match to my_new_file2.txt file.
 
 So to copy only txt files to dir1 folder. 
 	
 	$ cd ~/bootcamp
 	$ cp *.txt dir1/.
 
-"dir/." usage also very common, the files will go under dir1 folder. However, it is not mandantory.
+```dir/.``` usage also very common, the files will go under dir1 folder. However, it is not mandantory.
  
 
 ### Working with Compressed Files
 
-We use gzip to compress / decompress files
+We use **gzip** to compress/decompress files
 
-tar to pack files into one file for archiving purposes.
+**tar** to pack files into one file for archiving purposes.
 
-To compress a directory (e.g. dir1)
+To compress a directory (e.g. first)
 
 	$ cd ~/bootcamp
-	$ tar -cvf archive.tar dir1
+	$ tar -cvf archive.tar first
 
 To pack a directory and some files in a zipped tar file
 
-	$ tar -cvf archive.tar.gz dir1 my_new_file.txt mytree.txt
+	$ tar -czvf archive.tar.gz first my_new_file.txt mytree.txt
 
 	
 To get our directory back from the tar.gz file and check what you get under back direcrory.
@@ -681,7 +714,7 @@ To get our directory back from the tar.gz file and check what you get under back
 	$ pwd
 	$ tree
 	
-Usually we get the backups using this method. However, making these files too big would be a problematic since, while copying if this file is corrupted, you cannot unzip the file. So, having backups with smaller portions would reduce backup problems.
+Usually we get the backups using this method. However, making these files too big would be a problematic since, if this file is corrupted (eg. after copying to another place), you cannot unzip the file. So, having backups with smaller portions would reduce backup problems.
 
 ### Disk Space
 
@@ -721,7 +754,7 @@ Print first 10 lines using head command to see the content of the file.
 	
 ### File transfer from your laptop to cluster using FileZilla
 
-Please install FileZilla to your computer from the linke below;
+Please install FileZilla to your computer from the link below;
 
 <https://filezilla-project.org/download.php>
 
@@ -738,7 +771,7 @@ The information you need is below;
 
 ### Session1 Homework:
 
-1. 	Please create RNA-Seq folder under bootcamp and download, copy and create links of the files into that directories shown in tree below. 
+1. 	Please create **RNA-Seq** folder under bootcamp. Then download, copy and create links of the files into that directories to get a tree as shown at below. 
 
 - mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
 - ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
