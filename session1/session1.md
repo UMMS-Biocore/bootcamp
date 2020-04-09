@@ -104,7 +104,7 @@ You can think of a Linux file system as an upside-down tree. See the diagram bel
  
 <img src="images/dir_structure.png">
 
-At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" or "Absolute Path" of a directory. Full path of script.sh in this example will be "/home/user1/script.sh". 
+At top you will see the following symbol; "/". It is called "root" directory. For example if user1 wants to access Documents directory,  user will use "/home/user1/Documents" when it is needed. This directory structure is called "Full Path" or "Absolute Path" of a directory. Full path of script.sh in this example will be "/home/user1/Documents/script.sh". 
 
 ### List a directory (folder)
 Probably the most often used command in Linux is the "ls" command. It is used to list the contents of a directory. 
@@ -123,6 +123,14 @@ For example, last command result will be
     class.html  class.R  data.tsv  funcs.R
 
 We will visit ls command later to learn about the sizes or permissions, creation times, or owner of the files or directories.
+
+Blue: Directory
+Green: Executable or recognized data file
+Sky Blue: Symbolic link file
+Yellow with black background: Device
+Pink: Graphic image file
+Red: Archive file
+Red with black background: Broken link
 
 ### Locating Applications and Software Packages
 Depending on the specific distribution, programs and software packages can be installed in various directories. In general, executable programs should live in the following directories
@@ -229,7 +237,6 @@ So far we have only been listed files that are in our current directory.
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
 
 	$ ls /project/umw_biocore/class
-	$ ls ~/bootcamp
 	
 	
 Please remember if it starts with "/". It is called full path or absolute path. You can use these paths while copying or moving the filed or folders.
