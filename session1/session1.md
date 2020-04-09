@@ -33,6 +33,7 @@ hardware.
 <img src="images/unix_like.png">
 <img src="images/unix_family.png">
 <img src="images/terminal.png">
+<img src="images/terminalWelcome.png">
 
 ### Unix shell
 
