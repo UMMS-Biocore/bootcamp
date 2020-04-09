@@ -28,3 +28,5 @@ For us to keep discussions in the channel organized, here are a few tips we woul
 
       <img src="images/more.png" width="30%">
       <img src="images/follow.png" width="40%">
+      
+7. If it's reasonable, please don't forget to attach your **screenshot** to speed up the debugging process.
