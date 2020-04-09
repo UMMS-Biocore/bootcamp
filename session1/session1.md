@@ -683,6 +683,7 @@ The other wildcard, ```?```, is not used very often, but it can be useful. It ma
 So to copy only txt files to dir1 folder. 
 	
 	$ cd ~/bootcamp
+	$ mkdir -p dir1
 	$ cp *.txt dir1/.
 
 ```dir/.``` usage also very common, the files will go under dir1 folder. However, it is not mandantory.
