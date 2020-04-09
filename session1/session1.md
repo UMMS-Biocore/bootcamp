@@ -258,7 +258,7 @@ So far we have only been listed files that are in our current directory.
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
 
 	$ ls /project/umw_biocore/class
-	$ ls ~/bootcamp
+	$ ls ~
 	
 	
 Please remember if it starts with "/". It is called full path (or absolute path). You can use these paths while copying or moving the files or folders.
