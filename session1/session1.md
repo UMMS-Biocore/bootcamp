@@ -194,10 +194,12 @@ which command couldn't find the STAR in any of our paths.
 
 Please write the command below and press "tab button" in your keyboard. It will list all available versions of star. (Tab can also be used for auto-completion of any other commands.)
 
-	$ module load star/2.   #(Press tab button here)
+	# Type the part of the star version (star/2.) and press "tab" button twice and wait a little to load
+	# If it doesn't print the available options, then you need to type the full version of star (star/2.7.0e) by yourself
+	$ module load star/2.   
 	star/2.3.0e  star/2.4.2a  star/2.5.3a  star/2.7.0e  
 
-To load the desired version just complete it and press enter.  
+To load the desired version just type the rest of the version and press enter.  
 
 	$ module load star/2.7.0e  
 
@@ -205,7 +207,7 @@ Run "which" command again to see the location of the command;
 
 	$ which STAR
 	
-To unload a module when needed;
+To unload a module (eg. when you want to use another STAR version), you can use **unload** command;
 
 	$ module unload star/2.7.0e  
 
@@ -245,8 +247,9 @@ If a file path begins with /, then it is an absolute path. It doesn’t depend o
 If a file path begins WITHOUT /, then it is a relative path. The path is defined according to the current directory. So, the path depends on the current working directory.
 
 
-Please use all the commands in the table above and run "pwd" command after that to see which directory you are in and "ls" to see the content of the directory.
+Please **use all the commands** in the table above and run "pwd" command after that to see which directory you are in and **ls** to see the content of the directory.
 
+	# Important: Please execute these commands to understand the structure of directory system
 	$ cd
 	$ pwd
 	$ ls
@@ -379,7 +382,7 @@ When you use -p option, it will create all those directories;
 	$ cd ~/bootcamp/dir1/dir2/dir3
 	$ pwd
 	
-You can also create multiple directories with one command.
+You can also create multiple directories with one command. Please execute the command below to create "first" and "second" 
 
 	$ mkdir ~/bootcamp/first ~/bootcamp/second
 	
@@ -408,10 +411,12 @@ cp sourcefile(s) destination_path
 Lets copy funcs.R file to our ~/bootcamp/first directory and compare them.
 
 	$ cp /project/umw_biocore/class/funcs.R ~/bootcamp/first
+	
+Now lets check the file sizes:
+
 	$ ls -l /project/umw_biocore/class/funcs.R
 	$ ls -l ~/bootcamp/first
 
-Check the size;
 
 |Permissions|# of links|user name|user group|size|date|filename|
 |-------|-------|-------|-------|-------|-------|-------|
@@ -419,7 +424,7 @@ Check the size;
 
 ### Copying Directories
 
-To copy a directory with the files included, we use -R option
+To copy a directory with the files included, we use **-R** option
 
 Before copying;
 
@@ -451,7 +456,7 @@ After copying check how second directory content looks like;
 
 ### Removing a file
 
-You can use "rm" command to remove a file. Lets remove funcs.R file under ~/bootcamp/second/first/funcs.R file. You can either use the full path or change the directory and remove the file in that directory.
+You can use `rm` command to remove a file. Lets remove funcs.R file under ~/bootcamp/second/first/funcs.R file. You can either use the full path or change the directory and remove the file in that directory.
 	
 	$ cd ~/bootcamp/second/first
 	$ ls
@@ -476,7 +481,7 @@ Compare the tree
 	│   └── funcs.R
 	└── second
 	
-If the directory is not empty, you can use -rf parameter.
+If the directory is not empty, you can use `rm -rf target_directory` command.
 
 ***Please, be careful using rm commands. When a file or a directory deleted, there is no way to go back unless you have a backup***
 
@@ -700,19 +705,21 @@ So to copy only txt files to dir1 folder.
 
 We use **gzip** to compress/decompress files
 
-**tar** to pack files into one file for archiving purposes.
+**tar** to pack files into one file for archiving purposes without compression.
 
-To compress a directory (e.g. first)
+As an example to create a packed archive.tar without any compression (e.g. first and mytree.txt), use `-cvf` argument.
 
 	$ cd ~/bootcamp
-	$ tar -cvf archive.tar first
+	$ tar -cvf packed.tar first mytree.txt
+	$ ls -l packed.tar
 
-To pack a directory and some files in a zipped tar file
+If you want to pack and compress (with gzip) at the same time, use `-czvf` argument.
 
 	$ tar -czvf archive.tar.gz first my_new_file.txt mytree.txt
+	$ ls -l archive.tar
 
 	
-To get our directory back from the tar.gz file and check what you get under back direcrory.
+Now, lets create a new directory called `back` and move our `archive.tar.gz` file into `back` directory. Then we can extract the content of archive.tar.gz by using `-xvzf` argument.
 
 	$ mkdir ~/bootcamp/back
 	$ cd ~/bootcamp/back
@@ -779,11 +786,11 @@ The information you need is below;
 
 ### Session1 Homework:
 
-1. 	Please create **RNA-Seq** folder under bootcamp. Then download, copy and create links of the files into that directories to get a tree as shown at below. 
+1. 	Please create **RNA-Seq** folder under bootcamp. Then you need to download, copy or create links of the files into that directories to get a tree as shown at below. 
 
 - mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
 - ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
-- rsem.to.table.pl file is https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
+- rsem.to.table.pl file is located at https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
 - fastq files are located /project/umw_biocore/pub/moustest/mm10/fastq.quantification/
 
 When you run tree function the output should look like below;
