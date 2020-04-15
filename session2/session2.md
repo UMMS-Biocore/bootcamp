@@ -6,7 +6,7 @@ Session 2: UMass High Performance Computing Center
 Expected learning outcome
 ========
 
-To understand the basics of UMMS cluster and resources we have to proces biological data. With this tuorial you will familiarize cluster commands using a terminal.
+To understand the basics of UMMS cluster and resources we have to process biological data. With this tutorial you will familiarize cluster commands using a terminal.
 
 Overview
 ========
@@ -76,8 +76,7 @@ Though there are many file systems mounted on the head node, there are three fil
     
 <pre>
 <b>Caution:</b>
-* We do NOT use the head node (ghpcc06) to process big data.
-We use the cluster nodes to process it.
+* We do NOT use the head node (ghpcc06) to process big data. We use the cluster nodes to process it.
 How do we reach the nodes?
 </pre>
 
@@ -126,28 +125,21 @@ using STAR.
 	STAR ... library_100.fastq.gz
 	
 We submit this job to the job scheduler rather than running it on
-the head node one by one. Once we submit these hundred jobs for alingment they will be executed paralell in 100 different cores, if you submit STAR to use 1 core for each run. You can increase the # of cores per process to finish the job faster but there is a trade off that we will discuss, resource usage and priorities.
+the head node one by one. Once we submit these hundred jobs for alignment, they will be executed in parallel on 100 different cores (if you submit STAR to use 1 core for each run). You can increase the # of cores per process to finish the job faster but there is a trade off that we will discuss, **resource usage and priorities**.
 
 ### Our First Job Submission
 
-We use the command bsub to submit jobs to the cluster.
+We use the command `bsub` to submit jobs to the cluster.
 Let’s submit a job to write "Hello LSF" into a file in our home directory.
-
-	$ bsub "echo Hello LSF > ~/firstjob.txt"
-	
-	
-Specifying Resources
-After running
 
 	$ bsub "echo Hello LSF > ~/firstjob.txt"
 	
 we got the following warning message
 
-	Job does not list memory required, please specify memory
-	...
-	Job runtime not indicated, please specify job runtime
-	...
-	Job <12345> is submitted to default queue <long>
+	WARN: Job does not list memory required, please specify memory...
+	WARN: Job runtime not indicated, please specify job runtime...
+	WARN: No queue specified...
+	WARN: Job <12345> is submitted to default queue <short>
 
 Why did the job scheduler warn us?
 
@@ -157,18 +149,17 @@ Besides other things, each job requires
 
 	1. The # of core(s) processing units
 	2. Memory
-
-to execute
-The maximum amount of time needed to complete the job must be provided.
-There are different queues for different purposes, so the queue
-should also be specified as well.
+	3. Maximum amount of time needed to complete the job 
+	4. Queue
+	
+There are different queues for different purposes which will be explained in next section.
 
 |Resource|Explanation|
 |-----|-----|
-|Cores| Number of processing units to be assigned for the job. Some programs can take advantage of multicores .Default value is 1.|
+|Cores| Number of processing units to be assigned for the job. Some programs can take advantage of multicores. Default value is 1.|
 |Memory Limit| The submitted job is not allowed to use more than the specified memory. Default value is 1 GB|
 |Time Limit|The submitted job must finish in the given time limit. Default value is 60 minutes.|
-|Queue|There are several queues for different purposes. Default queue is the long queue.|
+|Queue|There are several queues for different purposes. Default queue is the short queue.|
 
 ### Queues
 
@@ -182,7 +173,7 @@ We will be using the queues interactive , short and long.
 |-----|-----|
 |interactive| used for bash access to the nodes|
 |short| used for jobs that take less than 4 hours|
-|long| (default queue) used for jobs that take more than 4 hours|
+|long|  used for jobs that take more than 4 hours|
 
 
 ### Job Scheduling
@@ -234,10 +225,10 @@ It is a good idea to ask a little more than you actually need.
 Let’s submit another job and specify the resources this time.
 To set
 
-	1. We explicitly state that we request a single core, -n 1
-	2. The memory limit to 1024 MB, we add -R rusage[mem=1024]
-	3. Time limit to 20 minutes, we add -W 20
-	4. Queue to short, we add -q short
+1. We explicitly state that we request a single core: `-n 1`
+2. The memory limit to 1024 MB, we add `-R rusage[mem=1024]`
+3. Time limit to 20 minutes, we add `-W 20`
+4. Queue to short, we add `-q short`
 
 <img src="images/bsubcommand.png">
 
@@ -277,9 +268,12 @@ When you want to cancel or kill a job we use bkill command.
 
 <img src="images/bkill.png">
 
-We give the JOBID to bkill to cancel the job we want.
+We give the JOBID to `bkill` in order to cancel the job we want.
 
 <img src="images/bkillcommand.png">
+
+	$ bkill #JOBID
+	Job <#JOBID> is being terminated
 
 Jobs can be killed because of many other reasons. Due to lack of resources or possible problems on the running node etc. To investigate the reason you can use 
 
@@ -291,11 +285,18 @@ command.
 
 It can be helpful to have the output and specifications of the jobs in separate files.
 
-Two log files can be created: the standard error output and the standard output of the command run.
+Two log files can be created: the **standard error** and the **standard output** of the command.
 
-The standard output file is created using the -o parameter and the standard error output is be created using the -e parameter.
+The **standard output** is saved using the `-o` parameter and the **standard error** is saved into file using the `-e` parameter.
 
 	$ bsub -o output.txt -e error.txt "echo foo 1>&2; echo bar"
+
+<pre>
+<b>Tip:</b> 1>&2 argument is used to direct standard output to standard error. 
+* Therefore <b>foo</b> saved into error.txt. This means that if your run killed, you might track 
+the reason of the error in this log file.
+* On the other hand, <b>bar</b> saved into output.txt as a standard output.
+</pre>
 
 ### Interactive Nodes
 
@@ -304,8 +305,20 @@ Can I get a computing node (other than the head node) for myself temporarily?
 Yes. The interactive queue can be used for that.
 	
 	$ bsub -q interactive -W 120 -Is bash
+	Job <job#> is submitted to queue <interactive>.
+	<<Waiting for dispatch ...>>
+	<<Starting on #>>
 	
 ***To respect others, we usually do all the operations using an interactive node. It will reduce the load of the head node.*** 
+
+Now, you're in the interactive node. You can check your status with `bjobs` command.
+	
+	$ bjobs
+
+In order to exit from interactive node, you can simply use `bkill` command:
+	
+	$ bkill #JOBID 
+
 
 ### Determining Resources
 
