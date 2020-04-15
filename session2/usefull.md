@@ -4,7 +4,7 @@ Session 2 cont.: Usefull commands and tools
 Expected learning outcome
 ========
 
-We will learn some usefull commands that will help you to use linux. We will also use some editors to create some text files. These editors can help you to manupilate text files and create bash scripts to execute commands in more organized way.
+We will learn some usefull commands that will help you to use linux. We will also learn vi editor to create text files. 
 
 Overview
 ========
@@ -12,9 +12,9 @@ Overview
   * [Introduction](#introduction)
   * [Processes Management](#processes-management)
   * [Pipes](#pipes)
-  * [vi Editor](#vi-editor)
   * [grep Command](#grep-command)
   * [AWK Command](#awk-command)
+  * [vi Editor](#vi-editor)
   * [Session Homework](#session-homework)
 
 ## Introduction
@@ -148,7 +148,7 @@ Let's play with grep on our sequence files.
 If it takes more than one page you can use less command.
 
 	$ cd ~/bootcamp/RNA-Seq/
-	$  grep AAA --color=always control_rep1.1.fq | less
+	$ grep AAA --color=always control_rep1.1.fq | less
 
 You can also use --color in short. Let's search another sequence CAGAGTTC and put the results into a separate file.
 
