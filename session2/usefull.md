@@ -20,6 +20,10 @@ Overview
 ## Introduction
 There are a couple of more commands that is required to learn to be more comfortable in linux environment. In this session we will learn processes in management, pipe usage, grep, awk, sed commands that are usefull for text manupilation and text search in files and vi editor.
 
+***If you haven't done the previous weeks homework please run the command below to create the files we will use today.***
+
+	$ /project/umw_biocore/bin/session1.sh
+
 ## Processes Management
 When you run a command, it is called a process and there are two ways you can run it −
 

@@ -289,7 +289,7 @@ Two log files can be created: the **standard error** and the **standard output**
 
 The **standard output** is saved using the `-o` parameter and the **standard error** is saved into file using the `-e` parameter.
 
-	$ bsub -o output.txt -e error.txt "echo foo 1>&2; echo bar"
+	$ bsub -o ~/bootcamp/output.txt -e ~/bootcamp/error.txt "echo foo 1>&2; echo bar"
 
 <pre>
 <b>Tip:</b> 1>&2 argument is used to direct standard output to standard error. 
@@ -377,5 +377,5 @@ For questions: <hpcc-support@umassmed.edu>
 1. How many jobs are running in the long, short and interactive queue?
 2. How many jobs are pending in the long, short and interactive queue?
 3. Run a sleep job for 100 seconds and kill it. Investigate the what happened to this job using bjobs -l command.
-4. Try to run a non existing command and write the error message to ~/error.txt file.
+4. Submit a job with a non existing command and write the error message to ~/bootcamp/error.txt file.
 
