@@ -280,7 +280,7 @@ To prepare kill commands for each job;
 
 The commands above will only write the bkill commands to the screen but it won't execute. To execute we need to send the output to bash like below;
 
-   $ bjobs | grep job| awk '{print "bkill "$1}'|bash
+   	$ bjobs | grep job| awk '{print "bkill "$1}'|bash
 	Job <4358754> is being terminated
 	Job <4358755> is being terminated
 	Job <4358756> is being terminated
@@ -337,7 +337,7 @@ To edit the file, you need to be in the insert mode. There are many ways to geti
 When you are in instert mode you will see -- INSERT -- at the bottom of the page;
 
 	|
-	~                                                                                                                                                      
+	~                                                                                                                       
 	~                                                                                                                                                      
 	~                                                                                                                                                      
 	~                                                                                                                                                      
