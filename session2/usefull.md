@@ -4,7 +4,7 @@ Session 2 cont.: Usefull commands and tools
 Expected learning outcome
 ========
 
-We will learn some usefull commands that will help you to use linux. We will also learn vi editor to create text files. 
+We will learn some usefull commands that will help you to use linux. We will also use some editors to create some text files. These editors can help you to manupilate text files and create bash scripts to execute commands in more organized way.
 
 Overview
 ========
@@ -12,17 +12,13 @@ Overview
   * [Introduction](#introduction)
   * [Processes Management](#processes-management)
   * [Pipes](#pipes)
+  * [vi Editor](#vi-editor)
   * [grep Command](#grep-command)
   * [AWK Command](#awk-command)
-  * [vi Editor](#vi-editor)
   * [Session Homework](#session-homework)
 
 ## Introduction
 There are a couple of more commands that is required to learn to be more comfortable in linux environment. In this session we will learn processes in management, pipe usage, grep, awk, sed commands that are usefull for text manupilation and text search in files and vi editor.
-
-***If you haven't done the previous weeks homework please run the command below to create the files we will use today.***
-
-	$ /project/umw_biocore/bin/session1.sh
 
 ## Processes Management
 When you run a command, it is called a process and there are two ways you can run it −
@@ -31,12 +27,12 @@ When you run a command, it is called a process and there are two ways you can ru
 - Background Processes
 
 ### Foreground Processes
-By default, every process that you start runs in the foreground. For example, when you start "sleep 300" command. It will wait 300 seconds and you cannot do anything else while it is running. 
+By default, every process that you start, runs in the foreground. For example, when you start "sleep 300" command. It will wait 300 seconds and you cannot do anything else while it is running. 
 	
-		$ sleep 300
+	$ sleep 300
 		
 ### Background Processes
-To send a process to the background, you can start the command and use Ctrl+Z keys to send it to background. When you press these keys, it will not run it background you need to run "bg" command to continue to the run.
+To send a process to the background, you can start the command and use Ctrl+Z keys to send it to background. When you press these keys, it will stop the run. You need to run `bg` command to continue to the run.
 
 	$ sleep 300
 	
@@ -44,26 +40,28 @@ press Ctrl+Z in your keyboard
 
 	$ bg
 
-This command will continue running the command
+This command will continue running the command.
 
-Or you can run the process in the background with "&" command
+Or you can run the process in the background with `&` argument.
 
 	$ sleep 300 &
 
 This will send the process to the background without Ctrl+Z and bg command.
 
-If you want to get the process running in the background to the forground you can use "fg" command.
+If you want to get the process, running in the background, to the foreground use `fg` command.
 
 	$ fg 
 
+* **In order to exit and stop the command use "Ctrl+C"**
+
 ### Listing Running Processes
-To see running processes you can use "ps" command or "ps -f" to show it with full option.
+To see running processes you can use `ps` command or `ps -f` to show it with full details.
 
 	$ ps
 
 or
 	
-	$ps -ef
+	$ps -f
 	UID   PID  PPID   C STIME   TTY           TIME CMD
 	501  1384  1383   0  2:29AM ttys004    0:00.23 -bash
 	501  4373  1384   0  1:56PM ttys004    0:00.00 sleep 300
@@ -81,17 +79,17 @@ or
 |CMD|The command that started this process|
 
 ### Stopping Processes
-If the process is running in the forground you can use Ctrl+C command to stop it or you can use ps command to learn PID of that process and use kill command to stop it. For example to kill sleep 300 command above. It's PID is 4373. The command below will kill it.
+If the process is running in the foreground you can use Ctrl+C command to stop it or you can use `ps` command to learn PID of that process and use `kill` command to stop it. For example to kill `sleep 300` command above, first check the PID which is reported at above as 4373. The command below will kill it.
 
 	$ kill 4373
 	Terminated
 	
-If a process ignores a regular kill command, you can use kill -9 followed by the process ID as follows.
+If a process ignores a regular kill command, you can use `kill -9` followed by the process ID as follows.
 
 	$ kill -9 4373
 	Terminated
 	
-***Note that, PID or a Process ID is different than JOBID in LSF schedular.***
+* **Note that, PID or a Process ID is different than JOBID in LSF schedular.**
 
 ### The top Command
 The top command is a very useful tool for quickly showing processes sorted by various criteria.
@@ -100,14 +98,15 @@ It is an interactive diagnostic tool that updates frequently and shows informati
 
 	$ top
 
+* You can exit from the "top" command by typing "Ctrl+C"
 
 ## Pipes
 
 You can connect two commands together so that the output from one program becomes the input of the next program. Two or more commands connected in this way form a pipe.
 
-To make a pipe, put a vertical bar (|) on the command line between two commands.
+To make a pipe, put a vertical bar `|` on the command line between two commands.
 
-If you want to count the # of lines of an outout of "ls -l" command, you can use the command below
+If you want to count the # of lines of an output of `ls -l` command, you can use the command below
 
 	$ ls -l | wc -l
 
@@ -120,7 +119,95 @@ These were paired end files, so the # of lines in between control_rep1.1.fq and 
 	$ cat control_rep1.2.fq | wc -l
 	99152
 
-If they weren't equal, you might need to re-download the files. 
+If they aren't equal, you might need to re-download the files. 
+
+## The vi Editor 
+
+There are many ways to edit text files in linux. **vi** is one of the most powerful editor you can use from command line. To start the **vi** editor you use 
+	
+	$ vi testfile
+	
+The above command will generate the following output;
+
+	|
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	"testfile" [New File]    
+ 
+ A tilde represents an unused line.
+
+### Operation Modes
+
+- ***Command mode:*** As you enter vi, command mode will be active. This mode enables you to perform administrative tasks such as saving the files, executing the commands, moving the cursor, cutting (yanking) and pasting the lines or words, as well as finding and replacing. In this mode, whatever you type is interpreted as a command.
+- ***Insert mode:*** If you press "i" in the **command mode**, it will switch to **insert mode**. This mode enables you to insert text into the file. Everything that's typed in this mode is interpreted as input and placed in the file. Press the **Esc** key twice to return back to command mode after you complete the editing.
+
+***Hint:*** If you are not sure which mode you are in, press the Esc key twice; this will take you to the command mode.
+
+### Getting Out of vi
+
+First you need to return to **command mode** by press the **Esc** key twice. 
+* If you haven't edited the file, type `:q` (press enter to exit)
+* If you've edited the text and want to quit without saving the changes, type `:q!` (press enter to exit)
+* Save and exit is `:wq` (press enter to exit)
+* Only save the text is `:w`
+
+### Editing Files
+To edit the file, you need to be in the insert mode. There are many ways to get in to insert mode but the easiest way to get into insert mode please press i. To exit from insert mode press **ESC**. 
+
+When you are in instert mode you will see -- INSERT -- at the bottom of the page;
+
+	|
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	-- INSERT --
+
+You can start writing now and to save and exit. Press ESC and :wq
+
+Let's write a command `ls -l` into a file with vi.
+
+	$ cd ~
+	$ vi myls
+ 
+ Go into insert mode write `ls -l` into this file and save and exit (Press ESC and :wq).
+ 
+ Lets make this file executable.
+ 
+ 	$ chmod +x myls
+ 	
+ Now it is ready to execute.
+ 
+ 	$ ./myls
+ 	
+Or use the **full path** where the file is located. If this file is created in your home
+
+	$ ~/myls
+	
+It will run "ls -l" command.
+
+* Tip: If your myls file located somewhere else, you can learn the **full path** of a directory by running `pwd` command.
+ 
+There are many commands to search, replace, delete the lines etc. in vi. To learn more about vi, you can use the tutorial below;
+
+<https://ryanstutorials.net/linuxtutorial/vi.php>
+ 
+* **While using vi, make sure the file is a small text file, bash script or a program. Don't open big files (e.g. fastq) with vi. It can open but takes a lot of time and not advised**
 
 ## The grep Command
 
@@ -135,7 +222,7 @@ The simplest use of grep is to look for a pattern consisting of a single word.
 
 The same command could be run with pipe without writing the outout of the "ls -l" command to  a file.
 
-	$ ls -l | grep "Apr" 
+	$ ls -l | grep Apr 
 
 |Option|Description|
 |------|-----------|
@@ -151,12 +238,14 @@ Let's play with grep on our sequence files.
 
 If it takes more than one page you can use less command.
 
-	$ cd ~/bootcamp/RNA-Seq/
-	$ grep AAA --color=always control_rep1.1.fq | less
+	$ cd ~/bootcamp/RNA-Seq/reads
+	$ grep AAA --color=always control_rep1.1.fq | more
 
-You can also use --color in short. Let's search another sequence CAGAGTTC and put the results into a separate file.
+* Tip: Press `q` to exit from "more".
 
-	$ cd ~/bootcamp/RNA-Seq/
+You can also use `--color` in short. Let's search another sequence CAGAGTTC and put the results into a separate file.
+
+	$ cd ~/bootcamp/RNA-Seq/reads
 	$ grep CAGAGTTC --color control_rep1.1.fq > ~/bootcamp/seq.txt
 
 To learn how many reads include CAGAGTTC in control_rep1.1.fq file
@@ -165,19 +254,20 @@ You could use "-c" argument;
 	
 	$ grep CAGAGTTC -c control_rep1.1.fq
 	
-or with pipe
+or with pipe and `wc` command:
 
 	$ grep CAGAGTTC control_rep1.1.fq | wc -l
 
-Not every command has -c argument, so learning second method might be useful for other commands like "cat".
+Not every command has -c argument, so learning second method might be useful for other commands like `cat`.
 
-If you want to search a motif in your reads starts with CAGAGT and ends with TGA. There could be anything in between. To represent any nucleotide in between these two sequences, you can use ".\*". So the pattern will be CAGAGT.*TGA. 
+If you want to search a motif in your reads starts with CAGAGT and ends with TGA. There could be anything in between. To represent any nucleotide in between these two sequences, you can use `.*`. So the pattern will be `CAGAGT.*TGA`. 
  
 	$ grep CAGAGT.*TGA --color control_rep1.1.fq
 
-If you want to eliminte the reads that include the pattern above but include another sequence
+If you want to eliminate the reads that include the pattern above but include another sequence
 GCT...CGCG. "..." means any three nucleotides.	 
-	$	grep -v CAGAGT.*TGA control_rep1.1.fq | grep GCT...CGCG --color
+	
+	$ grep -v CAGAGT.*TGA control_rep1.1.fq | grep GCT...CGCG --color
 
 To learn more about it
 
@@ -189,7 +279,7 @@ Cheat sheet:
 
 ## AWK command
 
-awk is an interpreted language desgined to process text files. awk is especially good for the files and command outputs that have columns. You can access any column of a file easily with awk.
+**awk** is an interpreted language designed to process text files. **awk** is especially good for the files and command outputs that have columns. You can access any column of a file easily with awk.
 
 <img src="images/awk.png">
 
@@ -213,6 +303,7 @@ For example, if we only want to list username and the name of the directories we
 	drwxrwxr-x 2 ak97w umw_manuel_garber 408 Apr  7 23:32 reads
 
 Let's list column 3 which is user id and column 9 and put space in between these columns.
+
 	$ ls -l > mylist.txt
 	$ awk '{print $3" "$9}' mylist.txt
 	
@@ -220,7 +311,7 @@ Or without writing the list into a file, we could redirect the output of "ls -l"
 	
 	$ ls -l | awk '{print $3" "$9}'
 
-To put a space between columns I used space in quotes " ". If you want to put a tab character in between columns you can use "\t" this usage is called using "escape character" that you might see it in other tutorials;
+To put a space between columns, I used space in quotes `" "`. If you want to put a **tab** character in between columns you can use `"\t"` this usage is called using "escape character" that you might see it in other tutorials;
 
 	$ ls -l | awk '{print $3"\t"$9}' 
 
@@ -240,9 +331,9 @@ In fastq files, there are 4 lines for each read. The nucleotide sequence of the 
 	+
 	iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
-Here the second line is the read to get only those lines we can use awk command. NR here was the line number NR % 2 will use the modulus opertor to get second lines of every forth lines in a file.  
+In order to get the nucleotide sequence of the reads we can use awk command. `NR` here is the line number `NR % 4 == 2` will use the modulus operator to get second lines of every forth lines in a file.  
 
-	$ awk '{if(NR % 4== 2)print($0)}' control_rep1.1.fq | less
+	$ awk '{if(NR % 4 == 2)print($0)}' control_rep1.1.fq | less
 	
 ### An excercise to kill multiple jobs in the cluster using awk
 
@@ -297,88 +388,6 @@ You can check other tutorials and cheat sheets online;
 
 <http://www.awklang.org/asset/krumnisCheatSheet.pdf>
 
-## The vi Editor 
-
-There are many ways to edit text files in linux. vi is one of the most powerful editor you can use from command line. To start the vi editor you use 
-	
-	$ vi testfile
-	
-The above command will generate the following output;
-
-	|
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	"testfile" [New File]    
- 
- A tilde represents an unused line.
-
-### Operation Modes
-
-- ***Command mode:*** This mode enables you to perform administrative tasks such as saving the files, executing the commands, moving the cursor, cutting (yanking) and pasting the lines or words, as well as finding and replacing. In this mode, whatever you type is interpreted as a command.
-- ***Insert mode:*** This mode enables you to insert text into the file. Everything that's typed in this mode is interpreted as input and placed in the file.
-
-***Hint:*** If you are not sure which mode you are in, press the Esc key twice; this will take you to the command mode.
-
-### Getting Out of vi
-
-The command to quit out of vi is :q. You need to be in command mode to use it.
-
-The command to save the contents of the editor is :w. Save and exit is :wq
-
-### Editing Files
-To edit the file, you need to be in the insert mode. There are many ways to getin to insert mode but the easiest way to get into insert mode please press i. To exit from insert mode press escape. 
-
-When you are in instert mode you will see -- INSERT -- at the bottom of the page;
-
-	|
-	~                                                                                                                       
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	-- INSERT --
-
-You can start writing now and to save and exit. Press ESC and :wq
-
-Let's write ls -l into a file with vi.
-
-	$ vi myls 
- 
- Go into insert mode write ls -l into this file and save and exit (Press ESC and :wq).
- 
- Lets make this file executable.
- 
- 	$ chmod +x myls
- 	
- Now it is ready to execute.
- 
- 	$ ./myls
- 	
-Or use the full path where the file is located. If this file is created in your home
-
-	$ ~/myls
-	
-It will run "ls -l" command.
- 
-There are many commands to search, replace, delete the lines etc. in vi. To learn more about vi, you can use the tutorial below;
-
-<https://ryanstutorials.net/linuxtutorial/vi.php>
- 
-***While using vi, make sure the file is a small text file, bash script or a program. Don't open big files (e.g. fastq) with vi. It can open but takes a lot of time and not advised*** 
 
 ## Session Homework:
 
