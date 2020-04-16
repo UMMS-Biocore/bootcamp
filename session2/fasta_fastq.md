@@ -60,3 +60,9 @@ During [Session 2 Extra: Useful commands and tools](session2/usefull.md) you bec
 $ grep --help
 ```
 * What is the nucleotide sequence of the read named HWI-ST333_0273_FC:8:1212:9473:35651#CTGGGC/1 in the file **exper_rep2.1.fq**
+
+
+Expected result:
+```
+AAAGCGGTCAACTGGAAACTAAATGGAGCAGCAGCTCCTC
+```
