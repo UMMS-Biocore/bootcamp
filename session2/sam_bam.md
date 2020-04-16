@@ -50,7 +50,7 @@ This is already installed in our cluster. To use it, **load the module for the m
   Headers may or may not be present in SAM/BAM files, and they always start with the @ character. The last line in the header includes the command used to generate the bam file and is useful to store a record of the parameters used for the alignment!
 
 ### Homework (Advanced)
-* Using a single command line (may include multiple commands using **pipes**), print a FASTQ format record for the last read in the bam file used above. Save a screenshot of the command and result.
+* Using a single command line (may include multiple commands using **pipes**), print the last read in the bam file used above in a FASTQ format. Save a screenshot of the command and result.
 
 *hint: awk allows you to change the output separator of fields or print any string you want, and a newline can be specified by* "\n"
 ```
