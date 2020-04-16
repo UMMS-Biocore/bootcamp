@@ -6,7 +6,7 @@ SAM is an acronym for Sequence Alignment/Mapping
 It is not common to find a sam file since they take up a lot of space, but here is a small example. Since it is a text file, you can view it just as you had been viewing all other text files we have worked with:
 
 ```
-$ head mm_example.sam
+$ head /project/umw_biocore/class/mm_example.sam
 ```
 
 ## BAM files
@@ -35,17 +35,17 @@ This is already installed in our cluster. To use it, **load the module for the m
 
   * Use the view command to print the first 10 alignments of this bam file:
   ```
-  $ samtools view mm_example.bam | head
+  $ samtools view /project/umw_biocore/class/mm_example.bam | head
   ```
 
   * Count the number of records in this file:
   ```
-  $ samtools view mm_example.bam | wc -l
+  $ samtools view /project/umw_biocore/class/mm_example.bam | wc -l
   ```
 
   * View the header only for the same bam file (by default only reads are returned)
   ```
-  $ samtools view -H mm_example.bam | head
+  $ samtools view -H /project/umw_biocore/class/mm_example.bam | head
   ```
   Headers may or may not be present in SAM/BAM files, and they always start with the @ character. The last line in the header includes the command used to generate the bam file and is useful to store a record of the parameters used for the alignment!
 
