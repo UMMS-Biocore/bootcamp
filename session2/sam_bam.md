@@ -52,7 +52,7 @@ This is already installed in our cluster. To use it, **load the module for the m
 ### Homework (Advanced)
 * Using a single command line (may include multiple commands using **pipes**), print a FASTQ format record for the last read in the bam file used above. Save a screenshot of the command and result.
 
-*hint: awk allows you to change the output separator of fields or print any string you want, and a newline can be specified by* "\t"
+*hint: awk allows you to change the output separator of fields or print any string you want, and a newline can be specified by* "\n"
 ```
 $ head -1 ~/bootcamp/RNA-Seq/reads/exper_rep1.1.fq | awk '{print "Hello World"}'
 ```
