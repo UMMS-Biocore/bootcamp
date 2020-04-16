@@ -56,3 +56,11 @@ This is already installed in our cluster. To use it, **load the module for the m
 ```
 $ head -1 ~/bootcamp/RNA-Seq/reads/exper_rep1.1.fq | awk '{print "Hello World"}'
 ```
+
+Expected Result:
+```
+@NS500602:410:HJGVMBGX2:2:23305:25539:14380
+TTTGCATCGGTGTAATAGGGCACCAGTGACTCAGGGGGAAGC
++
+EEEEEEEEEEEEEEEEEEEEEEAAEEEEEEEAEEEEEAAAA/
+```
