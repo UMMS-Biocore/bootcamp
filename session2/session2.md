@@ -294,9 +294,11 @@ The **standard output** is saved using the `-o` parameter and the **standard err
 <pre>
 <b>Tip:</b> 1>&2 argument is used to direct standard output to standard error. 
 * Therefore <b>foo</b> saved into error.txt. This means that if your run killed, you might track 
-the reason of the error in this log file.
+the reason of the error in this log file. 
 * On the other hand, <b>bar</b> saved into output.txt as a standard output.
 </pre>
+
+* Note that in real life you don't need to use `1>&2` to receive an error. Programs will automatically send their errors into **standard error** and you can read them in "error.txt" file.
 
 ### Interactive Nodes
 
@@ -374,8 +376,8 @@ For questions: <hpcc-support@umassmed.edu>
 
 ### Session2 Homework:
 
-1. How many jobs are running in the long, short and interactive queue?
-2. How many jobs are pending in the long, short and interactive queue?
+1. In our cluster, how many jobs are running in the long, short and interactive queue?
+2. In our cluster, how many jobs are pending in the long, short and interactive queue?
 3. Run a sleep job for 100 seconds and kill it. Investigate the what happened to this job using bjobs -l command.
-4. Submit a job with a non existing command and write the error message to ~/bootcamp/error.txt file.
+4. Submit a job with a non existing command (eg. `ech` or `aaa` is not a command) and write the error message to ~/bootcamp/error.txt file.
 
