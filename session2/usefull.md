@@ -408,6 +408,7 @@ You can check other tutorials and cheat sheets online;
 		
 		chr7	"Fgf21";	start_codon	45615304
 		
-	- Hint: Use grep and awk commands with pipe.
+	* Hint-1: Use grep and awk commands with pipe.
+	* Hint-2: You can find "start codon" by searching `start_codon`.
 
  
