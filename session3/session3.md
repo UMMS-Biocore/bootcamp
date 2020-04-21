@@ -18,24 +18,25 @@ Overview
   * [Session3 Homework](#session3-homework)
 
 ## Introduction
-Today we will do the exercises below to learn, how genomic and transcriptomic alginments are done, their differences what kind of software we use. In these examples, for splice aware genomic alignments, we will use STAR and for gene quantification, we will use RSEM. RSEM is going to use STAR in the background to map the reads to only transcriptome. Figure 1 shows a typical RNA-Seq pipeline.  
+Today we will do the exercises below to learn, how genomic and transcriptomic alignments are done, their differences and what kind of software we use. In these examples, for splice aware genomic alignments, we will use STAR and for gene quantification, we will use RSEM. RSEM is going to use STAR in the background to map the reads to only transcriptome. Figure 1 shows a typical RNA-Seq pipeline.  
 
 <img src="images/pipeline.png"> 
-#####Figure1. RNA-Seq pipeline example#####
+<p align="center"><b>Figure1. RNA-Seq pipeline example</b></p>
 
-When we want align the reads to whole genome, we need to use splice aware aligner. Tophat, Hisat2 or STAR are used for this purpose. However, these software do not quantify the genes or transcripts. We need to use another program like featureCounts or RSEM. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts. Just to remind, RSEM is bound to the completness of transcript annotation you used. If you don't want to loose anything due to the used annotation, we suggest you to align your reads to whole genome and visualize them using a genome browser to investigate all mapped reads to the genome.
+* When we want align the reads to whole genome, we need to use splice aware aligner. **Tophat**, **Hisat2** or **STAR** are used for this purpose. However, these software do not quantify the genes or transcripts. We need to use another program like **featureCounts** or **RSEM**. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts. 
 
-<https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-323>
+* RSEM is bound to the completness of transcript annotation you used. If you don't want to loose anything due to the used annotation, we suggest you to align your reads to whole genome and visualize them using a genome browser to investigate all mapped reads to the genome.
+
+* Please check the [RSEM](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-323) paper for details.
 
 Figure 2 shows the main differences between STAR and RSEM.
 
 <img src="images/STARvsRSEM.png"> 
-#####Figure2. STAR vs. RSEM#####
+<p align="center"><b>Figure2. STAR vs. RSEM</b></p>
 
+Sample pooling has revolutionized sequencing. It is now possible to sequence 10s of samples together. Different objectives require different sequencing depths. Doing differential **gene expression analysis** requires **less sequencing depth** than **transcript reconstruction** so when pooling samples it is critical to keep the objective of the experiment in mind.
 
-Sample pooling has revolutionized sequencing. It is now possible to sequence 10s of samples together. Different objectives require different sequencing depths. Doing differential gene expression analysis requires less sequencing depth than transcript reconstruction so when pooling samples it is critical to keep the objective of the experiment in mind.
-
-In this activity we will use subsets of experimentally generated datasets. One dataset was generated for differential gene expression analysis while the other towards transcript annotation.
+In this activity, we will use subsets of experimentally generated datasets. One dataset was generated for **differential gene expression analysis** while the other towards **transcript annotation**.
 
 ## Getting Started
 
@@ -57,11 +58,14 @@ This activity should also serve as a review of the previous two classes as you w
 	$ ssh your_user@ghpcc06.umassrc.org
 ```
 
-2.  Please start an interactive job in the cluster using the command below or how you learned before for any of your operations in the cluster. Head node is used only for job submissions. An interactive session is a way to log in to a node and use it as if it were your local workstation for the length of the session. You may use this same script in the future whenever you want to start and work on a node and run programs in an interactive session.
+2.  Please start an interactive job in the cluster using the command below or enter your `bsub` command as you've learned from previous sessions. Head node is only used only for job submissions. An interactive job/session is a way to log in to a node and use it as if it were your local workstation for the limited time (e.g. `qlogin` will set limit for 4 hours). You may use this same script in the future whenever you want to start and work on a node and run programs in an interactive session.
 
 ```
 	$ /project/umw_biocore/bin/qlogin
 ```
+
+* Tip: If you want to learn the parameters of `qlogin` script, simply run `cat /project/umw_biocore/bin/qlogin`
+	
 
 3. If you haven't done your homework first week. Please run the command below to prepare your working directory for bootcamp.
 
@@ -83,7 +87,9 @@ Here, I have 24G available space in my home.
 
 ## Exercise 1: prepare for genomic alignment
 
-Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments it is necessary to create index or reference files. Please go to ~/bootcamp/mm10 directory and create index files for STAR and reference files for RSEM. Creating these files are usually a one time thing and you use them in the future. We already created for you for model organisms and highly used genome builds. Howewer, if you need to create these files yourself in the future. You can consult to this exercise. 
+Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments, it is necessary to create index or reference files. Please go to `~/bootcamp/RNA-Seq/mm10` directory. We will create index files for STAR and reference files for RSEM. 
+
+Creating these files are usually a one time thing and you use them in the future. We've already shared highly used genome builds for model organisms, so you can check it out later in `/share/data/umw_biocore/genome_data/`. Howewer, if you need to create these files yourself in the future, you can consult to this exercise. 
 
 1. First load necessary modules we will use today.
 
@@ -93,9 +99,9 @@ Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very effici
 	$ module load samtools/1.9
 ```
 
-2. In addition to star index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
+2. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
 
-The command: rsem-prepare-reference --star --gtf ucsc.gtf mm10.fa rsem/mm10.rsem
+The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file index_prefix` 
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -152,12 +158,12 @@ Let's get the list for rsem references to make sure the command worked right;
 	$ ls rsem
 	chrLength.txt	      mm10.rsemLog.out
 	chrNameLength.txt     mm10.rsem.n2g.idx.fa
-	chrName.txt	     	  mm10.rsem.seq
+	chrName.txt.          mm10.rsem.seq
 	chrStart.txt	      mm10.rsem.ti
 	exonGeTrInfo.tab      mm10.rsem.transcripts.fa
 	exonInfo.tab	      SA
 	geneInfo.tab	      SAindex
-	Genome		      	  sjdbInfo.txt
+	Genome		      sjdbInfo.txt
 	genomeParameters.txt  sjdbList.fromGTF.out.tab
 	mm10.rsem.chrlist     sjdbList.out.tab
 	mm10.rsem.grp	      transcriptInfo.tab
@@ -167,7 +173,7 @@ Let's get the list for rsem references to make sure the command worked right;
 3. Build STAR index files.
 
 
-The command: STAR --runMode genomeGenerate  --genomeDir ./star  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
+The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  --genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -208,7 +214,7 @@ When you check the newly generated files with ls, the files should be like below
 	$ ls star
 	chrLength.txt	   genomeParameters.txt
 	chrNameLength.txt  SA
-	chrName.txt	  	   SAindex
+	chrName.txt	   SAindex
 	chrStart.txt	   sjdbInfo.txt
 	exonGeTrInfo.tab   sjdbList.fromGTF.out.tab
 	exonInfo.tab	   sjdbList.out.tab
@@ -219,7 +225,7 @@ When you check the newly generated files with ls, the files should be like below
 Now, we organized the index files like below. In the future, if you need other index files for different aligners or need new annotations for the same software, you can put them into different folders to keep the index files in more organized way rather than putting them into the same folder.
 
 ```
-	$ tree -d mm10
+	$ tree -d ~/bootcamp/RNA-Seq/mm10/
 	mm10
 	├── rsem
 	└── star
@@ -232,9 +238,9 @@ RSEM depends on an existing annotation and will only scores transcripts that are
 The first step is to prepare the transcript set that we will quantify. We selected the UCSC genes which is a very comprehensive, albeit a bit noisy dataset. As with all the data in this activity we will only use the subset of the genes that map to the genome regions we are using.
 
 ### 2.1 Calculate expression
-RSEM now is ready to align and then attempt to perform read assignment and counting for each isoform in the file provided above. You must process each one of the 6 libraries:
+RSEM is ready to align and then attempt to perform read assignment and counting for each isoform in the file provided above. You must process each one of the 6 libraries:
 
-The command: rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq mm10/rsem/mm10.rsem rsem/ctrl1.rsem 
+The command: `rsem-calculate-expression --star --paired-end -p <#-of-threads> --output-genome-bam <reads> <index_prefix> <output_prefix>`
 
 Arguments|Explanation|
 |---------|-----------|
@@ -252,7 +258,6 @@ For more details about the arguments; <http://deweylab.biostat.wisc.edu/rsem/rse
 ``` 
 	$ cd ~/bootcamp/RNA-Seq
 	$ mkdir rsem
-	
 	$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq mm10/rsem/mm10.rsem rsem/ctrl1.rsem 
 ```
 
@@ -271,12 +276,9 @@ rsem-calculate-expression program produces the files below;
 	ctrl1.rsem.theta
 ```
 
-rsem/ctrl1.rsem.genes.results file includes gene quantifications. Isoform quantifications are in rsem/ctrl1.rsem.isoforms.results file. 
+* Gene quantifications are reported in `rsem/ctrl1.rsem.genes.results` file.
+* Isoform quantifications are in `rsem/ctrl1.rsem.isoforms.results` file. 
 
-If you want to visualize mapped reads, you will need to use rsem/ctrl1.rsem.genome.bam file which inlcudes mapped reads in genomic coordinates. Before you upload it to genome browser, make sure to sort it (samtools sort) and index(samtools index) it. We will do this in the following excercise  
-
-
-***And similarly for each of the other 5 libraries, please run them yourself by changing the filenames (control_rep1.1.fq and control_rep1.2.fq).***
 
 You should take the time to familiarize yourself with the output file.
 
@@ -301,12 +303,21 @@ You should take the time to familiarize yourself with the output file.
 |TPM|Transcripts Per Million. It is a relative measure of transcript abundance. The sum of all transcripts' TPM is 1 million.|
 |FPKM|Fragments Per Kilobase of transcript per Million mapped reads.|
 
-***Expected_count can be used as raw counts (unnormalized). The differential expression tests based on negative binomial distribution like EBSeq, DESeq or EdgeR require raw counts. Please use expected_count column. So, you cannot use TPM or FPKM while performing these methods.***
+* **Warning: Expected_count can be used as raw counts (unnormalized). The differential expression tests (like EBSeq, DESeq or EdgeR) are based on negative binomial distribution and require raw counts. So please use expected_count column for these methods. 
+* You **cannot use normalized values such as TPM or FPKM** while performing these methods. TPM or FPKM are usually used for data visualization. Heatmaps, scatter plots or bar plots etc.
 
-TPM or FPKM are usually used for data visualization. Heatmaps, scatter plots or bar plots etc.
+Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below: 
 
+```
+	$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep2.1.fq reads/control_rep2.2.fq mm10/rsem/mm10.rsem rsem/ctrl2.rsem
+```
+	
+If you want to visualize mapped reads in genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following excercise.  
 
-In the following exercises, we will need to use sorted and indexed versions of the alignment file. To sort and index we use samtools. Let's create them under sorted folder. Samtools sort command is following; samtools sort -o <output.bam> <input.bam>
+To sort and index we use samtools. Let's create them under **sorted** folder. Samtools sort command is following; 
+
+	`samtools sort -o <output.bam> <input.bam>`
+	
 If you haven't loaded please load samtools.
 
 ```	
@@ -320,20 +331,25 @@ Let's run the commands.
 	$ mkdir sorted
 	$ samtools sort -o sorted/ctrl1.rsem.sorted.bam rsem/ctrl1.rsem.genome.bam 
 	$ samtools index sorted/ctrl1.rsem.sorted.bam
+	
+	# Check the output of the commands: 
+	$ ls sorted
 ```
 
-Please run the same command for other samples.
+Please run the same command for other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.Please check another example for control_rep2 at below:
+
+```
+	$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam 
+	$ samtools index sorted/ctrl2.rsem.sorted.bam
+```
 
 
 ### 2.2 Create consolidated table
 
 
-RSEM provides a simple script to take expected_count columns from all the independent RSEM output and combine it into a single table, which is then useful for inspection and ready for differential gene expression analysis.
+RSEM provides a simple script to take expected_count columns from all the independent RSEM output and combine it into a single table, which is useful for inspection and ready for differential gene expression analysis.
 
-To find out what the script does you may type the following command in the transcriptomics directory
-
-
-You can run the command below. 
+To find out what the script does you may run the following command in the transcriptomics directory:
 
 ```
    $ rsem-generate-data-matrix
@@ -347,7 +363,7 @@ Before you use this program, make sure you could run rsem-calculate-expression p
 	rsem/ctrl2.rsem.genes.results  rsem/exper1.rsem.genes.results  rsem/exper3.rsem.genes.results
 ```
 
-If you haven't done the previous excrcise but want to move forward, you can run the command below to run rsem commands for all samples. (If you alredy have the results files above, please don't run the command below) 
+If you haven't done the previous excercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**) 
 
 ```
 	$ /project/umw_biocore/class/rsemruns.sh
@@ -394,7 +410,7 @@ Let's grep Fgf21 gene in this file;
 	$ samtools index sorted/ctrl1.star.sorted.bam
 ```
 
-4. Please do it for the other samples.
+4. Please do it for the other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.
   
    You can also create a bash script as an example like below to run for the others; 
 	(```/project/umw_biocore/class/starruns.sh```). 
