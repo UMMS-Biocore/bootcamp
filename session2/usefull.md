@@ -12,9 +12,9 @@ Overview
   * [Introduction](#introduction)
   * [Processes Management](#processes-management)
   * [Pipes](#pipes)
-  * [vi Editor](#vi-editor)
   * [grep Command](#grep-command)
   * [AWK Command](#awk-command)
+  * [vi Editor](#vi-editor)
   * [Session Homework](#session-homework)
 
 ## Introduction
@@ -120,94 +120,6 @@ These were paired end files, so the # of lines in between control_rep1.1.fq and 
 	99152
 
 If they aren't equal, you might need to re-download the files. 
-
-## The vi Editor 
-
-There are many ways to edit text files in linux. **vi** is one of the most powerful editor you can use from command line. To start the **vi** editor you use 
-	
-	$ vi testfile
-	
-The above command will generate the following output;
-
-	|
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	~
-	"testfile" [New File]    
- 
- A tilde represents an unused line.
-
-### Operation Modes
-
-- ***Command mode:*** As you enter vi, command mode will be active. This mode enables you to perform administrative tasks such as saving the files, executing the commands, moving the cursor, cutting (yanking) and pasting the lines or words, as well as finding and replacing. In this mode, whatever you type is interpreted as a command.
-- ***Insert mode:*** If you press "i" in the **command mode**, it will switch to **insert mode**. This mode enables you to insert text into the file. Everything that's typed in this mode is interpreted as input and placed in the file. Press the **Esc** key twice to return back to command mode after you complete the editing.
-
-***Hint:*** If you are not sure which mode you are in, press the Esc key twice; this will take you to the command mode.
-
-### Getting Out of vi
-
-First you need to return to **command mode** by press the **Esc** key twice. 
-* If you haven't edited the file, type `:q` (press enter to exit)
-* If you've edited the text and want to quit without saving the changes, type `:q!` (press enter to exit)
-* Save and exit is `:wq` (press enter to exit)
-* Only save the text is `:w`
-
-### Editing Files
-To edit the file, you need to be in the insert mode. There are many ways to get in to insert mode but the easiest way to get into insert mode please press i. To exit from insert mode press **ESC**. 
-
-When you are in instert mode you will see -- INSERT -- at the bottom of the page;
-
-	|
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	~                                                                                                                                                      
-	-- INSERT --
-
-You can start writing now and to save and exit. Press ESC and :wq
-
-Let's write a command `ls -l` into a file with vi.
-
-	$ cd ~
-	$ vi myls
- 
- Go into insert mode write `ls -l` into this file and save and exit (Press ESC and :wq).
- 
- Lets make this file executable.
- 
- 	$ chmod +x myls
- 	
- Now it is ready to execute.
- 
- 	$ ./myls
- 	
-Or use the **full path** where the file is located. If this file is created in your home
-
-	$ ~/myls
-	
-It will run "ls -l" command.
-
-* Tip: If your myls file located somewhere else, you can learn the **full path** of a directory by running `pwd` command.
- 
-There are many commands to search, replace, delete the lines etc. in vi. To learn more about vi, you can use the tutorial below;
-
-<https://ryanstutorials.net/linuxtutorial/vi.php>
- 
-* **While using vi, make sure the file is a small text file, bash script or a program. Don't open big files (e.g. fastq) with vi. It can open but takes a lot of time and not advised**
 
 ## The grep Command
 
@@ -387,6 +299,94 @@ You can check other tutorials and cheat sheets online;
 <https://www.grymoire.com/Unix/Awk.html>
 
 <http://www.awklang.org/asset/krumnisCheatSheet.pdf>
+
+## The vi Editor 
+
+There are many ways to edit text files in linux. **vi** is one of the most powerful editor you can use from command line. To start the **vi** editor you use 
+	
+	$ vi testfile
+	
+The above command will generate the following output;
+
+	|
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	~
+	"testfile" [New File]    
+ 
+ A tilde represents an unused line.
+
+### Operation Modes
+
+- ***Command mode:*** As you enter vi, command mode will be active. This mode enables you to perform administrative tasks such as saving the files, executing the commands, moving the cursor, cutting (yanking) and pasting the lines or words, as well as finding and replacing. In this mode, whatever you type is interpreted as a command.
+- ***Insert mode:*** If you press "i" in the **command mode**, it will switch to **insert mode**. This mode enables you to insert text into the file. Everything that's typed in this mode is interpreted as input and placed in the file. Press the **Esc** key twice to return back to command mode after you complete the editing.
+
+***Hint:*** If you are not sure which mode you are in, press the Esc key twice; this will take you to the command mode.
+
+### Getting Out of vi
+
+First you need to return to **command mode** by press the **Esc** key twice. 
+* If you haven't edited the file, type `:q` (press enter to exit)
+* If you've edited the text and want to quit without saving the changes, type `:q!` (press enter to exit)
+* Save and exit is `:wq` (press enter to exit)
+* Only save the text is `:w`
+
+### Editing Files
+To edit the file, you need to be in the insert mode. There are many ways to get in to insert mode but the easiest way to get into insert mode please press i. To exit from insert mode press **ESC**. 
+
+When you are in instert mode you will see -- INSERT -- at the bottom of the page;
+
+	|
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	~                                                                                                                                                      
+	-- INSERT --
+
+You can start writing now and to save and exit. Press ESC and :wq
+
+Let's write a command `ls -l` into a file with vi.
+
+	$ cd ~
+	$ vi myls
+ 
+ Go into insert mode write `ls -l` into this file and save and exit (Press ESC and :wq).
+ 
+ Lets make this file executable.
+ 
+ 	$ chmod +x myls
+ 	
+ Now it is ready to execute.
+ 
+ 	$ ./myls
+ 	
+Or use the **full path** where the file is located. If this file is created in your home
+
+	$ ~/myls
+	
+It will run "ls -l" command.
+
+* Tip: If your myls file located somewhere else, you can learn the **full path** of a directory by running `pwd` command.
+ 
+There are many commands to search, replace, delete the lines etc. in vi. To learn more about vi, you can use the tutorial below;
+
+<https://ryanstutorials.net/linuxtutorial/vi.php>
+ 
+* **While using vi, make sure the file is a small text file, bash script or a program. Don't open big files (e.g. fastq) with vi. It can open but takes a lot of time and not advised**
 
 
 ## Session Homework:
