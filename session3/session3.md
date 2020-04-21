@@ -253,14 +253,12 @@ If you want to visualize mapped reads, you will need to use rsem/ctrl1.rsem.geno
 
 ***And similarly for each of the other 5 libraries, please run them yourself by changing the filenames (control_rep1.1.fq and control_rep1.2.fq).***
 
-Please run for all other files.
-
 You should take the time to familiarize yourself with the output file.
 
-		$ head rsem/ctrl1.rsem.genes.results 
+	$ head rsem/ctrl1.rsem.genes.results 
 
 |gene_id|transcript_id(s)|length|effective_length|expected_count|TPM|FPKM|
-|-------|----------------|------|------------|---|---|---|---|
+|-------|----------------|------|----------------|--------------|---|----|
 |0610005C13Rik|uc029wfi.1,uc029wfj.1|1112.77|925.22|3193.00|312675.64|191959.76|
 |1500002O20Rik|uc009fpm.1,uc009fpn.1|1921.50|1733.96|0.00|0.00|0.00|
 |1600014C10Rik|	uc009gks.1,uc009gkt.1|3241.00|3053.46|0.00|0.00|0.00|
