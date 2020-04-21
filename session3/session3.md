@@ -379,9 +379,9 @@ We will revisit these genes below when we do the differential gene expression an
 
 ## Exercise 4: Differential Expression Analysis
 
-The fastest way to performn differential expression(DE) analysis is performing EBSeq in RSEM.
+One of the fastest way to perform differential expression(DE) analysis is using EBSeq in RSEM.
 
-rsem-run-ebseq command runs EBSeq. It takes as inputs the generated matrix (rsem.gene.summary.count.txt), a tab-separated list of values representing the number of biological replicates each condition has (3,3) in our example case and it will write the output to results/de.txt and finally, rsem-control-fdr selects a list of genes from results/de.txt by controlling the false discovery rate (FDR) at level 0.01 and outputs them to results/fdr.de.txt
+rsem-run-ebseq command runs EBSeq in R. In our cluster EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. Since rsem-run-ebseq is no longer available in the latest RSEM version. In this tutorial, we used one of the old versions. This script takes as inputs; the generated matrix (rsem.gene.summary.count.txt), a tab-separated list of values representing the number of biological replicates each condition has (3,3) in our example case and it will write the output to results/de.txt and finally, rsem-control-fdr selects a list of genes from results/de.txt by controlling the false discovery rate (FDR) at level 0.01 and outputs them to results/fdr.de.txt. So, this package is using its own normalziaton method described in the link below. We need to use expected_count matrix.
 
 To perform these analysis please run the commands below;
 	
@@ -391,9 +391,7 @@ To perform these analysis please run the commands below;
 	$ module load R/3.2.0
 	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-run-ebseq quant/rsem.gene.summary.count.txt 3,3 results/de.txt
 	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-control-fdr results/de.txt 0.01 results/fdr.de.txt
-	
 
-Note: Since rsem-run-ebseq is no longer available in the latest RSEM version. We used one of the old versions above.
 
 Each line describes a gene and contains 7 fields: the gene name, posterior probability of being equally expressed (PPEE), posterior probability of being differentially expressed (PPDE), posterior fold change of condition 1 over condition 2 (PostFC), real fold change of condition 1 over condition 2 (RealFC), mean count of condition 1 (C1Mean) and mean count of condition 2 (C2Mean). For fold changes, PostFC is recommended over the RealFC and you can find the definition of these two fold changes in the description of PostFC function of EBSeq package.
 
