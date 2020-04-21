@@ -226,7 +226,8 @@ Arguments|Explanation|
 |\<index\>| Index prefix (e.g. mm10/rsem/mm10.rsem)|
 |\<output prefix\>| Output prefix (e.g. rsem/ctrl1.rsem)|
 
-For more details about the arguments you can consult <http://deweylab.biostat.wisc.edu/rsem/rsem-calculate-expression.html>
+
+For more details about the arguments; <http://deweylab.biostat.wisc.edu/rsem/rsem-calculate-expression.html>
  
 	$ cd ~/bootcamp/RNA-Seq
 	$ mkdir rsem
@@ -262,6 +263,7 @@ You should take the time to familiarize yourself with the output file.
 |0610005C13Rik|uc029wfi.1,uc029wfj.1|1112.77|925.22|3193.00|312675.64|191959.76|
 |1500002O20Rik|uc009fpm.1,uc009fpn.1|1921.50|1733.96|0.00|0.00|0.00|
 |1600014C10Rik|	uc009gks.1,uc009gkt.1|3241.00|3053.46|0.00|0.00|0.00|
+
 
 |Column|Explanation|
 |------|-----------|
@@ -322,7 +324,7 @@ Now we are ready to generate the data matrix;
 	$ cd rsem
 	$ rsem-generate-data-matrix *.genes.results > ~/bootcamp/RNA-Seq/quant/rsem.gene.summary.count.txt
 
-Let's look grep Fgf21 gene in this file;
+Let's grep Fgf21 gene in this file;
 		
 	$ cd ~/bootcamp/RNA-Seq
 	$ grep Fgf21 quant/rsem.gene.summary.count.txt 
