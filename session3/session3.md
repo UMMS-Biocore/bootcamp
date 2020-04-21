@@ -68,9 +68,9 @@ This activity should also serve as a review of the previous two classes as you w
 	$ df -h .
 	Filesystem            Size  Used Avail Use% Mounted on
 	umassmghpcc-head.umassrc.org:/ifs/xdata/home/ak97w
-	                       50G   27G   24G  54% /home/ak97w
+			       50G   27G   24G  54% /home/ak97w
 
-	Here, I have 24G available space in my home.
+Here, I have 24G available space in my home.
 	
 
 ## Exercise 1: prepare for genomic alignment
