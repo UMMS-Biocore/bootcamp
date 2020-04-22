@@ -56,13 +56,13 @@ This activity should also serve as a review of the previous two classes as you w
 1. Connect to cluster using the command below with your username and password
 
 ```
-	$ ssh your_user@ghpcc06.umassrc.org
+$ ssh your_user@ghpcc06.umassrc.org
 ```
 
 2.  Please start an interactive job in the cluster using the command below or enter your `bsub` command as you've learned from previous sessions. Head node is only used only for job submissions. An interactive job/session is a way to log in to a node and use it as if it were your local workstation for the limited time (e.g. `qlogin` will set limit for 4 hours). You may use this same script in the future whenever you want to start and work on a node and run programs in an interactive session.
 
 ```
-	$ /project/umw_biocore/bin/qlogin
+$ /project/umw_biocore/bin/qlogin
 ```
 
 * Tip: If you want to learn the parameters of `qlogin` script, simply run `cat /project/umw_biocore/bin/qlogin`
@@ -71,16 +71,16 @@ This activity should also serve as a review of the previous two classes as you w
 3. If you haven't done your homework first week. Please run the command below to prepare your working directory for bootcamp.
 
 ```
-	$ /project/umw_biocore/bin/session1.sh
+$ /project/umw_biocore/bin/session1.sh
 ```	
 
 4. Make sure you have at least 5G space in your home directory. To check it;
 
 ```
-	$ df -h .
-	Filesystem            Size  Used Avail Use% Mounted on
-	umassmghpcc-head.umassrc.org:/ifs/xdata/home/ak97w
-			       50G   27G   24G  54% /home/ak97w
+$ df -h .
+Filesystem            Size  Used Avail Use% Mounted on
+umassmghpcc-head.umassrc.org:/ifs/xdata/home/ak97w
+		       50G   27G   24G  54% /home/ak97w
 ```
 
 Here, I have 24G available space in my home.
@@ -95,14 +95,15 @@ Creating these files are usually a one time thing and you use them in the future
 1. First load necessary modules we will use today.
 
 ```
-	$ module load star/2.7.0e
-	$ module load RSEM/1.3.0
-	$ module load samtools/1.9
+$ module load star/2.7.0e
+$ module load RSEM/1.3.0
+$ module load samtools/1.9
 ```
 
 2. Build STAR index files.
 
-The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  --genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
+The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  \
+--genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -116,39 +117,42 @@ Please consult STAR manual for more details; <https://physiology.med.cornell.edu
 
 Please run the commands below to create index files under star folder;
 
+**When the command is too long, we use "\" to split to command into lines***
+
 ```
-	$ cd ~/bootcamp/RNA-Seq/mm10
-	$ mkdir star
-	$ STAR --runMode genomeGenerate  --genomeDir ./star  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
-		
-	Apr 20 20:08:26 ..... started STAR run
-	Apr 20 20:08:26 ... starting to generate Genome files
-	Apr 20 20:08:27 ... starting to sort Suffix Array. This may take a long time...
-	Apr 20 20:08:28 ... sorting Suffix Array chunks and saving them to disk...
-	Apr 20 20:09:23 ... loading chunks from disk, packing SA...
-	Apr 20 20:09:27 ... finished generating suffix array
-	Apr 20 20:09:27 ... generating Suffix Array index
-	Apr 20 20:09:40 ... completed Suffix Array index
-	Apr 20 20:09:40 ..... processing annotations GTF
-	Apr 20 20:09:40 ..... inserting junctions into the genome indices
-	Apr 20 20:09:54 ... writing Genome to disk ...
-	Apr 20 20:09:54 ... writing Suffix Array to disk ...
-	Apr 20 20:09:55 ... writing SAindex to disk
-	Apr 20 20:09:59 ..... finished successfully
+$ cd ~/bootcamp/RNA-Seq/mm10
+$ mkdir star
+$ STAR --runMode genomeGenerate  --genomeDir ./star  \
+  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
+	
+Apr 20 20:08:26 ..... started STAR run
+Apr 20 20:08:26 ... starting to generate Genome files
+Apr 20 20:08:27 ... starting to sort Suffix Array. This may take a long time...
+Apr 20 20:08:28 ... sorting Suffix Array chunks and saving them to disk...
+Apr 20 20:09:23 ... loading chunks from disk, packing SA...
+Apr 20 20:09:27 ... finished generating suffix array
+Apr 20 20:09:27 ... generating Suffix Array index
+Apr 20 20:09:40 ... completed Suffix Array index
+Apr 20 20:09:40 ..... processing annotations GTF
+Apr 20 20:09:40 ..... inserting junctions into the genome indices
+Apr 20 20:09:54 ... writing Genome to disk ...
+Apr 20 20:09:54 ... writing Suffix Array to disk ...
+Apr 20 20:09:55 ... writing SAindex to disk
+Apr 20 20:09:59 ..... finished successfully
 ```
 
 When you check the newly generated files with ls, the files should be like below; 
 
 ```	
-	$ ls star
-	chrLength.txt	   genomeParameters.txt
-	chrNameLength.txt  SA
-	chrName.txt	   SAindex
-	chrStart.txt	   sjdbInfo.txt
-	exonGeTrInfo.tab   sjdbList.fromGTF.out.tab
-	exonInfo.tab	   sjdbList.out.tab
-	geneInfo.tab	   transcriptInfo.tab
-	Genome
+$ ls star
+chrLength.txt	   genomeParameters.txt
+chrNameLength.txt  SA
+chrName.txt	   SAindex
+chrStart.txt	   sjdbInfo.txt
+exonGeTrInfo.tab   sjdbList.fromGTF.out.tab
+exonInfo.tab	   sjdbList.out.tab
+geneInfo.tab	   transcriptInfo.tab
+Genome
 ```
 
 3. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
@@ -167,68 +171,68 @@ Manual for more details: <http://deweylab.biostat.wisc.edu/rsem/rsem-prepare-ref
 To generate the necessary reference files, please use the command below.
 
 ```	
-	$ cd ~/bootcamp/RNA-Seq/mm10
-	$ mkdir rsem
-	$ rsem-prepare-reference --star --gtf ucsc.gtf mm10.fa rsem/mm10.rsem
+$ cd ~/bootcamp/RNA-Seq/mm10
+$ mkdir rsem
+$ rsem-prepare-reference --star --gtf ucsc.gtf mm10.fa rsem/mm10.rsem
 	
-	rsem-extract-reference-transcripts rsem/mm10.rsem 0 ucsc.gtf None 0 mm10.fa
-	Parsing gtf File is done!
-	mm10.fa is processed!
-	2058 transcripts are extracted.
-	Extracting sequences is done!
-	Group File is generated!
-	Transcript Information File is generated!
-	Chromosome List File is generated!
-	Extracted Sequences File is generated!
-		
-	rsem-preref rsem/mm10.rsem.transcripts.fa 1 rsem/mm10.rsem
-	Refs.makeRefs finished!
-	Refs.saveRefs finished!
-	rsem/mm10.rsem.idx.fa is generated!
-	rsem/mm10.rsem.n2g.idx.fa is generated!
-		
-	STAR  --runThreadN 1  --runMode genomeGenerate  --genomeDir rsem  --genomeFastaFiles mm10.fa  --sjdbGTFfile ucsc.gtf  --sjdbOverhang 100  --outFileNamePrefix rsem/mm10.rsem
-	Apr 20 20:05:43 ..... started STAR run
-	Apr 20 20:05:43 ... starting to generate Genome files
-	Apr 20 20:05:45 ... starting to sort Suffix Array. This may take a long time...
-	Apr 20 20:05:45 ... sorting Suffix Array chunks and saving them to disk...
-	Apr 20 20:06:38 ... loading chunks from disk, packing SA...
-	Apr 20 20:06:42 ... finished generating suffix array
-	Apr 20 20:06:42 ... generating Suffix Array index
-	Apr 20 20:06:55 ... completed Suffix Array index
-	Apr 20 20:06:55 ..... processing annotations GTF
-	Apr 20 20:06:55 ..... inserting junctions into the genome indices
-	Apr 20 20:07:08 ... writing Genome to disk ...
-	Apr 20 20:07:08 ... writing Suffix Array to disk ...
-	Apr 20 20:07:09 ... writing SAindex to disk
-	Apr 20 20:07:14 ..... finished successfully
+rsem-extract-reference-transcripts rsem/mm10.rsem 0 ucsc.gtf None 0 mm10.fa
+Parsing gtf File is done!
+mm10.fa is processed!
+2058 transcripts are extracted.
+Extracting sequences is done!
+Group File is generated!
+Transcript Information File is generated!
+Chromosome List File is generated!
+Extracted Sequences File is generated!
+	
+rsem-preref rsem/mm10.rsem.transcripts.fa 1 rsem/mm10.rsem
+Refs.makeRefs finished!
+Refs.saveRefs finished!
+rsem/mm10.rsem.idx.fa is generated!
+rsem/mm10.rsem.n2g.idx.fa is generated!
+	
+STAR  --runThreadN 1  --runMode genomeGenerate  --genomeDir rsem  --genomeFastaFiles mm10.fa  --sjdbGTFfile ucsc.gtf  --sjdbOverhang 100  --outFileNamePrefix rsem/mm10.rsem
+Apr 20 20:05:43 ..... started STAR run
+Apr 20 20:05:43 ... starting to generate Genome files
+Apr 20 20:05:45 ... starting to sort Suffix Array. This may take a long time...
+Apr 20 20:05:45 ... sorting Suffix Array chunks and saving them to disk...
+Apr 20 20:06:38 ... loading chunks from disk, packing SA...
+Apr 20 20:06:42 ... finished generating suffix array
+Apr 20 20:06:42 ... generating Suffix Array index
+Apr 20 20:06:55 ... completed Suffix Array index
+Apr 20 20:06:55 ..... processing annotations GTF
+Apr 20 20:06:55 ..... inserting junctions into the genome indices
+Apr 20 20:07:08 ... writing Genome to disk ...
+Apr 20 20:07:08 ... writing Suffix Array to disk ...
+Apr 20 20:07:09 ... writing SAindex to disk
+Apr 20 20:07:14 ..... finished successfully
 ```
 
 Let's get the list for rsem references to make sure the command worked right;
 
 ```	
-	$ ls rsem
-	chrLength.txt	      mm10.rsemLog.out
-	chrNameLength.txt     mm10.rsem.n2g.idx.fa
-	chrName.txt.          mm10.rsem.seq
-	chrStart.txt	      mm10.rsem.ti
-	exonGeTrInfo.tab      mm10.rsem.transcripts.fa
-	exonInfo.tab	      SA
-	geneInfo.tab	      SAindex
-	Genome		      sjdbInfo.txt
-	genomeParameters.txt  sjdbList.fromGTF.out.tab
-	mm10.rsem.chrlist     sjdbList.out.tab
-	mm10.rsem.grp	      transcriptInfo.tab
-	mm10.rsem.idx.fa
+$ ls rsem
+chrLength.txt	      mm10.rsemLog.out
+chrNameLength.txt     mm10.rsem.n2g.idx.fa
+chrName.txt.          mm10.rsem.seq
+chrStart.txt	      mm10.rsem.ti
+exonGeTrInfo.tab      mm10.rsem.transcripts.fa
+exonInfo.tab	      SA
+geneInfo.tab	      SAindex
+Genome		      sjdbInfo.txt
+genomeParameters.txt  sjdbList.fromGTF.out.tab
+mm10.rsem.chrlist     sjdbList.out.tab
+mm10.rsem.grp	      transcriptInfo.tab
+mm10.rsem.idx.fa
 ```
 
 Now, we organized the index files like below. In the future, if you need other index files for different aligners or need new annotations for the same software, you can put them into different folders to keep the index files in more organized way rather than putting them into the same folder.
 
 ```
-	$ tree -d ~/bootcamp/RNA-Seq/mm10/
-	mm10
-	├── rsem
-	└── star
+$ tree -d ~/bootcamp/RNA-Seq/mm10/
+mm10
+├── rsem
+└── star
 ```
 	
 ## Exercise 2: Genome alignment of RNA-seq reads
@@ -236,22 +240,23 @@ Now, we organized the index files like below. In the future, if you need other i
 1. To avoid cluttering the workspace we will direct the output of each exercise to its own directory. In this case for example:
 
 ```
-	$ cd ~/bootcamp/RNA-Seq
-	$ mkdir star
-	$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
+$ cd ~/bootcamp/RNA-Seq
+$ mkdir star
+$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq \
+reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 ```
 	
 2. STAR produces a sam file. We need to convert it to a bam file.
 
 ```
-	$ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
+$ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
 ```
 
 3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visulaization. 
 
 ```
-	$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
-	$ samtools index sorted/ctrl1.star.sorted.bam
+$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
+$ samtools index sorted/ctrl1.star.sorted.bam
 ```
 
 4. Please do it for the other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.
@@ -270,7 +275,8 @@ The first step is to prepare the transcript set that we will quantify. We select
 ### 3.1 Calculate expression
 RSEM is ready to align and then attempt to perform read assignment and counting for each isoform in the file provided above. You must process each one of the 6 libraries:
 
-The command: `rsem-calculate-expression --star --paired-end -p <#-of-threads> --output-genome-bam <reads> <index_prefix> <output_prefix>`
+The command: `rsem-calculate-expression --star --paired-end -p <#-of-threads> \
+--output-genome-bam <reads> <index_prefix> <output_prefix>`
 
 Arguments|Explanation|
 |---------|-----------|
@@ -286,24 +292,26 @@ Arguments|Explanation|
 For more details about the arguments; <http://deweylab.biostat.wisc.edu/rsem/rsem-calculate-expression.html>
 
 ``` 
-	$ cd ~/bootcamp/RNA-Seq
-	$ mkdir rsem
-	$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq mm10/rsem/mm10.rsem rsem/ctrl1.rsem 
+$ cd ~/bootcamp/RNA-Seq
+$ mkdir rsem
+$ rsem-calculate-expression --star --paired-end -p 2  \
+ --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq \
+ mm10/rsem/mm10.rsem rsem/ctrl1.rsem 
 ```
 
 rsem-calculate-expression program produces the files below;
 
 ```	
-	$ ls rsem/ctrl1* -1
-	rsem/ctrl1.rsem.genes.results
-	rsem/ctrl1.rsem.genome.bam
-	rsem/ctrl1.rsem.isoforms.results
-	rsem/ctrl1.rsem.transcript.bam
-		
-	rsem/ctrl1.rsem.stat:
-	ctrl1.rsem.cnt
-	ctrl1.rsem.model
-	ctrl1.rsem.theta
+$ ls rsem/ctrl1* -1
+rsem/ctrl1.rsem.genes.results
+rsem/ctrl1.rsem.genome.bam
+rsem/ctrl1.rsem.isoforms.results
+rsem/ctrl1.rsem.transcript.bam
+	
+rsem/ctrl1.rsem.stat:
+ctrl1.rsem.cnt
+ctrl1.rsem.model
+ctrl1.rsem.theta
 ```
 
 * Gene quantifications are reported in `rsem/ctrl1.rsem.genes.results` file.
@@ -313,7 +321,7 @@ rsem-calculate-expression program produces the files below;
 You should take the time to familiarize yourself with the output file.
 
 ```
-	$ head rsem/ctrl1.rsem.genes.results 
+$ head rsem/ctrl1.rsem.genes.results 
 ```
 
 |gene_id|transcript_id(s)|length|effective_length|expected_count|TPM|FPKM|
@@ -339,7 +347,9 @@ You should take the time to familiarize yourself with the output file.
 Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below: 
 
 ```
-	$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep2.1.fq reads/control_rep2.2.fq mm10/rsem/mm10.rsem rsem/ctrl2.rsem
+$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam \
+reads/control_rep2.1.fq reads/control_rep2.2.fq \
+mm10/rsem/mm10.rsem rsem/ctrl2.rsem
 ```
 	
 #### samtools “sort” and "index"
@@ -355,26 +365,26 @@ To sort and index we use samtools. Let's create them under **sorted** folder. Sa
 If you haven't loaded please load samtools.
 
 ```	
-	$ module load samtools/1.9
+$ module load samtools/1.9
 ```
 
 Let's run the commands. 
 
 ```
-	$ cd ~/bootcamp/RNA-Seq
-	$ mkdir sorted
-	$ samtools sort -o sorted/ctrl1.rsem.sorted.bam rsem/ctrl1.rsem.genome.bam 
-	$ samtools index sorted/ctrl1.rsem.sorted.bam
+$ cd ~/bootcamp/RNA-Seq
+$ mkdir sorted
+$ samtools sort -o sorted/ctrl1.rsem.sorted.bam rsem/ctrl1.rsem.genome.bam 
+$ samtools index sorted/ctrl1.rsem.sorted.bam
 	
-	# Check the output of the commands: 
-	$ ls sorted
+# Check the output of the commands: 
+$ ls sorted
 ```
 
 Please run the same command for other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.Please check an example for control_rep2 at below:
 
 ```
-	$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam 
-	$ samtools index sorted/ctrl2.rsem.sorted.bam
+$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam 
+$ samtools index sorted/ctrl2.rsem.sorted.bam
 ```
 
 ***Make sure to locate bam file and bam.bai (index file) together in the same directory for visualization. Otherwise, the genome browser will give an error.***
@@ -387,38 +397,38 @@ RSEM provides a simple script to take expected_count columns from all the indepe
 To find out what the script does you may run the following command in the transcriptomics directory:
 
 ```
-   $ rsem-generate-data-matrix
+  $ rsem-generate-data-matrix
 ```
 
 Before you use this program, make sure you could run rsem-calculate-expression program for all the samples. When you get a list for *.genes.results; the result should look like below;
 
 ```	
-	$ ls rsem/*.genes.results 
-	rsem/ctrl1.rsem.genes.results  rsem/ctrl3.rsem.genes.results   rsem/exper2.rsem.genes.results
-	rsem/ctrl2.rsem.genes.results  rsem/exper1.rsem.genes.results  rsem/exper3.rsem.genes.results
+$ ls rsem/*.genes.results 
+rsem/ctrl1.rsem.genes.results  rsem/ctrl3.rsem.genes.results   rsem/exper2.rsem.genes.results
+rsem/ctrl2.rsem.genes.results  rsem/exper1.rsem.genes.results  rsem/exper3.rsem.genes.results
 ```
 
 If you haven't done the previous excercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**) 
 
 ```
-	$ /project/umw_biocore/class/rsemruns.sh
+$ /project/umw_biocore/class/rsemruns.sh
 ```
 
 Now we are ready to generate the data matrix;
 
 ```	
-	$ cd ~/bootcamp/RNA-Seq
-	$ mkdir quant
-	$ cd rsem
-	$ rsem-generate-data-matrix *.genes.results > ~/bootcamp/RNA-Seq/quant/rsem.gene.summary.count.txt
+$ cd ~/bootcamp/RNA-Seq
+$ mkdir quant
+$ cd rsem
+$ rsem-generate-data-matrix *.genes.results > ~/bootcamp/RNA-Seq/quant/rsem.gene.summary.count.txt
 ```
 
 Let's grep Fgf21 gene in this file;
 
 ```		
-	$ cd ~/bootcamp/RNA-Seq
-	$ grep Fgf21 quant/rsem.gene.summary.count.txt 
-	"Fgf21"	108.00	124.00	172.00	499.00	650.00 330.00
+$ cd ~/bootcamp/RNA-Seq
+$ grep Fgf21 quant/rsem.gene.summary.count.txt 
+"Fgf21"	108.00	124.00	172.00	499.00	650.00 330.00
 ```	
 
 ### 3.3 Visualize the raw data:
@@ -460,13 +470,13 @@ One of the fastest way to perform differential expression(DE) analysis is using 
 To perform these analysis please run the commands below;
 
 ```
-	$ cd ~/bootcamp/RNA-Seq
-	$ /project/umw_biocore/bin/loadRSEM
-	$ mkdir results
-	$ module load R/3.2.0
-	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-run-ebseq quant/rsem.gene.summary.count.txt 3,3 results/de.txt
-	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-control-fdr results/de.txt 0.01 results/fdr.de.txt
-	There are 11 genes/transcripts reported at FDR = 0.01.
+$ cd ~/bootcamp/RNA-Seq
+$ /project/umw_biocore/bin/loadRSEM
+$ mkdir results
+$ module load R/3.2.0
+$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-run-ebseq quant/rsem.gene.summary.count.txt 3,3 results/de.txt
+$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-control-fdr results/de.txt 0.01 results/fdr.de.txt
+There are 11 genes/transcripts reported at FDR = 0.01.
 ```
 
 Each line in `results/de.txt` or `results/fdr.de.txt` file describes a gene and contains 7 fields:
