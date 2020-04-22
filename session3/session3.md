@@ -11,9 +11,10 @@ Overview
 
   * [Introduction](#introduction)
   * [Getting Started](#getting-started)
-  * [Exercise 1: prepare for genomic alignment](#exercise-1-prepare-for-genomic-alignment)
-  * [Exercise 2: Quantify with the RSEM program](#exercise-2-quantify-with-the-rsem-program)
-  * [Exercise 3: Genome alignment of RNA-seq reads](#exercise-3-genome-alignment-of-rna-seq-reads)
+  * [Exercise 1: prepare for genomic and transcriptomic alignments](#exercise-1-prepare-for-genomic-and-transcriptomic-alignments)
+  * [Exercise 2: Genome alignment of RNA-seq reads](#exercise-3-genome-alignment-of-rna-seq-reads)
+
+  * [Exercise 3: Quantify with the RSEM program](#exercise-2-quantify-with-the-rsem-program)
   * [Exercise 4: Differential Expression Analysis](#exercise-4-differential-expression-analysis)
   * [Session3 Homework](#session3-homework)
 
@@ -85,7 +86,7 @@ This activity should also serve as a review of the previous two classes as you w
 Here, I have 24G available space in my home.
 	
 
-## Exercise 1: prepare for genomic alignment
+## Exercise 1: prepare for genomic and transcriptomic alignments
 
 Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments, it is necessary to create index or reference files. Please go to `~/bootcamp/RNA-Seq/mm10` directory. We will create index files for STAR and reference files for RSEM. 
 
@@ -94,12 +95,63 @@ Creating these files are usually a one time thing and you use them in the future
 1. First load necessary modules we will use today.
 
 ```
-	$ module load RSEM/1.3.0
 	$ module load star/2.7.0e
+	$ module load RSEM/1.3.0
 	$ module load samtools/1.9
 ```
 
-2. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
+2. Build STAR index files.
+
+The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  --genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
+
+|Arguments|Explanation|
+|---------|-----------|
+|--runMode genomeGenerate| This run mode creates the index files
+|--genomeDir| The location where the index files will be written|
+|--genomeFastaFiles| Genome file that are going to be used to create the index files|
+|--sjdbGTFfile| Annotation file to learn exon junction sites|
+|\<annotation file\>| The annotation file in .gtf format|
+
+Please consult STAR manual for more details; <https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf>
+
+Please run the commands below to create index files under star folder;
+
+```
+	$ cd ~/bootcamp/RNA-Seq/mm10
+	$ mkdir star
+	$ STAR --runMode genomeGenerate  --genomeDir ./star  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
+		
+	Apr 20 20:08:26 ..... started STAR run
+	Apr 20 20:08:26 ... starting to generate Genome files
+	Apr 20 20:08:27 ... starting to sort Suffix Array. This may take a long time...
+	Apr 20 20:08:28 ... sorting Suffix Array chunks and saving them to disk...
+	Apr 20 20:09:23 ... loading chunks from disk, packing SA...
+	Apr 20 20:09:27 ... finished generating suffix array
+	Apr 20 20:09:27 ... generating Suffix Array index
+	Apr 20 20:09:40 ... completed Suffix Array index
+	Apr 20 20:09:40 ..... processing annotations GTF
+	Apr 20 20:09:40 ..... inserting junctions into the genome indices
+	Apr 20 20:09:54 ... writing Genome to disk ...
+	Apr 20 20:09:54 ... writing Suffix Array to disk ...
+	Apr 20 20:09:55 ... writing SAindex to disk
+	Apr 20 20:09:59 ..... finished successfully
+```
+
+When you check the newly generated files with ls, the files should be like below; 
+
+```	
+	$ ls star
+	chrLength.txt	   genomeParameters.txt
+	chrNameLength.txt  SA
+	chrName.txt	   SAindex
+	chrStart.txt	   sjdbInfo.txt
+	exonGeTrInfo.tab   sjdbList.fromGTF.out.tab
+	exonInfo.tab	   sjdbList.out.tab
+	geneInfo.tab	   transcriptInfo.tab
+	Genome
+```
+
+3. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
 
 The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file index_prefix` 
 
@@ -170,58 +222,6 @@ Let's get the list for rsem references to make sure the command worked right;
 	mm10.rsem.idx.fa
 ```
 
-3. Build STAR index files.
-
-
-The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  --genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
-
-|Arguments|Explanation|
-|---------|-----------|
-|--runMode genomeGenerate| This run mode creates the index files
-|--genomeDir| The location where the index files will be written|
-|--genomeFastaFiles| Genome file that are going to be used to create the index files|
-|--sjdbGTFfile| Annotation file to learn exon junction sites|
-|\<annotation file\>| The annotation file in .gtf format|
-
-Please consult STAR manual for more details; <https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf>
-
-Please run the commands below to create index files under star folder;
-
-```
-	$ cd ~/bootcamp/RNA-Seq/mm10
-	$ mkdir star
-	$ STAR --runMode genomeGenerate  --genomeDir ./star  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
-		
-	Apr 20 20:08:26 ..... started STAR run
-	Apr 20 20:08:26 ... starting to generate Genome files
-	Apr 20 20:08:27 ... starting to sort Suffix Array. This may take a long time...
-	Apr 20 20:08:28 ... sorting Suffix Array chunks and saving them to disk...
-	Apr 20 20:09:23 ... loading chunks from disk, packing SA...
-	Apr 20 20:09:27 ... finished generating suffix array
-	Apr 20 20:09:27 ... generating Suffix Array index
-	Apr 20 20:09:40 ... completed Suffix Array index
-	Apr 20 20:09:40 ..... processing annotations GTF
-	Apr 20 20:09:40 ..... inserting junctions into the genome indices
-	Apr 20 20:09:54 ... writing Genome to disk ...
-	Apr 20 20:09:54 ... writing Suffix Array to disk ...
-	Apr 20 20:09:55 ... writing SAindex to disk
-	Apr 20 20:09:59 ..... finished successfully
-```
-
-When you check the newly generated files with ls, the files should be like below; 
-
-```	
-	$ ls star
-	chrLength.txt	   genomeParameters.txt
-	chrNameLength.txt  SA
-	chrName.txt	   SAindex
-	chrStart.txt	   sjdbInfo.txt
-	exonGeTrInfo.tab   sjdbList.fromGTF.out.tab
-	exonInfo.tab	   sjdbList.out.tab
-	geneInfo.tab	   transcriptInfo.tab
-	Genome
-```
-
 Now, we organized the index files like below. In the future, if you need other index files for different aligners or need new annotations for the same software, you can put them into different folders to keep the index files in more organized way rather than putting them into the same folder.
 
 ```
@@ -230,14 +230,44 @@ Now, we organized the index files like below. In the future, if you need other i
 	├── rsem
 	└── star
 ```
+	
+## Exercise 2: Genome alignment of RNA-seq reads
 
-## Exercise 2: Quantify with the RSEM program
+1. To avoid cluttering the workspace we will direct the output of each exercise to its own directory. In this case for example:
+
+```
+	$ cd ~/bootcamp/RNA-Seq
+	$ mkdir star
+	$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
+```
+	
+2. STAR produces a sam file. We need to convert it to a bam file.
+
+```
+	$ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
+```
+
+3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visulaization. 
+
+```
+	$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
+	$ samtools index sorted/ctrl1.star.sorted.bam
+```
+
+4. Please do it for the other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.
+  
+   You can also create a bash script as an example like below to run for the others; 
+	(```/project/umw_biocore/class/starruns.sh```). 
+	You can check what we have in this file using more/less or vi commands.
+
+
+## Exercise 3: Quantify with the RSEM program
 
 RSEM depends on an existing annotation and will only scores transcripts that are present in the given annotation file. It will also not align the reads in intronic and intergenic regions. We will compare the alignments produced by RSEM and STAR and this will become clear.
 
 The first step is to prepare the transcript set that we will quantify. We selected the UCSC genes which is a very comprehensive, albeit a bit noisy dataset. As with all the data in this activity we will only use the subset of the genes that map to the genome regions we are using.
 
-### 2.1 Calculate expression
+### 3.1 Calculate expression
 RSEM is ready to align and then attempt to perform read assignment and counting for each isoform in the file provided above. You must process each one of the 6 libraries:
 
 The command: `rsem-calculate-expression --star --paired-end -p <#-of-threads> --output-genome-bam <reads> <index_prefix> <output_prefix>`
@@ -349,7 +379,7 @@ Please run the same command for other samples **(control_rep2, control_rep3, exp
 
 ***Make sure to locate bam file and bam.bai (index file) together in the same directory for visualization. Otherwise, the genome browser will give an error.***
 
-### 2.2 Create consolidated table
+### 3.2 Create consolidated table
 
 
 RSEM provides a simple script to take expected_count columns from all the independent RSEM output and combine it into a single table, which is useful for inspection and ready for differential gene expression analysis.
@@ -390,38 +420,7 @@ Let's grep Fgf21 gene in this file;
 	$ grep Fgf21 quant/rsem.gene.summary.count.txt 
 	"Fgf21"	108.00	124.00	172.00	499.00	650.00 330.00
 ```	
-	
-	
-## Exercise 3: Genome alignment of RNA-seq reads
 
-1. Again, to avoid cluttering the workspace we will direct the output of each exercise to its own directory. In this case for example:
-
-```
-	$ cd ~/bootcamp/RNA-Seq
-	$ mkdir star
-	$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
-```
-	
-2. STAR produces a sam file. We need to convert it to a bam file.
-
-```
-	$ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
-```
-
-3. We can then sort and index this bam file to compare with rsem alignments.
-
-```
-	$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
-	$ samtools index sorted/ctrl1.star.sorted.bam
-```
-
-4. Please do it for the other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.
-  
-   You can also create a bash script as an example like below to run for the others; 
-	(```/project/umw_biocore/class/starruns.sh```). 
-	You can check what we have in this file using more/less or vi commands.
-	
-	
 ### 3.3 Visualize the raw data:
 
 We are now ready to look at the data. Download the IGV program from the IGV site.
@@ -449,7 +448,6 @@ In the example below. I loaded rsem and star alignments for control_rep1. What i
 <img src="images/igv.png"> 
 
 We will revisit these genes below when we do the differential gene expression analysis.
-
 
 ## Exercise 4: Differential Expression Analysis
 
