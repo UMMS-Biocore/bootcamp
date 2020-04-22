@@ -109,8 +109,8 @@ The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file ind
 |--gtf|RSEM will extract transcript reference sequences using the gene annotations specified in this file, which should be in GTF format.|
 |\<genome fasta file\>|Genome Fasta file that are going to be used (e.g. mm10.fa)|
 |\<index prefix\>|Prefix for the reference. RSEM will generate several reference-related files that are prefixed by this name. This name can contain path information (e.g. rsem/mm10.rsem)|
-Manual for more details: <http://deweylab.biostat.wisc.edu/rsem/rsem-prepare-reference.html>
 
+Manual for more details: <http://deweylab.biostat.wisc.edu/rsem/rsem-prepare-reference.html>
 
 To generate the necessary reference files, please use the command below.
 
@@ -303,8 +303,8 @@ You should take the time to familiarize yourself with the output file.
 |TPM|Transcripts Per Million. It is a relative measure of transcript abundance. The sum of all transcripts' TPM is 1 million.|
 |FPKM|Fragments Per Kilobase of transcript per Million mapped reads.|
 
-* **Warning: Expected_count can be used as raw counts (unnormalized). The differential expression tests (like EBSeq, DESeq or EdgeR) are based on negative binomial distribution and require raw counts. So please use expected_count column for these methods. 
-* You **cannot use normalized values such as TPM or FPKM** while performing these methods. TPM or FPKM are usually used for data visualization. Heatmaps, scatter plots or bar plots etc.
+* **Warning: Expected_count can be used as raw counts (unnormalized). The differential expression tests (like EBSeq, DESeq or EdgeR) are based on negative binomial distribution and require raw counts. So please use expected_count column for these methods.** 
+* You **cannot use normalized values such as TPM or FPKM** while performing these methods. TPM or FPKM are usually used for data visualization such as heatmaps, scatter plots or bar plots etc.
 
 Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below: 
 
@@ -336,7 +336,7 @@ Let's run the commands.
 	$ ls sorted
 ```
 
-Please run the same command for other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.Please check another example for control_rep2 at below:
+Please run the same command for other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.Please check an example for control_rep2 at below:
 
 ```
 	$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam 
@@ -423,13 +423,21 @@ We are now ready to look at the data. Download the IGV program from the IGV site
 
 <http://software.broadinstitute.org/software/igv/download>
 
-Transfer your files from the hpcc to your laptop using fileZilla. In general you will not transfer the files. There are ways to access the files from your dekstop or laptop directly at the HPCC, we'll cover this later. Since the files are very small transfer time will not be a problem. Use Filezila or the scp command if you are on a mac, to copy the files onto your laptop/desktop, please ensure you note to which directory you transfer the files as later you will need to load them into IGV.
+Transfer your bam files from the hpcc to your laptop using **FileZilla** (or use `scp` command in mac). If you haven't installed it, please check [our FileZilla guide in session 1](https://github.com/UMMS-Biocore/bootcamp/blob/75f609d1aac2aa51cac47a5d618365680c6abc9f/session1/session1.md#file-transfer-from-your-laptop-to-cluster-using-filezilla)
 
-Launch the IGV browser, and use the File -> load to load the files onto the browser. Load only one or two .bam files to begin with. Don't forget to choose mm10 as a genome build from the corner. 
+If you're having trouble installing FileZilla, you can directly download bam files by using our web link: https://galaxyweb.umassmed.edu/pub/class/sorted_bams/
 
-Make sure \*.bam and \*.bam.bai files are in the same folder. 
+Please make sure you've noted the directory you downloaded, since you will need to load them into IGV.
 
-A few genes are good examples of differentially expressed genes. For example the whole region around the key Fgf21 gene is upregulated in experiment vs controls, while the gene Crebbp is downregulated in experiments vs controls. To point your browser to either gene just type or copy the name of the gene in the location box at the top.
+* **Note:** In general, when we work with real data, we don't not transfer the files. There are ways to access the files from your desktop or laptop directly at the HPCC, however we'll cover this later. Since the files are very small transfer time will not be a problem. 
+
+1. Launch the IGV browser, and use the File -> load to load the files onto the browser. 
+2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder. 
+3. Choose **mm10** as a **genome build** from the top left dropdown. 
+
+A few genes are good examples of differentially expressed genes. For example the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls. 
+
+4. To point your browser to either gene just type or copy the name of the gene (eg. **Fgf21** or **Crebbp**) in the location box at the top.
 
 In the example below. I loaded rsem and star alignments for control_rep1. What is the major difference in these two alignment results? 
 
@@ -442,7 +450,9 @@ We will revisit these genes below when we do the differential gene expression an
 
 One of the fastest way to perform differential expression(DE) analysis is using EBSeq in RSEM.
 
-rsem-run-ebseq command runs EBSeq in R. In our cluster EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. Since rsem-run-ebseq is no longer available in the latest RSEM version. In this tutorial, we used one of the old versions. This script takes as inputs; the generated matrix (rsem.gene.summary.count.txt), a tab-separated list of values representing the number of biological replicates each condition has (3,3) in our example case and it will write the output to results/de.txt and finally, rsem-control-fdr selects a list of genes from results/de.txt by controlling the false discovery rate (FDR) at level 0.01 and outputs them to results/fdr.de.txt. So, this package is using its own normalziaton method described in the link below. We need to use expected_count matrix.
+* rsem-run-ebseq command runs EBSeq in R. In our cluster, EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. In this tutorial, we used one of the old versions of RSEM, since rsem-run-ebseq is no longer available in the latest RSEM version. This script takes inputs as; the generated matrix (rsem.gene.summary.count.txt), a comma-separated list of values representing the number of biological replicates each condition has (**3,3** in our example case) and it will write the output to results/de.txt. 
+
+* Finally, rsem-control-fdr selects a list of genes from results/de.txt by controlling the false discovery rate (FDR) at level 0.01 and outputs them to results/fdr.de.txt. So, this package is using its own normalization method described in the link below. So, we need to use **expected_count** matrix.
 
 To perform these analysis please run the commands below;
 
@@ -453,15 +463,33 @@ To perform these analysis please run the commands below;
 	$ module load R/3.2.0
 	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-run-ebseq quant/rsem.gene.summary.count.txt 3,3 results/de.txt
 	$ /project/umw_biocore/bin/RSEM_v1.2.28/rsem-control-fdr results/de.txt 0.01 results/fdr.de.txt
+	There are 11 genes/transcripts reported at FDR = 0.01.
 ```
 
-Each line describes a gene and contains 7 fields: the gene name, posterior probability of being equally expressed (PPEE), posterior probability of being differentially expressed (PPDE), posterior fold change of condition 1 over condition 2 (PostFC), real fold change of condition 1 over condition 2 (RealFC), mean count of condition 1 (C1Mean) and mean count of condition 2 (C2Mean). For fold changes, PostFC is recommended over the RealFC and you can find the definition of these two fold changes in the description of PostFC function of EBSeq package.
+Each line in `results/de.txt` or `results/fdr.de.txt` file describes a gene and contains 7 fields:
+
+|gene_id|PPEE|PPDE|PostFC|RealFC|C1Mean|C2Mean|
+|-------|----------------|------|----------------|--------------|---|----|
+|0610005C13Rik|0|1|0.546231866622021|0.546177403890056|1425.33639072579|2609.66660063196|
+|Crebbp|0|1|3.27261666273869|3.28175727297395|255.559823493019|77.8659067886273|
+
+|Column|Explanation|
+|------|-----------|
+|gene_name|Gene name|
+|PPEE|Posterior probability of being equally expressed|
+|PPDE|Posterior probability of being differentially expressed|
+|PostFC|Iposterior fold change of condition 1 over condition 2|
+|RealFC|Real fold change of condition 1 over condition 2|
+|C1Mean|Mean count of condition 1|
+|C2Mean|Mean count of condition 2|
+
+* Note: For fold changes, PostFC is recommended over the RealFC and you can find the definition of these two fold changes in the description of PostFC function of EBSeq package.
 
 <https://www.bioconductor.org/packages/release/bioc/vignettes/EBSeq/inst/doc/EBSeq_Vignette.pdf>
 
 Please also note that PostFC, RealFC, C1Mean and C2Mean are calculated based on normalized read counts.
 
-These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So 1/PostFC will give you the fold change that you can use to show upregualtion. Crebbp would be down regulated in this comparison. Please confirm the results in IGV for thesde 11 genes. 
+These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So 1/PostFC will give you the fold change that you can use to show upregulation. **Crebbp** would be down regulated in this comparison. Please confirm the results of `results/fdr.de.txt` in IGV for these 11 genes. 
 
 Even though this method is one of the fastest way of doing differential expression analysis. We usually prefer using DESeq2 to perform DE analysis that we will learn in the next sessions.
 
@@ -470,9 +498,6 @@ Even though this method is one of the fastest way of doing differential expressi
 1. Please upload all the tracks to IGV, remove bam tracks and only keep coverage tracks. 
 2. Color exper tracks to green and ctrl tracks to red by right-click change track color option.
 3. Visualize Fgf2, Vasn and Pam16 genes separately.
-4. Define a new gene list using "Regions"->"Gene Lists" menu by including genes above and press view. Send the screenshot to us.
-
-  
-
+4. Define a new gene list using "Regions"->"Gene Lists" menu by including genes above and press view. Send the screenshot to our bootcamp slack channel.
 
 
