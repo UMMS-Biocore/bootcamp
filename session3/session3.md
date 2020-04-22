@@ -312,7 +312,11 @@ Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep
 	$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep2.1.fq reads/control_rep2.2.fq mm10/rsem/mm10.rsem rsem/ctrl2.rsem
 ```
 	
-If you want to visualize mapped reads in genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following excercise.  
+#### samtools “sort” and "index"
+
+When you align FASTQ files with all current sequence aligners, the alignments produced are in random order with respect to their position in the reference genome. In other words, the BAM file is in the order that the sequences occurred in the input FASTQ files.
+	
+If you want to visualize mapped reads in the genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following excercise. When a bam file sorted it is ordered positionally based upon their alignment coordinates on each chromosome. Moreover, indexing is required by genome viewers such as IGV or ucsc genome browser so that the viewers can quickly display alignments in each genomic region to which you navigate.
 
 To sort and index we use samtools. Let's create them under **sorted** folder. Samtools sort command is following; 
 
@@ -343,6 +347,7 @@ Please run the same command for other samples **(control_rep2, control_rep3, exp
 	$ samtools index sorted/ctrl2.rsem.sorted.bam
 ```
 
+***Make sure to locate bam file and bam.bai (index file) together in the same directory for visualization. Otherwise, the genome browser will give an error.***
 
 ### 2.2 Create consolidated table
 
