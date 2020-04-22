@@ -24,9 +24,9 @@ Today we will do the exercises below to learn, how genomic and transcriptomic al
 <img src="images/pipeline.png"> 
 <p align="center"><b>Figure1. RNA-Seq pipeline example</b></p>
 
-* When we want align the reads to whole genome, we need to use splice aware aligner. **Tophat**, **Hisat2** or **STAR** are used for this purpose. However, these software do not quantify the genes or transcripts. We need to use another program like **featureCounts** or **RSEM**. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts. 
+* When we want align the reads to whole genome, we need to use splice aware aligner. **Tophat**, **Hisat2** or **STAR** are used for this purpose. However, these softwares do not quantify the genes or transcripts. We need to use another program like **featureCounts** or **RSEM**. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts. 
 
-* RSEM is bound to the completness of transcript annotation you used. If you don't want to loose anything due to the used annotation, we suggest you to align your reads to whole genome and visualize them using a genome browser to investigate all mapped reads to the genome.
+* RSEM is bound to the completeness of transcript annotation you used. If you don't want to lose anything due to the used annotation, we suggest you to align your reads to whole genome and visualize them using a genome browser to investigate all mapped reads to the genome.
 
 * Please check the [RSEM](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-323) paper for details.
 
@@ -35,7 +35,7 @@ Figure 2 shows the main differences between STAR and RSEM.
 <img src="images/STARvsRSEM.png"> 
 <p align="center"><b>Figure2. STAR vs. RSEM</b></p>
 
-Sample pooling has revolutionized sequencing. It is now possible to sequence 10s of samples together. Different objectives require different sequencing depths. Doing differential **gene expression analysis** requires **less sequencing depth** than **transcript reconstruction** so when pooling samples it is critical to keep the objective of the experiment in mind.
+Sample pooling has revolutionized sequencing. It is now possible to sequence 10s of samples together. Different objectives require different sequencing depths. Doing differential **gene expression analysis** requires **less sequencing depth** than **transcript reconstruction** so when pooling samples, it is critical to keep the objective of the experiment in mind.
 
 In this activity, we will use subsets of experimentally generated datasets. One dataset was generated for **differential gene expression analysis** while the other towards **transcript annotation**.
 
@@ -90,7 +90,7 @@ Here, I have 24G available space in my home.
 
 Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments, it is necessary to create index or reference files. Please go to `~/bootcamp/RNA-Seq/mm10` directory. We will create index files for STAR and reference files for RSEM. 
 
-Creating these files are usually a one time thing and you use them in the future. We've already shared highly used genome builds for model organisms, so you can check it out later in `/share/data/umw_biocore/genome_data/`. Howewer, if you need to create these files yourself in the future, you can consult to this exercise. 
+Creating these files are usually a one-time thing and you use them in the future. We've already shared highly used genome builds for model organisms, so you can check it out later in `/share/data/umw_biocore/genome_data/`. Howewer, if you need to create these files yourself in the future, you can consult to this exercise. 
 
 1. First load necessary modules we will use today.
 
@@ -252,7 +252,7 @@ reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 $ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
 ```
 
-3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visulaization. 
+3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization. 
 
 ```
 $ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
@@ -356,13 +356,13 @@ mm10/rsem/mm10.rsem rsem/ctrl2.rsem
 
 When you align FASTQ files with all current sequence aligners, the alignments produced are in random order with respect to their position in the reference genome. In other words, the BAM file is in the order that the sequences occurred in the input FASTQ files.
 	
-If you want to visualize mapped reads in the genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following excercise. When a bam file sorted it is ordered positionally based upon their alignment coordinates on each chromosome. Moreover, indexing is required by genome viewers such as IGV or ucsc genome browser so that the viewers can quickly display alignments in each genomic region to which you navigate.
+If you want to visualize mapped reads in the genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following exercise. When a bam file sorted it is ordered positionally based upon their alignment coordinates on each chromosome. Moreover, indexing is required by genome viewers such as IGV or ucsc genome browser so that the viewers can quickly display alignments in each genomic region to which you navigate.
 
 To sort and index we use samtools. Let's create them under **sorted** folder. Samtools sort command is following; 
 
 	`samtools sort -o <output.bam> <input.bam>`
 	
-If you haven't loaded please load samtools.
+If you haven't loaded, please load samtools.
 
 ```	
 $ module load samtools/1.9
@@ -408,7 +408,7 @@ rsem/ctrl1.rsem.genes.results  rsem/ctrl3.rsem.genes.results   rsem/exper2.rsem.
 rsem/ctrl2.rsem.genes.results  rsem/exper1.rsem.genes.results  rsem/exper3.rsem.genes.results
 ```
 
-If you haven't done the previous excercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**) 
+If you haven't done the previous exercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**) 
 
 ```
 $ /project/umw_biocore/class/rsemruns.sh
@@ -445,11 +445,11 @@ Please make sure you've noted the directory you downloaded, since you will need 
 
 * **Note:** In general, when we work with real data, we don't not transfer the files. There are ways to access the files from your desktop or laptop directly at the HPCC, however we'll cover this later. Since the files are very small transfer time will not be a problem. 
 
-1. Launch the IGV browser, and use the File -> load to load the files onto the browser. 
+1. Launch the IGV browser and use the File -> load to load the files onto the browser. 
 2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder. 
 3. Choose **mm10** as a **genome build** from the top left dropdown. 
 
-A few genes are good examples of differentially expressed genes. For example the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls. 
+A few genes are good examples of differentially expressed genes. For example, the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls. 
 
 4. To point your browser to either gene just type or copy the name of the gene (eg. **Fgf21** or **Crebbp**) in the location box at the top.
 
@@ -461,7 +461,7 @@ We will revisit these genes below when we do the differential gene expression an
 
 ## Exercise 4: Differential Expression Analysis
 
-One of the fastest way to perform differential expression(DE) analysis is using EBSeq in RSEM.
+One of the fastest way to perform differential expression (DE) analysis is using EBSeq in RSEM.
 
 * rsem-run-ebseq command runs EBSeq in R. In our cluster, EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. In this tutorial, we used one of the old versions of RSEM, since rsem-run-ebseq is no longer available in the latest RSEM version. This script takes inputs as; the generated matrix (rsem.gene.summary.count.txt), a comma-separated list of values representing the number of biological replicates each condition has (**3,3** in our example case) and it will write the output to results/de.txt. 
 
@@ -496,15 +496,15 @@ Each line in `results/de.txt` or `results/fdr.de.txt` file describes a gene and 
 |C1Mean|Mean count of condition 1|
 |C2Mean|Mean count of condition 2|
 
-* Note: For fold changes, PostFC is recommended over the RealFC and you can find the definition of these two fold changes in the description of PostFC function of EBSeq package.
+* Note: For fold changes, PostFC is recommended over the RealFC and you can find the definition of these two-fold changes in the description of PostFC function of EBSeq package.
 
 <https://www.bioconductor.org/packages/release/bioc/vignettes/EBSeq/inst/doc/EBSeq_Vignette.pdf>
 
 Please also note that PostFC, RealFC, C1Mean and C2Mean are calculated based on normalized read counts.
 
-These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So 1/PostFC will give you the fold change that you can use to show upregulation. **Crebbp** would be down regulated in this comparison. Please confirm the results of `results/fdr.de.txt` in IGV for these 11 genes. 
+These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So, 1/PostFC will give you the fold change that you can use to show upregulation. **Crebbp** would be down regulated in this comparison. Please confirm the results of `results/fdr.de.txt` in IGV for these 11 genes. 
 
-Even though this method is one of the fastest way of doing differential expression analysis. We usually prefer using DESeq2 to perform DE analysis that we will learn in the next sessions.
+Even though this method is one of the fastest ways of doing differential expression analysis. We usually prefer using DESeq2 to perform DE analysis that we will learn in the next sessions.
 
 ## Session3 Homework
 
