@@ -21,4 +21,4 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 
 	[Session 2 SAM/BAM](session2/sam_bam.md)  
 
-2. [Session 3: RNA-Seq Data Analysis](session3/session3.md)<br>
+2. [Session 3: RNA-Seq data processing and analysis](session3/session3.md)<br>
