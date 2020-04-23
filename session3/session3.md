@@ -244,7 +244,6 @@ mm10
 ```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir -p star
-$ mkdir -p sorted
 $ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq \
 reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 ```
