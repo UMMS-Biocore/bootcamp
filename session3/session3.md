@@ -124,8 +124,7 @@ Please run the commands below to create index files under star folder;
 ```
 $ cd ~/bootcamp/RNA-Seq/mm10
 $ mkdir star
-$ STAR --runMode genomeGenerate  --genomeDir ./star  \
-  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
+$ STAR --runMode genomeGenerate  --genomeDir ./star  --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
 
 Apr 20 20:08:26 ..... started STAR run
 Apr 20 20:08:26 ... starting to generate Genome files
@@ -244,8 +243,7 @@ mm10
 ```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir -p star
-$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq \
-reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
+$ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 ```
 
 2. STAR produces a sam file. We need to convert it to a bam file.
@@ -299,9 +297,7 @@ For more details about the arguments; <http://deweylab.biostat.wisc.edu/rsem/rse
 ```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir rsem
-$ rsem-calculate-expression --star --paired-end -p 2  \
- --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq \
- mm10/rsem/mm10.rsem rsem/ctrl1.rsem
+$ rsem-calculate-expression --star --paired-end -p 2 --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq mm10/rsem/mm10.rsem rsem/ctrl1.rsem
 ```
 
 rsem-calculate-expression program produces the files below;
@@ -352,9 +348,7 @@ $ head rsem/ctrl1.rsem.genes.results
 Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below:
 
 ```
-$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam \
-reads/control_rep2.1.fq reads/control_rep2.2.fq \
-mm10/rsem/mm10.rsem rsem/ctrl2.rsem
+$ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam reads/control_rep2.1.fq reads/control_rep2.2.fq mm10/rsem/mm10.rsem rsem/ctrl2.rsem
 ```
 
 #### samtools “sort” and "index"
@@ -459,7 +453,7 @@ Please make sure you've noted the directory you downloaded, since you will need 
 * **Tip:** Before start you can check how IGV works here https://www.youtube.com/watch?v=P9n0tZxiwPs
 
 1. Launch the IGV browser and use the File -> load to load the files onto the browser.
-2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder.
+2. Load only one or two `.bam` files to begin with, you don't need to load `.bam.bai` separately. Just make sure `.bam` and `*.bam.bai` files are in the same folder.
 3. Choose **mm10** as a **genome build** from the top left dropdown.
 
 A few genes are good examples of differentially expressed genes. For example, the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls.
