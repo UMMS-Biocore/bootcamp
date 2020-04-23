@@ -455,6 +455,8 @@ Please make sure you've noted the directory you downloaded, since you will need 
 
 * **Note:** In general, when we work with real data, we don't not transfer the files. There are ways to access the files from your desktop or laptop directly at the HPCC, however we'll cover this later. Since the files are very small transfer time will not be a problem.
 
+* **Tip:** Before start you can check how IGV works here https://www.youtube.com/watch?v=P9n0tZxiwPs
+
 1. Launch the IGV browser and use the File -> load to load the files onto the browser.
 2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder.
 3. Choose **mm10** as a **genome build** from the top left dropdown.
