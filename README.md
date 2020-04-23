@@ -13,7 +13,7 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 
 	[Session 2 Extra: Useful commands and tools](session2/usefull.md)
 
-	[Session 2 Introduction to Sequencing Data Analysis (Slides)](https://drive.google.com/open?id=1rJYiePABS1Fgyqrlil69vopGMVZDJCIR)  
+	[Session 2 Introduction to Sequencing Data Analysis (Slides)](https://drive.google.com/drive/folders/12Pls_GnzvCYu_KM5N5lj0LgmeOAJZ_O-)  
 
 	[Session 2 Genomic resources](session2/genomic_resources.md)  
 
@@ -22,3 +22,5 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 	[Session 2 SAM/BAM](session2/sam_bam.md)  
 
 2. [Session 3: RNA-Seq data processing and analysis](session3/session3.md)<br>
+	
+	[Session 3: RNA-Seq data processing (Slides)](https://drive.google.com/drive/folders/14eRttfvwaRtxO50jRvqt4TkEwVaYAut5)
