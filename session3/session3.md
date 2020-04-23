@@ -469,6 +469,7 @@ In the example below. I loaded rsem and star alignments for control_rep1. What i
 We will revisit these genes below when we do the differential gene expression analysis.
 
 5. With IGV you can also view other kinds of genomic data, such as ChIP-Seq coverage files. Since the example RNA-Seq data originated from liver tissue, you can use public ENCODE data from HepG2 cells (liver cancer) and from GM12878 cells (lymphoblastoid) to view histone modifications such as H3K27ac (active transcriptional regulatory regions) and H3K4me3 (enriched in gene promoters) to compare the regulatory landscape and the transcriptomic data.
+      * Load the human genome now: hg19
       * Go to File > Load from Server
       * Open the **ENCODE** dropdown 
       * Open the **Broad Histone** dropdown and select the desired marks:
