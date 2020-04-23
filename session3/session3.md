@@ -105,8 +105,7 @@ $ module load samtools/1.9
 
 2. Build STAR index files.
 
-The command: `STAR --runMode genomeGenerate  --genomeDir publish_dir  \
---genomeFastaFiles genome_file --sjdbGTFfile gtf_file`
+The command: STAR --runMode genomeGenerate  --genomeDir <publish_dir> --genomeFastaFiles <genome_file> --sjdbGTFfile <gtf_file>
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -160,7 +159,7 @@ Genome
 
 3. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation.
 
-The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file index_prefix`
+The command: rsem-prepare-reference --star --gtf <gtf_file> <genome_fasta_file> <index_prefix>
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -282,8 +281,7 @@ The first step is to prepare the transcript set that we will quantify. We select
 ### 3.1 Calculate expression
 RSEM is ready to align and then attempt to perform read assignment and counting for each isoform in the file provided above. You must process each one of the 6 libraries:
 
-The command: `rsem-calculate-expression --star --paired-end -p <#-of-threads> \
---output-genome-bam <reads> <index_prefix> <output_prefix>`
+The command: rsem-calculate-expression --star --paired-end -p <#-of-threads> --output-genome-bam <reads> <index_prefix> <output_prefix>
 
 Arguments|Explanation|
 |---------|-----------|
