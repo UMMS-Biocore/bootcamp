@@ -449,7 +449,10 @@ We are now ready to look at the data. Download the IGV program from the IGV site
 
 Transfer your bam files from the hpcc to your laptop using **FileZilla** (or use `scp` command in mac). If you haven't installed it, please check [our FileZilla guide in session 1](https://github.com/UMMS-Biocore/bootcamp/blob/75f609d1aac2aa51cac47a5d618365680c6abc9f/session1/session1.md#file-transfer-from-your-laptop-to-cluster-using-filezilla)
 
-If you're having trouble installing FileZilla, you can directly download bam files by using our web link: https://galaxyweb.umassmed.edu/pub/class/sorted_bams/
+* Note: If you're having trouble installing FileZilla, you can directly use the url of our files: https://galaxyweb.umassmed.edu/pub/class/sorted_bams/ 
+As an example, choose **Load from URL** option and enter following two links:
+https://galaxyweb.umassmed.edu/pub/class/sorted_bams/ctrl1.rsem.sorted.bam
+https://galaxyweb.umassmed.edu/pub/class/sorted_bams/ctrl1.rsem.sorted.bam.bai
 
 Please make sure you've noted the directory you downloaded, since you will need to load them into IGV.
 
