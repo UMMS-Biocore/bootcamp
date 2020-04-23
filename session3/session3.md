@@ -19,12 +19,15 @@ Overview
   * [Session3 Homework](#session3-homework)
 
 ## Introduction
+
+Genomic alignment [slides](https://docs.google.com/presentation/d/1VKeU3LsqkQqtw4R96OPU-yD_vEuGXifgCZ2J3J0h1wI/edit?usp=sharing)
+
 Today we will do the exercises below to learn, how genomic and transcriptomic alignments are done, their differences and what kind of software we use. In these examples, for splice aware genomic alignments, we will use STAR and for gene quantification, we will use RSEM. RSEM is going to use STAR in the background to map the reads to only transcriptome. Figure 1 shows a typical RNA-Seq pipeline.  
 
-<img src="images/pipeline.png"> 
+<img src="images/pipeline.png">
 <p align="center"><b>Figure1. RNA-Seq pipeline example</b></p>
 
-* When we want align the reads to whole genome, we need to use splice aware aligner. **Tophat**, **Hisat2** or **STAR** are used for this purpose. However, these softwares do not quantify the genes or transcripts. We need to use another program like **featureCounts** or **RSEM**. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts. 
+* When we want align the reads to whole genome, we need to use splice aware aligner. **Tophat**, **Hisat2** or **STAR** are used for this purpose. However, these softwares do not quantify the genes or transcripts. We need to use another program like **featureCounts** or **RSEM**. Even RSEM is slower than feature counts, it produces more accurate quantifications than featureCounts.
 
 * RSEM is bound to the completeness of transcript annotation you used. If you don't want to lose anything due to the used annotation, we suggest you to align your reads to whole genome and visualize them using a genome browser to investigate all mapped reads to the genome.
 
@@ -32,7 +35,7 @@ Today we will do the exercises below to learn, how genomic and transcriptomic al
 
 Figure 2 shows the main differences between STAR and RSEM.
 
-<img src="images/STARvsRSEM.png"> 
+<img src="images/STARvsRSEM.png">
 <p align="center"><b>Figure2. STAR vs. RSEM</b></p>
 
 Sample pooling has revolutionized sequencing. It is now possible to sequence 10s of samples together. Different objectives require different sequencing depths. Doing differential **gene expression analysis** requires **less sequencing depth** than **transcript reconstruction** so when pooling samples, it is critical to keep the objective of the experiment in mind.
@@ -66,13 +69,13 @@ $ /project/umw_biocore/bin/qlogin
 ```
 
 * Tip: If you want to learn the parameters of `qlogin` script, simply run `cat /project/umw_biocore/bin/qlogin`
-	
+
 
 3. If you haven't done your homework first week. Please run the command below to prepare your working directory for bootcamp.
 
 ```
 $ /project/umw_biocore/bin/session1.sh
-```	
+```
 
 4. Make sure you have at least 5G space in your home directory. To check it;
 
@@ -84,13 +87,13 @@ umassmghpcc-head.umassrc.org:/ifs/xdata/home/ak97w
 ```
 
 Here, I have 24G available space in my home.
-	
+
 
 ## Exercise 1: prepare for genomic and transcriptomic alignments
 
-Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments, it is necessary to create index or reference files. Please go to `~/bootcamp/RNA-Seq/mm10` directory. We will create index files for STAR and reference files for RSEM. 
+Both STAR and RSEM rely on STAR to perform read alignment. STAR uses very efficient genome compression algorithm that allows for quick matching of sequences. To use these alignments, it is necessary to create index or reference files. Please go to `~/bootcamp/RNA-Seq/mm10` directory. We will create index files for STAR and reference files for RSEM.
 
-Creating these files are usually a one-time thing and you use them in the future. We've already shared highly used genome builds for model organisms, so you can check it out later in `/share/data/umw_biocore/genome_data/`. Howewer, if you need to create these files yourself in the future, you can consult to this exercise. 
+Creating these files are usually a one-time thing and you use them in the future. We've already shared highly used genome builds for model organisms, so you can check it out later in `/share/data/umw_biocore/genome_data/`. Howewer, if you need to create these files yourself in the future, you can consult to this exercise.
 
 1. First load necessary modules we will use today.
 
@@ -124,7 +127,7 @@ $ cd ~/bootcamp/RNA-Seq/mm10
 $ mkdir star
 $ STAR --runMode genomeGenerate  --genomeDir ./star  \
   --genomeFastaFiles mm10.fa --sjdbGTFfile ucsc.gtf
-	
+
 Apr 20 20:08:26 ..... started STAR run
 Apr 20 20:08:26 ... starting to generate Genome files
 Apr 20 20:08:27 ... starting to sort Suffix Array. This may take a long time...
@@ -141,9 +144,9 @@ Apr 20 20:09:55 ... writing SAindex to disk
 Apr 20 20:09:59 ..... finished successfully
 ```
 
-When you check the newly generated files with ls, the files should be like below; 
+When you check the newly generated files with ls, the files should be like below;
 
-```	
+```
 $ ls star
 chrLength.txt	   genomeParameters.txt
 chrNameLength.txt  SA
@@ -155,9 +158,9 @@ geneInfo.tab	   transcriptInfo.tab
 Genome
 ```
 
-3. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation. 
+3. In addition to STAR index files, we will prepare the transcriptome for RSEM alignment. RSEM will align directly to the set of transcripts included (ucsc.gtf file). The transcript file was downloaded directly from the UCSC table browser and gene list is reduced for a faster creation.
 
-The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file index_prefix` 
+The command: `rsem-prepare-reference --star --gtf gtf_file genome_fasta_file index_prefix`
 
 |Arguments|Explanation|
 |---------|-----------|
@@ -170,11 +173,11 @@ Manual for more details: <http://deweylab.biostat.wisc.edu/rsem/rsem-prepare-ref
 
 To generate the necessary reference files, please use the command below.
 
-```	
+```
 $ cd ~/bootcamp/RNA-Seq/mm10
 $ mkdir rsem
 $ rsem-prepare-reference --star --gtf ucsc.gtf mm10.fa rsem/mm10.rsem
-	
+
 rsem-extract-reference-transcripts rsem/mm10.rsem 0 ucsc.gtf None 0 mm10.fa
 Parsing gtf File is done!
 mm10.fa is processed!
@@ -184,13 +187,13 @@ Group File is generated!
 Transcript Information File is generated!
 Chromosome List File is generated!
 Extracted Sequences File is generated!
-	
+
 rsem-preref rsem/mm10.rsem.transcripts.fa 1 rsem/mm10.rsem
 Refs.makeRefs finished!
 Refs.saveRefs finished!
 rsem/mm10.rsem.idx.fa is generated!
 rsem/mm10.rsem.n2g.idx.fa is generated!
-	
+
 STAR  --runThreadN 1  --runMode genomeGenerate  --genomeDir rsem  --genomeFastaFiles mm10.fa  --sjdbGTFfile ucsc.gtf  --sjdbOverhang 100  --outFileNamePrefix rsem/mm10.rsem
 Apr 20 20:05:43 ..... started STAR run
 Apr 20 20:05:43 ... starting to generate Genome files
@@ -210,7 +213,7 @@ Apr 20 20:07:14 ..... finished successfully
 
 Let's get the list for rsem references to make sure the command worked right;
 
-```	
+```
 $ ls rsem
 chrLength.txt	      mm10.rsemLog.out
 chrNameLength.txt     mm10.rsem.n2g.idx.fa
@@ -234,7 +237,7 @@ mm10
 ├── rsem
 └── star
 ```
-	
+
 ## Exercise 2: Genome alignment of RNA-seq reads
 
 1. To avoid cluttering the workspace we will direct the output of each exercise to its own directory. In this case for example:
@@ -245,26 +248,29 @@ $ mkdir star
 $ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq \
 reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 ```
-	
+
 2. STAR produces a sam file. We need to convert it to a bam file.
 
 ```
 $ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
 ```
 
-3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization. 
+3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization.
 
 ```
-$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam 
+$ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam
 $ samtools index sorted/ctrl1.star.sorted.bam
 ```
 
 4. Please do it for the other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.
-  
-   You can also create a bash script as an example like below to run for the others; 
-	(```/project/umw_biocore/class/starruns.sh```). 
+
+   You can also create a bash script as an example like below to run for the others;
+	(```/project/umw_biocore/class/starruns.sh```).
 	You can check what we have in this file using more/less or vi commands.
 
+# Wait here for the intro lecture on quantification
+
+  Transcriptome quantification [slides](https://docs.google.com/presentation/d/1cKwK27sisHMdvsTMuppXfrsGBuhDlJ7vzgys6d0USKo/edit?usp=sharing)
 
 ## Exercise 3: Quantify with the RSEM program
 
@@ -291,23 +297,23 @@ Arguments|Explanation|
 
 For more details about the arguments; <http://deweylab.biostat.wisc.edu/rsem/rsem-calculate-expression.html>
 
-``` 
+```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir rsem
 $ rsem-calculate-expression --star --paired-end -p 2  \
  --output-genome-bam reads/control_rep1.1.fq reads/control_rep1.2.fq \
- mm10/rsem/mm10.rsem rsem/ctrl1.rsem 
+ mm10/rsem/mm10.rsem rsem/ctrl1.rsem
 ```
 
 rsem-calculate-expression program produces the files below;
 
-```	
+```
 $ ls rsem/ctrl1* -1
 rsem/ctrl1.rsem.genes.results
 rsem/ctrl1.rsem.genome.bam
 rsem/ctrl1.rsem.isoforms.results
 rsem/ctrl1.rsem.transcript.bam
-	
+
 rsem/ctrl1.rsem.stat:
 ctrl1.rsem.cnt
 ctrl1.rsem.model
@@ -315,13 +321,13 @@ ctrl1.rsem.theta
 ```
 
 * Gene quantifications are reported in `rsem/ctrl1.rsem.genes.results` file.
-* Isoform quantifications are in `rsem/ctrl1.rsem.isoforms.results` file. 
+* Isoform quantifications are in `rsem/ctrl1.rsem.isoforms.results` file.
 
 
 You should take the time to familiarize yourself with the output file.
 
 ```
-$ head rsem/ctrl1.rsem.genes.results 
+$ head rsem/ctrl1.rsem.genes.results
 ```
 
 |gene_id|transcript_id(s)|length|effective_length|expected_count|TPM|FPKM|
@@ -341,49 +347,49 @@ $ head rsem/ctrl1.rsem.genes.results
 |TPM|Transcripts Per Million. It is a relative measure of transcript abundance. The sum of all transcripts' TPM is 1 million.|
 |FPKM|Fragments Per Kilobase of transcript per Million mapped reads.|
 
-* **Warning: Expected_count can be used as raw counts (unnormalized). The differential expression tests (like EBSeq, DESeq or EdgeR) are based on negative binomial distribution and require raw counts. So please use expected_count column for these methods.** 
+* **Warning: Expected_count can be used as raw counts (unnormalized). The differential expression tests (like EBSeq, DESeq or EdgeR) are based on negative binomial distribution and require raw counts. So please use expected_count column for these methods.**
 * You **cannot use normalized values such as TPM or FPKM** while performing these methods. TPM or FPKM are usually used for data visualization such as heatmaps, scatter plots or bar plots etc.
 
-Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below: 
+Next, for each of the other **5 libraries (control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**, please run `rsem-calculate-expression` to calculate expected counts by yourself. **You need to change the input fastq filenames  (control_rep1.1.fq and control_rep1.2.fq) and output directories (rsem/ctrl1.rsem) for each of the run.** Please check another example for control_rep2 at below:
 
 ```
 $ rsem-calculate-expression --star --paired-end -p 2  --output-genome-bam \
 reads/control_rep2.1.fq reads/control_rep2.2.fq \
 mm10/rsem/mm10.rsem rsem/ctrl2.rsem
 ```
-	
+
 #### samtools “sort” and "index"
 
 When you align FASTQ files with all current sequence aligners, the alignments produced are in random order with respect to their position in the reference genome. In other words, the BAM file is in the order that the sequences occurred in the input FASTQ files.
-	
+
 If you want to visualize mapped reads in the genome browser, you will need to use **rsem/ctrl1.rsem.genome.bam** file which includes mapped reads in genomic coordinates. Before uploading into genome browser, you need to `sort` (samtools sort) and `index` (samtools index) bam file. We will do this in the following exercise. When a bam file sorted it is ordered positionally based upon their alignment coordinates on each chromosome. Moreover, indexing is required by genome viewers such as IGV or ucsc genome browser so that the viewers can quickly display alignments in each genomic region to which you navigate.
 
-To sort and index we use samtools. Let's create them under **sorted** folder. Samtools sort command is following; 
+To sort and index we use samtools. Let's create them under **sorted** folder. Samtools sort command is following;
 
 	`samtools sort -o <output.bam> <input.bam>`
-	
+
 If you haven't loaded, please load samtools.
 
-```	
+```
 $ module load samtools/1.9
 ```
 
-Let's run the commands. 
+Let's run the commands.
 
 ```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir sorted
-$ samtools sort -o sorted/ctrl1.rsem.sorted.bam rsem/ctrl1.rsem.genome.bam 
+$ samtools sort -o sorted/ctrl1.rsem.sorted.bam rsem/ctrl1.rsem.genome.bam
 $ samtools index sorted/ctrl1.rsem.sorted.bam
-	
-# Check the output of the commands: 
+
+# Check the output of the commands:
 $ ls sorted
 ```
 
 Please run the same command for other samples **(control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3)**.Please check an example for control_rep2 at below:
 
 ```
-$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam 
+$ samtools sort -o sorted/ctrl2.rsem.sorted.bam rsem/ctrl2.rsem.genome.bam
 $ samtools index sorted/ctrl2.rsem.sorted.bam
 ```
 
@@ -402,13 +408,13 @@ To find out what the script does you may run the following command in the transc
 
 Before you use this program, make sure you could run rsem-calculate-expression program for all the samples. When you get a list for *.genes.results; the result should look like below;
 
-```	
-$ ls rsem/*.genes.results 
+```
+$ ls rsem/*.genes.results
 rsem/ctrl1.rsem.genes.results  rsem/ctrl3.rsem.genes.results   rsem/exper2.rsem.genes.results
 rsem/ctrl2.rsem.genes.results  rsem/exper1.rsem.genes.results  rsem/exper3.rsem.genes.results
 ```
 
-If you haven't done the previous exercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**) 
+If you haven't done the previous exercise but want to move forward, you can run the command below to run rsem commands for all samples. (**If you alredy have the results files above, please don't run the command below**)
 
 ```
 $ /project/umw_biocore/class/rsemruns.sh
@@ -416,7 +422,7 @@ $ /project/umw_biocore/class/rsemruns.sh
 
 Now we are ready to generate the data matrix;
 
-```	
+```
 $ cd ~/bootcamp/RNA-Seq
 $ mkdir quant
 $ cd rsem
@@ -427,9 +433,12 @@ Let's grep Fgf21 gene in this file;
 
 ```		
 $ cd ~/bootcamp/RNA-Seq
-$ grep Fgf21 quant/rsem.gene.summary.count.txt 
+$ grep Fgf21 quant/rsem.gene.summary.count.txt
 "Fgf21"	108.00	124.00	172.00	499.00	650.00 330.00
-```	
+```
+# Wait here for the intro lecture on visualization
+
+Visualizing sequencing data [slides](https://docs.google.com/presentation/d/1X7hQNSsxdBJO6C0wkQxmyvDYkqE6uN9A3EfcY3W5BHE/edit?usp=sharing)
 
 ### 3.3 Visualize the raw data:
 
@@ -443,27 +452,37 @@ If you're having trouble installing FileZilla, you can directly download bam fil
 
 Please make sure you've noted the directory you downloaded, since you will need to load them into IGV.
 
-* **Note:** In general, when we work with real data, we don't not transfer the files. There are ways to access the files from your desktop or laptop directly at the HPCC, however we'll cover this later. Since the files are very small transfer time will not be a problem. 
+* **Note:** In general, when we work with real data, we don't not transfer the files. There are ways to access the files from your desktop or laptop directly at the HPCC, however we'll cover this later. Since the files are very small transfer time will not be a problem.
 
-1. Launch the IGV browser and use the File -> load to load the files onto the browser. 
-2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder. 
-3. Choose **mm10** as a **genome build** from the top left dropdown. 
+1. Launch the IGV browser and use the File -> load to load the files onto the browser.
+2. Load only one or two `.bam` files to begin with. Make sure `.bam` and `*.bam.bai` files are in the same folder.
+3. Choose **mm10** as a **genome build** from the top left dropdown.
 
-A few genes are good examples of differentially expressed genes. For example, the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls. 
+A few genes are good examples of differentially expressed genes. For example, the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls.
 
 4. To point your browser to either gene just type or copy the name of the gene (eg. **Fgf21** or **Crebbp**) in the location box at the top.
 
-In the example below. I loaded rsem and star alignments for control_rep1. What is the major difference in these two alignment results? 
+In the example below. I loaded rsem and star alignments for control_rep1. What is the major difference in these two alignment results?
 
-<img src="images/igv.png"> 
+<img src="images/igv.png">
 
 We will revisit these genes below when we do the differential gene expression analysis.
+
+5. With IGV you can also view other kinds of genomic data, such as ChIP-Seq coverage files. Since the example RNA-Seq data originated from liver tissue, you can use public ENCODE data from HepG2 cells (liver cancer) and from GM12878 cells (lymphoblastoid) to view histone modifications such as H3K27ac (active transcriptional regulatory regions) and H3K4me3 (enriched in gene promoters) to compare the regulatory landscape and the transcriptomic data.
+      * Go to File > Load from Server
+      * Open the **ENCODE** dropdown 
+      * Open the **Broad Histone** dropdown and select the desired marks:
+
+      <img src="images/IGV_loadGM.png">
+
+      <img src="images/IGV_loadHep.png">
+
 
 ## Exercise 4: Differential Expression Analysis
 
 One of the fastest way to perform differential expression (DE) analysis is using EBSeq in RSEM.
 
-* rsem-run-ebseq command runs EBSeq in R. In our cluster, EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. In this tutorial, we used one of the old versions of RSEM, since rsem-run-ebseq is no longer available in the latest RSEM version. This script takes inputs as; the generated matrix (rsem.gene.summary.count.txt), a comma-separated list of values representing the number of biological replicates each condition has (**3,3** in our example case) and it will write the output to results/de.txt. 
+* rsem-run-ebseq command runs EBSeq in R. In our cluster, EBSeq library is installed in R/3.2.0. We will need to load it before we use the command. In this tutorial, we used one of the old versions of RSEM, since rsem-run-ebseq is no longer available in the latest RSEM version. This script takes inputs as; the generated matrix (rsem.gene.summary.count.txt), a comma-separated list of values representing the number of biological replicates each condition has (**3,3** in our example case) and it will write the output to results/de.txt.
 
 * Finally, rsem-control-fdr selects a list of genes from results/de.txt by controlling the false discovery rate (FDR) at level 0.01 and outputs them to results/fdr.de.txt. So, this package is using its own normalization method described in the link below. So, we need to use **expected_count** matrix.
 
@@ -502,15 +521,13 @@ Each line in `results/de.txt` or `results/fdr.de.txt` file describes a gene and 
 
 Please also note that PostFC, RealFC, C1Mean and C2Mean are calculated based on normalized read counts.
 
-These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So, 1/PostFC will give you the fold change that you can use to show upregulation. **Crebbp** would be down regulated in this comparison. Please confirm the results of `results/fdr.de.txt` in IGV for these 11 genes. 
+These detected genes actually make sense to us. Fgf21 is upregualted in exper vs. control. (Here first 3 columns were control and last 3 columns were knock out experiments. So, 1/PostFC will give you the fold change that you can use to show upregulation. **Crebbp** would be down regulated in this comparison. Please confirm the results of `results/fdr.de.txt` in IGV for these 11 genes.
 
 Even though this method is one of the fastest ways of doing differential expression analysis. We usually prefer using DESeq2 to perform DE analysis that we will learn in the next sessions.
 
 ## Session3 Homework
 
-1. Please upload all the tracks to IGV, remove bam tracks and only keep coverage tracks. 
-2. Color exper tracks to green and ctrl tracks to red by right-click change track color option.
+1. Please upload all the tracks to IGV, remove bam tracks and only keep coverage tracks.
+2. Color **exper** tracks to green and **ctrl** tracks to red by right-click change track color option.
 3. Visualize Fgf2, Vasn and Pam16 genes separately.
 4. Define a new gene list using "Regions"->"Gene Lists" menu by including genes above and press view. Send the screenshot to our bootcamp slack channel.
-
-
