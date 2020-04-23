@@ -243,7 +243,8 @@ mm10
 
 ```
 $ cd ~/bootcamp/RNA-Seq
-$ mkdir star
+$ mkdir -p star
+$ mkdir -p sorted
 $ STAR  --genomeDir mm10/star --readFilesIn reads/control_rep1.1.fq \
 reads/control_rep1.2.fq --outFileNamePrefix star/ctrl1.star
 ```
@@ -257,7 +258,7 @@ $ samtools view -S -b star/ctrl1.starAligned.out.sam >  star/ctrl1.star.bam
 3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization.
 
 ```
-$ mkdir sorted
+$ mkdir -p sorted
 $ samtools sort -o sorted/ctrl1.star.sorted.bam star/ctrl1.star.bam
 $ samtools index sorted/ctrl1.star.sorted.bam
 ```
