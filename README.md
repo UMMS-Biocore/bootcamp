@@ -24,3 +24,7 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 2. [Session 3: RNA-Seq data processing and analysis](session3/session3.md)<br>
 
 	[Session 3: RNA-Seq data processing (Slides)](https://drive.google.com/drive/folders/14eRttfvwaRtxO50jRvqt4TkEwVaYAut5)
+	
+2. [Session 4: NGS data processing on DolphinNext](session4/session4_1.md)<br>
+
+	[Session 4: Building Pipeline on DolphinNext](session4/session4_2.md)
