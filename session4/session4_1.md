@@ -54,7 +54,7 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 <img src="dolphinnext_images/run_header_waiting.png">
 
 
-**A. Work Directory:**  Please enter `/home/your_username/bootcamp/dolphinnext` where run will be executed.
+**A. Work Directory:**  Please enter `/home/your_username/bootcamp/dolphinnext` as work directory.
     
 **B. Run Environment:** Please choose `Run Environment for ghpcc06.umassrc.org`
     
