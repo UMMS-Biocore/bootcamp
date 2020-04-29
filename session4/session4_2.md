@@ -58,7 +58,7 @@ If you prefer, you can click on the video links to follow the tutorial in a vide
 
 # Before you start
 
-Please go to https://camp.dolphinnext.com/ and login into your account with UMASS username and password. If you have an issue about login, please let us know about it (biocore@umassmed.edu). We will set an account for you.
+Please go to https://dolphinnext.umassmed.edu and login into your account by using **UMASS username** and **password**. If you have an issue about login, please let us know about it (biocore@umassmed.edu). We will set an account for you.
 
 # Tutorial guide
 
@@ -66,7 +66,12 @@ This guide will walk you through how to start using DolphinNext pipelines and cr
 
 ## Exercise 1 - Creating processes
 
-Once logged in, click on the "Pipelines" link at the top menu to access pipeline builder page. Here you can write a summary descripton about your pipeline using "Description" tab, start developing your pipeline using "Workflow" tab, and adding extra files or setting some extra parameters using "Advanced" tab. Let's get into some details about the pipeline elements.
+Once logged in, click on the "Pipelines" link at the top menu to access pipeline builder page. At the left sidebar you need to click **New pipeline** button as shown at below.
+
+<img src="dolphinnext_images/build1-newpipeline.png" width="50%">
+
+
+Here you can write a summary descripton about your pipeline using "Description" tab, start developing your pipeline using "Workflow" tab, and adding extra files or setting some extra parameters using "Advanced" tab. Let's get into some details about the pipeline elements.
 
 <img src="dolphinnext_images/build1-builderpage.png" width="80%">
 
@@ -223,25 +228,6 @@ You will then proceed by entering run name which will be added to your run list 
 
   **4.** Here, please enter your working directory, choose your "Run Environment", click "Use Singularity Image" and enter the values below;
   
-  **4A. For Test Users**
-<pre>
-Work Directory: /export/tests/test-<b>youruserid</b>
-Run Environment: Local
-Use Singularity Image: Checked
-Image Path: dolphinnext/rnaseq:1.0
-Run Options: --bind /export --bind /data
-
-Inputs:
-  - bedFile: /data/genome_data/mousetest/mm10/refseq_170804/genes/genes.bed (Use <b>Manually</b> tab)
-  - Hisat2_Index: /data/genome_data/mousetest/mm10/refseq_170804/Hisat2Index/genome (Use <b>Manually</b> tab)
-  - Input_Reads: First go to <b>Files</b> Tab in "<b>Select/Add Input File</b>" modal and click "<b>Add File</b>" button. 
-Then enter "File Directory (Full Path)" as: <b>https://galaxyweb.umassmed.edu/pub/dnext_data/tutorial/fastq_data/single/</b> and follow <a href="#creating-collection">Creating Collection</a> section.
-
-<img src="dolphinnext_images/execute3_enter_workdir.png" width="80%">
-</pre>  
-
-  **4B. For GHPCC Users**
-
 <pre>
 Work Directory: /home/<b>yourclusterusername</b>/test1
 Run Environment: UMASS Cluster
@@ -459,14 +445,6 @@ collection name: paired test collection
 <img src="dolphinnext_images/mate14-savecallection.png" width="100%">
 
 **9.** Before executing our run, just change the work directory to save outputs into separate directory.
-
-  **4A. For Test Users**
-
-  <pre>
-  Work Directory: /export/tests/<b>pairedtest</b>-<b>youruserid</b>
-  </pre>  
-
-  **4B. For GHPCC Users**
 
   <pre>
   Work Directory: /home/<b>yourclusterusername</b>/test2
