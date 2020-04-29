@@ -68,7 +68,7 @@ This guide will walk you through how to start using DolphinNext pipelines and cr
 
 Once logged in, click on the "Pipelines" link at the top menu to access pipeline builder page. At the left sidebar you need to click **New pipeline** button as shown at below.
 
-<img src="dolphinnext_images/build1-newpipeline.png" width="50%">
+<img src="dolphinnext_images/build1-newpipeline.png" width="25%">
 
 
 Here you can write a summary descripton about your pipeline using "Description" tab, start developing your pipeline using "Workflow" tab, and adding extra files or setting some extra parameters using "Advanced" tab. Let's get into some details about the pipeline elements.
