@@ -528,5 +528,5 @@ Even though this method is one of the fastest ways of doing differential express
 
 1. Please upload all the tracks to IGV, remove bam tracks and only keep coverage tracks.
 2. Color **exper** tracks to green and **ctrl** tracks to red by right-click change track color option.
-3. Visualize Fgf2, Vasn and Pam16 genes separately.
+3. Visualize Fgf21, Vasn and Pam16 genes separately.
 4. Define a new gene list using "Regions"->"Gene Lists" menu by including genes above and press view. Send the screenshot to our bootcamp slack channel.
