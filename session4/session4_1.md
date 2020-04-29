@@ -67,8 +67,8 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **run_RSEM:** yes 
 	
 6. Once all requirements are satisfied, ``Waiting`` button will turn in to green ``ready to run`` button as shown below. You can initiate your run by clicking ``run`` button. 
-    
-    .. image:: dolphinnext_images/run_header_ready.png
-	   :align: center
+
+<img src="dolphinnext_images/run_header_ready.png">
+
 
 
