@@ -54,15 +54,17 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 <img src="dolphinnext_images/run_header_waiting.png">
 
 
-    A. **Work Directory:**  Please enter `/home/your_username/bootcamp/dolphinnext` where run will be executed.
+**A. Work Directory:**  Please enter `/home/your_username/bootcamp/dolphinnext` where run will be executed.
     
-    B. **Run Environment:** Please choose `Run Environment for ghpcc06.umassrc.org`
+**B. Run Environment:** Please choose `Run Environment for ghpcc06.umassrc.org`
     
-    C. **Inputs:** 
-    	* **reads:**  Choose paired reads found in your `/home/your_username/bootcamp/RNA-Seq/reads` directory. For adding paired reads please check this video: https://www.youtube.com/embed/3QaAqdyB11w
-	* **mate:** pair
-    	* **run_STAR:** yes 
-	* **run_RSEM:** yes 
+**C. Inputs:** 
+
+* **reads:**  Choose paired reads found in your `/home/your_username/bootcamp/RNA-Seq/reads` directory. For adding paired reads please check this video: https://www.youtube.com/embed/3QaAqdyB11w
+* **mate:** pair
+* **genome_build:** mousetest_mm10
+* **run_STAR:** yes 
+* **run_RSEM:** yes 
 	
 6. Once all requirements are satisfied, ``Waiting`` button will turn in to green ``ready to run`` button as shown below. You can initiate your run by clicking ``run`` button. 
     
