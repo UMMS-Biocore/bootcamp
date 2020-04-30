@@ -247,7 +247,7 @@ Then enter "File Directory (Full Path)" as: <b>https://galaxyweb.umassmed.edu/pu
 
   **5.** Now, we are ready to enter inputs we defined for the pipeline. Please choose "Manually" tab.First enter the location of the bed file. 
 
-  **6.** Second enter the prefix for the hisat2 index files. Please choose "Manually" tab. 
+  **6.** Then enter the hisat2 index (/project/umw_biocore/training/Hisat2Index/genome). Please use "Manually" tab. 
 
   #### Creating Collection
   **7.**  In order to add files; First go to Files Tab in "Select/Add Input File" modal and click "Add File" button
