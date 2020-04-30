@@ -28,3 +28,6 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 2. [Session 4: NGS data processing on DolphinNext](session4/session4_1.md)<br>
 
 	[Session 4: Building Pipeline on DolphinNext](session4/session4_2.md)
+	
+	[Session 4: DolphinNext (Slides)](https://drive.google.com/open?id=1gMNGtTwp48NY1Bpk49dsyMRQitIbTibv)
+	
