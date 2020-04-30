@@ -66,7 +66,7 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **run_STAR:** yes 
 * **run_RSEM:** yes 
 * **run_Sequential_Mapping:** yes 
-* **run_Sequential_Mapping Settings** Edit by clicking settings icon and add rRNA as shown at below:
+* **run_Sequential_Mapping Settings:** Edit by clicking settings icon and add rRNA as shown at below:
 
 <img src="dolphinnext_images/run_seq_mapping.png">
 	
