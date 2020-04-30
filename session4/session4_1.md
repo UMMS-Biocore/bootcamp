@@ -85,8 +85,8 @@ Here are settings of the pipeline:
 * **genome_build:** mouse_mm10_refseq
 * **run_RSEM:** yes
 * **run_RSEM Module Countdata DE settings:** Edit as follows:
-- cols: `control_rep1, control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3`
-- conds: `control, control, control, treat, treat, treat`
+	- cols: `control_rep1, control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3`
+	- conds: `control, control, control, treat, treat, treat`
 
 <img src="dolphinnext_images/CountdataDE.png">
 
@@ -94,8 +94,8 @@ Here are settings of the pipeline:
 * **run_Sequential_Mapping:** yes 
 * **run_Sequential_Mapping Settings:** Edit by clicking settings icon and add rRNA as shown at below:
 * **reads:** 
- - Please use NCBI/GEO Files menu and search following GEO id's: `SRR1173457, SRR1173458, SRR1173459, SRR1173478, SRR1173479, SRR1173480`. 
- - Please rename those files according to example below and save collection as "mouse_geo_dataset".
+	- Please use NCBI/GEO Files menu and search following GEO id's: `SRR1173457, SRR1173458, SRR1173459, SRR1173478, SRR1173479, SRR1173480`. 
+	- Please rename those files according to example below and save collection as "mouse_geo_dataset".
 
 <img src="dolphinnext_images/geo_vernia.png">
 
