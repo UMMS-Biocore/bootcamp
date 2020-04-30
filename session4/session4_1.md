@@ -68,7 +68,7 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **run_Sequential_Mapping:** yes 
 * **run_Sequential_Mapping Settings** Edit by clicking settings icon and add rRNA as shown at below:
 
-<img src="dolphinnext_images/run_seq_mapping.png" width="50%">
+<img src="dolphinnext_images/run_seq_mapping.png">
 	
 6. Once all requirements are satisfied, ``Waiting`` button will turn in to green ``ready to run`` button as shown below. You can initiate your run by clicking ``run`` button. 
 
