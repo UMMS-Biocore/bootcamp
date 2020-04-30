@@ -43,11 +43,11 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 <img src="dolphinnext_images/project_runbutton.png" width="35%">
 
 
-3. This button opens new window where you can create new project by clicking **"Create a Project"** button. After entering and saving the name of the project, it will be added to your project list. Now you can select your project by clicking on the project as shown in the figure below.
+3. This button opens new window where you can create new project by clicking **"Create a Project"** button. After entering and saving the name of the project (e.g. `RNA-Seq test project`), it will be added to your project list. Now you can select your project by clicking on the project as shown in the figure below.
 
 <img src="dolphinnext_images/project_pipeselect-rna.png" >
 
-4. Now, click "select project" button and proceed with entering run name (e.g. Bootcamp RNA-Seq Run) which will be added to your project. Clicking **"Save run"** will redirect to "run page".
+4. Next, click "select project" button and proceed with entering run name (e.g. `Bootcamp RNA-Seq Run`) which will be added to your project. Clicking **"Save run"** will redirect to "run page".
 
 5. Initially, in the header of the run page, orange ``Waiting`` button will be shown. In order to initiate run, following data need to be entered:
 
@@ -65,6 +65,10 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **genome_build:** mousetest_mm10
 * **run_STAR:** yes 
 * **run_RSEM:** yes 
+* **run_Sequential_Mapping:** yes 
+* **run_Sequential_Mapping Settings** Edit by clicking settings icon and add rRNA as shown at below:
+
+<img src="dolphinnext_images/run_seq_mapping.png" width="50%">
 	
 6. Once all requirements are satisfied, ``Waiting`` button will turn in to green ``ready to run`` button as shown below. You can initiate your run by clicking ``run`` button. 
 
