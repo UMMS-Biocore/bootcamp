@@ -76,7 +76,7 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 
 ## Session4 Homework
 
-1. Run RNA-Seq pipeline with geo files. Run will take about 150 GB while running, please use your project space for the run. 
+1. Run RNA-Seq pipeline with GEO files. Run will take about 150 GB while running, please make use you enter your project space for the run. 
 * If you don't have enough space, you can only choose to download 2 files (`SRR1173457, SRR1173478`) as (`control_rep1, exper_rep1`).
 
 Here are settings of the pipeline: 
