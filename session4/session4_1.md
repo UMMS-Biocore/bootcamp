@@ -65,6 +65,9 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **genome_build:** mousetest_mm10
 * **run_STAR:** yes 
 * **run_RSEM:** yes 
+* **run_RSEM Module Countdata DE settings:** Edit as follows:
+cols: control_rep1, control_rep2, control_rep3, exper_rep1, exper_rep2, exper_rep3
+conds: control, control, control, treat, treat, treat
 * **run_FastQC:** yes 
 * **run_RseQC:** yes
 * **run_Sequential_Mapping:** yes 
