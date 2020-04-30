@@ -45,9 +45,9 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 
 3. This button opens new window where you can create new project by clicking **"Create a Project"** button. After entering and saving the name of the project, it will be added to your project list. Now you can select your project by clicking on the project as shown in the figure below.
 
-<img src="dolphinnext_images/project_pipeselect.png" >
+<img src="dolphinnext_images/project_pipeselect-rna.png" >
 
-4. Now, you may proceed with entering run name which will be added to your run list of the project. Clicking **"Save run"** will redirect to "run page".
+4. Now, click "select project" button and proceed with entering run name (e.g. Bootcamp RNA-Seq Run) which will be added to your project. Clicking **"Save run"** will redirect to "run page".
 
 5. Initially, in the header of the run page, orange ``Waiting`` button will be shown. In order to initiate run, following data need to be entered:
 
