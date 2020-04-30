@@ -72,7 +72,7 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 	
 6. Once all requirements are satisfied, ``Waiting`` button will turn in to green ``ready to run`` button as shown below. You can initiate your run by clicking ``run`` button. 
 
-<img src="dolphinnext_images/run_header_ready.png">
+<img src="dolphinnext_images/run_header_ready.png" width="25%">
 
 ## Session4 Homework
 
