@@ -65,6 +65,8 @@ If you prefer, you can check our video to follow the step to run RNA-Seq pipelin
 * **genome_build:** mousetest_mm10
 * **run_STAR:** yes 
 * **run_RSEM:** yes 
+* **run_FastQC:** yes 
+* **run_RseQC:** yes
 * **run_Sequential_Mapping:** yes 
 * **run_Sequential_Mapping Settings:** Edit by clicking settings icon and add rRNA as shown at below:
 
@@ -91,6 +93,8 @@ Here are settings of the pipeline:
 <img src="dolphinnext_images/CountdataDE.png">
 
 * **run_STAR:** no 
+* **run_FastQC:** yes 
+* **run_RseQC:** yes
 * **run_Sequential_Mapping:** yes 
 * **run_Sequential_Mapping Settings:** Edit by clicking settings icon and add rRNA as shown at below:
 * **reads:** 
