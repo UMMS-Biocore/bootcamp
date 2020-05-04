@@ -61,5 +61,19 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("debrowser") 
 ```
 
+When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)"  answer it with "n"	Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
+	
+It can ask to update old packages; please answer with "a"
 
-    
+	Old packages: 'boot', 'class', 'foreign', 'KernSmooth', 'MASS', 'nnet', 'rlang', 'spatial'	Update all/some/none? [a/s/n]: 
+	
+But and it will ask again to install rlang from source. Answer it with "n" 
+
+###Check debrowser
+Run the commands below. It should launch debrowser in your browser.
+ 
+	library(debrowser)
+	startDEBrowser()
+	
+
+
