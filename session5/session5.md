@@ -52,7 +52,7 @@ Please install R 4.0.0 in to your local computer to use it in the next session.
 
 3. Please install debrowser to your local computer. This can take time to install all the packages.
 
-	Open R or R-Studio and run the commands in R, it will include most of the packages we will use;
+	Open R or R-Studio and run the commands in R console, it will include most of the packages we will use;
 
 ```	
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -75,5 +75,7 @@ Run the commands below. It should launch debrowser in your browser.
 	library(debrowser)
 	startDEBrowser()
 	
+To stop debrowser, there is a stop button on the corner of the console.
+
 
 
