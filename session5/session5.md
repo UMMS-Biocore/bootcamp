@@ -12,6 +12,7 @@ Overview
   * [Introduction](#introduction)
   * [Getting Started](#getting-started)
   * [R Basics](#r-basics)
+  * [R Tutorials](#r-tutorials)
   * [RNA-Seq data analysis with R](#rna-seq_data_analysis_with_r)
 
 ## Introduction
@@ -90,11 +91,9 @@ getwd command will let you know your existing working directory
 
 	getwd() 
 	
-setwd("directory") will set the working directory. The command will set your working directory to your ~/Desktop.
-
-	setwd("~/Desktop") 
+setwd("directory") will set the working directory. For now, we will keep your working directory. However, if you need to read/write an files from/to a specific directory. This function might help you.
 	
-### R Tutorial
+## R Tutorials
 
 Let's use swirl to start learning R basics. First we need to install and load the library.
 
@@ -107,9 +106,12 @@ To start the tutorial just run the command below;
 	
 Choose a name for yourself and follow the instructions to start learning.
 
-In this section please finish the tutorial below. For the first two tutorials, we have done it for you. You can follow the videos to get more familiarize to the tutorial environment, if you stuck somewhere.
+In this section please finish the tutorial below. We have recorded the tutorials. You can follow them, if you stuck somewhere.
 
-	1: R Programming: The basics of programming in R
+#### R Programming: 
+
+	1: The basics of programming in R
+
 <https://youtu.be/haHoWQhJEDY>	
 	
 	2: Workspace and Files
@@ -117,10 +119,26 @@ In this section please finish the tutorial below. For the first two tutorials, w
 <https://youtu.be/DoxUXdAkRkg>
         
 	3: Sequences of Numbers    
- 	4: Vectors                    
- 	5: Missing Values             
+	
+<https://youtu.be/VtF8oK0iFc8>
+
+ 	4: Vectors       
+
+<https://youtu.be/lTD-DvSYWc8>
+             
+ 	5: Missing Values   
+<https://youtu.be/05HFXKg7iSY>
+        
  	6: Subsetting Vectors      
- 	7: Matrices and Data Frames 
+
+<https://youtu.be/Os3w3N0Y2MA>
+
+ 	7: Matrices and Data Frames
+
+<https://youtu.be/gn6WuV1Tyeo>
+
+	12: Looking at Data
+<https://youtu.be/ppDBvq5VY_8>
 
 ## RNA-Seq data analysis with R
 
