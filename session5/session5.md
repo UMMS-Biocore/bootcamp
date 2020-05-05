@@ -12,6 +12,7 @@ Overview
   * [Introduction](#introduction)
   * [Getting Started](#getting-started)
   * [R Basics](#r-basics)
+  * [RNA-Seq data analysis with R](#rna-seq_data_analysis_with_r)
 
 ## Introduction
 Today we will do some basic excercise to start learning R. R is a programming language and software environment for statistical analysis, graphics representation and reporting. You can either download and install R into your computer or use R in the cluster. You can use R with a user interface called RStudio or you might prefer using R from command line. There are a couple of ways to use R. In this tutorial we will use UMass Cluster. However, we also want you to install R and R-Studio into your local computer for the next session.
