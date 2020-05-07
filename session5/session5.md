@@ -275,7 +275,7 @@ Make sure the order of the columns matches to your table.
                    "Treat", "Treat","Treat") )
 		   
 	columns
-	[1] "exper_rep1"   "exper_rep2"   "exper_rep3"  "control_rep1" "control_rep2" "control_rep3"
+	#[1] "exper_rep1"   "exper_rep2"   "exper_rep3"  "control_rep1" "control_rep2" "control_rep3"
 
 DESeq will compute the probability that a gene is differentially expressed (DE) for ALL genes in the table. It outputs both a nominal and multiple hypotheses corrected p-value (padj).
 Because we are testing DE for over 20,000 genes, we do need to correct for multiple hypothesis testing. To find genes that are significantly DE, we select the ones has lower padj values and higher fold changes and visualize them on our scatter plot with a different color. padj values are corrected p-values which are multiplied by the number of comparisons. Here we are going to use 0.01 for padj value and > 1 log2foldchange.  (1/2 < foldChange < 2)
