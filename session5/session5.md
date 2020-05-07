@@ -271,8 +271,8 @@ The goal of Differential gene expression analysis is to find genes or transcript
 in the table represent. Here we define the correspondence between columns and conditions. 
 Make sure the order of the columns matches to your table.
 
-	conds <- factor( c("Control","Control", "Control",
-                   "Treat", "Treat","Treat") )
+	conds <- factor( c( "Treat", "Treat","Treat",
+	"Control","Control", "Control") )
 		   
 	columns
 	#[1] "exper_rep1"   "exper_rep2"   "exper_rep3"  "control_rep1" "control_rep2" "control_rep3"
