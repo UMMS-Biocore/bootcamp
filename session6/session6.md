@@ -13,7 +13,7 @@ Overview
   * [Getting Started](#getting-started)
   * [Un-normalized Counts](#unnormalized-counts)
   * [Loading count data file](#loading-count-data-file)
-  * [Low Count Filtering](#l ow-count-filtering)
+  * [Low Count Filtering](#low-count-filtering)
   * [Quality Control Plots](#quality-control-plots)
   * [Batch Effect Correction](#batch-effect-correction)
   * [DE Analysis](#go-to-de-analysis)
@@ -66,11 +66,14 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("debrowser") 
 ```
 
-When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.	Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
+When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.
+
+	Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
 	
 It can ask to update old packages; please answer with "a"
 
-	Old packages: 'boot', 'class', 'foreign', 'KernSmooth', 'MASS', 'nnet', 'rlang', 'spatial'	Update all/some/none? [a/s/n]: 
+	Old packages: 'boot', 'class', 'foreign', 'KernSmooth', 'MASS', 'nnet', 'rlang', 'spatial'
+	Update all/some/none? [a/s/n]: 
 	
 But if it asks again to install a package from source. Answer it with "n". 
 
