@@ -179,7 +179,7 @@ After, you may continue doing quality checks to detect any possible probelsm aft
  
 ## Quality Control Plots
 
-Using '*Go to QC plots** will take you to the quality control plots section. The page opens with a Principal Component Analysis (PCA) plot and users can also view a All2All, heatmap, IQR, and density by choosing **Plot Type** in the left menu. Here the dataset being used in the plots, depends on the parameters you selected in the left panel. Therefore, you are able to adjust the size of the plots under 'width' and 'height' as well as alter a variety of other parameters to adjust the specific plot you're viewing.
+Using **Go to QC plots** will take you to the quality control plots section. The page opens with a Principal Component Analysis (PCA) plot and users can also view a All2All, heatmap, IQR, and density by choosing **Plot Type** in the left menu. Here the dataset being used in the plots, depends on the parameters you selected in the left panel. Therefore, you are able to adjust the size of the plots under 'width' and 'height' as well as alter a variety of other parameters to adjust the specific plot you're viewing.
 
 **When this page is opened the default dataset is "Most varied 500" genes. This set can be changed using "Data Options" => "Choose Dataset" dropdown to "All Detected" genes or "Searched" geneset using "Search box" in the same menu section.** 
 
