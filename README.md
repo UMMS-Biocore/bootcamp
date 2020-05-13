@@ -39,4 +39,5 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 	Session 4: [Video-1](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_intro.mp4) [Video-2](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_running_pipelines.mp4) [Video-3](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_developing_pipelines.mp4)
 	
 5. [Session 5: R and RStudio](session5/session5.md)<br>
+5. [Session 6: DE Anaylsis](session5/session6.md)<br>
 
