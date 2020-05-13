@@ -12,9 +12,12 @@ Overview
   * [Introduction](#introduction)
   * [Getting Started](#getting-started)
   * [Un-normalized Counts](#unnormalized-counts)
+  * [Loading count data file](#loading-count-data-file)
+  * [Low Count Filtering](#l ow-count-filtering)
   * [Quality Control Plots](#quality-control-plots)
   * [Batch Effect Correction](#batch-effect-correction)
   * [DE Analysis](#go-to-de-analysis)
+  * [Session6 Homework](#session6-homework)
 
 ## Introduction
 
@@ -88,7 +91,7 @@ DESeq2 or other pacakges that their testing models based on negative binomial di
 
 To begin the analysis, you need to upload your *count data file* (comma or semicolon separated (CSV), and tab separated (TSV) format) to be analyzed and choose appropriate separator for the file (comma, semicolon or tab).
 
-If you do not have a dataset to upload for your trials, you can use the built in demo data file by clicking on the 'Load Demo (Vernia et al.)!' button. To work on batch effect correction please use 'Load Demo (Vernia et al.)!' button. To start from scracth you can refresh your page.
+If you do not have a dataset to upload for your trials, you can use the built in demo data file by clicking on the 'Load Demo (Vernia et al.)!' button. To work on batch effect correction please use 'Load Demo (Donnard et al.)!' button. To start from scracth you can refresh your page.
 <img src="images/data_load.png"> 
 
 The count matrix file should be like below.
@@ -323,7 +326,7 @@ It is important to note that when conducting multiple comparisons, the compariso
 
 After DE analysis, you can always download the results in CSV format by clicking the **Download Data** button located under the **Data Options**. You can also download the plot or graphs by clicking on the **download** button at top of each plot or graph.
 
-##The Heatmap of DE Analysis
+###The Heatmap of DE Analysis
 
 
 Once you've selected a specific region on Main Plots (Scatter, Volcano or MA plot), a new heatmap of the selected area will appear just next to your plot. If you want to hide some groups (such as Up, Down or NS based on DE analysis), just click on the group label on the top right part of the figure. In this way, you can select a specific part of the genes by **lasso select** or **box select** tools that includes only **Up** or **Down** Regulated genes. As soon as you completed your selection, heatmap will be created simultaneously. Please find details about heatmaps on `Heatmaps <./../heatmap/heatmap.html>`_ section.
