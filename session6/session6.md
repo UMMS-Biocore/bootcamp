@@ -291,19 +291,18 @@ The first option, 'Go to DE Analysis', takes you to the next step where differen
 <img src="images/de_selection.png">
 
 
-If you need to remove samples from a condition, simply select the sample you wish to remove and hit the delete/backspace key. In case, you need to add a sample to a condition you can click on one of the condition text boxes to bring up a list of samples and then click on the sample you wish to add from the list and it will be added to the textbox for that comparison.
+* **Removing Samples from a condition:** If you need to remove samples from a condition, simply select the sample you wish to remove and hit the delete/backspace key. 
+* **Adding Samples to a condition:** In case, you need to add a sample to a condition, you can click on one of the condition text boxes to bring up a list of samples. Then click on the sample you wish to add from the list and it will be added to the textbox.
 
-
-**You can add multiple conditions to compare by clicking on the "Add New Comparison" button, and view the results separately after DE analysis.**
+**Note: You can add multiple conditions to compare by clicking on the "Add New Comparison" button, and view the results separately after DE analysis.**
 
 **Method Selection:** Three DE methods are available for DEBrowser: DESeq2, EdgeR, and Limma. DESeq2 and EdgeR are designed to normalize count data from high-throughput sequencing assays such as RNA-Seq. On the other hand, Limma is a package to analyze normalized or transformed data from microarray or RNA-Seq assays. We have selected DESeq2 for our test sample and showed the related results below.
 
-After clicking on the 'Submit!' button, DESeq2 will analyze your comparisons and store the results into separate data tables. It is important to note that the resulting data produced by DESeq is normalized. Upon finishing the DESeq analysis, a result table will appear which allows you to download the data by clicking the "Download" button. To visualize the data with interactive plots please click on the "Go to Main Plots!" button.
+After clicking on the 'Submit!' button, DESeq2 will analyze your comparisons and store the results into separate data tables. It is important to note that **the resulting data produced by DESeq is normalized.** Upon finishing the DESeq analysis, a result table will appear which allows you to download the data by clicking the "Download" button. To visualize the data with interactive plots please click on the **"Go to Main Plots!"** button.
 
-###The Main Plots of DE Analysis
+### The Main Plots of DE Analysis
 
-Upon finishing the DESeq analysis, please click on **Go to Main Plots!** button which will open **Main Plots** tab where you will be able to view
-the interactive plots.
+Upon finishing the DESeq analysis, please click on **Go to Main Plots!** button which will open **Main Plots** tab where you will be able to view the interactive plots.
 
 <img src="images/info_tabs.png">
 
@@ -318,11 +317,11 @@ You can easily track the plotting parameters by checking the **Plot Information*
 
 <img src="images/plot_information.png">
 
-Please keep in mind that to increase the performance of the generating graph, by default 10% of non-significant(NS) genes are used to generate plots. You might show all NS genes by please click **Main Options** button and change Background Data(%) to 100% on the left sidebar.
+* Please keep in mind that to increase the performance of the generating graph, by default 10% of non-significant(NS) genes are used to generate plots. You might show all NS genes by please click **Main Options** button and change Background Data(%) to 100% on the left sidebar.
 
 <img src="images/example_background_data.png">
 
-You can hover over the scatterplot points to display more information about the point selected. A few bargraphs will be generated for the user to view as soon as a scatterplot point has hovered over.
+You can hover over the scatter plot points to display more information about the point selected. A few bar graphs will be generated for the user to view as soon as a scatterplot point has hovered over.
 
 **A.** Hover on Fabp3 gene, **B.** Read Counts vs Samples, **C.** Read Counts vs Conditions
 
@@ -339,10 +338,9 @@ It is important to note that when conducting multiple comparisons, the compariso
 
 After DE analysis, you can always download the results in CSV format by clicking the **Download Data** button located under the **Data Options**. You can also download the plot or graphs by clicking on the **download** button at top of each plot or graph.
 
-###The Heatmap of DE Analysis
+### The Heatmap of DE Analysis
 
-
-Once you've selected a specific region on Main Plots (Scatter, Volcano or MA plot), a new heatmap of the selected area will appear just next to your plot. If you want to hide some groups (such as Up, Down or NS based on DE analysis), just click on the group label on the top right part of the figure. In this way, you can select a specific part of the genes by **lasso select** or **box select** tools that includes only **Up** or **Down** Regulated genes. As soon as you completed your selection, heatmap will be created simultaneously. Please find details about heatmaps on `Heatmaps <./../heatmap/heatmap.html>`_ section.
+Once you've selected a specific region on Main Plots (Scatter, Volcano or MA plot), a new heatmap of the selected area will appear just next to your plot. If you want to hide some groups (such as Up, Down or NS based on DE analysis), just click on the group label on the top right part of the figure. In this way, you can select a specific part of the genes by **lasso select** or **box select** tools that includes only **Up** or **Down** Regulated genes. As soon as you completed your selection, heatmap will be created simultaneously. Please find details about heatmaps in [our documentation.](https://debrowser.readthedocs.io/en/master/heatmap/heatmap.html)
 
 **A.** Box Selection, **B.** Lasso Selection, **C.** Created heatmap based on selection
 
@@ -350,10 +348,10 @@ Once you've selected a specific region on Main Plots (Scatter, Volcano or MA plo
 
 We strongly recommend normalization before plotting heatmaps. To normalize, please change the parameters that are located under: **Data options -> Normalization Methods** and select the method from the dropdown box.
 
-###GO Term Plots
+### GO Term Plots
 
 
-The next tab, 'GO Term', takes you to the ontology comparison portion of DEBrowser.  From here you can select the standard dataset options such as p-adjust value, fold change cut off value, which comparison set to use, and which dataset to use on the left menu.  In addition to these parameters, you also can choose from the 4 different ontology plot options: 'enrichGO', 'enrichKEGG', 'Disease', and 'compareCluster'.  Selecting one of these plot options queries their specific databases with your current DESeq results.
+The next tab, 'GO Term', takes you to the ontology comparison portion of DEBrowser.  From here you can select the standard dataset options such as p-adjust value, fold change cut-off value, which comparison set to use, and which dataset to use on the left menu.  In addition to these parameters, you also can choose from the 4 different ontology plot options: 'enrichGO', 'enrichKEGG', 'Disease', and 'compareCluster'.  Selecting one of these plot options queries their specific databases with your current DESeq results.
 
 <img src="images/go_plots_opts.png">
 
@@ -369,7 +367,6 @@ The types of plots you will be able to generate include:
 Summary plot:
 
 <img src="images/go_summary.png">
-	:align: center
 
 GOdotplot:
 
@@ -377,13 +374,11 @@ GOdotplot:
 
 Changing the type of ontology to use will also produce custom parameters for that specific ontology at the bottom of the left options panel.
 
-Once you have adjusted all of your parameters, you may hit the submit button in the top right and then wait for the results to show on screen!
+Once you have adjusted all of your parameters, you may hit the submit button in the top right and then wait for the results to show on screen.
 
-###Data Tables
+### Data Tables
 
-The last tab at the top of the screen displays various different data tables.
-
-These data tables include:
+The last tab at the top of the screen displays various data tables. In order to change the displayed dataset, you can use **Data Options->Choose a Dataset** dropdown which has following options:
 
 * All Detected
 * Up Regulated
@@ -392,10 +387,12 @@ These data tables include:
 * Selected scatterplot points
 * Most varied genes
 * Comparison differences
+* Selected genes
+* Searched genes
 
 <img src="images/datatable.png">
 
-All of the tables, except the Comparisons table, contain the following information:
+All of the tables, except **the comparisons table**, contain the following information:
 
 * ID - The specific gene ID
 * Sample Names - The names of the samples given and they're corresponding TMM normalized counts
@@ -405,7 +402,7 @@ All of the tables, except the Comparisons table, contain the following informati
 * foldChange - The fold change
 * log10padj - The log 10 padjusted value
 
-The Comparisons table generates values based on the number of comparisons you have conducted.
+**The comparisons table** generates values based on the number of comparisons you have conducted.
 For each pairwise comparison, these values will be generated:
 
 * Values for each sample used
@@ -416,17 +413,9 @@ For each pairwise comparison, these values will be generated:
 <img src="images/comparisons.png">
 
 
-You can further customize and filter each specific table in a multitude of ways.  For unique table or dataset options, select the type of table dataset you would like to customize on the left panel under 'Choose a dataset' to view its additional options. All of the tables have a built-in search function at the top right of the table and you can further sort the table by column by clicking on the column header you wish to sort by. The 'Search' box on the left panel allows for multiple searches via a comma-separated list.  You can additionally use regex terms such as "^al" or "\*lm" for even more advanced searching. This search will be applied to wherever you are within DEBrowser, including both the plots and the tables.
+You can further customize and filter each specific table in a multitude of ways.  For unique table or dataset options, select the type of table dataset you would like to customize on the left panel under 'Choose a dataset' to view its additional options. All of the tables have a built-in search function at the top right of the table and you can further sort the table by column by clicking on the column header you wish to sort by. 
 
-
-If you enter more than three lines of genes, the search tool will automatically match the beginning and end of the search phrases. Otherwise, it will find matched substrings in the gene list.
-
-
-
-You can also view specific tables of your input data for each type of dataset available and search for a specific geneset
-by inputting a comma-separated list of genes or regex terms to search for in the search box within the left panel.
-To view these tables, you must select the tab labeled 'Tables' as well as the dataset from the dropdown menu on the left panel.
-
+The 'Search' box on the left panel allows for multiple searches via a comma-separated list.  You can additionally use regex terms such as "^al" or "\*lm" for even more advanced searching. This search will be applied to wherever you are within DEBrowser, including both the plots and the tables. If you enter **more than three lines of genes**, the search tool will automatically match the beginning and end of the search phrases. Otherwise, it will find matched substrings in the gene list.
 
 If you ever want to change your parameters or even add a new set of comparisons, you can always return to the *Data Prep* tab to change and resubmit your data.
 
