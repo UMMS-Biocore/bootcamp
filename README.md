@@ -34,10 +34,12 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 
 	[Session 4: Building Pipeline on DolphinNext](session4/session4_2.md)
 	
-	[Session 4: DolphinNext (Slides)](https://drive.google.com/open?id=1gMNGtTwp48NY1Bpk49dsyMRQitIbTibv)
+	
 	
 	Session 4: [Video-1](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_intro.mp4) [Video-2](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_running_pipelines.mp4) [Video-3](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_developing_pipelines.mp4)
 	
 5. [Session 5: R and RStudio](session5/session5.md)<br>
-5. [Session 6: Differential expression analysis with DEBrowser](session6/session6.md)<br>
+6. [Session 6: Differential expression analysis with DEBrowser](session6/session6.md)<br>
+   Session 6: Slides: [Count Normalization](https://docs.google.com/presentation/d/1evEzdbeuAdQZ8pmdIxNuYbyiOI6A3TPdpB1XEn0DIIU/edit?usp=sharing) [DE Analysis](https://docs.google.com/presentation/d/1BE40w42p2aeDyTMumoX8pKsMNK1aj4VVBS4M9w79x5c/edit?usp=sharing) [Pathway Enrichment Analysis](https://docs.google.com/presentation/d/10E2sqk5EjotQqPaqeiOdCIQIgffADNYTKhXnSNID9Fk/edit?usp=sharing)
+
 
