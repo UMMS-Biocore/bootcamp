@@ -85,11 +85,11 @@ Run the commands below. It should launch DEBrowser in your preferred browser. We
 To stop DEBrowser, there is a stop button on the corner of the console.
 
 
-## Un-normalized counts
+## Unnormalized counts
 
 Testing models of DESeq2 or other packages are based on negative binomial distribution which require count data as the input. This data obtained from RNA-Seq or other high-throughput sequencing experiments in the form of matrix. The values of the matrix should be un-normalized since the DESeq2 model internally corrects for library size. **So, transformed or normalized values such as counts scaled by library size should not be used as input.** Please use edgeR or limma for normalized counts.
 
-* **Note:** We will convert un-integer values to an integer to be able to run the DE algorithms.
+* **Note:** We will convert uninteger values to integer to be able to run the DE algorithms.
 
 ## Loading count data file
 
