@@ -104,7 +104,7 @@ To begin the analysis, you need to upload your **count data file** (in comma or 
 
 The count matrix file should be like below.
 
-|gene|exper_rep1|exper_rep2|exper_rep3|control_rep1|control_rep3|control_rep3|
+|gene|exper_rep1|exper_rep2|exper_rep3|control_rep1|control_rep2|control_rep3|
 |-----|-----|-----|-----|-----|-----|-----|
 |DQ714|0.00|0.00|0.00|0.00|0.00|0.00|
 |DQ554|5.03|20.00|10.00|0.00|0.00|0.00|
@@ -127,8 +127,7 @@ In addition to the count data file; you might need to upload an optional metadat
 
 
 The metadata file can be formatted with a comma, semicolon, or tab separators similar to count data files. These files used to establish different batch effects for multiple conditions.
-You can have as many conditions as you may require, as long as all of the samples are present. 
-
+You can have as many conditions as you may require, as long as all of the samples are present. To handle for these conditions, simply create a metadata file by using the example table at above or download sample file from [this link.](https://bioinfo.umassmed.edu/pub/debrowser/simple_demo_meta.txt)
 
 
 The example above would result in the first set of conditions as 
