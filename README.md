@@ -41,5 +41,5 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 5. [Session 5: R and RStudio](session5/session5.md)<br>
 6. [Session 6: Differential expression analysis with DEBrowser](session6/session6.md)<br>
    Session 6: Slides: [Count Normalization](https://docs.google.com/presentation/d/1evEzdbeuAdQZ8pmdIxNuYbyiOI6A3TPdpB1XEn0DIIU/edit?usp=sharing) [DE Analysis](https://docs.google.com/presentation/d/1BE40w42p2aeDyTMumoX8pKsMNK1aj4VVBS4M9w79x5c/edit?usp=sharing) [Pathway Enrichment Analysis](https://docs.google.com/presentation/d/10E2sqk5EjotQqPaqeiOdCIQIgffADNYTKhXnSNID9Fk/edit?usp=sharing)
-
+   Session 6: Video: [Pathway Enrichment Analysis](https://www.dropbox.com/s/r7173jffttaezpw/Pathway%20Enrichment%20Analysis.m4v)
 
