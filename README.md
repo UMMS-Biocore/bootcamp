@@ -34,12 +34,19 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 
 	[Session 4: Building Pipeline on DolphinNext](session4/session4_2.md)
 	
+	Session 4: Videos: [DolphinNext Introduction,](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_intro.mp4) [Running Pipelines,](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_running_pipelines.mp4) [Developing Pipelines](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_developing_pipelines.mp4)
 	
-	
-	Session 4: [Video-1](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_intro.mp4) [Video-2](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_running_pipelines.mp4) [Video-3](https://www.dropbox.com/sh/9k0wtckuwhku506/AAAgLKlow0BgN1VmGRGmQjRMa?dl=0&preview=zoom_session4_developing_pipelines.mp4)
-	
-5. [Session 5: R and RStudio](session5/session5.md)<br>
+5. [Session 5: R and RStudio](session5/session5.md)
+
+    Session 5: Videos: [DolphinNext Use Cases,](https://drive.google.com/open?id=11p3z0P86t9RsR6Uo05um_Ze0Jkjn0xZM)
+    		       [DE Analysis Theory,](https://drive.google.com/open?id=1qC7MUEyufDb3rMDXvb7Ikpmi0p31cXPJ)
+		       [R - Rstudio,](https://drive.google.com/open?id=1cmfc6iVLvA3P1MY_9bO9A93zPjvTFwns)
+		       [R plots,](https://drive.google.com/open?id=1Rgxd9FlghrdpswUj-FKh5Joy0hF-ez1Y)
+		       [Clustering and Heatmaps](https://drive.google.com/open?id=1xSFWpMp6ERfEbQC_dsFspoKp7BRot_sG)
+
 6. [Session 6: Differential expression analysis with DEBrowser](session6/session6.md)<br>
-   Session 6: Slides: [Count Normalization](https://docs.google.com/presentation/d/1evEzdbeuAdQZ8pmdIxNuYbyiOI6A3TPdpB1XEn0DIIU/edit?usp=sharing) [DE Analysis](https://docs.google.com/presentation/d/1BE40w42p2aeDyTMumoX8pKsMNK1aj4VVBS4M9w79x5c/edit?usp=sharing) [Pathway Enrichment Analysis](https://docs.google.com/presentation/d/10E2sqk5EjotQqPaqeiOdCIQIgffADNYTKhXnSNID9Fk/edit?usp=sharing)
-   Session 6: Video: [Pathway Enrichment Analysis](https://www.dropbox.com/s/r7173jffttaezpw/Pathway%20Enrichment%20Analysis.m4v)
+   
+   Session 6: Slides: [Count Normalization,](https://docs.google.com/presentation/d/1evEzdbeuAdQZ8pmdIxNuYbyiOI6A3TPdpB1XEn0DIIU/edit?usp=sharing) [DE Analysis,](https://docs.google.com/presentation/d/1BE40w42p2aeDyTMumoX8pKsMNK1aj4VVBS4M9w79x5c/edit?usp=sharing) [Pathway Enrichment Analysis](https://docs.google.com/presentation/d/10E2sqk5EjotQqPaqeiOdCIQIgffADNYTKhXnSNID9Fk/edit?usp=sharing)
+   
+   Session 6: Videos:  [Normalization Theory,](https://drive.google.com/open?id=1WkfAyQ6QH76xbLSVrTy-tBPqHvmY1SRm) [DEBrowser,](https://drive.google.com/open?id=1y3c3Z4UgSR0UcsRxcFmaWckws-cI2PHg) [Pathway Enrichment Analysis](https://drive.google.com/open?id=1Phyu-gFL2cy5-OPpPQPWs2-e6OkNbLbj) 
 
