@@ -28,7 +28,7 @@ Looking at the output, notice two more details about FASTA files:
 
 
 ## FASTQ files
-During the homework exercise in [Session 1: Linux environment](session1/session1.md), you made a copy of several fastq files to your home directory:
+During the homework exercise in [Session 1: Linux environment](../session1/session1.md), you made a copy of several fastq files to your home directory:
 ```
 $ ls -l ~/bootcamp/RNA-Seq/reads/
 total 32946
@@ -55,7 +55,7 @@ total 32946
   ```
 
 ### Homework
-During [Session 2 Extra: Useful commands and tools](session2/usefull.md) you became familiar with the command **grep**, but it has extra power when used with certain arguments:
+During [Session 2 Extra: Useful commands and tools](../session2/usefull.md) you became familiar with the command **grep**, but it has extra power when used with certain arguments:
 ```
 $ grep --help
 ```
