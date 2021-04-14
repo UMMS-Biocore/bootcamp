@@ -11,3 +11,13 @@ To learn how we use,  please check [How to use the Bootcamp Slack channel](slack
 
 1. [Session 1: Linux environment (4/8/2021 9:00AM-12:00AM)](session1/session1.md)
 
+2. [Session 2: UMass Cluster](session2/session2.md)<br>
+
+	[Session 2 Extra: Useful commands and tools](session2/usefull.md)
+
+	[Session 2 Genomic resources](session2/genomic_resources.md)  
+
+	[Session 2 FASTA/FASTQ](session2/fasta_fastq.md)  
+
+	[Session 2 SAM/BAM](session2/sam_bam.md)  
+
