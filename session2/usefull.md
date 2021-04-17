@@ -8,7 +8,7 @@ We will learn some usefull commands that will help you to use linux. We will als
 
 Overview
 ========
-
+  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Processes Management](#processes-management)
   * [Pipes](#pipes)
@@ -16,6 +16,15 @@ Overview
   * [AWK Command](#awk-command)
   * [vi Editor](#vi-editor)
   * [Session Homework](#session-homework)
+
+## Class Materials
+You can follow the class materials below.
+
+<b>1. Session 2.2: Useful linux commands and tools</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=vrwklLU-Ic8"><img src="https://img.youtube.com/vi/vrwklLU-Ic8/0.jpg" alt="Session 2.2"></a>
+</div>
 
 ## Introduction
 There are a couple of more commands that is required to learn to be more comfortable in linux environment. In this session we will learn processes in management, pipe usage, grep, awk, sed commands that are usefull for text manupilation and text search in files and vi editor.
@@ -67,16 +76,16 @@ or
 	501  4373  1384   0  1:56PM ttys004    0:00.00 sleep 300
 	501  1395  1394   0  2:29AM ttys005    0:00.02 -bash
   
-|Column|Description|
-|------|-----------|
-|UID|User ID that this process belongs to (the person running it)|
-|PID|Process ID|	
-|PPID|Parent process ID (the ID of the process that started it)|
-|C|CPU utilization of process|
-|STIME|Process start time|
-|TTY|Terminal type associated with the process|
-|TIME|CPU time taken by the process|
-|CMD|The command that started this process|
+| Column | Description                                                  |
+| ------ | ------------------------------------------------------------ |
+| UID    | User ID that this process belongs to (the person running it) |
+| PID    | Process ID                                                   |
+| PPID   | Parent process ID (the ID of the process that started it)    |
+| C      | CPU utilization of process                                   |
+| STIME  | Process start time                                           |
+| TTY    | Terminal type associated with the process                    |
+| TIME   | CPU time taken by the process                                |
+| CMD    | The command that started this process                        |
 
 ### Stopping Processes
 If the process is running in the foreground you can use Ctrl+C command to stop it or you can use `ps` command to learn PID of that process and use `kill` command to stop it. For example to kill `sleep 300` command above, first check the PID which is reported at above as 4373. The command below will kill it.
@@ -136,13 +145,13 @@ The same command could be run with pipe without writing the outout of the "ls -l
 
 	$ ls -l | grep Apr 
 
-|Option|Description|
-|------|-----------|
-|-v|Prints all lines that do not match pattern.|
-|-n|Prints the matched line and its line number.|
-|-l|Prints only the names of files with matching lines (letter "l")|
-|-c|Prints only the count of matching lines.|
-|-i|Case insensitive search. Matches either upper or lowercase.|
+| Option | Description                                                     |
+| ------ | --------------------------------------------------------------- |
+| -v     | Prints all lines that do not match pattern.                     |
+| -n     | Prints the matched line and its line number.                    |
+| -l     | Prints only the names of files with matching lines (letter "l") |
+| -c     | Prints only the count of matching lines.                        |
+| -i     | Case insensitive search. Matches either upper or lowercase.     |
 
 Let's play with grep on our sequence files.
 
@@ -195,15 +204,15 @@ Cheat sheet:
 
 <img src="images/awk.png">
 
-|Content|Awk variable|
-|-------|-------|
-|Entire Line| $0|
-|Column 1|$1|
-|Column 2| $2|
-|.||
-|.||
-|Column i| $i|
-|Line Number| NR|
+| Content     | Awk variable |
+| ----------- | ------------ |
+| Entire Line | $0           |
+| Column 1    | $1           |
+| Column 2    | $2           |
+| .           |              |
+| .           |              |
+| Column i    | $i           |
+| Line Number | NR           |
 
 For example, if we only want to list username and the name of the directories we can use these commands;
 
