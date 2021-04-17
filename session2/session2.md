@@ -10,6 +10,7 @@ To understand the basics of UMMS cluster and resources we have to process biolog
 
 Overview
 ========
+  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Before you start](#why-cluster)
   * [MGHPCC](#mghpcc)
@@ -29,6 +30,15 @@ Overview
   * [Advised Practice](#advised-practice)
   * [Most Important MGHPCC Policy](#most-important-mghpcc-policy)
   * [Session2 Homework](#session2-homework)
+
+## Class Materials
+You can follow the class materials below.
+
+<b>1. Session 2.1: UMass Cluster</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=O98iz-EG9c4"><img src="https://img.youtube.com/vi/O98iz-EG9c4/0.jpg" alt="Session 2.1"></a>
+</div>
 
 ## Introduction
 
@@ -67,11 +77,11 @@ MGHPCC has over 10K+ cores available and +1 PB of high performance storage. It i
 
 Though there are many file systems mounted on the head node, there are three file systems that are important for us.
     
-|Type|Location|Content|Quota|	
-|-------|-------|-------|-------|
-|Home Space|/home/user\_name = ~|Small Files, executables, scripts| 50G|
-|Project Space|/project/umw\_PI\_name|Big files being actively processed| Varies|
-|Nearline Space|/nl/umw\_PI\_name|Big files for long term storage| Varies|
+| Type           | Location               | Content                            | Quota  |
+| -------------- | ---------------------- | ---------------------------------- | ------ |
+| Home Space     | /home/user\_name = ~   | Small Files, executables, scripts  | 50G    |
+| Project Space  | /project/umw\_PI\_name | Big files being actively processed | Varies |
+| Nearline Space | /nl/umw\_PI\_name      | Big files for long term storage    | Varies |
 
     
 <pre>
@@ -154,12 +164,12 @@ Besides other things, each job requires
 	
 There are different queues for different purposes which will be explained in next section.
 
-|Resource|Explanation|
-|-----|-----|
-|Cores| Number of processing units to be assigned for the job. Some programs can take advantage of multicores. Default value is 1.|
-|Memory Limit| The submitted job is not allowed to use more than the specified memory. Default value is 1 GB|
-|Time Limit|The submitted job must finish in the given time limit. Default value is 60 minutes.|
-|Queue|There are several queues for different purposes. Default queue is the short queue.|
+| Resource     | Explanation                                                                                                                |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Cores        | Number of processing units to be assigned for the job. Some programs can take advantage of multicores. Default value is 1. |
+| Memory Limit | The submitted job is not allowed to use more than the specified memory. Default value is 1 GB                              |
+| Time Limit   | The submitted job must finish in the given time limit. Default value is 60 minutes.                                        |
+| Queue        | There are several queues for different purposes. Default queue is the short queue.                                         |
 
 ### Queues
 
@@ -169,11 +179,11 @@ Let’s see the queues available in the cluster.
 
 We will be using the queues interactive , short and long.
 
-|Queue|Explanation|
-|-----|-----|
-|interactive| used for bash access to the nodes|
-|short| used for jobs that take less than 4 hours|
-|long|  used for jobs that take more than 4 hours|
+| Queue       | Explanation                               |
+| ----------- | ----------------------------------------- |
+| interactive | used for bash access to the nodes         |
+| short       | used for jobs that take less than 4 hours |
+| long        | used for jobs that take more than 4 hours |
 
 
 ### Job Scheduling
