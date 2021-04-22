@@ -7,7 +7,7 @@ You can follow the class materials below.
 <b>1. Session 3.3: SAM/BAM Files/b><br />
 
 <div align="left">
-  <a href="https://www.youtube.com/watch?v=o6RHmtqN6nU"><img src="https://img.youtube.com/vi/o6RHmtqN6nU/0.jpg" alt="Session 3.3"></a>
+  <a href="https://www.youtube.com/watch?v=56BIJEntE8w"><img src="https://img.youtube.com/vi/56BIJEntE8w/0.jpg" alt="Session 3.3"></a>
 </div>
 
 Slides: [SAM/BAM file formats](Session3.3_general_pipeline_alignment_files.pptx)
