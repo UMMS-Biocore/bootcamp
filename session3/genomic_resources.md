@@ -1,5 +1,17 @@
 # Session 3: Genomic resources in the cluster
 
+## Class Materials
+
+You can follow the class materials below.
+
+<b>1. Session 3.1: Genomic Resources/b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=npREJXTlJPM"><img src="https://img.youtube.com/vi/npREJXTlJPM/0.jpg" alt="Session 3.1"></a>
+</div>
+
+Slides: [Introduction to Sequencing Analysis](Session3.1_sequencing_introduction.pptx)
+
 ## Finding genomes
 
 All the reference files for **genomes** and **annotations** hosted by the UMMS Biocore can be found here:
