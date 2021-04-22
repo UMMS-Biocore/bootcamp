@@ -4,7 +4,7 @@
 
 You can follow the class materials below.
 
-<b>1. Session 3.3: SAM/BAM Files/b><br />
+<b>1. Session 3.3: SAM/BAM Files</b><br />
 
 <div align="left">
   <a href="https://www.youtube.com/watch?v=56BIJEntE8w"><img src="https://img.youtube.com/vi/56BIJEntE8w/0.jpg" alt="Session 3.3"></a>
