@@ -4,7 +4,7 @@
 
 You can follow the class materials below.
 
-<b>1. Session 3.1: Genomic Resources/b><br />
+<b>1. Session 3.1: Genomic Resources</b><br />
 
 <div align="left">
   <a href="https://www.youtube.com/watch?v=npREJXTlJPM"><img src="https://img.youtube.com/vi/npREJXTlJPM/0.jpg" alt="Session 3.1"></a>
