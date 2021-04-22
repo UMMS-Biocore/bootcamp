@@ -73,7 +73,7 @@ total 32946
 
 ### Homework
 
-During [Session 2 Extra: Useful commands and tools](session2/usefull.md) you became familiar with the command **grep**, but it has extra power when used with certain arguments:
+During [Session 2 Extra: Useful commands and tools](../session2/usefull.md) you became familiar with the command **grep**, but it has extra power when used with certain arguments:
 
 ```
 $ grep --help
