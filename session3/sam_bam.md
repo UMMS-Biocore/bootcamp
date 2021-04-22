@@ -76,7 +76,7 @@ Headers may or may not be present in SAM/BAM files, and they always start with t
 _hint: awk allows you to change the output separator of fields or print any string you want, and a newline can be specified by_ "\n"
 
 ```
-$ head -1 ~/bootcamp/RNA-Seq/reads/exper_rep1.1.fq | awk '{print "Hello World"}'
+$ head -1 ~/bootcamp/RNA-Seq/reads/exper_rep1.1.fq | awk '{print "Hello World\n"$1}'
 ```
 
 Expected Result:
