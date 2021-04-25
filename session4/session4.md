@@ -7,16 +7,16 @@ To understand the basics of RNA-Seq data, how to use RNA-Seq for different objec
 # Overview
 
 - [Introduction](#introduction)
-- [Session 4.1: Genomic Alignments Class Material](#session_4_1_genomic_alignments_class_material)
+- [Session 4.1: Genomic Alignments Class Material](#session-41-genomic-alignments-class-material)
 - [Getting Started](#getting-started)
 - [Exercise 1: prepare for genomic and transcriptomic alignments](#exercise-1-prepare-for-genomic-and-transcriptomic-alignments)
-- [Exercise 2: Genome alignment of RNA-seq reads](#exercise-3-genome-alignment-of-rna-seq-reads)
+- [Exercise 2: Genome alignment of RNA-seq reads](#exercise-2-genome-alignment-of-rna-seq-reads)
 
-- [Session 4.2 Transcriptome Quantification class material](#session_4_2_transcriptome_quantification_class_material)
-- [Exercise 3: Quantify with the RSEM program](#exercise-2-quantify-with-the-rsem-program)
-- [Session 4.3 sequencing data visualization class material](#session_4_3_sequencing_data_visualization_class_material)
+- [Session 4.2: Transcriptome Quantification class material](#session-42-transcriptome-quantification-class-material)
+- [Exercise 3: Quantify with the RSEM program](#exercise-3-quantify-with-the-rsem-program)
+- [Session 4.3: sequencing data visualization class material](#session-43-sequencing-data-visualization-class-material)
 - [Exercise 4: Differential Expression Analysis](#exercise-4-differential-expression-analysis)
-- [Session4 Homework](#session3-homework)
+- [Session4 Homework](#session4-homework)
 
 ## Introduction
 
@@ -282,11 +282,11 @@ $ samtools index sorted/ctrl1.star.sorted.bam
 
 # Wait here for the intro lecture on quantification
 
-## Session 4.2 Transcriptome Quantification class material
+## Session 4.2: Transcriptome Quantification class material
 
 You can follow the class materials below.
 
-<b>Session 4.2 Transcriptome Quantification</b><br />
+<b>Session 4.2: Transcriptome Quantification</b><br />
 
 <div align="left">
   <a href="https://www.youtube.com/watch?v=VYBgfVBVWIo><img src="https://img.youtube.com/vi/VYBgfVBVWIo/0.jpg" alt="Session 4.2"></a>
@@ -453,11 +453,11 @@ $ grep Fgf21 quant/rsem.gene.summary.count.txt
 
 # Wait here for the intro lecture on visualization
 
-## Session 4.3 sequencing data visualization class material
+## Session 4.3: sequencing data visualization class material
 
 You can follow the class materials below.
 
-<b>Session 4.3 Sequencing data visualization</b><br />
+<b>Session 4.3: Sequencing data visualization</b><br />
 
 <div align="left">
   <a href="https://www.youtube.com/watch?v=5D9zVpv5-Sc><img src="https://img.youtube.com/vi/5D9zVpv5-Sc/0.jpg" alt="Session 4.2"></a>
