@@ -248,8 +248,6 @@ mm10
 └── star
 ```
 
-Break (10 Mins)
-
 ## Exercise 2: Genome alignment of RNA-seq reads
 
 1. To avoid cluttering the workspace we will direct the output of each exercise to its own directory. In this case for example:
