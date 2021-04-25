@@ -9,14 +9,16 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 - Zoom link for the class: <https://zoom.us/j/6173144016?pwd=QlgxU1hoZDhDZFdKTTJEangwRktyQT09>
 
-1. [Session 1: Linux environment (4/8/2021 9:00AM-12:00AM)](session1/session1.md)
+1. [Session 1: Linux environment (4/8/2021 9:00AM-12:00AM)](session1/session1.md)</br></br>
 
-2. [Session 2: UMass Cluster](session2/session2.md)<br>
+2. [Session 2: UMass Cluster](session2/session2.md)</br>
 
-   [Session 2: Useful commands and tools](session2/usefull.md)
+   [Session 2: Useful commands and tools](session2/usefull.md)</br></br>
 
-3. [Session 3 Genomic resources](session3/genomic_resources.md)
+3. [Session 3 Genomic resources](session3/genomic_resources.md)</br>
 
-   [Session 3 FASTA/FASTQ](session3/fasta_fastq.md)
+   [Session 3 FASTA/FASTQ](session3/fasta_fastq.md)</br>
 
-   [Session 3 SAM/BAM](session3/sam_bam.md)
+   [Session 3 SAM/BAM](session3/sam_bam.md)</br></br>
+
+4. [Session 4: RNA-Seq data processing and analysis](session4/session4.md)</br></br>
