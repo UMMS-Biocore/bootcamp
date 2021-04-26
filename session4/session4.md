@@ -131,8 +131,6 @@ Please consult STAR manual for more details; <https://physiology.med.cornell.edu
 
 Please run the commands below to create index files under star folder;
 
-**When the command is too long, we use "\" to split to command into lines\***
-
 ```
 $ cd ~/bootcamp/RNA-Seq/mm10
 $ mkdir star
