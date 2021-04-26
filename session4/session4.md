@@ -239,14 +239,7 @@ mm10.rsem.grp	      transcriptInfo.tab
 mm10.rsem.idx.fa
 ```
 
-Now, we organized the index files like below. In the future, if you need other index files for different aligners or need new annotations for the same software, you can put them into different folders to keep the index files in more organized way rather than putting them into the same folder.
 
-```
-$ tree -d ~/bootcamp/RNA-Seq/mm10/
-mm10
-├── rsem
-└── star
-```
 
 ## Exercise 2: Genome alignment of RNA-seq reads
 
@@ -277,6 +270,15 @@ $ samtools index sorted/ctrl1.star.sorted.bam
    You can also create a bash script as an example like below to run for the others;
    (`/project/umw_biocore/class/starruns.sh`).
    You can check what we have in this file using more/less or vi commands.
+
+Now, we organized the index files like below. In the future, if you need other index files for different aligners or need new annotations for the same software, you can put them into different folders to keep the index files in more organized way rather than putting them into the same folder.
+
+```
+$ tree -d ~/bootcamp/RNA-Seq/mm10/
+mm10
+├── rsem
+└── star
+```
 
 # Wait here for the intro lecture on quantification
 
