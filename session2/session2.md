@@ -10,6 +10,7 @@ To understand the basics of UMMS cluster and resources we have to process biolog
 
 Overview
 ========
+  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Before you start](#why-cluster)
   * [MGHPCC](#mghpcc)
@@ -29,6 +30,15 @@ Overview
   * [Advised Practice](#advised-practice)
   * [Most Important MGHPCC Policy](#most-important-mghpcc-policy)
   * [Session2 Homework](#session2-homework)
+
+## Class Materials
+You can follow the class materials below.
+
+<b>1. Session 2.1: UMass Cluster</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=O98iz-EG9c4"><img src="https://img.youtube.com/vi/O98iz-EG9c4/0.jpg" alt="Session 2.1"></a>
+</div>
 
 ## Introduction
 
@@ -59,7 +69,7 @@ University of Massachusetts Green High Performance Computing Cluster
 
 ***Computer Cluster :*** A set of computers connected together that work as a single unit
 
-MGHPCC has over 10K+ cores available and 400+ TB of high performance storage. It is located in Holyoke MA and provides computing services to the five campuses of UMass.
+MGHPCC has over 10K+ cores available and +1 PB of high performance storage. It is located in Holyoke MA and provides computing services to the five campuses of UMass.
 
 <img src="images/clusteroverview.png">
 
@@ -67,11 +77,11 @@ MGHPCC has over 10K+ cores available and 400+ TB of high performance storage. It
 
 Though there are many file systems mounted on the head node, there are three file systems that are important for us.
     
-|Type|Location|Content|Quota|	
-|-------|-------|-------|-------|
-|Home Space|/home/user\_name = ~|Small Files, executables, scripts| 50G|
-|Project Space|/project/umw\_PI\_name|Big files being actively processed| Varies|
-|Nearline Space|/nl/umw\_PI\_name|Big files for long term storage| Varies|
+| Type           | Location               | Content                            | Quota  |
+| -------------- | ---------------------- | ---------------------------------- | ------ |
+| Home Space     | /home/user\_name = ~   | Small Files, executables, scripts  | 50G    |
+| Project Space  | /project/umw\_PI\_name | Big files being actively processed | Varies |
+| Nearline Space | /nl/umw\_PI\_name      | Big files for long term storage    | Varies |
 
     
 <pre>
@@ -154,12 +164,12 @@ Besides other things, each job requires
 	
 There are different queues for different purposes which will be explained in next section.
 
-|Resource|Explanation|
-|-----|-----|
-|Cores| Number of processing units to be assigned for the job. Some programs can take advantage of multicores. Default value is 1.|
-|Memory Limit| The submitted job is not allowed to use more than the specified memory. Default value is 1 GB|
-|Time Limit|The submitted job must finish in the given time limit. Default value is 60 minutes.|
-|Queue|There are several queues for different purposes. Default queue is the short queue.|
+| Resource     | Explanation                                                                                                                |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Cores        | Number of processing units to be assigned for the job. Some programs can take advantage of multicores. Default value is 1. |
+| Memory Limit | The submitted job is not allowed to use more than the specified memory. Default value is 1 GB                              |
+| Time Limit   | The submitted job must finish in the given time limit. Default value is 60 minutes.                                        |
+| Queue        | There are several queues for different purposes. Default queue is the short queue.                                         |
 
 ### Queues
 
@@ -169,11 +179,11 @@ Let’s see the queues available in the cluster.
 
 We will be using the queues interactive , short and long.
 
-|Queue|Explanation|
-|-----|-----|
-|interactive| used for bash access to the nodes|
-|short| used for jobs that take less than 4 hours|
-|long|  used for jobs that take more than 4 hours|
+| Queue       | Explanation                               |
+| ----------- | ----------------------------------------- |
+| interactive | used for bash access to the nodes         |
+| short       | used for jobs that take less than 4 hours |
+| long        | used for jobs that take more than 4 hours |
 
 
 ### Job Scheduling
@@ -186,13 +196,13 @@ Suppose, for a moment, that when we submit a job, the system puts our job in a q
 
 A queue is a data type that implements First In First Out (FIFO) structure.
 
-Say first, Hakan then, Manuel and, lastly, Alper submit a job.
+Say first, Hakan then, Onur and, lastly, Artur submit a job.
 
 Then, the queue will look like
 
 <img src="images/queue1.png">
 
-What if Hakan’s job needs 10 cores and 5 TB of memory in total and 8 hours to run whereas Alper’s job only needs one core 1 GB of memory and 20 minutes to run. Also, Alper didn’t use the cluster a lot recently but Hakan has been using it very heavily for weeks.
+What if Hakan’s job needs 10 cores and 5 TB of memory in total and 8 hours to run whereas Artur’s job only needs one core 1 GB of memory and 20 minutes to run. Also, Artur didn’t use the cluster a lot recently but Hakan has been using it very heavily for weeks.
 This wouldn’t be a nice distribution of resources. A better approach
 would be prioritizing jobs, and therefore using a priority queue.
 
@@ -201,9 +211,9 @@ In a priority queue, each element has a priority score. The first element to be 
 
 - Hakan: I need 10 cores, 5TB of memory, 8 hours of time.
 - System: A lot of resources requested and heavy previous usage, so the priority score is 5.
-- Manuel: I need 2 cores, 8 GB of memory and one hour time.
+- Onur: I need 2 cores, 8 GB of memory and one hour time.
 - System: A medium amount of resources requested, light previous usage, so the priority is 40.
-- Alper: I need one core, 1 GB of memory and 20 minutes.
+- Artur: I need one core, 1 GB of memory and 20 minutes.
 - System: Very little amount of resources requested, light previous usage, so the priority is 110.
 
 

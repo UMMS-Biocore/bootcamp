@@ -16,12 +16,34 @@ To understand the basics of Linux environment, how to use command line and to fa
 
 Overview
 ========
+  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Before you start](#before-you-start)
   * [Getting Started](#getting-started)
   * [Basic Commands](#basic-commands)
   * [File transfer from your laptop to cluster using FileZilla](#file-transfer-from-your-laptop-to-cluster-using-FileZilla)
   * [Session1 Homework](#session1-homework)
+
+## Class Materials
+You can follow the class materials below.        
+
+<b>1. Session 1.1:</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=prAxSudRQ1M"><img src="https://img.youtube.com/vi/prAxSudRQ1M/0.jpg" alt="Session 1.1"></a>
+</div>
+
+<b>2. Session 1.2:</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=ld9o9cG1TRw"><img src="https://img.youtube.com/vi/ld9o9cG1TRw/0.jpg" alt="Session 1.2"></a>
+</div>
+
+<b>3. Session 1.3:</b><br />
+
+<div align="left">
+  <a href="https://www.youtube.com/watch?v=_XlxkctFGmM"><img src="https://img.youtube.com/vi/_XlxkctFGmM/0.jpg" alt="Session 1.2"></a>
+</div>
 
 ## Introduction
 
