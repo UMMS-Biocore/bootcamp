@@ -481,8 +481,9 @@ Please make sure you've noted the directory you downloaded, since you will need 
 - **Tip:** Before start you can check how IGV works here https://www.youtube.com/watch?v=P9n0tZxiwPs
 
 1. Launch the IGV browser and use the File -> load to load the files onto the browser.
-2. Load only one or two `.bam` files to begin with, you don't need to load `.bam.bai` separately. Just make sure `.bam` and `*.bam.bai` files are in the same folder.
-3. Choose **mm10** as a **genome build** from the top left dropdown.
+2. Choose **mm10** as a **genome build** from the top left dropdown.
+3. Load only one or two `.bam` files to begin with, you don't need to load `.bam.bai` separately. Just make sure `.bam` and `*.bam.bai` files are in the same folder.
+
 
 A few genes are good examples of differentially expressed genes. For example, the whole region around the key **Fgf21** gene is upregulated in experiment vs controls, while the gene **Crebbp** is downregulated in experiments vs controls.
 
