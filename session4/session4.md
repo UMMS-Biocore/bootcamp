@@ -35,6 +35,7 @@ You can follow the class materials below.
 </div>
 
 Slides: [Genomic Alignments](Session4.1_Genomic_Alignments.pptx)
+Video: [Genomic Alignments](https://www.youtube.com/watch?v=DYzSdqScaxI)
 
 Figure 1 shows a typical RNA-Seq pipeline.
 
@@ -289,6 +290,7 @@ You can follow the class materials below.
 </div>
 
 Slides: [Transcriptome Quantification](Session4.2_Transcriptome_Quantification.pptx)
+Video: [Transcriptome Quantification](https://www.youtube.com/watch?v=VYBgfVBVWIo)
 
 ## Exercise 3: Quantify with the RSEM program
 
@@ -460,6 +462,7 @@ You can follow the class materials below.
 </div>
 
 Slides: [Sequencing data visualization](Session4.3_sequencing_data_visualization.pptx)
+Video: [Sequencing data visualization](https://www.youtube.com/watch?v=5D9zVpv5-Sc)
 
 ### 3.3 Visualize the raw data:
 
