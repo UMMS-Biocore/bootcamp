@@ -11,14 +11,18 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 1. [Session 1: Linux environment (4/8/2021 9:00AM-12:00AM)](session1/session1.md)</br></br>
 
-2. [Session 2: UMass Cluster](session2/session2.md)</br>
+2. [Session 2.1: UMass Cluster](session2/session2.md)</br>
 
-   [Session 2: Useful commands and tools](session2/usefull.md)</br></br>
+   [Session 2.2: Useful commands and tools](session2/usefull.md)</br></br>
 
-3. [Session 3 Genomic resources](session3/genomic_resources.md)</br>
+3. [Session 3.1: Genomic resources](session3/genomic_resources.md)</br>
 
-   [Session 3 FASTA/FASTQ](session3/fasta_fastq.md)</br>
+   [Session 3.2: FASTA/FASTQ](session3/fasta_fastq.md)</br>
 
-   [Session 3 SAM/BAM](session3/sam_bam.md)</br></br>
+   [Session 3.3: SAM/BAM](session3/sam_bam.md)</br></br>
 
 4. [Session 4: RNA-Seq data processing and analysis](session4/session4.md)</br></br>
+
+5. [Session 5.1: NGS data processing on DolphinNext](session5/session5_1.md)<br>
+
+   [Session 5.2: Building Pipeline on DolphinNext](session4/session5_2.md)</br></br>

@@ -22,6 +22,8 @@ To understand the basics of RNA-Seq data, how to use RNA-Seq for different objec
 
 Today we will do the exercises below to learn, how genomic and transcriptomic alignments are done, their differences and what kind of software we use. In these examples, for splice aware genomic alignments, we will use STAR and for gene quantification, we will use RSEM. RSEM is going to use STAR in the background to map the reads to only transcriptome.
 
+Video: [Class material](https://www.youtube.com/watch?v=0ppu8UlODbs)
+
 ## Session 4.1: Genomic Alignments Class Material
 
 You can follow the class materials below.
