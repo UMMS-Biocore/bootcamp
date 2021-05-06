@@ -25,4 +25,4 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 5. [Session 5.1: NGS data processing on DolphinNext](session5/session5_1.md)<br>
 
-   [Session 5.2: Building Pipeline on DolphinNext](session4/session5_2.md)</br></br>
+   [Session 5.2: Building Pipeline on DolphinNext](session5/session5_2.md)</br></br>
