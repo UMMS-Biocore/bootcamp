@@ -41,7 +41,7 @@ To access R-Studio in the cluster. Please use the short video below.
 
 ### Installing R and R-Studio to your local computer
 
-Please install R 4.0.0 into your local computer **to use it in the next session.**
+Please install R 4.0.5 into your local computer **to use it in the next session.**
 
 1. First please install R to your computer
 
