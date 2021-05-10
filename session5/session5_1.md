@@ -4,6 +4,14 @@
 
 To understand the basics of DolphinNext, how to use DolphinNext for RNA-seq or any other Next generation Sequencing data analysis.
 
+# Class Material
+
+Slides: [DolphinNext Intro](DolphinNext_Bootcamp_2021.05_intro.pdf)
+Video: [DolphinNext Intro](https://youtu.be/Zjoy1NEP3d0)
+
+Slides: [DolphinNext Running Pipelines](DolphinNext_Bootcamp_2021.05_running.pdf)
+Video: [DolphinNext Running Pipelines](https://youtu.be/WlNxnbvJn74)
+
 # Benefits of the design:
 
 - **Build:** Easily create new pipelines using a drag and drop interface. No need to write commands from scratch, instead reuse existing processes/modules to create new pipelines
