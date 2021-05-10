@@ -25,12 +25,18 @@ DolphinNext is an easy-to-use platform for creating, deploying, and executing co
 
 To understand the basics of DolphinNext, how to use pipeline builder for different objectives and to familiarize yourself with Nextflow and some standard software packages for such analysis.
 
+# Class Material
+
+Slides: [DolphinNext Developer Tutorial](DolphinNext_Bootcamp_2021.05_developer.pdf)
+Video: [DolphinNext Developer Tutorial](https://youtu.be/AUMIvG-j5ZA)
+
 # Overview
 
 - [Introduction](#introduction)
   - [DolphinNext provides:](#dolphinnext-provides)
   - [Our aim is;](#our-aim-is)
 - [Expected learning outcome](#expected-learning-outcome)
+- [Class Material](#class-material)
 - [Overview](#overview)
 - [Before you start](#before-you-start)
 - [Tutorial guide](#tutorial-guide)
