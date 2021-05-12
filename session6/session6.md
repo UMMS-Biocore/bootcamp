@@ -51,13 +51,13 @@ Please install R 4.0.5 into your local computer **to use it in the next session.
    <https://cran.r-project.org/bin/windows/base/R-4.0.5-win.exe>
 
    For mac;
-   <https://cran.r-project.org/bin/macosx/R-4.0.5.pkg>
+   <https://cran.r-project.org/bin/macosx/R-4.0.5.pkg></br>
 
 2. Second, please install R-Studio;
 
    <https://rstudio.com/products/rstudio/download/>
 
-3) Please install DEbrowser to your local computer. This can take time to install all the packages.
+3. Please install DEbrowser to your local computer. This can take time to install all the packages.
 
    Open R or R-Studio and run the commands in R console, it will include most of the packages we will use;
 
@@ -119,35 +119,36 @@ In this section please finish the tutorial below. We have recorded these tutoria
 
 #### R Programming:
 
-    1: The basics of programming in R
+1: The basics of programming in R
 
-<https://youtu.be/haHoWQhJEDY>
+<https://youtu.be/haHoWQhJEDY></br>
+
 2: Workspace and Files
 
-<https://youtu.be/DoxUXdAkRkg>
+<https://youtu.be/DoxUXdAkRkg></br>
 
 3: Sequences of Numbers
 
-<https://youtu.be/VtF8oK0iFc8>
+<https://youtu.be/VtF8oK0iFc8></br>
 
 4: Vectors
 
-<https://youtu.be/lTD-DvSYWc8>
+<https://youtu.be/lTD-DvSYWc8></br>
 
 5: Missing Values  
-<https://youtu.be/05HFXKg7iSY>
+<https://youtu.be/05HFXKg7iSY></br>
 
 6: Subsetting Vectors
 
-<https://youtu.be/Os3w3N0Y2MA>
+<https://youtu.be/Os3w3N0Y2MA></br>
 
 7: Matrices and Data Frames
 
-<https://youtu.be/gn6WuV1Tyeo>
+<https://youtu.be/gn6WuV1Tyeo></br>
 
-    12: Looking at Data
+12: Looking at Data
 
-<https://youtu.be/ppDBvq5VY_8>
+<https://youtu.be/ppDBvq5VY_8></br>
 
 ## RNA-Seq data analysis with R
 
