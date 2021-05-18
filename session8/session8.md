@@ -7,14 +7,14 @@ This is a beginner level lecture in scRNA data analysis
 
 # Overview
 
-- [Introduction to scRNA-Seq](#introduction)
+- [Introduction to scRNA-Seq](#introduction_to_scrna-seq)
 - [Getting Started](#getting_started)
 - [scRNA-Seq Processing](#scrna-seq_processing)
 - [Introducton to scRNA-Seq Analysis](#introducton_to_scrna-seq_analysis)
 - [R Tutorials](#r-tutorials)
 - [RNA-Seq data analysis with R](#rna-seq_data_analysis_with_r)
 
-## Introduction
+## Introduction to scRNA-Seq
 
 In previous sessions, we have covered basics of R programming, drawing graphics and figures, and introductory RNA-Seq data analysis.
 Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he learn 
