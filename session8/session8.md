@@ -22,4 +22,9 @@ use the UMass Cluster. **However, we also want you to install R and R-Studio int
 
 ### Installing R and R-Studio to your local computer
 
-Please install R 4.0.5 into your local computer **to use it in the next session.**
+Please install R 4.0.5 into your local computer 
+
+### Installing devtools and SignallingSingleCell packages
+
+
+
