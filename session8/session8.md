@@ -16,7 +16,7 @@ This is a beginner level lecture in scRNA data analysis
 - [Feature Selection](#feature-selection)
 - [Dimensionality Reduction](#dimensionality-reduction)
 - [Clustering](#clustering)
-- [Differential expression](#differential expression)
+- [Differential expression](#differential-expression)
 - [Supervised analysis](#supervised-analysis)
 
 ## Introduction to scRNA-Seq
