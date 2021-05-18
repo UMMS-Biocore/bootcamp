@@ -1,4 +1,4 @@
-# Session 8: R and RStudio
+# Session 8: Single Cell RNA Analysis
 
 # Expected learning outcome
 
