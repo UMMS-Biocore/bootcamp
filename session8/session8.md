@@ -27,14 +27,14 @@ on R programming language in previous sessions and start programming with R for 
 
 ## Getting Started
 
-We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq
+We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq.
 
-Run the commands below. It should install the 'devtools' package, necessary for installing scRNA analysis package of 'SignallingSingleCell' from GitHub
+Run the commands below. It should install the 'devtools' package, necessary for installing scRNA analysis package of 'SignallingSingleCell' from GitHub.
 
     install.packages(“devtools”)
     library(devtools)
 
-Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'
+Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'.
 
     devtools::install_github(“garber-lab/SignallingSingleCell”)
     library(SignallingSingleCell)
