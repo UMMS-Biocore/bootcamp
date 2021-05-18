@@ -2,29 +2,35 @@
 
 # Expected learning outcome
 
-To understand the basics of scRNA data analysis with R, how to use scRNA package to creating UMI distribution plots, filtering, normalization, clustering and annotation. 
-This document aims a beginner audience, rather than experts.
+To understand the basics of scRNA data analysis with R, how to use scRNA packages to creating UMI distribution plots, filtering, normalization, clustering and annotation. 
+This is a beginner level lecture in scRNA data analysis
 
 # Overview
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [R Basics](#r-basics)
+- [Introduction to scRNA-Seq](#introduction)
+- [Getting Started](#getting_started)
+- [scRNA-Seq Processing](#scrna-seq_processing)
+- [Introducton to scRNA-Seq Analysis](#introducton_to_scrna-seq_analysis)
 - [R Tutorials](#r-tutorials)
 - [RNA-Seq data analysis with R](#rna-seq_data_analysis_with_r)
 
 ## Introduction
 
-Today we will do some basic exercises to start learning R. R is a programming language and software environment for statistical analysis, 
-graphics representation and reporting. You can either download and install R into your computer or use R in the cluster. You can use R with a 
-user interface called RStudio or you might prefer using R from the command line. There are a couple of ways to use R. In this tutorial we will 
-use the UMass Cluster. **However, we also want you to install R and R-Studio into your local computer for the next session.**
+In previous sessions, we have covered basics of R programming, drawing graphics and figures, and introductory RNA-Seq data analysis.
+Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he learn 
+on R programming language in previous sessions and start programming with R for essential scRNA-Seq data analysis.  
 
-### Installing R and R-Studio to your local computer
+## Getting Started
 
-Please install R 4.0.5 into your local computer 
+We will now install required R packages for conducting today's scRNA analysis practices. 
 
-### Installing devtools and SignallingSingleCell packages
+Run the commands below. It should install the 'devtools' package, necessary for installing scRNA analysis package of 'SignallingSingleCell' from GitHub
 
+    install.packages(“devtools”)
+    library(devtools)
 
+Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'
 
+    devtools::install_github(“garber-lab/SignallingSingleCell”)
+    library(SignallingSingleCell)
+    
