@@ -50,7 +50,29 @@ Please install R 4.0.5 into your local computer.
     library(devtools)
 ```
 
+When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.
+
+    Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
+
+It can ask to update old packages; please dont write anything and just enter:
+
+```
+   These packages have more recent versions available.
+   It is recommended to update all of them.
+   Which would you like to update?
+   
+   1: All                            
+   2: CRAN packages only             
+   3: None                           
+   4: tibble  (3.1.1 -> 3.1.2) [CRAN]
+   5: stringi (1.5.3 -> 1.6.2) [CRAN]
+   
+   Enter one or more numbers, or an empty line to skip updates:
+```
+
 4. Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'.
+
+Similarly answer "n" to installing from source packages and just enter if it asks to update packages
 
 ```
     devtools::install_github(“garber-lab/SignallingSingleCell”)
