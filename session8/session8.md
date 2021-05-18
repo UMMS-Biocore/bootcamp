@@ -7,7 +7,7 @@ This is a beginner level lecture in scRNA data analysis
 
 # Overview
 
-- [Introduction to scRNA-Seq](#introduction_to_scrna-seq)
+- [Introduction to scRNA-Seq](#introduction-to-scrna-seq)
 - [Getting Started](#getting_started)
 - [scRNA-Seq Processing](#scrna-seq_processing)
 - [Introducton to scRNA-Seq Analysis](#introducton_to_scrna-seq_analysis)
