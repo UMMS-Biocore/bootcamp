@@ -54,11 +54,11 @@ Please install R 4.0.5 into your local computer.
     library(devtools)
 ```
 
-When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.
+If Rstudio asks "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)", just type "n" for no, and hit Enter to continue.
 
     Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
 
-If R asks to update old packages; please dont write anything and just enter:
+If R asks to update old packages; please dont write anything and hit Enter to continue:
 
 ```
    These packages have more recent versions available.
@@ -76,7 +76,7 @@ If R asks to update old packages; please dont write anything and just enter:
 
 4. Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'.
 
-Similar to before, answer "n" to if R asks you to install from source packages, and just enter if R asks to update packages
+Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source packages, and just enter if R asks to update packages
 
 ```
     devtools::install_github(“kgellatl/SignallingSingleCell”)
