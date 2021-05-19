@@ -21,8 +21,8 @@ This is a beginner level lecture in scRNA data analysis.
 ## Introduction to scRNA-Seq
 
 In previous sessions, we have covered basics of R programming, drawing graphics and figures, and introductory RNA-Seq data analysis.
-Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he learn 
-on R programming language in previous sessions and start programming with R for essential scRNA-Seq data analysis.  
+Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he have learned 
+on R and start programming for the essential scRNA-Seq data analysis.  
 
 Why Single Cell ?
 
