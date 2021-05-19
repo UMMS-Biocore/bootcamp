@@ -28,3 +28,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
    [Session 5.2: Building Pipeline on DolphinNext](session5/session5_2.md)</br></br>
 
 6. [Session 6: R and R Studio](session6/session6.md)</br></br>
+
+7. [Session 7: DE Analysis using DEBrowser](session7/session7.md)</br></br>
