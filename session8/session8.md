@@ -9,15 +9,14 @@ This is a beginner level lecture in scRNA data analysis.
 
 - [Introduction to scRNA-Seq](#introduction-to-scrna-seq)
 - [Getting Started](#getting-started)
-- [scRNA-Seq Processing](#scrna-seq-processing)
 - [Introducton to scRNA-Seq Analysis](#introducton-to-scrna-seq-analysis)
+- [scRNA-Seq Processing](#scrna-seq-processing)
 - [Data Structures](#data-structures)
 - [Normalization](#normalization)
 - [Feature Selection](#feature-selection)
 - [Dimensionality Reduction](#dimensionality-reduction)
 - [Clustering](#clustering)
 - [Differential expression](#differential-expression)
-- [Supervised analysis](#supervised-analysis)
 
 ## Introduction to scRNA-Seq
 
