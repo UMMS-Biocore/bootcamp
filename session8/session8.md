@@ -3,7 +3,7 @@
 # Expected learning outcome
 
 To understand the basics of scRNA data analysis with R, how to use scRNA packages to creating UMI distribution plots, filtering, normalization, clustering and annotation. 
-This is a beginner level lecture in scRNA data analysis
+This is a beginner level lecture in scRNA data analysis.
 
 # Overview
 
@@ -79,3 +79,6 @@ Similarly answer "n" to installing from source packages and just enter if it ask
     library(SignallingSingleCell)
 ```
     
+## Introducton to scRNA-Seq Analysis
+
+Coming soon ... 
