@@ -25,6 +25,8 @@ In previous sessions, we have covered basics of R programming, drawing graphics 
 Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he learn 
 on R programming language in previous sessions and start programming with R for essential scRNA-Seq data analysis.  
 
+Why Single Cell ?
+
 <img src="images/scRNASummary.png" width="600">
 
 ## Getting Started
@@ -82,5 +84,7 @@ Similar to before, answer "n" to if R asks you to install from source packages, 
 ```
     
 ## Introducton to scRNA-Seq Analysis
+
+<img src="images/scRNAWorkflow.png" width="600">
 
 TBA
