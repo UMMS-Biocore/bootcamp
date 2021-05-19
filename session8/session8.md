@@ -43,7 +43,7 @@ Please install R 4.0.5 into your local computer.
 
    <https://rstudio.com/products/rstudio/download/>
    
-3. We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq. Run the commands below. It should install the 'devtools' package, necessary for installing scRNA analysis package of 'SignallingSingleCell' from GitHub. **Installing devtools may take long, please try to install before the session**
+3. We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq. Run the commands below. It should install the 'devtools' package, necessary for installing scRNA analysis package of 'SignallingSingleCell' from GitHub. **Installing devtools may take long, please try to install before the session**.
 
 ```
     install.packages(“devtools”)
@@ -72,7 +72,7 @@ It can ask to update old packages; please dont write anything and just enter:
 
 4. Now that we can use 'devtools' package and install GitHub packages, lets install 'SignallingSingleCell'.
 
-Similarly answer "n" to installing from source packages and just enter if it asks to update packages
+Similar to before, answer "n" to if R asks you to install from source packages, and just enter if R asks to update packages
 
 ```
     devtools::install_github(“garber-lab/SignallingSingleCell”)
