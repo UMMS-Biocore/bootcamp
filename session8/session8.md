@@ -54,7 +54,7 @@ When it is asked. "Do you want to install from sources the package which needs c
 
     Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
 
-It can ask to update old packages; please dont write anything and just enter:
+If R asks to update old packages; please dont write anything and just enter:
 
 ```
    These packages have more recent versions available.
