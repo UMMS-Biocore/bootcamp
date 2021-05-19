@@ -75,7 +75,7 @@ If R asks to update old packages; please dont write anything and just enter:
 Similar to before, answer "n" to if R asks you to install from source packages, and just enter if R asks to update packages
 
 ```
-    devtools::install_github(“garber-lab/SignallingSingleCell”)
+    devtools::install_github(“kgellatl/SignallingSingleCell”)
     library(SignallingSingleCell)
 ```
     
