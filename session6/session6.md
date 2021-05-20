@@ -6,11 +6,20 @@ To understand the basics of R and RStudio, how to use R in creating plots, doing
 
 # Overview
 
+- [DolphinNext Developer Tutorial Recap](#dolphinnext-developer-tutorial-recap)
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [R Basics](#r-basics)
 - [R Tutorials](#r-tutorials)
 - [RNA-Seq data analysis with R](#rna-seq_data_analysis_with_r)
+
+## DolphinNext Developer Tutorial Recap
+
+Please click the image below to access the video tutorial </br>
+
+<div align="left">
+  <a href="https://youtu.be/zB3cNX4WLyA"><img src="https://img.youtube.com/vi/zB3cNX4WLyA/0.jpg" alt="Session 6.1"></a>
+</div>
 
 ## Introduction
 
@@ -104,6 +113,12 @@ getwd command will let you know your existing working directory
 
 ## R Tutorials
 
+Please click the image below to access the class video </br>
+
+<div align="left">
+  <a href="https://youtu.be/B6Vmc2c2uQk"><img src="https://img.youtube.com/vi/B6Vmc2c2uQk/0.jpg" alt="Session 6.1"></a>
+</div>
+
 Let's use swirl to start learning R basics. First, we need to install and load the library.
 
     install.packages("swirl")
@@ -151,6 +166,12 @@ In this section please finish the tutorial below. We have recorded these tutoria
 <https://youtu.be/ppDBvq5VY_8></br>
 
 ## RNA-Seq data analysis with R
+
+Please click the image below to access the class video </br>
+
+<div align="left">
+  <a href="https://youtu.be/70uOCzmQYMA"><img src="https://img.youtube.com/vi/70uOCzmQYMA/0.jpg" alt="Session 6.1"></a>
+</div>
 
 ### Before we start
 
