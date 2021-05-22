@@ -223,9 +223,47 @@ Lets count total UMI counts of all barcodes, and visualize UMI density plots! We
 
 <img src="images/umi_density_postfilter.png" width="600">
 
+## Feature Selection and Dimensionality Reduction
 
+Before normalization dimensionality reduction is necessary to form preliminary clusters. These clusters are used to normalize internal to a cluster before normalizing across clusters. First we can subset the genes, and then use these feature selected genes for dimension reduction.
 
+```
+   gene_subset <- subset_genes(ex_sc, method = "PCA", threshold = 1, minCells = 30, nComp = 10, cutoff = 0.85) 
+   ex_sc <- dim_reduce(ex_sc, genelist = gene_subset, pre_reduce = "iPCA", nComp = 10, tSNE_perp = 30, iterations = 500, print_progress=TRUE)  
+   colnames(pData(ex_sc))
 
+   ##  [1] "Timepoint"            "UMI_sum_raw"          "UMI_sum_raw_filtered"
+   ##  [4] "x"                    "y"                    "iPC_Comp1"           
+   ##  [7] "iPC_Comp2"            "iPC_Comp3"            "iPC_Comp4"           
+   ## [10] "iPC_Comp5"            "iPC_Comp6"            "iPC_Comp7"           
+   ## [13] "iPC_Comp8"            "iPC_Comp9"            "iPC_Comp10" 
 
+   plot_tsne_metadata(ex_sc, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
+```
 
+<img src="images/umi_tsne.png" width="600">
 
+## Clustering
+
+Now that we have dimension reduced data we can try clustering it! Clustering algorithms often require you to specify a parameter. This is either the number of clusters, or
+parameter that represents some "resolution" which might represents a threshold for the similarity between expression profiles of barcodes. 
+
+```
+   ex_sc <- cluster_sc(ex_sc, dimension = "Comp", method = "spectral", num_clust = 6) 
+   plot_tsne_metadata(ex_sc, color_by = "Cluster", title = "Spectral Cluster on iPCA components") 
+```
+
+<img src="images/clusters_tsne.png" width="600">
+
+```
+   plot_density(ex_sc, title = "UMIs per cluster", val = "UMI_sum_raw", color_by = "Cluster", statistic = "mean")
+```
+
+<img src="images/umi_density_clusters.png" width="600">
+
+We can also calculate a set of markers for these clusters and store the scores of all genes to fData. This is a quick method to find good markers genes for cell identification. These gene scores get written to fData()
+
+```
+   ex_sc <- id_markers(ex_sc, print_progress = TRUE) 
+   markers <- return_markers(ex_sc, num_markers = 10) 
+```
