@@ -86,8 +86,6 @@ Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source
 
 <img src="images/scRNAWorkflow.png" width="600">
 
-TBA
-
 ## Data Structures
 
 R packages are used to conduct data analysis with built-in (already existing) functions. The idea is to immediately use an algorithm or method for any particular type
@@ -180,19 +178,50 @@ course with LPS stimulation. Now we can begin to take advantage of our faceting!
    head(pData(ex_sc))
    
    ##                          Timepoint
-   ## 0hrA_CATTTGTTCTAGACCC       0hr
-   ## 0hrA_CCTACTAGATCTTTGT       0hr
-   ## 0hrA_CAACAAATATATAGGA       0hr
-   ## 0hrA_AAATCAGACACAACAG       0hr
-   ## 0hrA_GCGTTGCTTCTGTGGT       0hr
-   ## 0hrA_TGACGGACAAGTAATC       0hr
+   ## 0hrA_CATTTGTTCTAGACCC          0hr
+   ## 0hrA_CCTACTAGATCTTTGT          0hr
+   ## 0hrA_CAACAAATATATAGGA          0hr
+   ## 0hrA_AAATCAGACACAACAG          0hr
+   ## 0hrA_GCGTTGCTTCTGTGGT          0hr
+   ## 0hrA_TGACGGACAAGTAATC          0hr
    
    View(pData(ex_sc))
 ```
 
 ## Filtering
 
+The first step is to filter your data to remove low quality cells. Often creating a histogram of the values and assigning cutoffs is simple and effective. Typically we remove all cells lower than 500-1000 UMIs / cell, and we also remove cells with more than 10000 cells. The objective is to remove fragments from barcodes whose droplets are either empty or includes more than one cell. Low or considerably high UMI counts are indications of such technical errors that occur during scRNA sequencing. 
 
+Lets count total UMI counts of all barcodes, and visualize UMI density plots! We will also store these information on metadata as we calculate. 
+
+```
+   ex_sc <- calc_libsize(ex_sc, suffix = "raw") # sums counts for each cell
+   plot_density(ex_sc, title = "UMI Density", val = "UMI_sum_raw", statistic = "mean")    
+```
+
+<img src="images/umidensity_prefilter.png" width="600">
+
+```
+   ex_sc <- pre_filter(ex_sc, minUMI = 1000, maxUMI = 10000, threshold = 1, minCells = 10,  print_progress = TRUE) 
+   
+   ## [1] "Filtering Genes"
+   ## [1] "Filtering Low Cells"
+
+   ex_sc <- calc_libsize(ex_sc, suffix = "raw_filtered")
+   plot_density(ex_sc, title = "UMI Density",  val = "UMI_sum_raw_filtered", statistic = "mean") 
+   
+   head(pData(ex_sc))
+   
+   ##                          Timepoint UMI_sum_raw UMI_sum_raw_filtered
+   ## 0hrA_TGACGGACAAGTAATC          0hr        4579                 4572
+   ## 0hrA_ATGGGCACACCTTGCC          0hr        2897                 2896
+   ## 0hrA_TCGAAGCTGTTGCACG          0hr        2266                 2265
+   ## 0hrA_TGTTTGAGTCGGTTCG          0hr        3045                 3042
+   ## 0hrA_TAAATAGGCACAAGGC          0hr        2238                 2237
+   ## 0hrA_GATTAGACGGGAACCT          0hr        1217                 1217
+```
+
+<img src="images/umidensity_postfilter.png" width="600">
 
 
 
