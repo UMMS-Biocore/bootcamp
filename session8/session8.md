@@ -87,3 +87,15 @@ Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source
 <img src="images/scRNAWorkflow.png" width="600">
 
 TBA
+
+## Data Structures
+
+R packages are used to conduct data analysis with built-in (already existing) functions. The idea is to immediately use an algorithm or method for any particular type
+of analysis, include scRNA Data Analysis.
+
+We have installed and loaded a library called SignallingSingleCell that include a considerable number of functions and algorithms to conducting scRNA data analysis, and
+we will use these functions to cover entire cycle of analyzing single cell data. 
+
+
+
+
