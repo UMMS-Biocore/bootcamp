@@ -12,10 +12,10 @@ This is a beginner level lecture in scRNA data analysis.
 - [Introducton to scRNA-Seq Analysis](#introducton-to-scrna-seq-analysis)
 - [scRNA-Seq Processing](#scrna-seq-processing)
 - [Data Structures](#data-structures)
-- [Normalization](#normalization)
-- [Feature Selection](#feature-selection)
-- [Dimensionality Reduction](#dimensionality-reduction)
+- [Filtering](#filtering)
+- [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
+- [Normalization](#normalization)
 - [Differential expression](#differential-expression)
 
 ## Introduction to scRNA-Seq
@@ -165,6 +165,10 @@ will use the "ExpressionSet" object which is required for analyzing single cell 
 Now the expression matrix is stored within an R object with ExpressionSet class, and we wont need the original expression matrix, we may delete it with "rm" function. 
 The ExpressionSet class (ex_sc) is an extremely convienient data structure that contains 3 dataframes. These dataframes contain expression data, cell information, and gene information respectivelty. 
 
+exprs(ex_sc) is the expression data, where rows are genes and columns are cells  
+pData(ex_sc) is cell information, where rows are cells and columns are metadata  
+fData(ex_sc) is gene information, where rows are genes and columns are metadata
+
 Often we have metadata on the experiment that can be valuable in the analysis! Writing that information now may be appropriate. Our experiment consists of a time 
 course with LPS stimulation. Now we can begin to take advantage of our faceting! We first create an empty column, then insert associated metadata. 
 
@@ -185,6 +189,8 @@ course with LPS stimulation. Now we can begin to take advantage of our faceting!
    
    View(pData(ex_sc))
 ```
+
+## Filtering
 
 
 
