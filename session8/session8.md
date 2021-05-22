@@ -131,8 +131,42 @@ Here, "Rdata" is a file format designed for R, and its primary use is to store R
    0610010F05Rik                     0                     0
 ```
 
-The class function indicates the type of the R object which, in this case, a matrix that stores the UMI counts of each barcode in the scRNA experiment associated to each gene.
+The class function indicates the type of the R object which, in this case, a "matrix" that stores the UMI counts of each barcode in the scRNA experiment associated to each gene.
 Columns are the barcodes, and the rows are the genes. The expression matrix contains 14222 genes and 24169 barcodes. 
+
+For analyzing this expression matrix, we have to build a new R object with its own class (like "matrix"), and these classes are often designed within R packages. We 
+will use the "ExpressionSet" object which is required for analyzing single cell expression matrices by the SignallingSingleCell package. Lets start by calling the 
+"construct_ex_sc" function for that purpose!
+
+```
+   > ex_sc <- construct_ex_sc(mDC_0hr_1hr_4hr_CLEAN) # sc_dat == Input expression matrix
+   > rm(mDC_0hr_1hr_4hr_CLEAN)
+   > ex_sc
+   ExpressionSet (storageMode: lockedEnvironment)
+   assayData: 14222 features, 24169 samples 
+     element names: exprs 
+   protocolData: none
+   phenoData: none
+   featureData: none
+   experimentData: use 'experimentData(object)'
+   Annotation:  
+```
+
+Now the expression matrix is stored within an R object with ExpressionSet class, and we wont need the original expression matrix, we may delete it with "rm" function. 
+The ExpressionSet class (ex_sc) is an extremely convienient data structure that contains 3 dataframes. These dataframes contain expression data, cell information, and gene information respectivelty. 
+
+Often we have metadata on the experiment that can be valuable in the analysis! Writing that information now may be appropriate. Our experiment consists of a time 
+course with LPS stimulation. Now we can begin to take advantage of our faceting! We first create an empty column in 
+
+```
+   pData(ex_sc)$Timepoint <- NA 
+   pData(ex_sc)[grep("0hr", rownames(pData(ex_sc))),"Timepoint"] <- "0hr"
+   pData(ex_sc)[grep("1hr", rownames(pData(ex_sc))),"Timepoint"] <- "1hr"
+   pData(ex_sc)[grep("4hr", rownames(pData(ex_sc))),"Timepoint"] <- "4hr"
+   head(pData(ex_sc))
+```
+
+
 
 
 
