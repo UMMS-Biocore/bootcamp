@@ -82,8 +82,7 @@ Why Single Cell ?
 
 <img src="images/scRNASummary.png" width="600">
 
-We should know that scRNA Analysis may not be necessary for all problems. It is well suited when populations are heterogeneous, and it is a powerful tool for studying intra and inter cell type
-variations in gene expression
+We should know that scRNA Analysis may not be necessary for all problems. It is well suited when populations are heterogeneous, and it is a powerful tool for studying intra and inter cell type variations in gene expression
 
 <img src="images/scRNAWorkflow.png" width="600">
 
@@ -99,9 +98,17 @@ variations in gene expression
 
 ## scRNA-Seq Processing with DolphinNext
 
+To process the fastq files that the instrument generates into a gene expression matrix involves many steps, which can be run as a continuous pipeline with DolphinNext
+
 <img src="images/dnext_singlecell1.png" width="600">
 
+First, DolphinNext pipeline align these reads to reference genome using STAR, HISAT2 or Tophat2 aligners.
+Also, mapped reads are merged by samtools, these bam files are also sorted and indexed. 
+
 <img src="images/dnext_singlecell2.png" width="600">
+
+Then, reads are filtered, some cells with low number of reads are removed, and then ESAT (http://garberlab.umassmed.edu/software/esat/) is used to 
+create UMI distribution tables.
 
 <img src="images/dnext_singlecell3.png" width="600">
 
