@@ -96,6 +96,13 @@ of analysis, include scRNA Data Analysis.
 We have installed and loaded a library called SignallingSingleCell that include a considerable number of functions and algorithms to conducting scRNA data analysis, and
 we will use these functions to cover entire cycle of analyzing single cell data. 
 
+Now, lets download our data, load it into our R environment and start investigating! 
+
+```
+   load("~/Documents/UMASS/Garber/Data/inDrop/mDC_UMIClean/1-RawFiles/mDC_0hr_1hr_4hr_CLEAN.Rdata")
+   
+```
+
 
 
 
