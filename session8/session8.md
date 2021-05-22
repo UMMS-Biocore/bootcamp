@@ -106,29 +106,38 @@ Now, lets download our data, load it into our R environment and start investigat
 Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_0hr_1hr_4hr_CLEAN". We can investiate this R object further and understand its structure. 
 
 ```
-   > class(mDC_0hr_1hr_4hr_CLEAN)
-   [1] "matrix" "array" 
-   > dim(mDC_0hr_1hr_4hr_CLEAN)
-   [1] 14222 24169
-   > head(rownames(mDC_0hr_1hr_4hr_CLEAN))
-   [1] "0610007P14Rik" "0610009B22Rik" "0610009O20Rik" "0610010B08Rik" "0610010F05Rik"
-   [6] "0610010K14Rik"
-   > head(colnames(mDC_0hr_1hr_4hr_CLEAN))
-   [1] "0hrA_CATTTGTTCTAGACCC" "0hrA_CCTACTAGATCTTTGT" "0hrA_CAACAAATATATAGGA"
-   [4] "0hrA_AAATCAGACACAACAG" "0hrA_GCGTTGCTTCTGTGGT" "0hrA_TGACGGACAAGTAATC"
-   > mDC_0hr_1hr_4hr_CLEAN[1:5,1:5] 
-                 0hrA_CATTTGTTCTAGACCC 0hrA_CCTACTAGATCTTTGT 0hrA_CAACAAATATATAGGA
-   0610007P14Rik                     0                     0                     0
-   0610009B22Rik                     0                     0                     0
-   0610009O20Rik                     0                     0                     0
-   0610010B08Rik                     0                     0                     0
-   0610010F05Rik                     0                     0                     0
-                 0hrA_AAATCAGACACAACAG 0hrA_GCGTTGCTTCTGTGGT
-   0610007P14Rik                     0                     0
-   0610009B22Rik                     0                     0
-   0610009O20Rik                     0                     0
-   0610010B08Rik                     0                     0
-   0610010F05Rik                     0                     0
+   class(mDC_0hr_1hr_4hr_CLEAN)
+   
+   ## [1] "matrix" "array" 
+  
+   dim(mDC_0hr_1hr_4hr_CLEAN)
+   
+   ## [1] 14222 24169
+   
+   head(rownames(mDC_0hr_1hr_4hr_CLEAN))
+   
+   ## [1] "0610007P14Rik" "0610009B22Rik" "0610009O20Rik" "0610010B08Rik" "0610010F05Rik"
+   ## [6] "0610010K14Rik"
+   
+   head(colnames(mDC_0hr_1hr_4hr_CLEAN))
+   
+   ## [1] "0hrA_CATTTGTTCTAGACCC" "0hrA_CCTACTAGATCTTTGT" "0hrA_CAACAAATATATAGGA"
+   ## [4] "0hrA_AAATCAGACACAACAG" "0hrA_GCGTTGCTTCTGTGGT" "0hrA_TGACGGACAAGTAATC"
+   
+   mDC_0hr_1hr_4hr_CLEAN[1:5,1:5] 
+   
+   ##               0hrA_CATTTGTTCTAGACCC 0hrA_CCTACTAGATCTTTGT 0hrA_CAACAAATATATAGGA
+   ## 0610007P14Rik                     0                     0                     0
+   ## 0610009B22Rik                     0                     0                     0
+   ## 0610009O20Rik                     0                     0                     0
+   ## 0610010B08Rik                     0                     0                     0
+   ## 0610010F05Rik                     0                     0                     0
+   ##               0hrA_AAATCAGACACAACAG 0hrA_GCGTTGCTTCTGTGGT
+   ## 0610007P14Rik                     0                     0
+   ## 0610009B22Rik                     0                     0
+   ## 0610009O20Rik                     0                     0
+   ## 0610010B08Rik                     0                     0
+   ## 0610010F05Rik                     0                     0
 ```
 
 The class function indicates the type of the R object which, in this case, a "matrix" that stores the UMI counts of each barcode in the scRNA experiment associated to each gene.
@@ -139,24 +148,25 @@ will use the "ExpressionSet" object which is required for analyzing single cell 
 "construct_ex_sc" function for that purpose!
 
 ```
-   > ex_sc <- construct_ex_sc(mDC_0hr_1hr_4hr_CLEAN) # sc_dat == Input expression matrix
-   > rm(mDC_0hr_1hr_4hr_CLEAN)
-   > ex_sc
-   ExpressionSet (storageMode: lockedEnvironment)
-   assayData: 14222 features, 24169 samples 
-     element names: exprs 
-   protocolData: none
-   phenoData: none
-   featureData: none
-   experimentData: use 'experimentData(object)'
-   Annotation:  
+   ex_sc <- construct_ex_sc(mDC_0hr_1hr_4hr_CLEAN) # sc_dat == Input expression matrix
+   rm(mDC_0hr_1hr_4hr_CLEAN)
+   ex_sc
+   
+   ## ExpressionSet (storageMode: lockedEnvironment)
+   ## assayData: 14222 features, 24169 samples 
+   ##   element names: exprs 
+   ## protocolData: none
+   ## phenoData: none
+   ## featureData: none
+   ## experimentData: use 'experimentData(object)'
+   ## Annotation:  
 ```
 
 Now the expression matrix is stored within an R object with ExpressionSet class, and we wont need the original expression matrix, we may delete it with "rm" function. 
 The ExpressionSet class (ex_sc) is an extremely convienient data structure that contains 3 dataframes. These dataframes contain expression data, cell information, and gene information respectivelty. 
 
 Often we have metadata on the experiment that can be valuable in the analysis! Writing that information now may be appropriate. Our experiment consists of a time 
-course with LPS stimulation. Now we can begin to take advantage of our faceting! We first create an empty column in 
+course with LPS stimulation. Now we can begin to take advantage of our faceting! We first create an empty column, then insert associated metadata. 
 
 ```
    pData(ex_sc)$Timepoint <- NA 
@@ -164,7 +174,18 @@ course with LPS stimulation. Now we can begin to take advantage of our faceting!
    pData(ex_sc)[grep("1hr", rownames(pData(ex_sc))),"Timepoint"] <- "1hr"
    pData(ex_sc)[grep("4hr", rownames(pData(ex_sc))),"Timepoint"] <- "4hr"
    head(pData(ex_sc))
+   
+   ##                          Timepoint
+   ## 0hrA_CATTTGTTCTAGACCC       0hr
+   ## 0hrA_CCTACTAGATCTTTGT       0hr
+   ## 0hrA_CAACAAATATATAGGA       0hr
+   ## 0hrA_AAATCAGACACAACAG       0hr
+   ## 0hrA_GCGTTGCTTCTGTGGT       0hr
+   ## 0hrA_TGACGGACAAGTAATC       0hr
+   
+   View(pData(ex_sc))
 ```
+
 
 
 
