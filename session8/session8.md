@@ -199,7 +199,7 @@ Lets count total UMI counts of all barcodes, and visualize UMI density plots! We
    plot_density(ex_sc, title = "UMI Density", val = "UMI_sum_raw", statistic = "mean")    
 ```
 
-<img src="images/umidensity_prefilter.png" width="600">
+<img src="images/umi_density_prefilter.png" width="600">
 
 ```
    ex_sc <- pre_filter(ex_sc, minUMI = 1000, maxUMI = 10000, threshold = 1, minCells = 10,  print_progress = TRUE) 
@@ -221,7 +221,7 @@ Lets count total UMI counts of all barcodes, and visualize UMI density plots! We
    ## 0hrA_GATTAGACGGGAACCT          0hr        1217                 1217
 ```
 
-<img src="images/umidensity_postfilter.png" width="600">
+<img src="images/umi_density_postfilter.png" width="600">
 
 
 
