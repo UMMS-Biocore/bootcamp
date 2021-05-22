@@ -227,6 +227,8 @@ Lets count total UMI counts of all barcodes, and visualize UMI density plots! We
 
 Before normalization dimensionality reduction is necessary to form preliminary clusters. These clusters are used to normalize internal to a cluster before normalizing across clusters. First we can subset the genes, and then use these feature selected genes for dimension reduction.
 
+We use the method of Principal Component Analysis (PCA) reduce the dimensionality of the dataset. We use the first 10 principal components. 
+
 ```
    gene_subset <- subset_genes(ex_sc, method = "PCA", threshold = 1, minCells = 30, nComp = 10, cutoff = 0.85) 
    ex_sc <- dim_reduce(ex_sc, genelist = gene_subset, pre_reduce = "iPCA", nComp = 10, tSNE_perp = 30, iterations = 500, print_progress=TRUE)  
@@ -247,6 +249,8 @@ Before normalization dimensionality reduction is necessary to form preliminary c
 
 Now that we have dimension reduced data we can try clustering it! Clustering algorithms often require you to specify a parameter. This is either the number of clusters, or
 parameter that represents some "resolution" which might represents a threshold for the similarity between expression profiles of barcodes. 
+
+The "SignallingSingleCell" package incorporates a Spectral Clustering method that assumes the number of clusters, and we will assume that the data has 6 clusters!
 
 ```
    ex_sc <- cluster_sc(ex_sc, dimension = "Comp", method = "spectral", num_clust = 6) 
