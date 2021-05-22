@@ -100,8 +100,41 @@ Now, lets download our data, load it into our R environment and start investigat
 
 ```
    load("~/Documents/UMASS/Garber/Data/inDrop/mDC_UMIClean/1-RawFiles/mDC_0hr_1hr_4hr_CLEAN.Rdata")
-   
+   load("mDC_0hr_1hr_4hr_CLEAN.Rdata")
 ```
+
+Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_0hr_1hr_4hr_CLEAN". We can investiate this R object further and understand its structure. 
+
+```
+   > class(mDC_0hr_1hr_4hr_CLEAN)
+   [1] "matrix" "array" 
+   > dim(mDC_0hr_1hr_4hr_CLEAN)
+   [1] 14222 24169
+   > head(rownames(mDC_0hr_1hr_4hr_CLEAN))
+   [1] "0610007P14Rik" "0610009B22Rik" "0610009O20Rik" "0610010B08Rik" "0610010F05Rik"
+   [6] "0610010K14Rik"
+   > head(colnames(mDC_0hr_1hr_4hr_CLEAN))
+   [1] "0hrA_CATTTGTTCTAGACCC" "0hrA_CCTACTAGATCTTTGT" "0hrA_CAACAAATATATAGGA"
+   [4] "0hrA_AAATCAGACACAACAG" "0hrA_GCGTTGCTTCTGTGGT" "0hrA_TGACGGACAAGTAATC"
+   > mDC_0hr_1hr_4hr_CLEAN[1:5,1:5] 
+                 0hrA_CATTTGTTCTAGACCC 0hrA_CCTACTAGATCTTTGT 0hrA_CAACAAATATATAGGA
+   0610007P14Rik                     0                     0                     0
+   0610009B22Rik                     0                     0                     0
+   0610009O20Rik                     0                     0                     0
+   0610010B08Rik                     0                     0                     0
+   0610010F05Rik                     0                     0                     0
+                 0hrA_AAATCAGACACAACAG 0hrA_GCGTTGCTTCTGTGGT
+   0610007P14Rik                     0                     0
+   0610009B22Rik                     0                     0
+   0610009O20Rik                     0                     0
+   0610010B08Rik                     0                     0
+   0610010F05Rik                     0                     0
+```
+
+The class function indicates the type of the R object which, in this case, a matrix that stores the UMI counts of each barcode in the scRNA experiment associated to each gene.
+Columns are the barcodes, and the rows are the genes. The expression matrix contains 14222 genes and 24169 barcodes. 
+
+
 
 
 
