@@ -7,10 +7,9 @@ This is a beginner level lecture in scRNA data analysis.
 
 # Overview
 
-- [Introduction to scRNA-Seq](#introduction-to-scrna-seq)
 - [Getting Started](#getting-started)
 - [Introducton to scRNA-Seq Analysis](#introducton-to-scrna-seq-analysis)
-- [scRNA-Seq Processing](#scrna-seq-processing)
+- [scRNA-Seq Processing with DolphinNext](#scrna-seq-processing-with-dolphinnext)
 - [Data Structures](#data-structures)
 - [Filtering](#filtering)
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
@@ -18,15 +17,6 @@ This is a beginner level lecture in scRNA data analysis.
 - [Normalization](#normalization)
 - [Differential expression](#differential-expression)
 
-## Introduction to scRNA-Seq
-
-In previous sessions, we have covered basics of R programming, drawing graphics and figures, and introductory RNA-Seq data analysis.
-Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he have learned 
-on R and start programming for the essential scRNA-Seq data analysis.  
-
-Why Single Cell ?
-
-<img src="images/scRNASummary.png" width="600">
 
 ## Getting Started
 
@@ -82,9 +72,40 @@ Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source
     library(SignallingSingleCell)
 ```
     
-## Introducton to scRNA-Seq Analysis
+## Introduction to scRNA-Seq
+
+In previous sessions, we have covered basics of R programming, drawing graphics and figures, and introductory RNA-Seq data analysis.
+Today, we will briefly cover single cell RNA sequencing (scRNA-Seq), processing of scRNA-Seq reads and then we will extend on what he have learned 
+on R and start programming for the essential scRNA-Seq data analysis.  
+
+Why Single Cell ?
+
+<img src="images/scRNASummary.png" width="600">
+
+We should know that scRNA Analysis may not be necessary for all problems. It is well suited when populations are heterogeneous, and it is a powerful tool for studying intra and inter cell type
+variations in gene expression
 
 <img src="images/scRNAWorkflow.png" width="600">
+
+<img src="images/barcodes.png" width="600">
+
+<img src="images/barcodes2.png" width="600">
+
+<img src="images/transcript1.png" width="600">
+
+<img src="images/transcript2.png" width="600">
+
+<img src="images/transcript3.png" width="600">
+
+## scRNA-Seq Processing with DolphinNext
+
+<img src="images/dnext_singlecell1.png" width="600">
+
+<img src="images/dnext_singlecell2.png" width="600">
+
+<img src="images/dnext_singlecell3.png" width="600">
+
+<img src="images/dnext_singlecell4.png" width="600">
 
 ## Data Structures
 
