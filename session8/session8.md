@@ -15,7 +15,8 @@ This is a beginner level lecture in scRNA data analysis.
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
 - [Normalization](#normalization)
-- [Differential expression](#differential-expression)
+- [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
+- [Basic Analysis on Clusters](#basic-analysis-on-clusters)
 
 
 ## Getting Started
@@ -282,6 +283,12 @@ The "SignallingSingleCell" package incorporates a Spectral Clustering method tha
 
 ```
 ex_sc <- cluster_sc(ex_sc, dimension = "Comp", method = "spectral", num_clust = 6) 
+
+table(pData(ex_sc)$Cluster)
+
+## Cluster1 Cluster2 Cluster3 Cluster4 Cluster5 Cluster6 
+##       55     1591     1016      338      862      217 
+      
 plot_tsne_metadata(ex_sc, color_by = "Cluster", title = "Spectral Cluster on iPCA components") 
 ```
 
@@ -293,9 +300,122 @@ plot_density(ex_sc, title = "UMIs per cluster", val = "UMI_sum_raw", color_by = 
 
 <img src="images/umi_density_clusters.png" width="600">
 
-We can also calculate a set of markers for these clusters and store the scores of all genes to fData. This is a quick method to find good markers genes for cell identification. These gene scores get written to fData()
+We can also calculate a set of markers for these clusters and store the scores of all genes to fData. This is a quick method to find good markers genes for cell identification. These gene scores get written to fData(). 
 
 ```
 ex_sc <- id_markers(ex_sc, print_progress = TRUE) 
-markers <- return_markers(ex_sc, num_markers = 10) 
+
+##               Cluster1_marker_score_Cluster Cluster2_marker_score_Cluster Cluster3_marker_score_Cluster Cluster4_marker_score_Cluster
+## 0610007P14Rik                          6268                          2521                          8357                          7310
+## 0610009B22Rik                         10584                           263                          3592                          8065
+## 0610009O20Rik                          5647                          4980                          4513                          3187
+## 0610010B08Rik                          6453                          7707                          3553                          5734
+## 0610010F05Rik                         10512                          8695                          3988                          8753
+## 0610010K14Rik                          3188                          5090                         10169                          6052
+##               Cluster5_marker_score_Cluster Cluster6_marker_score_Cluster
+## 0610007P14Rik                          3129                          8831
+## 0610009B22Rik                          6436                          3304
+## 0610009O20Rik                          6475                          7196
+## 0610010B08Rik                          5302                          3583
+## 0610010F05Rik                          2272                            56
+## 0610010K14Rik                          8492                          3906
 ```
+
+Using these scores, we can return top n markers (for example, n=10) for each cell identification
+
+```
+markers <- return_markers(ex_sc, num_markers = 10) 
+table(pData(ex_sc)$Cluster)
+markers
+
+## $Cluster1_Markers
+##  [1] "S100a9"  "S100a8"  "Mmp9"    "Chil1"   "Lcn2"    "Ngp"     "Pglyrp1" "Csf3r"  
+##  [9] "Il1f9"   "Ifitm6" 
+
+## $Cluster2_Markers
+##  [1] "Trem2"   "Tbxas1"  "Pdxk"    "Plxna1"  "Fabp4"   "Itgax"   "Atp13a2" "F7"     
+##  [9] "Amz1"    "Ctsk"   
+
+## $Cluster3_Markers
+##  [1] "Cmpk2"  "Rsad2"  "Ifit2"  "Iigp1"  "Ifi205" "Slc7a2" "Il6"    "Cd40"   "Plet1" 
+## [10] "Ccl5"  
+
+## $Cluster4_Markers
+##  [1] "Fscn1"       "Ccr7"        "Cacnb3"      "Ccl22"       "Mmp25"      
+##  [6] "Serpinb6b"   "Sema7a"      "Apol7c"      "Net1"        "Nup62-il4i1"
+
+## $Cluster5_Markers
+##  [1] "Flrt3"  "Tnfsf9" "Sdc4"   "Cxcl1"  "Ccl4"   "Sdc1"   "Cxcl2"  "Trem2"  "Tnf"   
+## [10] "Fabp4" 
+
+## $Cluster6_Markers
+##  [1] "Rasgef1b" "Il1a"     "Myof"     "Egr2"     "Dnajb4"   "Cenpa"    "Nfkbiz"  
+##  [8] "Errfi1"   "Tnip3"    "Chn2"    
+```
+
+## Normalization
+
+Now that the data has preliminary clusters, we can normalize. SCRAN normalization will first normalize internally in clusters, before normalizing across clusters. Once the data is normalized we can run the same steps as above before visualization. The first step is to select the genes to be used for normalization. One method would be to first only use genes expressed in more than n cells, and then remove the most variable genes.
+
+We will store the normalized data in a separate R object.
+
+```
+ex_sc_norm <- norm_sc(ex_sc, pool_sizes = c(20,25,30,35,40))
+```
+
+## Post Normalization Analysis and Clustering
+
+Now that we have normalized, it is time to reprocess the data as before, this time on the normalized counts!
+
+```
+plot_density(ex_sc_norm, title = "size_factors", val = "size_factor", statistic = "mean") 
+```
+
+<img src="images/size_factor.png" width="600">
+
+```
+gene_subset <- subset_genes(ex_sc_norm, method = "PCA", threshold = 1, minCells = 30, nComp = 10, cutoff = 0.85)
+ex_sc_norm <- dim_reduce(ex_sc_norm, genelist = gene_subset, pre_reduce = "iPCA", nComp = 12, tSNE_perp = 30, iterations = 500, print_progress=TRUE)
+ex_sc_norm <- cluster_sc(ex_sc_norm, dimension = "Comp", method = "spectral", num_clust = 6)
+plot_tsne_metadata(ex_sc_norm, color_by = "Cluster", title = "Spectral Cluster on iPCA components")
+```
+
+<img src="images/cluster_tsne_norm.png" width="600">
+
+```
+plot_density_ridge(ex_sc_norm, color_by = "Cluster", title = "UMIs per cluster", val = "UMI_sum_raw")
+```
+
+<img src="images/cluster_tsne_norm.png" width="600">
+
+```
+plot_tsne_metadata(ex_sc_norm, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
+plot_tsne_metadata(ex_sc_norm, color_by = "size_factor", title = "Size Factor per cell") 
+plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp1", title = "PC1 cell loadings") 
+plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp2", title = "PC2 cell loadings") 
+plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
+```
+
+## Basic Analysis on Clusters
+
+As a quick and easy way to ID cells a marker id function is provided.
+
+```
+ex_sc_norm <- id_markers(ex_sc_norm, print_progress = TRUE) 
+head(fData(ex_sc_norm))
+marker_list <- return_markers(ex_sc_norm, num_markers = 5) 
+plot_scatter(input = ex_sc_norm, title = "Correlation Plot", gene1 = "Ccr7", gene2 = "Ccl22", facet_by = "Cluster", color_by = "Timepoint", logscale = FALSE)
+```
+
+<img src="images/correlation_plot.png" width="600">
+
+```
+marker_facet <- c("Emr1", "Lcn2", "Ccr7")
+plot_tsne_gene(input = ex_sc_norm, gene = marker_facet, title = "Marker Genes",  ncol = 3, density = FALSE)
+plot_violin(ex_sc_norm, title = "Ccr7 across clusters", gene = "Ccr7", color_by = "Timepoint", facet_by = "Cluster", size = 1, ncol = 3)
+```
+
+<img src="images/tsne_gene.png" width="600">
+
+<img src="images/violin.png" width="600">
+
