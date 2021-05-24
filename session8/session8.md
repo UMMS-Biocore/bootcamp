@@ -407,7 +407,7 @@ marker_list <- return_markers(ex_sc_norm, num_markers = 5)
 plot_scatter(input = ex_sc_norm, title = "Correlation Plot", gene1 = "Ccr7", gene2 = "Ccl22", facet_by = "Cluster", color_by = "Timepoint", logscale = FALSE)
 ```
 
-<img src="images/correlation_plot.png" width="600">
+<img src="images/corelation_plot.png" width="600">
 
 ```
 marker_facet <- c("Emr1", "Lcn2", "Ccr7")
