@@ -386,7 +386,7 @@ plot_tsne_metadata(ex_sc_norm, color_by = "Cluster", title = "Spectral Cluster o
 plot_density_ridge(ex_sc_norm, color_by = "Cluster", title = "UMIs per cluster", val = "UMI_sum_raw")
 ```
 
-<img src="images/cluster_tsne_norm.png" width="600">
+<img src="images/cluster_ridge_norm.png" width="600">
 
 ```
 plot_tsne_metadata(ex_sc_norm, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
