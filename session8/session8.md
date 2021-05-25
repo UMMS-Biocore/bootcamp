@@ -126,8 +126,7 @@ we will use these functions to cover entire cycle of analyzing single cell data.
 Now, lets download our data, load it into our R environment and start investigating! 
 
 ```
-load("~/Documents/UMASS/Garber/Data/inDrop/mDC_UMIClean/1-RawFiles/mDC_0hr_1hr_4hr_CLEAN.Rdata")
-load("mDC_0hr_1hr_4hr_CLEAN.Rdata")
+load(url("https://galaxyweb.umassmed.edu/pub/class/mDC_0hr_1hr_4hr_CLEAN.Rdata")
 ```
 
 Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_0hr_1hr_4hr_CLEAN". We can investiate this R object further and understand its structure. 
