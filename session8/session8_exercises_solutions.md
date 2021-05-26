@@ -43,7 +43,7 @@ colnames(pData(ex_sc_skin))
 plot_tsne_metadata(ex_sc_skin, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
 ```
 
-## Exercise 1
+## Exercise 2
 
 Clustering
 ```
