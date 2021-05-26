@@ -494,9 +494,34 @@ plot_tsne_metadata(mDC_0hr, color_by = "SVM_Classify", title = "Spectral Cluster
 
 ## DE Analysis
 
-## Exercise 3: DE Analysis
+Now that cells are grouped by their cell type, we can run DE in order to determine which genes are change in association with our experimental conditions. 
 
-Now we will apply DE analysis to the skin data. Our data is already normalized and clustered.
+For simplicity we can subset to 0hr and 4hr, to  find the genes that change between these conditions.
+
+It should be noted that DE should always be run on raw counts, not on the normalized counts!
+
+```
+ex_sc_norm_0_4 <- subset_ex_sc(ex_sc_norm, variable = "Timepoint", select = c("0hr", "4hr"))
+findDEgenes(input = ex_sc,
+            pd = pData(ex_sc_norm_0_4),
+            DEgroup = "Timepoint",
+            contrastID = "0hr",
+            facet_by = "SVM_Classify",
+            outdir = "~/Downloads/")
+plot_volcano(de_path = "~/Downloads/", de_file = "Macrophage_0hr_DEresults.tsv", fdr_cut = 0.000001, logfc_cut = 2)
+plot_violin(ex_sc_norm_0_4, color_by = "Timepoint", facet_by = "SVM_Classify", gene = "Cxcl9")
+plot_violin(ex_sc_norm_0_4, color_by = "Timepoint", facet_by = "SVM_Classify", gene = "Rsad2")
+```
+
+## Homework
+
+Now try to run DE between the 0hr and 1hr timepoints on the mouse data. Then make a volcano plot of the genes that are significantly changed (FDR < 0.001, logfc_cut >= 2) within Dendritic cells.
+
+```
+# ex_sc_norm_0_1 <- subset_ex_sc()
+# findDEgenes() 
+# plot_volcano()
+```
 
 
 ## Some notable remarks 
