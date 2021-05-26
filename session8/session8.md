@@ -412,6 +412,8 @@ Now let us try clustering for the skin data!! For dimensions, both Comp and 2d a
 ```
 # cluster_sc(ex_sc_skin) 
 
+# plot_tsne_metadata(ex_sc_skin)
+
 # id_markers(ex_sc_skin)
 
 # return_markers(ex_sc_skin) 
