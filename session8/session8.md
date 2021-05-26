@@ -21,7 +21,7 @@ This is a beginner level lecture in scRNA data analysis.
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
 - [Supervised Analysis](#supervised-analysis)
 - [DE Analysis](#de-analysis)
-- [Exercise 3: DE Analysis](#exercise-3-de-analysis)
+- [Homework](#homework)
 
 ## Getting Started
 
