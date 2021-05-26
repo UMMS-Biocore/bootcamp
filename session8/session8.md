@@ -123,42 +123,45 @@ of analysis, include scRNA Data Analysis.
 We have installed and loaded a library called SignallingSingleCell that include a considerable number of functions and algorithms to conducting scRNA data analysis, and
 we will use these functions to cover entire cycle of analyzing single cell data. 
 
-Now, lets download our data, load it into our R environment and start investigating! 
+Now, lets download our datasets, load it into our R environment and start investigating! 
 
 ```
-load(url("https://galaxyweb.umassmed.edu/pub/class/mDC_0hr_1hr_4hr_CLEAN.Rdata")
+load(url("https://galaxyweb.umassmed.edu/pub/class/mDC_UMI_Table.Rdata")
+load(url("https://galaxyweb.umassmed.edu/pub/class/ex_sc_skin.Rdata"))
 ```
 
-Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_0hr_1hr_4hr_CLEAN". We can investiate this R object further and understand its structure. 
+Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_UMI_Table". We can investigate this R object further and understand its structure. 
+
+We will use the "ex_sc_skin" dataset during exercises
 
 ```
-class(mDC_0hr_1hr_4hr_CLEAN)
+class(mDC_UMI_Table)
 
 ## [1] "matrix" "array" 
 
-dim(mDC_0hr_1hr_4hr_CLEAN)
+dim(mDC_UMI_Table)
  
-## [1] 14222 24169
+## [1] 11584  3814
   
-head(rownames(mDC_0hr_1hr_4hr_CLEAN))
+head(rownames(mDC_UMI_Table))
    
 ## [1] "0610007P14Rik" "0610009B22Rik" "0610009O20Rik" "0610010B08Rik" "0610010F05Rik"
 ## [6] "0610010K14Rik"
    
-head(colnames(mDC_0hr_1hr_4hr_CLEAN))
+head(colnames(mDC_UMI_Table))
   
-## [1] "0hrA_CATTTGTTCTAGACCC" "0hrA_CCTACTAGATCTTTGT" "0hrA_CAACAAATATATAGGA"
-## [4] "0hrA_AAATCAGACACAACAG" "0hrA_GCGTTGCTTCTGTGGT" "0hrA_TGACGGACAAGTAATC"
-   
+## [1] "0hrA_TGACGGACAAGTAATC" "0hrA_CACAACAGTAGCCTCG" "0hrA_GTTTGTTTGCACCTCT"
+## [4] "0hrA_GCTTACCTTGACCCTC" "0hrA_GGAGAAGCGCTTTGGC" "0hrA_AAATCAGAGATCTCGG"
+
 mDC_0hr_1hr_4hr_CLEAN[1:5,1:5] 
    
-##               0hrA_CATTTGTTCTAGACCC 0hrA_CCTACTAGATCTTTGT 0hrA_CAACAAATATATAGGA
+##               0hrA_TGACGGACAAGTAATC 0hrA_CACAACAGTAGCCTCG 0hrA_GTTTGTTTGCACCTCT
 ## 0610007P14Rik                     0                     0                     0
 ## 0610009B22Rik                     0                     0                     0
 ## 0610009O20Rik                     0                     0                     0
 ## 0610010B08Rik                     0                     0                     0
 ## 0610010F05Rik                     0                     0                     0
-##               0hrA_AAATCAGACACAACAG 0hrA_GCGTTGCTTCTGTGGT
+##               0hrA_GCTTACCTTGACCCTC 0hrA_GGAGAAGCGCTTTGGC
 ## 0610007P14Rik                     0                     0
 ## 0610009B22Rik                     0                     0
 ## 0610009O20Rik                     0                     0
@@ -167,19 +170,19 @@ mDC_0hr_1hr_4hr_CLEAN[1:5,1:5]
 ```
 
 The class function indicates the type of the R object which, in this case, a "matrix" that stores the UMI counts of each barcode in the scRNA experiment associated to each gene.
-Columns are the barcodes, and the rows are the genes. The expression matrix contains 14222 genes and 24169 barcodes. 
+Columns are the barcodes, and the rows are the genes. The expression matrix contains 11584 genes and 3814 barcodes. 
 
 For analyzing this expression matrix, we have to build a new R object with its own class (like "matrix"), and these classes are often designed within R packages. We 
 will use the "ExpressionSet" object which is required for analyzing single cell expression matrices by the SignallingSingleCell package. Lets start by calling the 
 "construct_ex_sc" function for that purpose!
 
 ```
-ex_sc <- construct_ex_sc(mDC_0hr_1hr_4hr_CLEAN) # sc_dat == Input expression matrix
-rm(mDC_0hr_1hr_4hr_CLEAN)
+ex_sc <- construct_ex_sc(mDC_UMI_Table) 
+rm(mDC_UMI_Table)
 ex_sc
    
 ## ExpressionSet (storageMode: lockedEnvironment)
-## assayData: 14222 features, 24169 samples 
+## assayData: 11584 features, 3814 samples 
 ##   element names: exprs 
 ## protocolData: none
 ## phenoData: none
@@ -205,13 +208,13 @@ pData(ex_sc)[grep("1hr", rownames(pData(ex_sc))),"Timepoint"] <- "1hr"
 pData(ex_sc)[grep("4hr", rownames(pData(ex_sc))),"Timepoint"] <- "4hr"
 head(pData(ex_sc))
    
-##                          Timepoint
-## 0hrA_CATTTGTTCTAGACCC          0hr
-## 0hrA_CCTACTAGATCTTTGT          0hr
-## 0hrA_CAACAAATATATAGGA          0hr
-## 0hrA_AAATCAGACACAACAG          0hr
-## 0hrA_GCGTTGCTTCTGTGGT          0hr
-## 0hrA_TGACGGACAAGTAATC          0hr
+##                       Timepoint
+## 0hrA_TGACGGACAAGTAATC       0hr
+## 0hrA_CACAACAGTAGCCTCG       0hr
+## 0hrA_GTTTGTTTGCACCTCT       0hr
+## 0hrA_GCTTACCTTGACCCTC       0hr
+## 0hrA_GGAGAAGCGCTTTGGC       0hr
+## 0hrA_AAATCAGAGATCTCGG       0hr
  
 View(pData(ex_sc))
 ```
