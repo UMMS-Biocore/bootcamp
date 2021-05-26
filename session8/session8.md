@@ -447,9 +447,17 @@ gene_subset <- subset_genes(ex_sc_norm, method = "PCA", threshold = 1, minCells 
 ex_sc_norm <- dim_reduce(ex_sc_norm, genelist = gene_subset, pre_reduce = "iPCA", nComp = 12, tSNE_perp = 30, iterations = 500, print_progress=TRUE)
 ex_sc_norm <- cluster_sc(ex_sc_norm, dimension = "Comp", method = "spectral", num_clust = 6)
 plot_tsne_metadata(ex_sc_norm, color_by = "Cluster", title = "Spectral Cluster on iPCA components")
+ex_sc_norm <- id_markers(ex_sc_norm, print_progress = TRUE) 
+markers <- return_markers(ex_sc_norm, num_markers = 10) 
+ex_sc_norm <- calc_agg_bulk(ex_sc_norm, aggregate_by = "Cluster")
+plot_heatmap(ex_sc_norm, genes = unique(unlist(markers)), type = "bulk")
 ```
 
 <img src="images/cluster_tsne_norm.png" width="600">
+
+<img src="images/heatmap_norm.png" width="600">
+
+Some other possible tsne functions
 
 ```
 plot_tsne_metadata(ex_sc_norm, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
