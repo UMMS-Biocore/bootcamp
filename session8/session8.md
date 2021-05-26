@@ -13,14 +13,12 @@ This is a beginner level lecture in scRNA data analysis.
 - [Data Structures](#data-structures)
 - [Filtering](#filtering)
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
-- [Exercise 1: Filtering, Feature Selection and Dimensionality Reduction](#exercise-1-filtering-feature-selection-and-dimensionality-reduction)
+- [Exercise 1: Filtering and Dimensionality Reduction](#exercise-1-filtering-and-dimensionality-reduction)
 - [Clustering](#clustering)
 - [Cell Type Identification](#cell-type-identification)
 - [Exercise 2: Clustering and Cell Type Identification](#exercise-2-clustering-and-cell-type-identification)
 - [Normalization](#normalization)
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
-- [Basic Analysis on Clusters](#basic-analysis-on-clusters)
-
 
 ## Getting Started
 
