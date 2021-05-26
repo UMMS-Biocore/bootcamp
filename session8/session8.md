@@ -125,6 +125,9 @@ create UMI distribution tables.
 R packages are used to conduct data analysis with built-in (already existing) functions. The idea is to immediately use an algorithm or method for any particular type
 of analysis, include scRNA Data Analysis.
 
+You can access to an interactive html file here for the lecture!
+https://rpubs.com/kgellatl729/774469
+
 We have installed and loaded a library called SignallingSingleCell that include a considerable number of functions and algorithms to conducting scRNA data analysis, and
 we will use these functions to cover entire cycle of analyzing single cell data. 
 
