@@ -227,7 +227,7 @@ mDC_0hr <- subset_ex_sc(ex_sc, variable = "Timepoint", select = c("0hr"))
 
 ## Filtering
 
-The first step is to filter your data to remove low quality cells. Often creating a histogram of the values and assigning cutoffs is simple and effective. Typically we remove all cells lower than 500-1000 UMIs / cell, and we also remove cells with more than 10000 cells. The objective is to remove fragments from barcodes whose droplets are either empty or includes more than one cell. Low or considerably high UMI counts are indications of such technical errors that occur during scRNA sequencing. 
+The first step is to filter your data to remove low quality cells. Often creating a histogram of the values and assigning cutoffs is simple and effective. Typically we remove all cells lower than 500-1000 UMIs / cell, and we also remove cells with more than 10000 cells. 
 
 Lets count total UMI counts of all barcodes, and visualize UMI density plots! We will also store these information on metadata as we calculate. 
 
@@ -249,13 +249,13 @@ plot_density(ex_sc, title = "UMI Density",  val = "UMI_sum_raw_filtered", statis
    
 head(pData(ex_sc))
  
-##                          Timepoint UMI_sum_raw UMI_sum_raw_filtered
-## 0hrA_TGACGGACAAGTAATC          0hr        4579                 4572
-## 0hrA_ATGGGCACACCTTGCC          0hr        2897                 2896
-## 0hrA_TCGAAGCTGTTGCACG          0hr        2266                 2265
-## 0hrA_TGTTTGAGTCGGTTCG          0hr        3045                 3042
-## 0hrA_TAAATAGGCACAAGGC          0hr        2238                 2237
-## 0hrA_GATTAGACGGGAACCT          0hr        1217                 1217
+##                       Timepoint UMI_sum_raw UMI_sum_raw_filtered
+## 0hrA_TGACGGACAAGTAATC       0hr        4572                 4570
+## 0hrA_CACAACAGTAGCCTCG       0hr        1581                 1580
+## 0hrA_GTTTGTTTGCACCTCT       0hr        2296                 2288
+## 0hrA_GCTTACCTTGACCCTC       0hr        2098                 2097
+## 0hrA_GGAGAAGCGCTTTGGC       0hr        2425                 2421
+## 0hrA_AAATCAGAGATCTCGG       0hr        6618                 6601
 ```
 
 <img src="images/umi_density_postfilter.png" width="600">
@@ -264,7 +264,7 @@ head(pData(ex_sc))
 
 Before normalization dimensionality reduction is necessary to form preliminary clusters. These clusters are used to normalize internal to a cluster before normalizing across clusters. First we can subset the genes, and then use these feature selected genes for dimension reduction.
 
-We use the method of Principal Component Analysis (PCA) reduce the dimensionality of the dataset. We use the first 10 principal components. 
+We use the method of Principal Component Analysis (PCA) reduce the dimensionality of the dataset.
 
 ```
 gene_subset <- subset_genes(ex_sc, method = "PCA", threshold = 1, minCells = 30, nComp = 10, cutoff = 0.85) 
@@ -281,6 +281,17 @@ plot_tsne_metadata(ex_sc, color_by = "UMI_sum_raw", title = "Total UMIs per cell
 ```
 
 <img src="images/umi_tsne.png" width="600">
+
+We can also plot principal components 
+
+```
+plot_tsne_metadata(ex_sc, color_by = "iPC_Comp1", title = "PC1 cell loadings") 
+plot_tsne_metadata(ex_sc, color_by = "iPC_Comp2", title = "PC2 cell loadings") 
+plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
+```
+
+
+
 
 ## Clustering
 
