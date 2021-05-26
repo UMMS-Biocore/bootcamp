@@ -298,30 +298,31 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings")
 We will use the "ex_sc_skin" dataset during exercises. It is already defined as an ExpressionSet Object so you wont have to 
 use "construct_ex_sc" function.
 
-1. Filter out low quality reads of the skin data using function we just have learned about. 
+1. Filter out low quality reads of the skin data using function we just have learned about: "calc_libsize" and "pre_filter" functions. You can also plot density plots to
+visualize the UMI distribution. 
 
 ```
-# calc_libsize(ex_sc_skin)
+# Calculate library size with calc_libsize function
 
-# plot_density(ex_sc_skin)  
+# Draw density plot using plot_density function
 
-# pre_filter(ex_sc_skin)
-
-```
-
-2. Take a subset of genes/features
-
-```
-# subset_genes(ex_sc_skin)
+# Filter cells with low and high counts using the pre_filter function 
 
 ```
 
-3. Apply dimensionality reduction and visualize the tsne plot
+2. Take a subset of genes/features. You should use the subset_genes function. 
 
 ```
-# dim_reduce(ex_sc_skin) 
+# subset_genes function, fill below
 
-# plot_tsne_metadata(ex_sc_skin) 
+```
+
+3. Apply dimensionality reduction and visualize the tsne plot using "dim_reduce" and "plot_tsne_metadata" functions.
+
+```
+# dim_reduce function, fill below
+
+# plot_tsne_metadata function, fill below
 
 ```
 
@@ -410,17 +411,17 @@ plot_heatmap(ex_sc, genes = unique(unlist(markers)), type = "bulk")
 Now let us try clustering for the skin data!! For dimensions, both Comp and 2d are supported. There will determine if the clustering is done on principal components, or on the 2D representation. There are also 2 clustering algorithms available, density and spectral. Typically we recommend spectral clustering on PCA components, or density clustering on the 2d representation. Try both!
 
 ```
-# cluster_sc(ex_sc_skin) 
+# Cluster the skin data using "cluster_sc" function. 
 
-# plot_tsne_metadata(ex_sc_skin)
+# Draw the cluster using "plot_tsne_metadata" function.
 
-# id_markers(ex_sc_skin)
+# Get markers of these clusters using the "id_markers" function.
 
-# return_markers(ex_sc_skin) 
+# Use the "return_markers" and store top 10 markers in an object called "markers".
 
-# calc_agg_bulk(ex_sc_skin)
+# Calculate aggregated cell counts given the clusters using "calc_agg_bulk" function. 
 
-# plot_heatmap(ex_sc_skin)
+# After aggregationg, use "plot_heatmap" function to visualize markers across clusters. 
 
 ```
 
