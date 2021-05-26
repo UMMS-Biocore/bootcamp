@@ -219,6 +219,12 @@ head(pData(ex_sc))
 View(pData(ex_sc))
 ```
 
+We can also take a subset of the ExpressionSet object
+
+```
+mDC_0hr <- subset_ex_sc(ex_sc, variable = "Timepoint", select = c("0hr"))
+```
+
 ## Filtering
 
 The first step is to filter your data to remove low quality cells. Often creating a histogram of the values and assigning cutoffs is simple and effective. Typically we remove all cells lower than 500-1000 UMIs / cell, and we also remove cells with more than 10000 cells. The objective is to remove fragments from barcodes whose droplets are either empty or includes more than one cell. Low or considerably high UMI counts are indications of such technical errors that occur during scRNA sequencing. 
