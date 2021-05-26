@@ -433,8 +433,8 @@ We will store the normalized data in a separate R object.
 ```
 # ex_sc_norm <- norm_sc(ex_sc, pool_sizes = c(20,25,30,35,40))
 x <- exprs(ex_sc)
-cSum <- apply(x,2,sum)    # recompute for remaining cells
-x <- as.matrix(sweep(x,2,cSum,FUN='/'))*1e6    # normalize to UMIs per million
+cSum <- apply(x,2,sum)   
+x <- as.matrix(sweep(x,2,cSum,FUN='/'))*1e6   
 ex_sc_norm <- construct_ex_sc(x)
 pData(ex_sc_norm) <- pData(ex_sc)
 ```
