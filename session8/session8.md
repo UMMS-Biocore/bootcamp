@@ -296,35 +296,22 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings")
 
 ## Exercise 1: Filtering and Dimensionality Reduction
 
-We will use the "ex_sc_skin" dataset during exercises. It is already defined as an ExpressionSet Object so you wont have to 
-use "construct_ex_sc" function.
-
-1. Filter out low quality reads of the skin data using function we just have learned about: "calc_libsize" and "pre_filter" functions. You can also plot density plots to
-visualize the UMI distribution. 
+Now let us try dimension for the skin data!! First we can inspect the skin data to get a sense of what we are working with. Once we get a sense for the data we can then use the same functions as above to perform gene selection and dimension reduction.
 
 ```
-# Calculate library size with calc_libsize function
+dim(ex_sc_skin)
+colnames(pData(ex_sc_skin))
+colnames(fData(ex_sc_skin))
+plyr::count(pData(ex_sc_skin))
 
-# Draw density plot using plot_density function
+# Use the subset_genes function to find variable genes in the skin data. Be sure to provide the input argument and method argument. Use ?subset_genes() to view help pages for functions. Try different methods and compare the number of genes you get out for each method.
+gene_subset <- subset_genes(ex_sc_skin, method = "PCA", threshold = 1, minCells = 30)
 
-# Filter cells with low and high counts using the pre_filter function 
+# Use the dim_reduce function to create a 2D representation of the skin data. Be sure to provide the input argument and a gene list.
+ex_sc_skin <- dim_reduce(ex_sc_skin, genelist = gene_subset, pre_reduce = "iPCA", nComp = 10, iterations = 500)
 
-```
-
-2. Take a subset of genes/features. You should use the subset_genes function. 
-
-```
-# subset_genes function, fill below
-
-```
-
-3. Apply dimensionality reduction and visualize the tsne plot using "dim_reduce" and "plot_tsne_metadata" functions.
-
-```
-# dim_reduce function, fill below
-
-# plot_tsne_metadata function, fill below
-
+# Now you can plot metadata from pData() or genes of interest, onto the tSNE mapping.
+plot_tsne_metadata(ex_sc_skin, color_by = "Patient", facet_by = "Skin")
 ```
 
 ## Clustering
