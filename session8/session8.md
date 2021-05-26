@@ -282,7 +282,7 @@ plot_tsne_metadata(ex_sc, color_by = "UMI_sum_raw", title = "Total UMIs per cell
 
 <img src="images/umi_tsne.png" width="600">
 
-We can also plot principal components 
+We can also plot principal components on tsne graphs
 
 ```
 plot_tsne_metadata(ex_sc, color_by = "iPC_Comp1", title = "PC1 cell loadings") 
