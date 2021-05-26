@@ -135,7 +135,7 @@ load(url("https://galaxyweb.umassmed.edu/pub/class/ex_sc_skin.Rdata"))
 
 Here, "Rdata" is a file format designed for R, and its primary use is to store R objects. We only have a single R object within this Rdata file, and it is called "mDC_UMI_Table". We can investigate this R object further and understand its structure. 
 
-We will use the "ex_sc_skin" dataset during exercises
+We will use the "ex_sc_skin" dataset during exercises. It is already defined as an ExpressionSet Object. 
 
 ```
 class(mDC_UMI_Table)
@@ -295,44 +295,44 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings")
 
 ## Exercise 1: Filtering, Feature Selection and Dimensionality Reduction of Skin Data
 
+We will use the "ex_sc_skin" dataset during exercises. It is already defined as an ExpressionSet Object so you wont have to 
+use "construct_ex_sc" function.
+
 1. Filter out low quality reads of the skin data using function we just have learned about. 
 
 ```
 # calc_libsize(ex_sc, suffix = "raw")
 # plot_density(ex_sc)  
 # pre_filter(ex_sc)
-
 ```
 
-2. take a subset of genes/features
+2. Take a subset of genes/features
 
 ```
 # subset_genes(ex_sc)
 ```
 
-3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization.
+3. Apply dimensionality reduction and visualize the tsne plot
 
 ```
 # dim_reduce(ex_sc) 
 # plot_tsne_metadata(ex_sc) 
 ```
 
-
-
 ## Clustering
 
 Now that we have dimension reduced data we can try clustering it! Clustering algorithms often require you to specify a parameter. This is either the number of clusters, or
-parameter that represents some "resolution" which might represents a threshold for the similarity between expression profiles of barcodes. 
+parameter that represents some "resolution".  
 
 The "SignallingSingleCell" package incorporates a Spectral Clustering method that assumes the number of clusters, and we will assume that the data has 6 clusters!
 
 ```
-ex_sc <- cluster_sc(ex_sc, dimension = "Comp", method = "spectral", num_clust = 6) 
+ex_sc <- cluster_sc(ex_sc, dimension = "Comp", method = "spectral", num_clust = 5) 
 
 table(pData(ex_sc)$Cluster)
 
-## Cluster1 Cluster2 Cluster3 Cluster4 Cluster5 Cluster6 
-##       55     1591     1016      338      862      217 
+## Cluster1 Cluster2 Cluster3 Cluster4 Cluster5 
+##      852      962      338     1593       67
       
 plot_tsne_metadata(ex_sc, color_by = "Cluster", title = "Spectral Cluster on iPCA components") 
 ```
@@ -340,10 +340,12 @@ plot_tsne_metadata(ex_sc, color_by = "Cluster", title = "Spectral Cluster on iPC
 <img src="images/clusters_tsne.png" width="600">
 
 ```
-plot_density(ex_sc, title = "UMIs per cluster", val = "UMI_sum_raw", color_by = "Cluster", statistic = "mean")
+plot_tsne_metadata(ex_sc, color_by = "Timepoint", title = "Spectral Cluster on iPCA components") 
 ```
 
-<img src="images/umi_density_clusters.png" width="600">
+<img src="images/timepoint_tsne.png" width="600">
+
+## Cell Type Identification
 
 We can also calculate a set of markers for these clusters and store the scores of all genes to fData. This is a quick method to find good markers genes for cell identification. These gene scores get written to fData(). 
 
