@@ -21,6 +21,7 @@ This is a beginner level lecture in scRNA data analysis.
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
 - [Supervised Analysis](#supervised-analysis)
 - [DE Analysis](#de-analysis)
+- [Exercise 3: DE Analysis](#exercise-3-de-analysis)
 
 ## Getting Started
 
@@ -492,6 +493,10 @@ plot_tsne_metadata(mDC_0hr, color_by = "SVM_Classify", title = "Spectral Cluster
 ```
 
 ## DE Analysis
+
+## Exercise 3: Filtering and Dimensionality Reduction
+
+Now we will apply DE analysis to the skin data. Our data is already normalized and clustered.
 
 
 ## Some notable remarks 
