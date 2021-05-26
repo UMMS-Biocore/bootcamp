@@ -354,7 +354,7 @@ ex_sc_norm <- construct_ex_sc(x)
 pData(ex_sc_norm) <- pData(ex_sc)
 ```
 
-## Excercise 4: Process the normalized mouse data
+## Exercise 4: Process the normalized mouse data
 
 Now that we have normalized, it is time to reprocess the data as before, this time on the normalized counts! Use the ex_sc_norm normalized counts from above to run through the same processing steps as before.
 
