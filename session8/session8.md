@@ -16,7 +16,7 @@ This is a beginner level lecture in scRNA data analysis.
 - [Exercise 1: Filtering, Feature Selection and Dimensionality Reduction](#exercise-1-filtering-feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
 - [Cell Type Identification](#cell-type-identification)
-- [Exercise 2: Genome alignment of RNA-seq reads](#exercise-2-genome-alignment-of-rna-seq-reads)
+- [Exercise 2: Clustering and Cell Type Identification](#exercise-2-clustering-and-cell-type-identification)
 - [Normalization](#normalization)
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
 - [Basic Analysis on Clusters](#basic-analysis-on-clusters)
@@ -301,22 +301,28 @@ use "construct_ex_sc" function.
 1. Filter out low quality reads of the skin data using function we just have learned about. 
 
 ```
-# calc_libsize(ex_sc, suffix = "raw")
-# plot_density(ex_sc)  
-# pre_filter(ex_sc)
+# calc_libsize(ex_sc_skin)
+
+# plot_density(ex_sc_skin)  
+
+# pre_filter(ex_sc_skin)
+
 ```
 
 2. Take a subset of genes/features
 
 ```
-# subset_genes(ex_sc)
+# subset_genes(ex_sc_skin)
+
 ```
 
 3. Apply dimensionality reduction and visualize the tsne plot
 
 ```
-# dim_reduce(ex_sc) 
-# plot_tsne_metadata(ex_sc) 
+# dim_reduce(ex_sc_skin) 
+
+# plot_tsne_metadata(ex_sc_skin) 
+
 ```
 
 ## Clustering
@@ -343,61 +349,77 @@ plot_tsne_metadata(ex_sc, color_by = "Cluster", title = "Spectral Cluster on iPC
 plot_tsne_metadata(ex_sc, color_by = "Timepoint", title = "Spectral Cluster on iPCA components") 
 ```
 
-<img src="images/timepoint_tsne.png" width="600">
-
 ## Cell Type Identification
 
 We can also calculate a set of markers for these clusters and store the scores of all genes to fData. This is a quick method to find good markers genes for cell identification. These gene scores get written to fData(). 
 
 ```
 ex_sc <- id_markers(ex_sc, print_progress = TRUE) 
+head(fData(ex_sc))
 
-##               Cluster1_marker_score_Cluster Cluster2_marker_score_Cluster Cluster3_marker_score_Cluster Cluster4_marker_score_Cluster
-## 0610007P14Rik                          6268                          2521                          8357                          7310
-## 0610009B22Rik                         10584                           263                          3592                          8065
-## 0610009O20Rik                          5647                          4980                          4513                          3187
-## 0610010B08Rik                          6453                          7707                          3553                          5734
-## 0610010F05Rik                         10512                          8695                          3988                          8753
-## 0610010K14Rik                          3188                          5090                         10169                          6052
-##               Cluster5_marker_score_Cluster Cluster6_marker_score_Cluster
-## 0610007P14Rik                          3129                          8831
-## 0610009B22Rik                          6436                          3304
-## 0610009O20Rik                          6475                          7196
-## 0610010B08Rik                          5302                          3583
-## 0610010F05Rik                          2272                            56
-## 0610010K14Rik                          8492                          3906
+##               Cluster1_marker_score_Cluster Cluster2_marker_score_Cluster Cluster3_marker_score_Cluster
+## 0610007P14Rik                          3111                          7908                          7297
+## 0610009B22Rik                          5462                          2473                          7035
+## 0610009O20Rik                          6870                          4612                          3303
+## 0610010B08Rik                          5716                          2524                          4956
+## 0610010F05Rik                          2100                          3157                          7857
+## 0610010K14Rik                          7697                          9629                          5439
+##               Cluster4_marker_score_Cluster Cluster5_marker_score_Cluster
+## 0610007P14Rik                          2524                          7442
+## 0610009B22Rik                           190                         10302
+## 0610009O20Rik                          5562                          5682
+## 0610010B08Rik                          6577                          5650
+## 0610010F05Rik                          8045                          4388
+## 0610010K14Rik                          4349                          2797
 ```
 
 Using these scores, we can return top n markers (for example, n=10) for each cell identification
 
 ```
 markers <- return_markers(ex_sc, num_markers = 10) 
-table(pData(ex_sc)$Cluster)
 markers
 
 ## $Cluster1_Markers
-##  [1] "S100a9"  "S100a8"  "Mmp9"    "Chil1"   "Lcn2"    "Ngp"     "Pglyrp1" "Csf3r"  
-##  [9] "Il1f9"   "Ifitm6" 
+##  [1] "Tnfsf9"   "Rasgef1b" "Cxcl1"    "Flrt3"    "Il1b"     "Csrnp1"   "Cxcl2"    "Fabp4"    "Egr2"     "Tnf"     
 
 ## $Cluster2_Markers
-##  [1] "Trem2"   "Tbxas1"  "Pdxk"    "Plxna1"  "Fabp4"   "Itgax"   "Atp13a2" "F7"     
-##  [9] "Amz1"    "Ctsk"   
+##  [1] "Cmpk2"  "Iigp1"  "Rsad2"  "Ifit2"  "Il6"    "Cd40"   "Cd69"   "Plet1"  "Slc7a2" "Ifit1" 
 
 ## $Cluster3_Markers
-##  [1] "Cmpk2"  "Rsad2"  "Ifit2"  "Iigp1"  "Ifi205" "Slc7a2" "Il6"    "Cd40"   "Plet1" 
-## [10] "Ccl5"  
+##  [1] "Fscn1"     "Cacnb3"    "Ccl22"     "Ccr7"      "Serpinb6b" "Sema7a"    "Net1"      "Mmp25"     "Apol7c"   
+## [10] "Serpinb9" 
 
 ## $Cluster4_Markers
-##  [1] "Fscn1"       "Ccr7"        "Cacnb3"      "Ccl22"       "Mmp25"      
-##  [6] "Serpinb6b"   "Sema7a"      "Apol7c"      "Net1"        "Nup62-il4i1"
+##  [1] "Pdxk"    "Tbxas1"  "Myof"    "Fabp4"   "Ccr2"    "Tnfsf12" "Stac2"   "Dok2"    "Cerk"    "Amz1"   
 
 ## $Cluster5_Markers
-##  [1] "Flrt3"  "Tnfsf9" "Sdc4"   "Cxcl1"  "Ccl4"   "Sdc1"   "Cxcl2"  "Trem2"  "Tnf"   
-## [10] "Fabp4" 
+##  [1] "S100a9"  "S100a8"  "Chil1"   "Lcn2"    "Mmp9"    "Ngp"     "Asprv1"  "Pglyrp1" "Il1f9"   "Ltf"   
+```
 
-## $Cluster6_Markers
-##  [1] "Rasgef1b" "Il1a"     "Myof"     "Egr2"     "Dnajb4"   "Cenpa"    "Nfkbiz"  
-##  [8] "Errfi1"   "Tnip3"    "Chn2"    
+Now, lets take an aggregate sum of cells within each cluster and visualize gene abundances of these markers
+
+```
+ex_sc <- calc_agg_bulk(ex_sc, aggregate_by = "Cluster")
+plot_heatmap(ex_sc, genes = unique(unlist(markers)), type = "bulk")
+```
+
+<img src="images/heatmap.png" width="600">
+
+## Exercise 2: Clustering and Cell Type Identification
+
+Now let us try clustering for the skin data!! For dimensions, both Comp and 2d are supported. There will determine if the clustering is done on principal components, or on the 2D representation. There are also 2 clustering algorithms available, density and spectral. Typically we recommend spectral clustering on PCA components, or density clustering on the 2d representation. Try both!
+
+```
+# cluster_sc(ex_sc_skin) 
+
+# id_markers(ex_sc_skin)
+
+# return_markers(ex_sc_skin) 
+
+# calc_agg_bulk(ex_sc_skin)
+
+# plot_heatmap(ex_sc_skin)
+
 ```
 
 ## Normalization
@@ -430,39 +452,9 @@ plot_tsne_metadata(ex_sc_norm, color_by = "Cluster", title = "Spectral Cluster o
 <img src="images/cluster_tsne_norm.png" width="600">
 
 ```
-plot_density_ridge(ex_sc_norm, color_by = "Cluster", title = "UMIs per cluster", val = "UMI_sum_raw")
-```
-
-<img src="images/cluster_ridge_norm.png" width="600">
-
-```
 plot_tsne_metadata(ex_sc_norm, color_by = "UMI_sum_raw", title = "Total UMIs per cell") 
 plot_tsne_metadata(ex_sc_norm, color_by = "size_factor", title = "Size Factor per cell") 
 plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp1", title = "PC1 cell loadings") 
 plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp2", title = "PC2 cell loadings") 
 plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
 ```
-
-## Basic Analysis on Clusters
-
-As a quick and easy way to ID cells a marker id function is provided.
-
-```
-ex_sc_norm <- id_markers(ex_sc_norm, print_progress = TRUE) 
-head(fData(ex_sc_norm))
-marker_list <- return_markers(ex_sc_norm, num_markers = 5) 
-plot_scatter(input = ex_sc_norm, title = "Correlation Plot", gene1 = "Ccr7", gene2 = "Ccl22", facet_by = "Cluster", color_by = "Timepoint", logscale = FALSE)
-```
-
-<img src="images/corelation_plot.png" width="600">
-
-```
-marker_facet <- c("Emr1", "Lcn2", "Ccr7")
-plot_tsne_gene(input = ex_sc_norm, gene = marker_facet, title = "Marker Genes",  ncol = 3, density = FALSE)
-plot_violin(ex_sc_norm, title = "Ccr7 across clusters", gene = "Ccr7", color_by = "Timepoint", facet_by = "Cluster", size = 1, ncol = 3)
-```
-
-<img src="images/tsne_gene.png" width="600">
-
-<img src="images/violin.png" width="600">
-
