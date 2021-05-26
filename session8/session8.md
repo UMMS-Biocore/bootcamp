@@ -13,7 +13,10 @@ This is a beginner level lecture in scRNA data analysis.
 - [Data Structures](#data-structures)
 - [Filtering](#filtering)
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
+- [Exercise 1: Filtering, Feature Selection and Dimensionality Reduction](#exercise-1-filtering-feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
+- [Cell Type Identification](#cell-type-identification)
+- [Exercise 2: Genome alignment of RNA-seq reads](#exercise-2-genome-alignment-of-rna-seq-reads)
 - [Normalization](#normalization)
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
 - [Basic Analysis on Clusters](#basic-analysis-on-clusters)
@@ -290,6 +293,29 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp2", title = "PC2 cell loadings")
 plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
 ```
 
+## Exercise 1: Filtering, Feature Selection and Dimensionality Reduction of Skin Data
+
+1. Filter out low quality reads of the skin data using function we just have learned about. 
+
+```
+# calc_libsize(ex_sc, suffix = "raw")
+# plot_density(ex_sc)  
+# pre_filter(ex_sc)
+
+```
+
+2. take a subset of genes/features
+
+```
+# subset_genes(ex_sc)
+```
+
+3. We can then sort and index this bam file to compare with rsem alignments. You will learn the details about sorting and indexing in the next exercise before visualization.
+
+```
+# dim_reduce(ex_sc) 
+# plot_tsne_metadata(ex_sc) 
+```
 
 
 
