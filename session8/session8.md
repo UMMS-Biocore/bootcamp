@@ -493,3 +493,11 @@ plot_tsne_metadata(mDC_0hr, color_by = "SVM_Classify", title = "Spectral Cluster
 
 ## DE Analysis
 
+
+## Some notable remarks 
+
+There are numerous R packages and software tools for conducting scRNA data analysis. 
+Perhaps, one of the popular of these tools is Seurat using R for scRNA analysis, marker analysis, and some other advanced methods. 
+Here is a useful link for accessing tutorials of Seurat and how to use it!
+
+https://satijalab.org/seurat/articles/get_started.html
