@@ -19,6 +19,8 @@ This is a beginner level lecture in scRNA data analysis.
 - [Exercise 2: Clustering and Cell Type Identification](#exercise-2-clustering-and-cell-type-identification)
 - [Normalization](#normalization)
 - [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
+- [Supervised Analysis](#supervised-analysis)
+- [DE Analysis](#de-analysis)
 
 ## Getting Started
 
