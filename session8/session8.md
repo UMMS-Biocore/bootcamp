@@ -72,7 +72,7 @@ Enter one or more numbers, or an empty line to skip updates:
 Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source packages, and just enter if R asks to update packages
 
 ```
-devtools::install_github(“kgellatl/SignallingSingleCell”)
+devtools::install_github("kgellatl/SignallingSingleCell")
 library(SignallingSingleCell)
 ```
     
@@ -129,7 +129,7 @@ we will use these functions to cover entire cycle of analyzing single cell data.
 Now, lets download our datasets, load it into our R environment and start investigating! 
 
 ```
-load(url("https://galaxyweb.umassmed.edu/pub/class/mDC_UMI_Table.Rdata")
+load(url("https://galaxyweb.umassmed.edu/pub/class/mDC_UMI_Table.Rdata"))
 load(url("https://galaxyweb.umassmed.edu/pub/class/ex_sc_skin.Rdata"))
 ```
 
