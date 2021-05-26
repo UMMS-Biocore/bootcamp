@@ -466,3 +466,22 @@ plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp1", title = "PC1 cell loading
 plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp2", title = "PC2 cell loadings") 
 plot_tsne_metadata(ex_sc_norm, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
 ```
+
+## Supervised Analysis
+
+```{r, error=FALSE, warning=FALSE, cache=FALSE, include=TRUE}
+panel1 <- c("S100a9", "Chil1") # Neutrophil Markers
+panel2 <- c("Ccr7", "Fscn1") # DC
+panel3 <- c("Csf1r", "Mertk") # Mac
+panels <- list(panel1, panel2, panel3)
+plot_tsne_gene(ex_sc_norm, gene = unlist(panels), title = "")
+names(panels) <- c("Neutrophil", "Dendritic", "Macrophage")
+mDC_0hr <- subset_ex_sc(ex_sc, variable = "Timepoint", select = c("0hr"))
+mDC_0hr <- flow_filter(mDC_0hr, panels = panels, title = "Flow Pass Cells")
+mDC_0hr <- flow_svm(mDC_0hr, pcnames = "iPC_Comp")
+plot_tsne_metadata(mDC_0hr, color_by = "Cluster", title = "Spectral Cluster on PCA components")
+plot_tsne_metadata(mDC_0hr, color_by = "SVM_Classify", title = "Spectral Cluster on PCA components")
+```
+
+## DE Analysis
+
