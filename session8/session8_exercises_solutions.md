@@ -47,7 +47,7 @@ plot_tsne_metadata(ex_sc_skin, color_by = "UMI_sum_raw", title = "Total UMIs per
 
 Clustering
 ```
-ex_sc_skin <- cluster_sc(ex_sc_skin, dimension = "Comp", method = "spectral", num_clust = 8) 
+ex_sc_skin <- cluster_sc(ex_sc_skin, dimension = "Comp", method = "spectral", num_clust = 4) 
 plot_tsne_metadata(ex_sc_skin, color_by = "Cluster", title = "Spectral Cluster on iPCA components") 
 ```
 
