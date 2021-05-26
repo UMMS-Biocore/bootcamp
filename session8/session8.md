@@ -494,7 +494,7 @@ plot_tsne_metadata(mDC_0hr, color_by = "SVM_Classify", title = "Spectral Cluster
 
 ## DE Analysis
 
-## Exercise 3: Filtering and Dimensionality Reduction
+## Exercise 3: DE Analysis
 
 Now we will apply DE analysis to the skin data. Our data is already normalized and clustered.
 
