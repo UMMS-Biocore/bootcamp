@@ -291,7 +291,7 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp2", title = "PC2 cell loadings")
 plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
 ```
 
-## Exercise 1: Filtering and Dimensionality Reduction of Skin Data
+## Exercise 1: Filtering and Dimensionality Reduction
 
 We will use the "ex_sc_skin" dataset during exercises. It is already defined as an ExpressionSet Object so you wont have to 
 use "construct_ex_sc" function.
