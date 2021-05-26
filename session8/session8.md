@@ -20,7 +20,6 @@ This is a beginner level lecture in scRNA data analysis.
 - [Exercise 3: Cell Type identification Skin Data](#exercise-3-cell-type-identification-skin-data)
 - [Normalization](#normalization)
 - [Exercise 4: Process the normalized mouse data](#exercise-4-process-the-normalized-mouse-data)
-- [Post Normalization Analysis and Clustering](#post-normalization-analysis-and-clustering)
 - [Supervised Analysis](#supervised-analysis)
 - [DE Analysis](#de-analysis)
 - [Homework](#homework)
