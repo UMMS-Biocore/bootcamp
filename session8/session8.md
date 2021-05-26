@@ -276,6 +276,7 @@ dim(ex_sc_skin)
 colnames(pData(ex_sc_skin))
 colnames(fData(ex_sc_skin))
 plyr::count(pData(ex_sc_skin))
+
 # Use the subset_genes function to find variable genes in the skin data. Be sure to provide the input argument and method argument. Use ?subset_genes() to view help pages for functions. Try different methods and compare the number of genes you get out for each method.
 gene_subset <- subset_genes(ex_sc_skin, method = "PCA", threshold = 1, minCells = 30)
 
@@ -308,6 +309,7 @@ Now let us try clustering for the skin data!! Try both density based and spectra
 
 ```
 ex_sc_skin <- cluster_sc(ex_sc_skin, dimension = "Comp", method = "spectral", num_clust = 4) 
+
 plot_tsne_metadata(ex_sc_skin, color_by = "Cluster")
 ```
 
@@ -345,10 +347,16 @@ Now that the data has preliminary clusters, we can normalize. SCRAN normalizatio
 
 ```
 table(pData(ex_sc)$Cluster)
+
 # ex_sc_norm <- norm_sc(ex_sc, pool_sizes = c(20,25,30,35,40))
 x <- exprs(ex_sc)
-cSum <- apply(x,2,sum)    # recompute for remaining cells
-x <- as.matrix(sweep(x,2,cSum,FUN='/'))*1e6    # normalize to UMIs per million
+
+# recompute for remaining cells
+cSum <- apply(x,2,sum)    
+
+# recompute for remaining cells
+x <- as.matrix(sweep(x,2,cSum,FUN='/'))*1e6  
+
 ex_sc_norm <- construct_ex_sc(x)
 pData(ex_sc_norm) <- pData(ex_sc)
 ```
@@ -378,10 +386,13 @@ panel1 <- c("S100a9", "Lcn2") # Neutrophil Markers
 panel2 <- c("Ccr7", "Fscn1") # DC
 panel3 <- c("Csf1r", "Mertk") # Mac
 panels <- list(panel1, panel2, panel3)
+
 plot_tsne_gene(ex_sc_norm, gene = unlist(panels), title = "", log_scale = T)
+
 names(panels) <- c("Neutrophil", "Dendritic", "Macrophage")
 ex_sc_norm <- flow_filter(ex_sc_norm, panels = panels, title = "Flow Pass Cells")
 ex_sc_norm <- flow_svm(ex_sc_norm, pcnames = "Comp")
+
 plot_tsne_metadata(ex_sc_norm, color_by = "cluster_spectral", title = "Spectral Cluster on PCA components")
 plot_tsne_metadata(ex_sc_norm, color_by = "SVM_Classify", title = "Spectral Cluster on PCA components")
 ```
@@ -396,14 +407,18 @@ It should be noted that DE should always be run on raw counts, not on the normal
 
 ```{r, error=FALSE, warning=FALSE, cache=FALSE, include=TRUE}
 ex_sc_norm_0_4 <- subset_ex_sc(ex_sc_norm, variable = "Timepoint", select = c("0hr", "4hr"))
+
 findDEgenes(input = ex_sc,
             pd = pData(ex_sc_norm_0_4),
             DEgroup = "Timepoint",
             contrastID = "0hr",
             facet_by = "SVM_Classify",
             outdir = "~/Downloads/")
+            
 plot_volcano(de_path = "~/Downloads/", de_file = "Macrophage_0hr_DEresults.tsv", fdr_cut = 0.000001, logfc_cut = 2)
+
 plot_violin(ex_sc_norm_0_4, color_by = "Timepoint", facet_by = "SVM_Classify", gene = "Cxcl9")
+
 plot_violin(ex_sc_norm_0_4, color_by = "Timepoint", facet_by = "SVM_Classify", gene = "Rsad2")
 ```
 
@@ -411,9 +426,11 @@ plot_violin(ex_sc_norm_0_4, color_by = "Timepoint", facet_by = "SVM_Classify", g
 
 Now try to run DE between the 0hr and 1hr timepoints on the mouse data. Then make a volcano plot of the genes that are significantly changed (FDR < 0.001, logfc_cut >= 2) within Dendritic cells.
 
-```{r, error=FALSE, warning=FALSE, cache=FALSE, include=TRUE}
+```
 # ex_sc_norm_0_1 <- subset_ex_sc()
+
 # findDEgenes() 
+
 # plot_volcano()
 ```
 
