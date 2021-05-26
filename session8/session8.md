@@ -326,7 +326,7 @@ markers <- return_markers(ex_sc, num_markers = 15)
 plot_heatmap(ex_sc, genes = unique(unlist(markers)), type = "bulk")
 ```
 
-## Excercise 3 : Cell Type identification Skin Data
+## Exercise 3: Cell Type identification Skin Data
 
 Now try to identify the cell types in the skin data!
 
