@@ -394,7 +394,7 @@ markers
 ##  [1] "S100a9"  "S100a8"  "Chil1"   "Lcn2"    "Mmp9"    "Ngp"     "Asprv1"  "Pglyrp1" "Il1f9"   "Ltf"   
 ```
 
-Now, lets take an aggregate sum of cells within each cluster and visualize gene abundances of these markers
+Now, lets take an aggregate sum of UMIs of all cells within each cluster and visualize gene abundances of these markers
 
 ```
 ex_sc <- calc_agg_bulk(ex_sc, aggregate_by = "Cluster")
