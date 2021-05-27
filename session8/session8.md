@@ -126,7 +126,7 @@ R packages are used to conduct data analysis with built-in (already existing) fu
 of analysis, include scRNA Data Analysis.
 
 You can access to an interactive html file here for the lecture!
-https://rpubs.com/kgellatl729/774469
+https://rpubs.com/kgellatl729/774488
 
 We have installed and loaded a library called SignallingSingleCell that include a considerable number of functions and algorithms to conducting scRNA data analysis, and
 we will use these functions to cover entire cycle of analyzing single cell data. 
