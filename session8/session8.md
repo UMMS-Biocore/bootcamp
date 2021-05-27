@@ -161,7 +161,7 @@ head(colnames(mDC_UMI_Table))
 ## [1] "0hrA_TGACGGACAAGTAATC" "0hrA_CACAACAGTAGCCTCG" "0hrA_GTTTGTTTGCACCTCT"
 ## [4] "0hrA_GCTTACCTTGACCCTC" "0hrA_GGAGAAGCGCTTTGGC" "0hrA_AAATCAGAGATCTCGG"
 
-mDC_0hr_1hr_4hr_CLEAN[1:5,1:5] 
+mDC_UMI_Table[1:5,1:5] 
    
 ##               0hrA_TGACGGACAAGTAATC 0hrA_CACAACAGTAGCCTCG 0hrA_GTTTGTTTGCACCTCT
 ## 0610007P14Rik                     0                     0                     0
