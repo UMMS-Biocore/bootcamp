@@ -7,22 +7,30 @@ This is a beginner level lecture in scRNA data analysis.
 
 # Overview
 
-- [Getting Started](#getting-started)
-- [Introducton to scRNA-Seq Analysis](#introducton-to-scrna-seq-analysis)
-- [scRNA-Seq Processing with DolphinNext](#scrna-seq-processing-with-dolphinnext)
-- [Data Structures](#data-structures)
-- [Filtering](#filtering)
-- [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
-- [Exercise 1: Dimension reduction on Skin Data](#exercise-1-dimension-reduction-on-skin-data)
-- [Clustering](#clustering)
-- [Exercise 2: Clustering on the Skin Data](#exercise-2-clustering-on-the-skin-data)
-- [Cell Type Identification](#cell-type-identification)
-- [Exercise 3: Cell Type identification Skin Data](#exercise-3-cell-type-identification-skin-data)
-- [Normalization](#normalization)
-- [Exercise 4: Process the normalized mouse data](#exercise-4-process-the-normalized-mouse-data)
-- [Supervised Analysis](#supervised-analysis)
-- [DE Analysis](#de-analysis)
-- [Homework](#homework)
+- [Session 8: Single Cell RNA Analysis](#session-8-single-cell-rna-analysis)
+- [Expected learning outcome](#expected-learning-outcome)
+- [Overview](#overview)
+  - [Getting Started](#getting-started)
+  - [session 8.1: scRNA-Seq Data analysis class material](#session-81-scrna-seq-data-analysis-class-material)
+  - [Introducton to scRNA-Seq Analysis](#introducton-to-scrna-seq-analysis)
+  - [scRNA-Seq Processing with DolphinNext](#scrna-seq-processing-with-dolphinnext)
+  - [Data Structures](#data-structures)
+  - [Filtering](#filtering)
+  - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
+  - [session 8.2: scRNA-Seq Data analysis hands-on training class material](#session-82-scrna-seq-data-analysis-hands-on-training-class-material)
+  - [Exercise 1: Dimension reduction on Skin Data](#exercise-1-dimension-reduction-on-skin-data)
+  - [Clustering](#clustering)
+  - [session 8.3: scRNA-Seq Data analysis hands-on training (Cont.) class material](#session-83-scrna-seq-data-analysis-hands-on-training-cont-class-material)
+  - [Exercise 2: Clustering on the Skin Data](#exercise-2-clustering-on-the-skin-data)
+  - [Cell Type Identification](#cell-type-identification)
+  - [Exercise 3: Cell Type identification Skin Data](#exercise-3-cell-type-identification-skin-data)
+  - [Normalization](#normalization)
+  - [session 8.4: scRNA-Seq Data analysis hands-on training (Cont.) class material](#session-84-scrna-seq-data-analysis-hands-on-training-cont-class-material)
+  - [Exercise 4: Process the normalized mouse data](#exercise-4-process-the-normalized-mouse-data)
+  - [Supervised Analysis](#supervised-analysis)
+  - [DE analysis](#de-analysis)
+  - [Homework](#homework)
+  - [Some notable remarks](#some-notable-remarks)
 
 ## Getting Started
 
@@ -77,6 +85,14 @@ Similar to Step 3, answer "n" or "no" if Rstudio asks you to install from source
 devtools::install_github("kgellatl/SignallingSingleCell")
 library(SignallingSingleCell)
 ```
+
+## session 8.1: scRNA-Seq Data analysis class material
+
+Please click the image below to access the video tutorial </br>
+
+<div align="left">
+  <a href="https://youtu.be/2rhe6EqyYWQ"><img src="https://img.youtube.com/vi/2rhe6EqyYWQ/0.jpg" alt="Session 8.1"></a>
+</div>
     
 ## Introducton to scRNA-Seq Analysis
 
@@ -269,6 +285,13 @@ plot_tsne_metadata(ex_sc, color_by = "iPC_Comp1", title = "PC1 cell loadings")
 plot_tsne_metadata(ex_sc, color_by = "iPC_Comp2", title = "PC2 cell loadings") 
 plot_tsne_metadata(ex_sc, color_by = "iPC_Comp3", title = "PC3 cell loadings") 
 ```
+## session 8.2: scRNA-Seq Data analysis hands-on training class material
+
+Please click the image below to access the video tutorial </br>
+
+<div align="left">
+  <a href="https://youtu.be/gyVhkgb7o2U"><img src="https://img.youtube.com/vi/gyVhkgb7o2U/0.jpg" alt="Session 8.2"></a>
+</div>
 
 ## Exercise 1: Dimension reduction on Skin Data
 
@@ -305,6 +328,13 @@ ex_sc$cluster_density <- ex_sc$Cluster
 plot_tsne_metadata(ex_sc, color_by = "cluster_spectral")
 plot_tsne_metadata(ex_sc, color_by = "cluster_density")
 ``` 
+## session 8.3: scRNA-Seq Data analysis hands-on training (Cont.) class material 
+
+Please click the image below to access the video tutorial </br>
+
+<div align="left">
+  <a href="https://youtu.be/joD4mPhJRzo"><img src="https://img.youtube.com/vi/joD4mPhJRzo/0.jpg" alt="Session 8.3"></a>
+</div>
 
 ## Exercise 2: Clustering on the Skin Data
 
@@ -363,6 +393,14 @@ x <- as.matrix(sweep(x,2,cSum,FUN='/'))*1e6
 ex_sc_norm <- construct_ex_sc(x)
 pData(ex_sc_norm) <- pData(ex_sc)
 ```
+
+## session 8.4: scRNA-Seq Data analysis hands-on training (Cont.) class material
+
+Please click the image below to access the video tutorial </br>
+
+<div align="left">
+  <a href="https://youtu.be/IF0LJ9lsYiQ"><img src="https://img.youtube.com/vi/IF0LJ9lsYiQ/0.jpg" alt="Session 8.4"></a>
+</div>
 
 ## Exercise 4: Process the normalized mouse data
 
