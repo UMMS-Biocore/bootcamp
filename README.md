@@ -1,4 +1,4 @@
-# Sequence Analysis Bootcamp Spring 2021
+# Sequence Analysis Bootcamp Winter 2022
 
 This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
@@ -9,26 +9,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 - Zoom link for the class: <https://zoom.us/j/6173144016?pwd=QlgxU1hoZDhDZFdKTTJEangwRktyQT09>
 
-1. [Session 1: Linux environment (4/8/2021 9:00AM-12:00AM)](session1/session1.md)</br></br>
+1. [Session 1: Linux environment](session1/session1.md)</br></br>
 
-2. [Session 2.1: UMass Cluster](session2/session2.md)</br>
-
-   [Session 2.2: Useful commands and tools](session2/usefull.md)</br></br>
-
-3. [Session 3.1: Genomic resources](session3/genomic_resources.md)</br>
-
-   [Session 3.2: FASTA/FASTQ](session3/fasta_fastq.md)</br>
-
-   [Session 3.3: SAM/BAM](session3/sam_bam.md)</br></br>
-
-4. [Session 4: RNA-Seq data processing and analysis](session4/session4.md)</br></br>
-
-5. [Session 5.1: NGS data processing on DolphinNext](session5/session5_1.md)<br>
-
-   [Session 5.2: Building Pipeline on DolphinNext](session5/session5_2.md)</br></br>
-
-6. [Session 6: R and R Studio](session6/session6.md)</br></br>
-
-7. [Session 7: DE Analysis using DEBrowser](session7/session7.md)</br></br>
-
-8. [Session 8: scRNA-Seq data analysis](session8/session8.md)</br></br>
