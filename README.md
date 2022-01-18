@@ -15,3 +15,10 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
    [Session 2.2: Useful commands and tools](session2/usefull.md)</br></br>
 
+3. [Session 3.1: Genomic resources](session3/genomic_resources.md)</br>
+
+   [Session 3.2: FASTA/FASTQ](session3/fasta_fastq.md)</br>
+
+   [Session 3.3: SAM/BAM](session3/sam_bam.md)</br></br>
+
+
