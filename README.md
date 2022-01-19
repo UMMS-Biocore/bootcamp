@@ -21,4 +21,6 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
    [Session 3.3: SAM/BAM](session3/sam_bam.md)</br></br>
 
+4. [Session 4: RNA-Seq data processing and analysis](session4/session4.md)</br></br>
+
 
