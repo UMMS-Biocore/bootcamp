@@ -18,7 +18,7 @@ This is a beginner level lecture in scRNA data analysis.
 
 # Getting Started
 
-The code below should be run in Rstudio, and will install the **Seurat** if the package is currently not in your local library. 
+The code below should be run in Rstudio, and will install the **Seurat** if the package is currently not in your local library. Instructions for downloading and setting up R and Rstudio was described in [Session 6](../session6/session6.md). 
 
 ```
 if(!requireNamespace("Seurat", quietly = TRUE))
