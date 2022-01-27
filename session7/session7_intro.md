@@ -26,7 +26,7 @@ if(!requireNamespace("Seurat", quietly = TRUE))
 library(Seurat)
 ```
 
-The "install.packages" command installs packages from Comprehensive R Archive Network (i.e. CRAN). It should install the 'Seurat' package, necessary for conducting scRNA analysis routines and functions we will use. 
+The "install.packages" command installs packages from Comprehensive R Archive Network (i.e. CRAN). It should install the **Seurat** package, necessary for conducting scRNA analysis routines and functions we will use. 
 
 Seurat is an end-to-end Single cell RNA data analysis tool capable of filtering, normalizing, clustering and annotating single cells with thousands of features/genes. 
 
