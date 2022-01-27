@@ -1,4 +1,4 @@
-# Session 7 and 8: Single Cell RNA Analysis (Getting Started)
+# Session 8 and 9: Single Cell RNA Analysis (Getting Started)
 
 # Expected learning outcome
 
@@ -50,7 +50,7 @@ It can ask to update old packages; please answer with "a"
 
 <img src="images/PBMCexample.png" width="900">
 
-Please create an scRNASeq folder for all files we will be using for Session 7 and 8. This should be the path `/project/your_groupname/your_username/bootcamp/scRNASeq`. 
+Please create an scRNASeq folder for all files we will be using for Session 8 and 9. This should be the path `/project/your_groupname/your_username/bootcamp/scRNASeq`. 
 
 Then you need to copy scRNA-Seq example files in `/project/umw_biocore/pub/scRNASeq` into your bootcamp directory under your home lab's project space: `/project/your_groupname/your_username/bootcamp/scRNASeq`.
 
