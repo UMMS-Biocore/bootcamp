@@ -57,11 +57,19 @@ Then you need to copy scRNA-Seq example files in `/project/umw_biocore/pub/scRNA
 Your lab's project space may not have a directory with your username in it, hence you can create one.
 
 ```
+cd /project/your_groupname
 mkdir your_username
+```
+
+Then, create a **bootcamp** folder and copy scRNA-Seq lecture material files in. 
+
+```
+cd /project/your_groupname/your_username
+mkdir bootcamp
 cp -r /project/umw_biocore/pub/scRNASeq /project/your_groupname/your_username/bootcamp/scRNASeq
 ```
 
-After copying your files, go to `/project/your_groupname/your_username/bootcamp`. When you run tree command for scRNASeq, the output should look like below:
+After copying your files, go to `/project/your_groupname/your_username/bootcamp` and run tree command for scRNASeq, the output should look like below:
 
 ```
 [am51w@ghpcc06 bootcamp]$ tree scRNASeq/
