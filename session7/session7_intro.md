@@ -1,4 +1,4 @@
-# Session 7 and 8: Single Cell RNA Analysis
+# Session 7 and 8: Single Cell RNA Analysis (Getting Started)
 
 # Expected learning outcome
 
