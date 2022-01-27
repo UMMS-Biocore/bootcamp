@@ -29,5 +29,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 6. [Session 6: R and R Studio](session6/session6.md)</br></br>
 
-7. [Session 7: Single Cell Analysis (Part 1)](session7/session7_intro.md)</br></br>
+7. [Session 7: Single Cell Data Analysis (Part 1)](session7/session7_intro.md)</br></br>
 
