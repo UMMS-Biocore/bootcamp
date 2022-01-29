@@ -84,6 +84,8 @@ Here, transcript fragments from biological specimens are in fact originate from 
 
 However, lets take a look at a recent research we have conducted with our collaborators in Department of Dermatology on a skin disorder called Vitiligo in which CD8 T-cells in one's body is programmed to kill melanocytes of epidermis, causing the depigmentation of the skin. 
 
+<img src="images/bulk_overview.png" width="800">
+
 
 
 Why Single Cell ?
