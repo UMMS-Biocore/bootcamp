@@ -84,9 +84,15 @@ Here, transcript fragments from biological specimens are in fact originate from 
 
 However, lets take a look at a recent research we have conducted with our collaborators in Department of Dermatology on a skin disorder called Vitiligo in which CD8 T-cells in one's body is programmed to kill melanocytes of epidermis, causing the depigmentation of the skin. 
 
-<img src="images/bulk_overview.png" width="800">
+<img src="images/lesional_sample.png" width="800">
 
+Basically, CD8 T-cells come into the skin and recognize interferon gamma, then this induces Keratinocytes of the skin to make CXCL10 which eventually leads more CD8 T-cells from the blood to come to the skin [Rashighi et. al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4086941/). On the other hand, a proportion of these CD8 t-cells become what is known to be Resident memory t-cells (Trm) and stay in the disease site which leads them to strike melanocytes again through Keratinocyte induction. 
 
+<img src="images/cd8_tcells.png" width="800">
+
+Hence, the objective should be to learn gene expression profiles of distinct cellular populations to learn more about cell specific mechanisms and discover new biology through a rather focused approach. 
+
+<img src="images/vitiligo_project.png" width="800">
 
 Why Single Cell ?
 
