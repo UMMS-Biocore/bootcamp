@@ -355,7 +355,7 @@ Once we have preprocessed transcripts or reads captured from each single cell is
 
 Lets first take a look at a simple UMI table. 
 
-<img src="images/UMI_table.png" width="600">
+<img src="images/UMI_table.png" width="400">
 
 What we prioritize in scRNA analysis is to conduct **clustering**, a machine learning method to discover closely related data points within a dataset. We will cover what clustering is a little more in the next session. However, lets closely investigate why we need clustering by going back to Droplet-based sequencing methods. 
 
