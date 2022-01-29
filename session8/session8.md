@@ -1,4 +1,4 @@
-# Session 7: Single Cell RNA Analysis, Day 1
+# Session 8: Single Cell RNA Analysis, Day 1
 
 # Expected learning outcome
 
@@ -8,16 +8,16 @@ This is a beginner level lecture in scRNA data analysis.
 
 # Overview
 
-- [Session 7: Single Cell RNA Analysis Day 1](#session-7-single-cell-rna-analysis-day-1)
+- [Session 8: Single Cell RNA Analysis Day 1](#session-8-single-cell-rna-analysis-day-1)
 - [Expected learning outcome](#expected-learning-outcome)
 - [Overview](#overview)
 - [Getting Started](#getting-started)
 - [Introduction to scRNA-Seq Analysis](#introduction-to-scrna-seq-analysis)
 - [scRNA-Seq Processing with DolphinNext](#scrna-seq-processing-with-dolphinnext)
-- [Session 7 Homework 1](#session-7-homework-1)
+- [Session 8 Homework 1](#session-8-homework-1)
 - [scRNA Data Analysis and Data Structures](#scrna-data-analysis-and-data-structures)
 - [Quality Control, Filtering and Normalization](#quality-control-filtering-and-normalization)
-- [Session 7 Homework 2](#session-7-homework-2)
+- [Session 8 Homework 2](#session-8-homework-2)
 
 # Getting Started
 
@@ -134,7 +134,7 @@ The problem with Drop-Seq was that most droplets were empty and usually had eith
 
 <img src="images/PBMCexample.png" width="900">
 
-Throughout session 7 and 8, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
+Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
 
 Please create scRNA-Seq folder under bootcamp. Then you need to copy scRNA-Seq example files in `/project/umw_biocore/pub/scRNASeq` into your bootcamp directory under your project folder: `/project/your_groupname/your_username/bootcamp/scRNASeq`. This may take a while since the folder is around 5GBs. 
 
@@ -318,7 +318,7 @@ You can use the kallisto|bustools pipeline capable of executing this workflow in
 
 <img src="images/dnext_kallistobustools.png" width="900">
 
-# Session 7 Homework 1
+# Session 8 Homework 1
 
 Run KallistoBUStools pipeline with PBMC paired reads. 
 
@@ -601,7 +601,7 @@ Now, lets save the processed and filtered Seurat object to use it later.
 saveRDS(pbmc1k_seu, "pbmc1k_seu_normalized.rds")
 ```
 
-# Session 7 Homework 2
+# Session 8 Homework 2
 
 10x Genomics website provides a large collection of single cell sequencing raw data examples. One of these datasets is the another version of our PBMC data with around 3000 cells.
 
