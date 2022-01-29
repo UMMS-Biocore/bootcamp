@@ -110,7 +110,7 @@ We should know that scRNA Analysis may not be necessary for all problems. It is 
 
 <img src="images/scrna3.png" width="600">
 
-In fact, single cell RNA-Seq analysis is a long workflow of isolating cells, capturing cell specific transcripts and quantitatively analyze captured expression profiles of cells to investigate cellular mechanisms of the targeted biological problem at hand. 
+In fact, single cell RNA-Seq analysis is a long process of isolating cells, capturing cell specific transcripts and quantitatively analyze captured expression profiles of cells to investigate cellular mechanisms of the targeted biological problem at hand. 
 
 <img src="images/scrna_workflow.png" width="600">
 
