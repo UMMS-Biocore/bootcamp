@@ -266,7 +266,7 @@ Here, both filtered and raw feature-barcode matrices are given as a results. On 
 
 One of these formats is the [Matrix Market Exchange Format](https://math.nist.gov/MatrixMarket/formats.html) which is used by cellranger to produce resulting UMI tables.
 
-Cellranger provides two tsv and one mtx files that establishes the Feature-Barcode matrices. These files can also be found in `/project/umw_garberlab/amanukyan/bootcamp/scRNASeq/pbmc_1k_v3_processed`.
+Cellranger provides two tsv and one mtx files that establishes the Feature-Barcode matrices. These files can also be found in `/project/your_groupname/your_username/bootcamp/scRNASeq/pbmc_cellranger/report5938/cellranger_count/pbmc_1k_v3_S1_outs`.
 
 ```
 [am51w@ghpcc06 pbmc_1k_v3_S1_outs]$ cd filtered_feature_bc_matrix
@@ -332,7 +332,7 @@ Within DolphinNext, it is possible to implement numeruous pipelines with various
 
 <img src="images/kallistobustools.png" width="900">
 
-You can use the kallisto|bustools pipeline capable of executing this workflow in DolphinNext which considerably increases the speed of alignment/quantification. This pipeline finishes around 23 minutes.  
+You can use the kallisto|bustools pipeline capable of executing this workflow in DolphinNext which considerably increases the speed of alignment/quantification. This pipeline finishes around 23 minutes. Here is the link to the pipeline: https://dolphinnext.umassmed.edu/index.php?np=1&id=742
 
 <img src="images/dnext_kallistobustools.png" width="900">
 
