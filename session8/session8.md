@@ -120,6 +120,9 @@ Although we are now discussing this entire workflow, we will primarily focus on 
 
 The workflow of the data analysis of scRNA analysis is highly dependant on the technology to isolate, separate and collect single cell transcripts, therefore we start by looking into the timeline of scRNA analysis, and take a look at the first ever scrna analysis to the modern ones that we use now. 
 
+More information could be found in this publication that covers the developments in single cell RNA sequencing. 
+https://www.nature.com/articles/nprot.2017.149
+
 <img src="images/scrna_timeline1.png" width="900">
 
 Starting from 2009, single cells were analyzed by what we call plate-based methods that analyze individual cells by separating them into distinct wells of a plate and prepare libraries for each of them. However, this requires a lot of effort and time since we prepare lots of libraries for each separate single cells of a tube of a plate. 
