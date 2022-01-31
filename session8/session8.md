@@ -150,6 +150,8 @@ Hence, as a result, we have numerous reads from multiple UMIs of multiple barcod
 
 <img src="images/umi_barcode_zoom.png" width="1000">
 
+Using the reads and their alignments, we make what we call a **UMI Table** that each expression profile of each barcode is given. 
+
 <img src="images/umibarcode.png" width="1000">
 
 Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
