@@ -120,8 +120,7 @@ Although we are now discussing this entire workflow, we will primarily focus on 
 
 The workflow of the data analysis of scRNA analysis is highly dependant on the technology to isolate, separate and collect single cell transcripts, therefore we start by looking into the timeline of scRNA analysis, and take a look at the first ever scrna analysis to the modern ones that we use now. 
 
-More information could be found in this publication that covers the developments in single cell RNA sequencing. 
-https://www.nature.com/articles/nprot.2017.149
+More information could be found in this publication that covers the developments in single cell RNA sequencing [(Svensson et. al)](https://www.nature.com/articles/nprot.2017.149).
 
 <img src="images/scrna_timeline1.png" width="900">
 
@@ -133,7 +132,7 @@ Around 2015, a group of methods have been devised to parallelize this grueling p
 
 <img src="images/dropseq1.png" width="900">
 
-Drop-Seq method, came out in 2015, uses a microfluidic technology to separate and capture cells into droplets of oil where the cell is co-captured with a unique beads. Each of these beads are covered with bead specific nucleotide sequences that engineered to tag RNA from a cell with a unique barcode. 
+Drop-Seq method, came out in 2015, uses a microfluidic technology to separate and capture cells into droplets of oil where the cell is co-captured with a unique beads. Each of these beads are covered with bead specific nucleotide sequences that engineered to tag RNA from a cell with a unique barcode [(Macosko et. al)](https://www.cell.com/fulltext/S0092-8674(15)00549-8). 
 
 <img src="images/dropseq2.png" width="900">
 
@@ -171,13 +170,15 @@ scRNASeq/
     └── matrix.mtx
 ```
 
-<img src="images/cellranger.png" width="900">
-
 10X Genomics provides a group of tools and command with the **Cell Ranger** software tool to preprocess sequencing reads from single cell assays for downstream analysis. 
 
-<img src="images/cellranger_mkfastq.png" width="900">
+Link: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger
+
+<img src="images/cellranger.png" width="900">
 
 Ofcourse we first need to the incorporate cellranger mkfastq command to turn bcl files into fastq files. We wont cover cellranger mkfastq command and directly start with fastq files. 
+
+<img src="images/cellranger_mkfastq.png" width="900">
 
 The resulting files would be an R1 and R2 file for each sample. These reads can be found in `/project/umw_garberlab/amanukyan/bootcamp/scRNASeq/pbmc_1k_v3_fastqs`.  
 
