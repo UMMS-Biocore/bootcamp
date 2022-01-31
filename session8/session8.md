@@ -214,7 +214,7 @@ The R1 and R2 files can be used in the "cellranger count" command now to establi
 
 # scRNA-Seq Processing with DolphinNext
 
-Instead of running a cellranger command and pull outputs of the command, we can use the cellranger pipeline within DolphinNext and immediately investigate results of the pipeline in an interactive interface. 
+Instead of running a cellranger command, manually enter inputs and get outputs, we can use the cellranger pipeline within DolphinNext and immediately investigate results of the pipeline in an interactive interface. 
 
 You can use dolphinnext from https://dolphinnext.umassmed.edu/, and then find the **Cell Ranger** Pipeline under **Single Cell** group. The pipeline can also be found in https://dolphinnext.umassmed.edu/index.php?np=1&id=831. 
 
