@@ -376,6 +376,7 @@ In order to divide cells into meaningful groups, we have to sequentially conduct
 <img src="images/scrna_data_workflow.png" width="200">
 
 We will use Seurat, an end-to-end scRNA analysis tool for clustering and annotating single cells. 
+Link: https://satijalab.org/seurat/
 
 <img src="images/seurat.png" width="600">
 
