@@ -160,7 +160,7 @@ Throughout session 8 and 9, we will be using an example sample of peripheral blo
 
 Please create scRNA-Seq folder under bootcamp. Then you need to copy scRNA-Seq example files in `/project/umw_biocore/pub/scRNASeq` into your bootcamp directory under your project folder: `/project/your_groupname/your_username/bootcamp/scRNASeq`. This may take a while since the folder is around 5GBs. 
 
-When you run tree function the output should look like below. We will investigate each of these files later. 
+When you run tree function, the output should look like below. We will investigate each of these files later. 
 
 ```
 [am51w@ghpcc06 bootcamp]$ tree scRNASeq/
