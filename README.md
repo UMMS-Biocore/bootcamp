@@ -31,5 +31,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 7. [Session 7: DE Analysis using DEBrowser](session7/session7.md)</br></br>
 
-8. [Session 8: scRNA-Seq Data Analysis](session8/session8.md)</br></br>
+8. [Session 8: Single Cell RNA Analysis, Day 1](session8/session8.md)</br></br>
    [Instructions for Session 8](session8/session8_intro.md)</br></br>
