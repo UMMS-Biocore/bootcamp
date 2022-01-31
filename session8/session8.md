@@ -144,9 +144,9 @@ The problem with Drop-Seq was that most droplets were empty and usually had eith
 
 <img src="images/umibarcode.png" width="900">
 
-<img src="images/PBMCexample.png" width="900">
-
 Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
+
+<img src="images/PBMCexample.png" width="900">
 
 Please create scRNA-Seq folder under bootcamp. Then you need to copy scRNA-Seq example files in `/project/umw_biocore/pub/scRNASeq` into your bootcamp directory under your project folder: `/project/your_groupname/your_username/bootcamp/scRNASeq`. This may take a while since the folder is around 5GBs. 
 
@@ -185,6 +185,8 @@ pbmc_1k_v3_S1_R1_001.fastq.gz  pbmc_1k_v3_S1_R2_001.fastq.gz
 ```
 
 Here, each sample is comprised of an R1 and R2 file where R1 holds the Cell barcode and UMI of each fragment captured in R2 which stores the actual reads from transcripts. The PBMC data is built using 10x version 3 chemistry, so each read in R1 file is of length 28-bp (16-bp barcode, and 12-bp UMI), and each read in R2 file is of length 91 comprised of the nucleotide sequence of the transcript. 
+
+See details of 10X v1 chemistry [here](https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3v1.html), and details of 10X v2 and v3 chemistry [here](https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html). 
 
 **Note:** unzipping fastq files may take a few mins. 
 
