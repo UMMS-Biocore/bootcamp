@@ -180,7 +180,7 @@ Ofcourse we first need to incorporate cellranger mkfastq command to turn bcl fil
 
 <img src="images/cellranger_mkfastq.png" width="900">
 
-The resulting files would be R1 and R2 files for each sample. These reads can be found in `/project/umw_garberlab/amanukyan/bootcamp/scRNASeq/pbmc_1k_v3_fastqs`.  
+The resulting files would be R1 and R2 files for each sample. These reads can be found in `/project/your_groupname/your_username/bootcamp/scRNASeq/pbmc_1k_v3_fastqs`.  
 ```
 [am51w@ghpcc06 scRNASeq]$ cd pbmc_1k_v3_fastqs
 [am51w@ghpcc06 pbmc_1k_v3_fastqs]$ ls
