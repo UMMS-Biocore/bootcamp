@@ -177,7 +177,7 @@ Link: https://support.10xgenomics.com/single-cell-gene-expression/software/pipel
 
 <img src="images/cellranger.png" width="900">
 
-Ofcourse we first need to incorporate cellranger mkfastq command to turn bcl files into fastq files. We wont cover cellranger mkfastq command and directly start looking into fastq files. 
+Of course we first need to incorporate cellranger mkfastq command to turn bcl files into fastq files. We wont cover cellranger mkfastq command and directly start looking into fastq files. 
 
 <img src="images/cellranger_mkfastq.png" width="900">
 
