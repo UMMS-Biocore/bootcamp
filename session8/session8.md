@@ -537,7 +537,7 @@ Some cells seem to have extreme number of UMIs which may indicate that these bar
 
 <img src="images/multiplet_rna.png" width="600">
 
-On the other hand, we may also have barcodes with low number of total UMIs which may indicate that those barcodes may associated with **(i)** empty droplets with no cells captured (exRNA is captured instead), **(ii)** cells with low RNA content that damages cell type annotation and clustering. 
+On the other hand, we may also have barcodes with low number of total UMIs which may indicate that those barcodes may associated with **(i)** empty droplets with no cells captured (cell-free RNA is captured instead), **(ii)** cells with low RNA content that damages cell type annotation and clustering. 
 
 <img src="images/empty_droplet_rna.png" width="600">
 
