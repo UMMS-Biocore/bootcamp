@@ -406,7 +406,7 @@ Currently, "pbmc_1k_v3_processed" folder should be residing in your bootcamp fol
 or you can simply use the code below to import the UMI table.
 
 ```
-> pbmc1k <- readRDS(url("https://www.dropbox.com/s/7v3ju3oyi0ele25/pbmc1k.Rds?dl=1"))
+> pbmc1k <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc1k.Rds"))
 ```
 
 Now, lets examine the loaded UMI table. Each R "object" has a "class", so it is safe to start by looking into the class of each object first. 
@@ -640,7 +640,7 @@ You are required to:
 * Alternatively, you can use the R code below to import the matrix in to your R Studio workspace. 
 
 ```
-pbmc3k <- readRDS(url("https://www.dropbox.com/s/kvja6gkhz1nvq4g/pbmc3k.Rds?dl=1"))
+pbmc3k <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc3k.Rds"))
 ```
 
 * Calculate the mitochondrial content percentage using the PercentageFeatureSet function.
