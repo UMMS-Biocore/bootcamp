@@ -208,7 +208,7 @@ NACAAAGTCCCCCCCATAATACAGGGGGAGCCACTTGGGCAGGAGGCAGGGAGGGGTCCATTCCCCCTGGTGGGGCTGGT
 #FFFFFFFFFFFFFFF:FFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFF
 ```
 
-The R1 and R2 files can be used in the "cellranger count" function now to establish the UMI tables. 
+The R1 and R2 files can be used in the "cellranger count" command now to establish the UMI tables. 
 
 <img src="images/cellranger_code.png" width="900">
 
