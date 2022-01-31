@@ -146,7 +146,7 @@ One or two years later, 10X Genomics came up with an optimized microfluidic work
 
 <img src="images/10xgenomics2.png" width="900">
 
-<img src="images/umibarcode.png" width="900">
+<img src="images/umibarcode.png" width="1000">
 
 Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
 
