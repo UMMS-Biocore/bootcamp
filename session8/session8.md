@@ -78,7 +78,7 @@ Today, we will cover
 
 In previous sessions, we have worked on (Bulk) RNA-Seq data collected from a number of biological replicates to investigate the effects and differentially expressed genes upon knockout experiments. 
 
-Here, transcript fragments from biological specimens are in fact originate from cells of the targeted tissue or biological sample, and we dont really know which type of cell those transcripts are coming from.  
+Here, transcript fragments from biological specimens are in fact originate from cells of the targeted tissue or biological sample, and we dont really know which type of cells those transcripts are coming from.  
 
 <img src="images/bulk_overview.png" width="800">
 
