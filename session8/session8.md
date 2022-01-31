@@ -125,6 +125,8 @@ Drop-Seq method, came out in 2015, uses a microfluidic technology to separate an
 
 <img src="images/dropseq2.png" width="900">
 
+Here is a link to single cell products of 10X Genomics: https://www.10xgenomics.com/products/single-cell-gene-expression
+
 <img src="images/10xgenomics1.png" width="900">
 
 <img src="images/chromium chip.png" width="800">
