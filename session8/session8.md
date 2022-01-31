@@ -21,36 +21,17 @@ This is a beginner level lecture in scRNA data analysis.
 
 # Getting Started
 
-Please install R 4.1.2 into your local computer. 
-
-1. First please install R to your computer
-
-   <https://cran.r-project.org/>
-
-   For windows;
-   <https://cran.r-project.org/bin/windows/base/R-4.1.2-win.exe>
-
-   For mac;
-   <https://cran.r-project.org/bin/macosx/base/R-4.1.2.pkg></br>
-
-2. Second, please install R-Studio;
-
-   <https://rstudio.com/products/rstudio/download/>
-   
-3. We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq. Run the commands below. 
-
-
-The "install.packages" command installs packages from Comprehensive R Archive Network (i.e. CRAN). It should install the 'Seurat' package, necessary for conducting scRNA analysis functions we will use in this lecture. 
-
-Seurat is an end-to-end Single cell RNA data analysis tool capable of filtering, normalizing, clustering and annotating single cells with thousands of features/genes. 
-
-The code below will install **Seurat** if the package is currently missing from your local library. 
+The code below should be run in **Rstudio**, and will install the **Seurat** if the package is currently not in your local library. Instructions for downloading and setting up R and Rstudio was described in [Session 6](../session6/session6.md). 
 
 ```
 if(!requireNamespace("Seurat", quietly = TRUE))
   install.packages("Seurat")
 library(Seurat)
 ```
+
+The "install.packages" command installs packages from Comprehensive R Archive Network (i.e. CRAN). It should install the **Seurat** package, necessary for conducting scRNA analysis routines and functions we will use. 
+
+Seurat is an end-to-end Single cell RNA data analysis tool capable of filtering, normalizing, clustering and annotating single cells with thousands of features/genes. 
 
 If you see the warning message below, enter y:
 
@@ -59,6 +40,14 @@ package which is only available in source form, and may need compilation of C/C+
 Do you want to attempt to install these from sources?
 y/n:
 ```
+
+When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.
+
+    Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
+
+It can ask to update old packages; please answer with "a"
+
+    Update all/some/none? [a/s/n]:
     
 # Introduction to scRNA-Seq Analysis
 
