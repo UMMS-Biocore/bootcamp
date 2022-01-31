@@ -86,7 +86,7 @@ However, lets take a look at a recent research we have conducted with our collab
 
 <img src="images/lesional_sample.png" width="800">
 
-Basically, CD8 T-cells come into the skin and recognize interferon gamma, then this induces Keratinocytes of the skin to make CXCL10 which eventually leads more CD8 T-cells from the blood to come to the skin ([Rashighi et. al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4086941/)). On the other hand, a proportion of these CD8 t-cells become what is known to be Resident memory t-cells (Trm) and stay in the disease site which leads them to strike melanocytes again through Keratinocyte induction ([Richmond et. al 2018](https://pubmed.ncbi.nlm.nih.gov/30021889/)). 
+Basically, CD8 T-cells come into the skin, recognize melanocytes and start making interferon gamma, then this induces Keratinocytes of the skin to make CXCL10 which eventually leads more CD8 T-cells from the blood to come to the skin ([Rashighi et. al 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4086941/)). On the other hand, a proportion of these CD8 t-cells become what is known to be Resident memory t-cells (Trm) and stay in the disease site which leads them to strike melanocytes again through Keratinocyte induction ([Richmond et. al 2018](https://pubmed.ncbi.nlm.nih.gov/30021889/)). 
 
 <img src="images/cd8_tcells.png" width="800">
 
