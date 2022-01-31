@@ -176,12 +176,11 @@ Link: https://support.10xgenomics.com/single-cell-gene-expression/software/pipel
 
 <img src="images/cellranger.png" width="900">
 
-Ofcourse we first need to the incorporate cellranger mkfastq command to turn bcl files into fastq files. We wont cover cellranger mkfastq command and directly start with fastq files. 
+Ofcourse we first need to incorporate cellranger mkfastq command to turn bcl files into fastq files. We wont cover cellranger mkfastq command and directly start looking into fastq files. 
 
 <img src="images/cellranger_mkfastq.png" width="900">
 
-The resulting files would be an R1 and R2 file for each sample. These reads can be found in `/project/umw_garberlab/amanukyan/bootcamp/scRNASeq/pbmc_1k_v3_fastqs`.  
-
+The resulting files would be R1 and R2 files for each sample. These reads can be found in `/project/umw_garberlab/amanukyan/bootcamp/scRNASeq/pbmc_1k_v3_fastqs`.  
 ```
 [am51w@ghpcc06 scRNASeq]$ cd pbmc_1k_v3_fastqs
 [am51w@ghpcc06 pbmc_1k_v3_fastqs]$ ls
