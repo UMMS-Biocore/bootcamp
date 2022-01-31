@@ -145,7 +145,7 @@ Using the reads and their alignments, we make what we call a **UMI Table** that 
 
 <img src="images/umibarcode.png" width="1000">
 
-Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. 
+Throughout session 8 and 9, we will be using an example sample of peripheral blood mononuclear cells with a mix of T-cells, NK-cells as well as monocytes and platelets. This sample has around 1200 cells that we will process, filter and analyze. Here are more example sequencing reads and samples from 10X Genomics: https://www.10xgenomics.com/resources/datasets
 
 <img src="images/PBMCexample.png" width="900">
 
