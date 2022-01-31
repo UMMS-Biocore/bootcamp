@@ -191,7 +191,7 @@ Here, each sample is comprised of an R1 and R2 file where R1 holds the Cell barc
 
 See details of 10X v1 chemistry [here](https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3v1.html), and details of 10X v2 and v3 chemistry [here](https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium3.html). 
 
-**Note:** unzipping fastq files may take a few mins. 
+**Note:** unzipping fastq files may take some time. 
 
 ```
 [am51w@ghpcc06 pbmc_1k_v3_fastqs]$ zcat pbmc_1k_v3_S1_R1_001.fastq.gz > pbmc_1k_v3_S1_R1_001.fastq
