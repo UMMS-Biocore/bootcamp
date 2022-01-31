@@ -142,9 +142,13 @@ Drop-Seq method, came out in 2015, uses a microfluidic technology to separate an
 
 The problem with Drop-Seq was that most droplets were empty and usually had either a bead or a single cell in it, and increasing the concentration of beads and cells would increase doublets (two or more beads of cells in a droplet) which severely damages the accuracy of the analysis. 
 
-One or two years later, 10X Genomics came up with an optimized microfluidic workflow to make at least %90 of droplets containing a bead which considerably increased cell or bead occupancy [(Zheng et. al 2017)](https://www.nature.com/articles/ncomms14049)
+One or two years later, 10X Genomics came up with an optimized microfluidic workflow to make at least %90 of droplets containing a bead which considerably increased cell or bead occupancy [(Zheng et. al 2017)](https://www.nature.com/articles/ncomms14049).
 
 <img src="images/10xgenomics2.png" width="900">
+
+Hence, as a result, we have numerous reads from multiple UMIs of multiple barcodes to determine the number of unique transcripts captured from each cell (each barcode). 
+
+<img src="images/umi_barcode_zoom.png" width="1000">
 
 <img src="images/umibarcode.png" width="1000">
 
