@@ -1,54 +1,15 @@
-# Session 8: Single Cell RNA Analysis, Day 2
+# Session 9: Single Cell RNA Analysis, Day 2
 
 # Overview
 
-- [Session 8: Single Cell RNA Analysis, Day 2](#session-8-single-cell-rna-analysis-day-2)
+- [Session 9: Single Cell RNA Analysis, Day 2](#session-8-single-cell-rna-analysis-day-2)
 - [Overview](#overview)
-- [Getting Started](#getting-started)
 - [scRNA-Seq Data Analysis](#scrna-seq-data-analysis)
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
 - [Marker Analysis and Cell Type Identification](#marker-analysis-and-cell-type-identification)
 - [scRNA Data Analysis Pipeline](#scrna-data-analysis-pipeline)
-- [Session 8 Homework](#session-8-homework)
-
-# Getting Started (Review)
-
-Please install R 4.1.2 into your local computer. 
-
-1. First please install R to your computer
-
-   <https://cran.r-project.org/>
-
-   For windows;
-   <https://cran.r-project.org/bin/windows/base/R-4.1.2-win.exe>
-
-   For mac;
-   <https://cran.r-project.org/bin/macosx/R-4.1.2.pkg></br>
-
-2. Second, please install R-Studio;
-
-   <https://rstudio.com/products/rstudio/download/>
-   
-3. We will now install required R packages for conducting today's scRNA analysis practices before covering the basics of scRNA-Seq. Run the commands below. 
-
-
-The "install.packages" command installs packages from Comprehensive R Archive Network (i.e. CRAN). It should install the 'Seurat' package, necessary for conducting scRNA analysis functions we will use in this lecture. 
-
-Seurat is an end-to-end Single cell RNA data analysis tool capable of filtering, normalizing, clustering and annotating single cells with thousands of features. 
-
-```
-install.packages('Seurat')
-library(Seurat)
-```
-
-If you see the warning message below, enter y:
-
-```
-package which is only available in source form, and may need compilation of C/C++/Fortran: 'Seurat'
-Do you want to attempt to install these from sources?
-y/n:
-```
+- [Session 9 Homework](#session-8-homework)
     
 # scRNA-Seq Data Analysis
 
@@ -393,7 +354,7 @@ But you can also download the corresponding .rmd file to download and use in you
 
 <img src="images/rmarkdown_rmd.png" width="800">
 
-# Session 8 Homework
+# Session 9 Homework
 
 In the second homework of the last session (i.e. session 7), we have filtered, processed and normalized a PBMC data with 3000 cells. 
 
