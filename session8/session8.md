@@ -79,7 +79,7 @@ Basically, CD8 T-cells come into the skin, recognize melanocytes and start makin
 
 <img src="images/cd8_tcells.png" width="800">
 
-Hence, the objective should be to learn gene expression profiles of distinct cellular populations to learn more about cell specific mechanisms and discover new biology through an approach focused on each cell. 
+Hence, the objective should be to learn gene expression profiles of distinct cellular populations to learn more about cell specific mechanisms and discover new biology through an approach focused on each cell [(Gellatly et. al 2021)](https://www.science.org/doi/10.1126/scitranslmed.abd8995). 
 
 <img src="images/vitiligo_project.png" width="800">
 
