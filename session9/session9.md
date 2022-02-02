@@ -95,7 +95,7 @@ An object of class Seurat
 Active assay: RNA (36601 features, 2000 variable features)
 ```
 
-Before moving on with this 2000 set of genes, lets take a look at them and visualize the top variable genes. 
+Before moving on with these 2000 set of genes, lets take a look at them and visualize the top variable genes. 
 
 ```
 > top20 <- head(VariableFeatures(pbmc1k_seu), 20)
@@ -114,7 +114,7 @@ We can quickly recognize some of the marker genes that are selected as the most 
 We will incorporate these 2000 selected genes for clustering and cell type identification for the remainder of this lecture. Seurat employs most variables genes 
 to decrease the complexity of dimensionality reduction and clustering algorithms. 
 
-Dimensionality reduction is a necessary step to clustering since most clustering and partitioning algorithms are prone to **curse of dimensionality** which occurs when objects are defined in high dimensional spaces and this objects seem far away from eachother as opposed to lower dimensions. 
+Dimensionality reduction is a necessary step to clustering since most clustering and partitioning algorithms are prone to **curse of dimensionality** which occurs when objects are defined in high dimensional spaces and these objects seem far away from eachother as opposed to lower dimensions. 
 
 <img src="../session8/images/curseofdimensionality.png" width="700">
 
