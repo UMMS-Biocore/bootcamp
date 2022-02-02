@@ -254,6 +254,12 @@ Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
 marker_table_pbmc1k_seu <- FindAllMarkers(pbmc1k_seu)
 ```
 
+You can download and import the resulting table with the following code:
+
+```
+pbmc1k_seu <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc1k_seu_normalized.rds"))
+```
+
 You can view the entire set of markers by using the View function in R Studio. 
 
 ```
