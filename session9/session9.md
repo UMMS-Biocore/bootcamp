@@ -27,23 +27,23 @@ Today, we will be focusing on the last part of the life cycle of scRNA data anal
 
 As you may remember from the previous scRNA data analysis session that droplet based methods capture transcripts from single cell in a drop oil with a bead which has barcodes and UMIs attach to it. Hence, we know that RNA from a cell is provided within a column of UMI table, but we dont know the type of this cell. Here, we will use **Data Clustering** to determine these cell types.
 
-<img src="images/droplet.png" width="600">
+<img src="../session8/images/droplet.png" width="600">
 
 Let us take a look at a really simple illustrative example and discuss why data clustering is important for capturing cell types. Given UMI counts of a group of cells, we may use raw RNA UMI counts of these cells to determine the differences between them.
 
 Let us calculate the normalized gene expression of these two genes for a group of cells, and visualize one cell in a 2d figure (which is enough because we have only two genes).
 
-<img src="images/sample_clustering.png" width="600">
+<img src="../session8/images/sample_clustering.png" width="600">
 
 Here, a cell has a position in a 2d mathematical space since it has a certain normalized expression in both two genes. How can we determine the state of this cell? We have to visualize all other cells in the same manner to see if there is a certain relationship.
 
-<img src="images/sample_clustering_all.png" width="600">
+<img src="../session8/images/sample_clustering_all.png" width="600">
 
 The abundance of all the cells we have captured revealed a certain pattern, it seems that there are two groups of cells who have similar RNA count but cells across different groups have unsimilar RNA counts.
 
 This we determine by the x axis, since there is considerable difference between these two groups with respect to the gene X. Now, lets give another example with more cells.
 
-<img src="images/sample_clustering_all2.png" width="600">
+<img src="../session8/images/sample_clustering_all2.png" width="600">
 
 There are now three groups of cells, with one having higher expression of Gene X, and the other having higher expression in both Gene X and Gene Y. It is easy to determine the number of groups (or clusters) since there are only two genes, and it easy to annotate these cell groups (or cell types). 
 
@@ -55,11 +55,11 @@ However, in reality we have **thousands of genes (high dimensional data)**, arou
 
 In previous sessions, we have used **Principal Component Analysis (PCA)** to reduce the dimensionality of expression profiles and to visualize samples in two dimensional plots. However, in bulk RNA-Seq, the groups and conditions are mostly known and we are only interested if there exists differentially expressed genes separating the two (or multiple) groups. 
 
-<img src="images/intro_qc_pca.png" width="600">
+<img src="../session8/images/intro_qc_pca.png" width="600">
 
 However, the dimensionality reduction in single cell RNA analysis occurs in a few steps that we gonna cover in the lecture. 
 
-<img src="images/dimensionality_reduction.png" width="800">
+<img src="../session8/images/dimensionality_reduction.png" width="800">
 
 We will cover PCA in a bit more detail after removing genes that are not variable. Essentially, we select some considerably high number of genes, **e.g. 2000-3000**, and ignore the rest of the genes since they may not be as informative as the first 2000-3000. This process is often defined as **Feature Selection**. 
 
