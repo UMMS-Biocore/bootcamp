@@ -49,7 +49,7 @@ There are now three groups of cells, with one having higher expression of Gene X
 
 However, in reality we have **thousands of genes (high dimensional data)**, around or perhaps **more than 30000** genes/features, and many many more cells to find groups (or cell types) from. Hence, we have to incorporate several **mathematical tools to simplify such complex and high dimensional data** and use clustering analysis to determine the number of groups. In order to achieve a clustering of thousand of cells with thousands of genes in their expression profiles, we will incorporate a single cell data analysis workflow that is often used by many scRNA analysis packages (including **Seurat**). 
 
-<img align="center" src="images/scrna_data_workflow.png" width="200">
+<img align="center" src="../session8/images/scrna_data_workflow.png" width="200">
 
 # Feature Selection and Dimensionality Reduction
 
@@ -139,8 +139,8 @@ PC1 (because of the angle between two lines being 90 degress), **PC1** is more i
 <table>
 	<tbody>
 		<tr>
-			<td><img src="images/data_beforepca.png" width="400"></td>
-			<td><img src="images/data_afterpca.png" width="400"></td>
+			<td><img src="../session8/images/data_beforepca.png" width="400"></td>
+			<td><img src="../session8/images/data_afterpca.png" width="400"></td>
 		</tr>
 	</tbody>
 </table>
