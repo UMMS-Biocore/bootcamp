@@ -55,9 +55,13 @@ However, in reality we have **thousands of genes (high dimensional data)**, arou
 
 In previous sessions, we have used **Principal Component Analysis (PCA)** to reduce the dimensionality of expression profiles and to visualize samples in two dimensional plots. However, in bulk RNA-Seq, the groups and conditions are mostly known and we are only interested if there exists differentially expressed genes separating the two (or multiple) groups. 
 
-We will cover PCA in a bit more detail after removing genes that are not variable. Essentially, we select some considerably high number of genes, **e.g. 2000-3000**, and ignore the rest of the genes since they may not be as informative as the first 2000-3000. This process is often defined as **Feature Selection**. 
-
 <img src="images/intro_qc_pca.png" width="600">
+
+However, the dimensionality reduction in single cell RNA analysis occurs in a few steps that we gonna cover in the lecture. 
+
+<img src="images/dimensionality_reduction.png" width="800">
+
+We will cover PCA in a bit more detail after removing genes that are not variable. Essentially, we select some considerably high number of genes, **e.g. 2000-3000**, and ignore the rest of the genes since they may not be as informative as the first 2000-3000. This process is often defined as **Feature Selection**. 
 
 We will first reload the normalized data from the previous session.
 
@@ -125,8 +129,6 @@ Dimensionality reduction is a necessary step to clustering since most clustering
 <img src="images/curseofdimensionality.png" width="700">
 
 We are now ready to decrease the dimensionality of the data and further reduce the dimensionality to 2 dimensions for better visualization of single cell expression profiles. This reduction is performed in multiple steps. 
-
-<img src="images/dimensionality_reduction.png" width="800">
 
 We have removed each individual gene whose variance were below some top number of genes. Now we need to eliminate (or transform) redundant genes which is correlated to some other top 2000 genes. To this end, we will incorporate **Principal Components Analysis (PCA)**.  
 
