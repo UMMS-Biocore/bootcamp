@@ -157,7 +157,14 @@ DimHeatmap(pbmc1k_seu, dims = 1:6, balanced = TRUE)
 
 <img src="../session8/images/heatmap_pca.png" width="900">
 
-We have first reduced **36000 to 2000**, then we reduced **2000 to 20**, but we still have 18 more dimensions to reduce while preserving the information on expression profiles. Although 20 dimensions are enough to separate cells into meaningful groups via clustering, we reduce the additional number of 18 dimensions for visualization purposes. 
+```
+DimPlot(pbmc1k_seu, reduction = "pca")
+```
+
+<img src="../session8/images/pca_plot.png" width="900">
+
+
+We have first reduced the number of genes **36000 to 2000**, then we reduced the number of features from **2000 to 20**, but we still have 18 more dimensions to reduce while preserving the information on expression profiles. Although 20 dimensions are enough to separate cells into meaningful groups via clustering, we reduce the additional number of 18 dimensions for visualization purposes. 
 
 As the last step of the dimensionality reduction, we will incorporate the method **t-distributed stochastic neighbor embedding (t-SNE)**, that reduce high dimensional datasets to 2 dimensional datasets by capturing locally similar samples (or cells). We will use the first 20 PCs since they are the most informative PCs.
 
