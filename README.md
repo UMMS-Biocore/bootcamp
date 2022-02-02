@@ -33,3 +33,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 8. [Session 8: Single Cell RNA Analysis, Day 1](session8/session8.md)</br></br>
    [Instructions for Session 8](session8/session8_intro.md)</br></br>
+   
+9. [Session 9: Single Cell RNA Analysis, Day 2](session9/session9.md)</br></br>
