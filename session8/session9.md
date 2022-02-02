@@ -21,29 +21,27 @@
 |               | 10:45-11:00   | Break | Break |
 | Session 3     | 11:00-11:45   | Quality Control, Filtering and Normalization | Marker Analysis and Cell Type Identification |
 
-In the previous sessions, we have covered processing raw single cell RNA sequencing data with DolphinNext, data structures for single cell data using R and Seurat, and filtering and quality control of UMI tables. 
+In the previous session, we have covered processing raw single cell RNA sequencing data with DolphinNext, data structures for single cell data using R and Seurat, and filtering and quality control of UMI tables. 
 
 Today, we will be focusing on the last part of the life cycle of scRNA data analysis, and discuss **Data Clustering** which is essential to single cell data analysis (especially for those that are droplet-based methods). 
 
-As you may remember from the previous scRNA data analysis session that droplet based methods capture transcripts from single cell in a drop oil with a bead which has barcodes and UMIs attach to it. Hence, we know that RNA from a cell is provided within a column of UMI table, but we dont know the type of this cell. Here, we will use **Data Clustering** to determine these cell types. 
+As you may remember from the previous scRNA data analysis session that droplet based methods capture transcripts from single cell in a drop oil with a bead which has barcodes and UMIs attach to it. Hence, we know that RNA from a cell is provided within a column of UMI table, but we dont know the type of this cell. Here, we will use **Data Clustering** to determine these cell types.
 
 <img src="images/droplet.png" width="600">
 
-Let us take a look at a really simple illustrative example and discuss why data clustering is important for capturing cell types. Given UMI counts of a group of cells, we may use raw RNA UMI counts of these cells to determine the differences between them. 
+Let us take a look at a really simple illustrative example and discuss why data clustering is important for capturing cell types. Given UMI counts of a group of cells, we may use raw RNA UMI counts of these cells to determine the differences between them.
 
-Assume, you have a particular single cell technology that you can only capture transcripts associated with two genes, and those two genes are enough to investigate cellular mechanisms. It is indeed a silly example, but will help us understand why to use data clustering in single cell data analysis. Lets call the first gene as Gene X, and the other as Gene Y. 
-
-Let us calculate the normalized gene expression of these two genes for a group of cells, and visualize one cell in a 2d figure (which is enough because we have only two genes). 
+Let us calculate the normalized gene expression of these two genes for a group of cells, and visualize one cell in a 2d figure (which is enough because we have only two genes).
 
 <img src="images/sample_clustering.png" width="600">
 
-Here, a cell has a position in a 2d mathematical space since it has a certain normalized expression in both two genes. How can we determine the state of this cell? We have to visualize all other cells in the same manner to see if there is a certain relationship. 
+Here, a cell has a position in a 2d mathematical space since it has a certain normalized expression in both two genes. How can we determine the state of this cell? We have to visualize all other cells in the same manner to see if there is a certain relationship.
 
 <img src="images/sample_clustering_all.png" width="600">
 
-The abundance of all the cells we have captured revealed a certain pattern, it seems that there are two groups of cells who have similar RNA count but cells across different groups have unsimilar RNA counts. 
+The abundance of all the cells we have captured revealed a certain pattern, it seems that there are two groups of cells who have similar RNA count but cells across different groups have unsimilar RNA counts.
 
-This we determine by the x axis, since there is considerable difference between these two groups with respect to the gene X. Now, lets give another example with more cells. 
+This we determine by the x axis, since there is considerable difference between these two groups with respect to the gene X. Now, lets give another example with more cells.
 
 <img src="images/sample_clustering_all2.png" width="600">
 
