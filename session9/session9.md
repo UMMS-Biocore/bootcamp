@@ -371,7 +371,7 @@ In the second homework of the last session (i.e. session 7), we have filtered, p
 
 <https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k>
 
-You can find the mtx file, and barcodes.tsv and genes.tsv files in the following path: 
+You can find the mtx file, and barcodes.tsv and genes.tsv files in the following path from the cluster: 
 
 ```
 /project/your_groupname/your_username/bootcamp/scRNASeq/pbmc_3k_processed
