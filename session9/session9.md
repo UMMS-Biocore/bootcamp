@@ -195,7 +195,7 @@ Although some clusters in a dataset can be easily depicted, it may not be the ca
 
 <img src="../session8/images/nearestneighbor.png" width="700">
 
-The illustrative example above finds the nearest 3 neighbors of all samples in two dimensions, then constructs a graph with all these edges. We set this number of neighbors to 20, and construct the graph to be clustered later. 
+The illustrative example above finds the nearest 3 neighbors of all samples in two dimensions, then constructs a graph with all these edges. We set this number of neighbors to 20, and construct the graph to be clustered later. The lines (or **edges**) between points (or **cells**) will then be transformed into **shared nearest neighbors** where two cells are connected their neighbors considerably overlap. We use the shared nearest neighbor to cluster cells. 
 
 ```
 pbmc1k_seu <- FindNeighbors(pbmc1k_seu, dims = 1:20)
@@ -383,7 +383,7 @@ If you have done the homework in the previous session, you should already have a
 pbmc3k <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc3k_seu_normalized.rds"))
 ```
 
-Given the normalize Seurat object, you are required to repeat the scRNA-Seq data analysis steps we have covered today. Specifically, you will:  
+Given the normalized Seurat object, you are required to repeat the scRNA-Seq data analysis steps we have covered today. Specifically, you will:  
 
 * Select the most variables features 
 * Choose the best number of principal components, and reduce the data with both tSNE and UMAP
