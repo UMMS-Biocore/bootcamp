@@ -2,14 +2,14 @@
 
 # Overview
 
-- [Session 9: Single Cell RNA Analysis, Day 2](#session-8-single-cell-rna-analysis-day-2)
+- [Session 9: Single Cell RNA Analysis, Day 2](#session-9-single-cell-rna-analysis-day-2)
 - [Overview](#overview)
 - [scRNA-Seq Data Analysis](#scrna-seq-data-analysis)
 - [Feature Selection and Dimensionality Reduction](#feature-selection-and-dimensionality-reduction)
 - [Clustering](#clustering)
 - [Marker Analysis and Cell Type Identification](#marker-analysis-and-cell-type-identification)
 - [scRNA Data Analysis Pipeline](#scrna-data-analysis-pipeline)
-- [Session 9 Homework](#session-8-homework)
+- [Session 9 Homework](#session-9-homework)
     
 # scRNA-Seq Data Analysis
 
