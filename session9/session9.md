@@ -257,7 +257,7 @@ marker_table_pbmc1k_seu <- FindAllMarkers(pbmc1k_seu)
 You can download and import the resulting table with the following code:
 
 ```
-pbmc1k_seu <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc1k_seu_normalized.rds"))
+marker_table_pbmc1k_seu <- read.csv(url("https://bioinfo.umassmed.edu/pub/data/marker_table_pbmc1k_seu.csv"))
 ```
 
 You can view the entire set of markers by using the View function in R Studio. 
@@ -318,6 +318,23 @@ DimPlot(pbmc1k_seu, reduction = "tsne", label = TRUE, pt.size = 0.5) + NoLegend(
 ```
 
 <img src="../session8/images/cell_annotated.png" width="600">
+
+You can further visualize differentially expressed potential markers with feature plots and violin plots for a number of genes to make discoveries about clusters. 
+
+```
+Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
+FeaturePlot(pbmc1k_seu, reduction = "tsne", features = c("CD8A","GNLY","CCR7","PPBP"), label = T)
+```
+
+<img src="../session8/images/violinplots_gene.png" width="600">
+
+```
+Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
+VlnPlot(pbmc1k_seu, features = c("CD8A","GNLY","CCR7","PPBP"))
+```
+
+<img src="../session8/images/featureplots_gene.png" width="600">
+
 
 # scRNA Data Analysis Pipeline
 
