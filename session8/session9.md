@@ -128,8 +128,6 @@ Dimensionality reduction is a necessary step to clustering since most clustering
 
 <img src="images/curseofdimensionality.png" width="700">
 
-We are now ready to decrease the dimensionality of the data and further reduce the dimensionality to 2 dimensions for better visualization of single cell expression profiles. This reduction is performed in multiple steps. 
-
 We have removed each individual gene whose variance were below some top number of genes. Now we need to eliminate (or transform) redundant genes which is correlated to some other top 2000 genes. To this end, we will incorporate **Principal Components Analysis (PCA)**.  
 
 But what is Principal Components Analysis? The name suggests finding "principal components" of a dataset; that is, given a gene expression dataset with around 2000 genes (after removing genes that are not variable), we would like to reduce this number to somewhere between 20 or 30. 
@@ -147,7 +145,7 @@ PC1 (because of the angle between two lines being 90 degress), **PC1** is more i
 	</tbody>
 </table>
 
-It is easy to visualize two dimensions but we have 2000 genes. PCA will accomplish a reduction of 2000 genes to some number of **latent genes** that we are going to use for clustering. 
+It is easy to visualize two dimensions but we have 2000 genes. PCA will accomplish a reduction of 2000 genes to some number of **latent features** that we are going to use for clustering. 
 
 The number of principal components (the dimensionality of reduced dataset) is a matter of choice but a quality control can be applied to look for the correct number of dimensions. We usually use the **elbow plot** to search for the correct number of principal components. 
 
@@ -169,7 +167,7 @@ DimHeatmap(pbmc1k_seu, dims = 1:6, balanced = TRUE)
 
 <img src="images/heatmap_pca.png" width="900">
 
-We have first reduced 36000 to 2000, then we reduced 2000 to 20, but we still have 18 more dimensions to reduce while preserving the information on expression profiles. Although 20 dimensions are enough to separate cell into meaningful groups via clustering, we reduce the additional number of 18 dimensions for visualization purposes. 
+We have first reduced **36000 to 2000**, then we reduced **2000 to 20**, but we still have 18 more dimensions to reduce while preserving the information on expression profiles. Although 20 dimensions are enough to separate cells into meaningful groups via clustering, we reduce the additional number of 18 dimensions for visualization purposes. 
 
 As the last step of the dimensionality reduction, we will incorporate the method **t-distributed stochastic neighbor embedding (t-SNE)**, that reduce high dimensional datasets to 2 dimensional datasets by capturing locally similar samples (or cells). We will use the first 20 PCs since they are the most informative PCs.
 
