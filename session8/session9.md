@@ -45,15 +45,15 @@ This we determine by the x axis, since there is considerable difference between 
 
 <img src="images/sample_clustering_all2.png" width="600">
 
-There are now three groups of cells, with one having more counts from Gene X, and the other having more counts in both Gene X and Gene Y. It is easy to determine the number of groups (or clusters) since there are only two genes, and it easy to annotate these cell groups (or cell types). 
+There are now three groups of cells, with one having higher expression of Gene X, and the other having higher expression in both Gene X and Gene Y. It is easy to determine the number of groups (or clusters) since there are only two genes, and it easy to annotate these cell groups (or cell types). 
 
-However, in reality we have thousands of genes (high dimensional data) and many many more cells to find groups (or cell types) from. Hence, we have to incorporate several mathematical tools to simplify such complex and high dimensional data and use clustering analysis to determine the number of groups. In order to achieve a clustering of thousand of cells with thousands of genes in their expression profiles, we will incorporate a single cell data analysis workflow that is often used by many scRNA analysis packages (including Seurat). 
+However, in reality we have **thousands of genes (high dimensional data)**, around or perhaps **more than 30000** genes/features, and many many more cells to find groups (or cell types) from. Hence, we have to incorporate several **mathematical tools to simplify such complex and high dimensional data** and use clustering analysis to determine the number of groups. In order to achieve a clustering of thousand of cells with thousands of genes in their expression profiles, we will incorporate a single cell data analysis workflow that is often used by many scRNA analysis packages (including **Seurat**). 
 
 <img align="center" src="images/scrna_data_workflow.png" width="200">
 
 # Feature Selection and Dimensionality Reduction
 
-In previous sessions, we have used **Principal Component Analysis (PCA)** to reduce the dimensionality of expression profiles and to visualize samples in two dimensional plots. However, in bulk RNA-Seq, the groups and conditions are mostly known and we are only interested in there exists differentially expressed genes separating the two (or multiple) groups. 
+In previous sessions, we have used **Principal Component Analysis (PCA)** to reduce the dimensionality of expression profiles and to visualize samples in two dimensional plots. However, in bulk RNA-Seq, the groups and conditions are mostly known and we are only interested if there exists differentially expressed genes separating the two (or multiple) groups. 
 
 We will cover PCA in a bit more detail after removing genes that are not variable. 
 
