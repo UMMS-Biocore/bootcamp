@@ -211,10 +211,10 @@ The illustrative example above finds the nearest 3 neighbors of all samples in t
 pbmc1k_seu <- FindNeighbors(pbmc1k_seu, dims = 1:20)
 ```
 
-We will now move on to clustering with the computed nearest neighbors. Seurat incorporates several versions of graph clustering where the louvain algorithm
+We will now move on to clustering with the computed nearest neighbors. Seurat incorporates several versions of graph clustering where the **Louvain Algorithm**
 is the default choice. Here, we are looking for "communities" within graphs that are associated to clusters. A community defined as a group of nodes (or cells) are more likely connected to eachother, where the number of edges to other cells in other clusters are few. 
 
-The result of louvain algorithm depends on the **resolution** parameter which determines how densely (the number of edges in a cluster) connected a group of cells should be to form a cluster. Thus, the higher the resolution parameter, the higher the number of clusters. 
+The result of Louvain algorithm depends on the **resolution** parameter which determines how densely (the number of edges in a cluster) connected a group of cells should be to form a cluster. Thus, the higher the resolution parameter, the higher the number of clusters. 
 
 <img src="images/communities.png" width="700">
 
@@ -227,7 +227,7 @@ DimPlot(pbmc1k_seu, reduction = "tsne", label = T)
 
 <img src="images/clustering_res0.2.png" width="700">
 
-Some clusters might have been "underclustered"; that is, we need to further divide clusters into multiple clusters to achieve and optimized number of clusters (or cell types). 
+Some clusters might have been "underclustered"; that is, we need to further divide clusters into multiple subclusters to achieve and optimized number of clusters (or cell types). 
 
 ```
 > pbmc1k_seu <- FindClusters(pbmc1k_seu, resolution = c(0.2,0.4,0.6,0.8,1.0,1.4))
