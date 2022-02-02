@@ -66,16 +66,6 @@ We will cover PCA in a bit more detail after removing genes that are not variabl
 We will first reload the normalized data from the previous session.
 
 ```
-> pbmc1k_seu <- readRDS("pbmc1k_seu_normalized.rds")
-> pbmc1k_seu
-An object of class Seurat 
-36601 features across 1094 samples within 1 assay 
-Active assay: RNA (36601 features, 0 variable features)
-```
-
-Alternatively, you can use the following code as well. 
-
-```
 > pbmc1k_seu <- readRDS(url("https://bioinfo.umassmed.edu/pub/data/pbmc1k_seu_normalized.rds"))
 > pbmc1k_seu
 An object of class Seurat 
