@@ -117,7 +117,7 @@ plot_features_label <- LabelPoints(plot = plot_features, points = top20, repel =
 plot_features_label
 ```
 
-<img src="images/variable_features.png" width="600">
+<img src="../session8/images/variable_features.png" width="600">
 
 We can quickly recognize some of the marker genes that are selected as the most variable features. For example, **Granulysin (GNLY)** and **Granule 7 (NKG7)** are both found in natural killer cells, where as **PPBP** gene is made by Platelet cells (or thrombocytes). A first look at variable genes may give clues on quality of selected genes.  
 
@@ -126,7 +126,7 @@ to decrease the complexity of dimensionality reduction and clustering algorithms
 
 Dimensionality reduction is a necessary step to clustering since most clustering and partitioning algorithms are prone to **curse of dimensionality** which occurs when objects are defined in high dimensional spaces and this objects seem far away from eachother as opposed to lower dimensions. 
 
-<img src="images/curseofdimensionality.png" width="700">
+<img src="../session8/images/curseofdimensionality.png" width="700">
 
 We have removed each individual gene whose variance were below some top number of genes. Now we need to eliminate (or transform) redundant genes which is correlated to some other top 2000 genes. To this end, we will incorporate **Principal Components Analysis (PCA)**.  
 
@@ -155,7 +155,7 @@ pbmc1k_seu <- RunPCA(pbmc1k_seu, verbose = FALSE, npcs = 30)
 ElbowPlot(pbmc1k_seu, ndims = 30)
 ```
 
-<img src="images/elbowplot.png" width="600">
+<img src="../session8/images/elbowplot.png" width="600">
 
 The elbow plot indicates that 20 principal components are enough (where the elbow of the line chart points to 20!) to reduce the dimensionality of the dataset; that is, the PCs after the 20th are minimally contributive to the variance. Hence we can stop at adding PCs after the 20th since they wont contribute to downstream analysis and clustering much! 
 
@@ -165,7 +165,7 @@ We can also investigate the relationship between PCs and most variables genes (o
 DimHeatmap(pbmc1k_seu, dims = 1:6, balanced = TRUE)
 ```
 
-<img src="images/heatmap_pca.png" width="900">
+<img src="../session8/images/heatmap_pca.png" width="900">
 
 We have first reduced **36000 to 2000**, then we reduced **2000 to 20**, but we still have 18 more dimensions to reduce while preserving the information on expression profiles. Although 20 dimensions are enough to separate cells into meaningful groups via clustering, we reduce the additional number of 18 dimensions for visualization purposes. 
 
@@ -178,7 +178,7 @@ pbmc1k_seu <- RunTSNE(pbmc1k_seu, verbose = FALSE, dims = 1:20)
 DimPlot(pbmc1k_seu, reduction = "tsne")
 ```
    
-<img src="images/tsne.png" width="700">
+<img src="../session8/images/tsne.png" width="700">
 
 We can alternatively incorporate another dimensionality reduction method, which is called Uniform Manifold Approximation and Projection or UMAP. 
 
@@ -187,7 +187,7 @@ pbmc1k_seu <- RunUMAP(pbmc1k_seu, verbose = FALSE, dims = 1:20)
 DimPlot(pbmc1k_seu, reduction = "umap")
 ```
    
-<img src="images/umap.png" width="700">
+<img src="../session8/images/umap.png" width="700">
 
 Both tSNE and UMAP, may reveal some information on how many clusters (or cell types) exist in the single cell RNA dataset but we may not truly know until we execute the clustering analysis.   
 
@@ -195,15 +195,15 @@ Both tSNE and UMAP, may reveal some information on how many clusters (or cell ty
 
 What is Clustering ? It is the task of **partitioning samples within a dataset into meaningful groups** where samples in the same cluster/group are more similar to each other than the rest of samples. 
 
-<img src="images/clustering_example1.png" width="700">
+<img src="../session8/images/clustering_example1.png" width="700">
 
 Although some clusters in a dataset can be easily depicted, it may not be the case in some other examples. 
 
-<img src="images/clustering_example2.png" width="400">
+<img src="../session8/images/clustering_example2.png" width="400">
 
 **Seurat** incorporates a graph based clustering strategy where we first determine the nearest neighbors of all cells in PC space (with 20 dimensions). Then we construct a nearest neighbor graph from the calculated distances. 
 
-<img src="images/nearestneighbor.png" width="700">
+<img src="../session8/images/nearestneighbor.png" width="700">
 
 The illustrative example above finds the nearest 3 neighbors of all samples in two dimensions, then constructs a graph with all these edges. We set this number of neighbors to 20, and construct the graph to be clustered later. 
 
@@ -216,7 +216,7 @@ is the default choice. Here, we are looking for "communities" within graphs that
 
 The result of Louvain algorithm depends on the **resolution** parameter which determines how densely (the number of edges in a cluster) connected a group of cells should be to form a cluster. Thus, the higher the resolution parameter, the higher the number of clusters. 
 
-<img src="images/communities.png" width="700">
+<img src="../session8/images/communities.png" width="700">
 
 We initially set resolution to 0.2 and execute clustering. We then visualize the clusters to evaluate the quality of clustering. 
 
@@ -225,7 +225,7 @@ pbmc1k_seu <- FindClusters(pbmc1k_seu, resolution = 0.2)
 DimPlot(pbmc1k_seu, reduction = "tsne", label = T)
 ```
 
-<img src="images/clustering_res0.2.png" width="700">
+<img src="../session8/images/clustering_res0.2.png" width="700">
 
 Some clusters might have been "underclustered"; that is, we need to further divide clusters into multiple subclusters to achieve and optimized number of clusters (or cell types). 
 
@@ -248,7 +248,7 @@ g6 <- DimPlot(pbmc1k_seu, reduction = "tsne", label = T, group.by = "RNA_snn_res
 g1 + g2 + g3 + g4 + g5 + g6
 ```
 
-<img src="images/clustering_res_all.png" width="1000">
+<img src="../session8/images/clustering_res_all.png" width="1000">
 
 
 # Marker Analysis and Cell Type Identification
@@ -270,7 +270,7 @@ You can view the entire set of markers by using the View function in R Studio.
 View(marker_table_pbmc1k_seu)
 ```
 
-<img src="images/marker_table.png" width="600">
+<img src="../session8/images/marker_table.png" width="600">
 
 Seurat incorporates heatmaps to visualize a selected number of marker genes (or any genes in particular) to determine cell types. We will first select the top differentially expressed genes for each cluster using the **dplyr** package. Then, we will visualize these genes on an heatmap. 
 
@@ -285,7 +285,7 @@ marker_table_pbmc1k_seu %>%
 DoHeatmap(pbmc1k_seu, features = top10$gene) + NoLegend()
 ```
 
-<img src="images/heatmap_markers.png" width="1000">
+<img src="../session8/images/heatmap_markers.png" width="1000">
 
 On some occasions, closely related clusters can only be annotated using a one-to-one test, given these two closely related clusters compared to each other instead of compared to all other clusters.
 
@@ -321,13 +321,13 @@ pbmc1k_seu <- RenameIdents(pbmc1k_seu, new.cluster.ids)
 DimPlot(pbmc1k_seu, reduction = "tsne", label = TRUE, pt.size = 0.5) + NoLegend()
 ```
 
-<img src="images/cell_annotated.png" width="600">
+<img src="../session8/images/cell_annotated.png" width="600">
 
 # scRNA Data Analysis Pipeline
 
 As a concluding note, we will examine a DolphinNext pipeline geared towards creating Rmarkdown templates for Seurat scRNA data analysis workflows. This pipeline takes the output of a scRNA-Seq data analysis pipeline (10x directory or a UMI table) and analyze the data with predetermined thresholds. You can then use this rmarkdown template for your own analysis in your local computer. 
 
-<img src="images/seurat_pipeline.png" width="800">
+<img src="../session8/images/seurat_pipeline.png" width="800">
 
 Lets take a look at the DolphinNext input parameters of the scRNA-Seq data analysis pipeline. 
 
@@ -346,11 +346,11 @@ Lets take a look at the DolphinNext input parameters of the scRNA-Seq data analy
 
 The results of the Pipeline can be imported as an rmarkdown html file. 
 
-<img src="images/rmarkdown_html.png" width="800">
+<img src="../session8/images/rmarkdown_html.png" width="800">
 
 But you can also download the corresponding .rmd file to download and use in your own local computer. 
 
-<img src="images/rmarkdown_rmd.png" width="800">
+<img src="../session8/images/rmarkdown_rmd.png" width="800">
 
 # Session 9 Homework
 
