@@ -331,7 +331,7 @@ As a concluding note, we will examine a DolphinNext pipeline geared towards crea
 
 Lets take a look at the DolphinNext input parameters of the scRNA-Seq data analysis pipeline. 
 
-**A. Work Directory:** Please enter `/project/your_groupname/your_username/bootcamp/pbmc_cellranger_seurat` as work directory.
+**A. Work Directory:** Please enter `/project/your_groupname/your_username/bootcamp/scRNASeq/pbmc_cellranger_seurat` as work directory.
 
 **B. Run Environment:** Please choose `Run Environment for ghpcc06.umassrc.org`
 
