@@ -283,6 +283,22 @@ DoHeatmap(pbmc1k_seu, features = top10$gene) + NoLegend()
 
 <img src="../session8/images/heatmap_markers.png" width="1000">
 
+You can further visualize differentially expressed potential markers with feature plots and violin plots for a number of genes to make discoveries about clusters. 
+
+```
+Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
+FeaturePlot(pbmc1k_seu, reduction = "tsne", features = c("CD8A","GNLY","CCR7","PPBP"), label = T)
+```
+
+<img src="../session8/images/violinplots_gene.png" width="600">
+
+```
+Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
+VlnPlot(pbmc1k_seu, features = c("CD8A","GNLY","CCR7","PPBP"))
+```
+
+<img src="../session8/images/featureplots_gene.png" width="600">
+
 On some occasions, closely related clusters can only be annotated using a one-to-one test, given these two closely related clusters compared to each other instead of compared to all other clusters.
 
 ```
@@ -318,22 +334,6 @@ DimPlot(pbmc1k_seu, reduction = "tsne", label = TRUE, pt.size = 0.5) + NoLegend(
 ```
 
 <img src="../session8/images/cell_annotated.png" width="600">
-
-You can further visualize differentially expressed potential markers with feature plots and violin plots for a number of genes to make discoveries about clusters. 
-
-```
-Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
-FeaturePlot(pbmc1k_seu, reduction = "tsne", features = c("CD8A","GNLY","CCR7","PPBP"), label = T)
-```
-
-<img src="../session8/images/violinplots_gene.png" width="600">
-
-```
-Idents(pbmc1k_seu) <- "RNA_snn_res.0.6"
-VlnPlot(pbmc1k_seu, features = c("CD8A","GNLY","CCR7","PPBP"))
-```
-
-<img src="../session8/images/featureplots_gene.png" width="600">
 
 
 # scRNA Data Analysis Pipeline
