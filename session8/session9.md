@@ -55,11 +55,11 @@ However, in reality we have **thousands of genes (high dimensional data)**, arou
 
 In previous sessions, we have used **Principal Component Analysis (PCA)** to reduce the dimensionality of expression profiles and to visualize samples in two dimensional plots. However, in bulk RNA-Seq, the groups and conditions are mostly known and we are only interested if there exists differentially expressed genes separating the two (or multiple) groups. 
 
-We will cover PCA in a bit more detail after removing genes that are not variable. 
+We will cover PCA in a bit more detail after removing genes that are not variable. Essentially, we select some considerably high number of genes, **e.g. 2000-3000**, and ignore the rest of the genes since they may not be as informative as the first 2000-3000. This process is often defined as **Feature Selection**. 
 
 <img src="images/intro_qc_pca.png" width="600">
 
-We will first reload the normalized data from the previous session. 
+We will first reload the normalized data from the previous session.
 
 ```
 > pbmc1k_seu <- readRDS("pbmc1k_seu_normalized.rds")
@@ -81,7 +81,7 @@ Active assay: RNA (36601 features, 0 variable features)
 
 Our normalized data incorporates a filtered amount of cells with around 36601 genes, and some of these genes are more informative than others, and also, some of them are quite unnecessary to distinguish cell types. Hence we first select a some number of genes more variable (changing gene expression more frequently across cells). We use the `FindVariableFeatures` function to select those cells, the default value for the number of most variable features (or genes) is 2000.
 
-`FindVariableFeatures` incorporates a (by default) the **variance-stabilizing transformation** described [here](https://www.sciencedirect.com/science/article/pii/S0092867419305598) in detail. In summary, it captures a refined variance of each gene by first standardizing the normalized expression. Then the new variance is used to rank genes, first 2000 (by defuault) is used for further downstream analysis. 
+`FindVariableFeatures` incorporates (by default) the **variance-stabilizing transformation** described [here](https://www.sciencedirect.com/science/article/pii/S0092867419305598) in detail. In summary, it captures a refined variance of each gene by first standardizing the normalized expression. Then the new variance is used to rank genes, first 2000 (by defuault) is used for further downstream analysis. 
 
 There are more variable feature selection methods in `FindVariableFeatures` function, see `help(FindVariableFeatures)`. 
 
@@ -117,7 +117,7 @@ plot_features_label
 
 We can quickly recognize some of the marker genes that are selected as the most variable features. For example, **Granulysin (GNLY)** and **Granule 7 (NKG7)** are both found in natural killer cells, where as **PPBP** gene is made by Platelet cells (or thrombocytes). A first look at variable genes may give clues on quality of selected genes.  
 
-We will incorporate this 2000 selected genes for clustering and cell type identification for the remainder of this lecture. Seurat employs most variables genes 
+We will incorporate these 2000 selected genes for clustering and cell type identification for the remainder of this lecture. Seurat employs most variables genes 
 to decrease the complexity of dimensionality reduction and clustering algorithms. 
 
 Dimensionality reduction is a necessary step to clustering since most clustering and partitioning algorithms are prone to **curse of dimensionality** which occurs when objects are defined in high dimensional spaces and this objects seem far away from eachother as opposed to lower dimensions. 
