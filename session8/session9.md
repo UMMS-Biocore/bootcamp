@@ -201,7 +201,7 @@ Although some clusters in a dataset can be easily depicted, it may not be the ca
 
 <img src="images/clustering_example2.png" width="400">
 
-**Seurat** incorporates a graph based clustering strategy where we first determine the nearest neighbors of all cells in PC space (with dimensions 20). Then we construct a nearest neighbor graph from the calculated distances. 
+**Seurat** incorporates a graph based clustering strategy where we first determine the nearest neighbors of all cells in PC space (with 20 dimensions). Then we construct a nearest neighbor graph from the calculated distances. 
 
 <img src="images/nearestneighbor.png" width="700">
 
