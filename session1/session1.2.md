@@ -338,7 +338,7 @@ you need to submit it to the long queue.
 
 - Remember that HPC is a shared resource among the five campuses of UMass!
 
-- Keep in mind that you are probably sharing the same nearline and project space quota with your lab members. Be considerate when using it!
+- Keep in mind that you are probably sharing the same pi space quota with your lab members. Be considerate when using it!
 
 - Keep your private key files secure.
 
@@ -346,7 +346,7 @@ you need to submit it to the long queue.
 
 - Keep your files organized
 
-- Do not put genomic data in your home folder. Process data in the project space and use nearline for long term storage
+- Do not put genomic data in your home folder. Process data in the /pi space
 
 - Delete unnecessary intermediate files
 
