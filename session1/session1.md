@@ -232,7 +232,7 @@ The following commands are useful for directory navigation:
 |cd ..|Change to parent directory|
 |cd - |Change to previous directory|
 |cd /	|Changes your current directory to the root (/) directory|
-|cd /project/umw_biocore/class|Changes your current directory to a specific directory|
+|cd /pi/alper.kucukural-umw/umw_biocore/class|Changes your current directory to a specific directory|
 
 	~ : Home directory
 	. : current directory
@@ -261,9 +261,9 @@ Please **use all the commands** in the table above and run "pwd" command after t
 Now we have to take a time to explain <b>pathnames</b>. 
 
 So far we have only been listed files that are in our current directory. 
-Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
+Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/pi/alper.kucukural-umw/umw_biocore/class". You could accomplish this by using these commands:
 
-	$ ls /share/data/umw_biocore/
+	$ ls /pi/alper.kucukural-umw/umw_biocore/class
 	
 	
 Please remember if it starts with "/". It is called full path (or absolute path). You can use these paths while copying or moving the files or folders.
@@ -790,7 +790,7 @@ The information you need is below;
 - mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
 - ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
 - rsem.to.table.pl file is located at https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
-- fastq files are located /project/umw_biocore/pub/moustest/mm10/fastq.quantification/
+- fastq files are located /share/data/umw_biocore/genome_data/mousetest/mm10/fastq.quantification/
 
 When you run tree function the output should look like below;
 
