@@ -2,7 +2,7 @@
 
 This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
-- If you haven't join into Dolphin Group, please follow steps in our [Dolphin guide](preliminary_steps.md).
+- If you haven't join into ViaFoundry/Dolphin Group, please follow steps in our [ViaFoundry/Dolphin guide](preliminary_steps.md).
 
 - Please join our slack channel to ask your questions.
   To learn how we use, please check [How to use the Bootcamp Slack channel](slack.md).
@@ -13,7 +13,7 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
    [Session 1.1: UMass Cluster (Optional)](session1/session1.2.md)</br>
 
-   [Session 1.2: Useful commands and tools (Optional)](session1/usefull.md)</br></br>
+   [Session 1.2: Useful commands and tools (Optional)](session1/usefull.md)</br>
 
    [Session 1.3: Genomic resources](session1/genomic_resources.md)</br>
 
