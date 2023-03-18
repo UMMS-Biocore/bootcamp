@@ -48,7 +48,7 @@ There might be slightly differences according the operating system you use such 
 
 In order to make an SSH connection to your account, you need to use program like <a href="https://www.putty.org/" target="_blank">PuTTY</a>. Use the following info to configure your connection and click **Open** to start the SSH session.
     
-    - Host Name: ghpcc06.umassrc.org
+    - Host Name: hpc.umassmed.edu
     - Port: 22 
     - Connection Type: SSH 
     
@@ -57,9 +57,9 @@ In order to make an SSH connection to your account, you need to use program like
 * If you need to <b>copy and paste any text/command</b>, you should <b>right-click</b> (or use middle mouse button) to paste your text/command.
 </pre>
 
-If you have entered the correct password, the prompt responds with a shell prompt::
+If you have entered the correct password, the prompt responds with a shell prompt:
 
-	[yourusername@ghpcc06 ~]$
+	[yourusername@hpcc04 ~]$
 
 #### B. If you're using Linux or MacOS
 
@@ -73,15 +73,15 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
 Let's start running some commands. First command will be "ssh" to connect to the UMASS cluster. If you're using windows, please use PuTTY or similar program to make SSH connection.
 
-	$ ssh username@ghpcc06.umassrc.org
+	$ ssh username@hpcc04
 	
 
 Let’s verify that we are at the right place. In this case only run "hostname", not the output of the command (ghpcc06).
 
 	$ hostname
-	ghpcc06
+	hpcc04 
 	
-You need to see "ghpcc06" in your terminal as an output. ghpcc06 is our "head node". You will learn what head or child nodes are in these tutorials later. 
+You need to see "hpcc04" or "hpcc03" in your terminal as an output. hpcc03 or hpcc04 are our "head nodes". You will learn what head or child nodes are in these tutorials later. 
 
 
 ## Getting started
@@ -142,14 +142,13 @@ Linux is case-sensitive, in order to avoid typing errors, you might copy and pas
 Lets run some commands below one at a time and list the content of the directories. 
 
 	$ ls /
-	$ ls /project
-	$ ls /nl
-	$ ls /project/umw_biocore/class/
+	$ ls /pi
+	$ ls /pi/alper.kucukural-umw/umw_biocore/class/
 
 For example, last command result will be
 
-    $ ls /project/umw_biocore/class/
-    class.html  class.R  data.tsv  funcs.R
+    $ ls /pi/alper.kucukural-umw/umw_biocore/class/
+    class.html  class.R  data.tsv  funcs.R ...
 
 We will visit ls command later to learn about the sizes or permissions, creation times, or owner of the files or directories.
 
@@ -194,14 +193,10 @@ which command couldn't find the STAR in any of our paths.
 
 Please write the command below and press "tab button" in your keyboard. It will list all available versions of star. (Tab can also be used for auto-completion of any other commands.)
 
-	# Type the part of the star version (star/2.) and press "tab" button twice and wait a little to load
-	# If it doesn't print the available options, then you need to type the full version of star (star/2.7.0e) by yourself
-	$ module load star/2.   
-	star/2.3.0e  star/2.4.2a  star/2.5.3a  star/2.7.0e  
 
 To load the desired version just type the rest of the version and press enter.  
 
-	$ module load star/2.7.0e  
+	$ module load star/2.7.10e  
 
 Run "which" command again to see the location of the command;
 
@@ -209,7 +204,7 @@ Run "which" command again to see the location of the command;
 	
 To unload a module (eg. when you want to use another STAR version), you can use **unload** command;
 
-	$ module unload star/2.7.0e  
+	$ module unload star/2.7.10e  
 
 To list all available modules in the cluster;
 
@@ -268,7 +263,7 @@ Now we have to take a time to explain <b>pathnames</b>.
 So far we have only been listed files that are in our current directory. 
 Sometimes you might want to manipulate or list files that are not in your current directory. For example, you may be doing a lot of work in the ~/bootcamp directory, but you remember that you wanted to work on "/project/umw_biocore/class". You could accomplish this by using these commands:
 
-	$ ls /project/umw_biocore/class
+	$ ls /share/data/umw_biocore/
 	
 	
 Please remember if it starts with "/". It is called full path (or absolute path). You can use these paths while copying or moving the files or folders.
@@ -286,7 +281,7 @@ The tree command is a good way to get a bird’s-eye view of the filesystem tree
 |tree -d|Just list the directories and suppress listing file names|
 
 
-Please use the commands in the table using the example directory "/project/umw_biocore/class". You can use these command with any other directories too. 
+Please use the commands in the table using the example directory "/pi/alper.kucukural-umw/umw_biocore". You can use these command with any other directories too. 
 
 To see the complete list of options of a command. 
 
@@ -296,27 +291,27 @@ To see the complete list of options of a command.
 
 Try commands below;
 
-	$ ls /project/umw_biocore/class
-	$ ls -a /project/umw_biocore/class
+	$ ls /share/data/umw_biocore/
+	$ ls -a /share/data/umw_biocore/
 
 Which file is different in the output of both commands above?
 
 The hidden files start with "."
 
-	$ ls -l /project/umw_biocore/class
-	$ ls -lh /project/umw_biocore/class
+	$ ls -l /pi/alper.kucukural-umw/umw_biocore
+	$ ls -lh /pi/alper.kucukural-umw/umw_biocore
     
 You can also run -l -a command together
     
-	$ ls -a -l /project/umw_biocore/class
+	$ ls -a -l /pi/alper.kucukural-umw/umw_biocore
     
 **ls** command can also recognize the parameters together like in the example ```ls -lh```, in any order
  
- 	$ ls -al /project/umw_biocore/class
+ 	$ ls -al /pi/alper.kucukural-umw/umw_biocore
  	
 **tree** command shows all files and folders recursively in the directory you want to check. If you run the command in the directory that too many files are located, printing files to terminal might take a long time. In that case, you can press Ctrl+C (Control+C) in your keyboard to stop the execution.
 
-	$ tree /project/umw_biocore/class
+	$ tree /pi/alper.kucukural-umw/umw_biocore
 
 <pre>
 <b>Caution:If any of your commands run too long. You can always use Ctrl+C in your keyboard to</br>stop the execution.</b>
@@ -325,7 +320,7 @@ You can also run -l -a command together
 	
 List the tree with only the folder names
 
-	$ tree -d /project/umw_biocore/class
+	$ tree -d /pi/alper.kucukural-umw/umw_biocore/genome_data/human/
 
 
 
@@ -346,7 +341,7 @@ Lets go into this directory and print where we are.
 
 You can try going to another directory using the full path
 
-	$ cd /project/umw_biocore/class
+	$ cd /pi/alper.kucukural-umw/umw_biocore
 	$ pwd
 	$ ls
 	
@@ -408,19 +403,20 @@ You can copy the files from the source to the destination using a command like b
 
 cp sourcefile(s) destination_path
 
-Lets copy funcs.R file to our ~/bootcamp/first directory and compare them.
+Lets copy funcs.R file to our ~/bootcamp/first directory and compare them. Let's first create an empty funcs.R file as an example and copy that file.
 
-	$ cp /project/umw_biocore/class/funcs.R ~/bootcamp/first
+	$ touch ~/bootcamp/funcs.R 
+	$ cp ~/bootcamp/funcs.R ~/bootcamp/first
 	
 Now lets check the file sizes:
 
-	$ ls -l /project/umw_biocore/class/funcs.R
+	$ ls -l ~/bootcamp/funcs.R
 	$ ls -l ~/bootcamp/first
 
 
 |Permissions|# of links|user name|user group|size|date|filename|
 |-------|-------|-------|-------|-------|-------|-------|
-|-rwxr-xr-x|1 |ak97w| umw\_manuel\_garber|5532|Apr  7 17:17| funcs.R|
+|-rwxr-xr-x|1 |alper.kucukural-umw| alper.kucukural-umw|0|Mar  1 17:17| funcs.R|
 
 ### Copying Directories
 
@@ -574,7 +570,7 @@ Lets put the tree output into a file under bootcamp directory.
 
 Lets put ls -l output to "list.txt" file.
 
-	$ ls -l > list.txt
+	$ ls -l > ~/bootcamp/list.txt
 	$ cat list.txt
 
 
@@ -596,14 +592,14 @@ It is called "more" because after it has displayed a page of text, if the text i
 
 "head" and "tail" commands are also good to print head and tail of a file. If they used without a parameter, they will print 10 lines. When it is used with "-n X" parameter, it will print X # of lines.
 
-	$ head -n 5 /project/umw_biocore/class/funcs.R
-	$ tail -n 5 /project/umw_biocore/class/funcs.R
+	$ head -n 5 ~/bootcamp/list.txt
+	$ tail -n 5 ~/bootcamp/list.txt
 	
 "cat" is another program that you can view the files. It dumps all file into the screen. So, if the file is big, prefer using "more" or "less".
 
-	$ cat /project/umw_biocore/class/funcs.R
+	$ cat ~/bootcamp/list.txt
 
-### Creating an empty file
+### Creating an empty file (OPTIONAL)
 
 "touch" command creates a file.
 
@@ -629,13 +625,13 @@ If you don't want to copy a file but use it in another directory you can use "ln
 The command below will create a link to the current directory. Check how "." is used to represent current directory. This usage can be used in "cp" command too.
 
 	$ cd ~/bootcamp
-	$ ln -s  /project/umw_biocore/class/funcs.R .
+	$ ln -s  /pi/alper.kucukural-umw/umw_biocore/genome_data/human/hg19/chrName.txt .
 	
 When you use ls -l, funcs.R symbolic link will point the location of the original file.
 
 	$ ls -l
 	total 38
-	lrwxrwxrwx 1 your_user your_group  34 Apr  7 23:36 funcs.R -> /project/umw_biocore/class/funcs.R
+	lrwxrwxrwx 1 your_user your_group  34 Apr  7 23:36 chrName.txt -> /pi/alper.kucukural-umw/umw_biocore/genome_data/human/hg19/chrName.txt
 
 
 ### File and Directory Security:
@@ -651,7 +647,7 @@ Deciphering the security characters will take a bit more work.
 First, you must think of those nine characters as three sets of three characters (see below). Each of the three "rwx" characters refers to a different operation you can perform on the file or directory.
 
 	$ ls -l 
-	-rw-r--r-- 1 ak97w umw_manuel_garber 83 Apr  7 18:01 mytree.txt
+	-rw-r--r-- 1 your_user your_group 83 Apr  7 18:01 mytree.txt
 
  * The 'r' means you can "read" the file's contents.
  * The 'w' means you can "write", or modify, the file's contents.
@@ -684,7 +680,7 @@ For more details and learning binary system check the link below;
 
 <https://www.linux.com/training-tutorials/understanding-linux-file-permissions/>
 
-### Wildcards
+### Wildcards (OPTIONAL)
 
 We could get you to type two more "chmod" commands to modify the permissions of all text files one by one, but there's an easier way using "wildcards".
 
@@ -701,7 +697,7 @@ So to copy only txt files to dir1 folder.
 ```dir/.``` usage also very common, the files will go under dir1 folder. However, it is not mandantory.
  
 
-### Working with Compressed Files
+### Working with Compressed Files 
 
 We use **gzip** to compress/decompress files
 
@@ -739,9 +735,9 @@ df -h will show the space in human readable format. In this example
 
 
 	$ df -h ~/.
-	Filesystem            Size  Used Avail Use% Mounted on
-	umassmghpcc-head.umassrc.org:/ifs/xdata/home/your_user
-	                       50G   23G   28G  46% /home/your_user
+	Filesystem                                  Size  Used Avail Use% Mounted on
+	panfs://172.26.44.2/pi/alper.kucukural-umw   19T   12T  6.3T  66% /pi/alper.kucukural-umw
+
 
 "Size" is the disk allocated to you.
 
@@ -779,10 +775,13 @@ Please check the link below to learn how to use FileZilla client.
 
 The information you need is below;
 
-	Hostname: ghpcc06.umassrc.org
+	Hostname: 
 	Username: Your_cluster_user
-	Password: Your_cluster_password
+	Logon Type: Key File
+	Key File*: /Users/your_user_in_your_laptop/.ssh/id_rsa
 	Port: 22
+
+	*You need to locate the private key in your laptop.
 
 ### Session1 Homework:
 
