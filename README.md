@@ -9,7 +9,7 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 - Zoom link for the class: <https://umassmed.zoom.us/j/6720894615?pwd=YTUwU29RWnJ0d3doUmFIY3A2TmFsdz09>
 
-1. [Session 1: Linux environment](session1/session1.md)</br></br>
+1. [Session 1: Linux environment](session1/session1.md)</br>
 
    [Session 1.1: UMass Cluster (Optional)](session1/session1.2.md)</br>
 
