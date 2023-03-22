@@ -129,14 +129,7 @@ Let’s submit a job to write "Hello LSF" into a file in our home directory.
 
 	$ bsub "echo Hello LSF > ~/firstjob.txt"
 	
-we got the following warning message
-
-	WARN: Job does not list memory required, please specify memory...
-	WARN: Job runtime not indicated, please specify job runtime...
-	WARN: No queue specified...
-	WARN: Job <12345> is submitted to default queue <short>
-
-Why did the job scheduler warn us?
+	Job <770453> is submitted to default queue <interactive>.
 
 ### Specifying Resources
 
