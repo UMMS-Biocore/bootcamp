@@ -1,4 +1,4 @@
-Session 2: UMass High Performance Computing Center
+Session 1.2: UMass High Performance Computing Center (OPTIONAL)
 ========
 
 <img src="images/cartoon.png">
@@ -10,10 +10,9 @@ To understand the basics of UMMS cluster and resources we have to process biolog
 
 Overview
 ========
-  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Before you start](#why-cluster)
-  * [MGHPCC](#mghpcc)
+  * [HPC](#hpc)
   * [Storage Organization](#storage-organization)
   * [Getting started](#getting-started)
   * [Reaching the Nodes](#reaching-the-nodes)
@@ -28,17 +27,8 @@ Overview
   * [Interactive Nodes](#interactive-nodes)
   * [Determining Resources](#determining-resources)
   * [Advised Practice](#advised-practice)
-  * [Most Important MGHPCC Policy](#most-important-mghpcc-policy)
+  * [Most Important HPC Policy](#most-important-hpc-policy)
   * [Session2 Homework](#session2-homework)
-
-## Class Materials
-You can follow the class materials below.
-
-<b>1. Session 2.1: UMass Cluster</b><br />
-
-<div align="left">
-  <a href="https://www.youtube.com/watch?v=O98iz-EG9c4"><img src="https://img.youtube.com/vi/O98iz-EG9c4/0.jpg" alt="Session 2.1"></a>
-</div>
 
 ## Introduction
 
@@ -57,11 +47,7 @@ Massive data coming from Deep Sequencing needs to be
 
 It is not feasible to process this kind of data even using a high-end laptop/computer.
 
-### MGHPCC
-
-University of Massachusetts Green High Performance Computing Cluster
-
-	HPCC ≡ GHPCC ≡ MGHPCC ≡ the Cluster
+### HPC
 
 ***HPC :*** High performance computing
 
@@ -69,7 +55,7 @@ University of Massachusetts Green High Performance Computing Cluster
 
 ***Computer Cluster :*** A set of computers connected together that work as a single unit
 
-MGHPCC has over 10K+ cores available and +1 PB of high performance storage. It is located in Holyoke MA and provides computing services to the five campuses of UMass.
+HPC has over 10K+ cores available and +1 PB of high performance storage. It is located in Holyoke MA and provides computing services to the five campuses of UMass.
 
 <img src="images/clusteroverview.png">
 
@@ -80,13 +66,12 @@ Though there are many file systems mounted on the head node, there are three fil
 | Type           | Location               | Content                            | Quota  |
 | -------------- | ---------------------- | ---------------------------------- | ------ |
 | Home Space     | /home/user\_name = ~   | Small Files, executables, scripts  | 50G    |
-| Project Space  | /project/umw\_PI\_name | Big files being actively processed | Varies |
-| Nearline Space | /nl/umw\_PI\_name      | Big files for long term storage    | Varies |
+| PI Space  | /pi/your_pis_name | Big files being actively processed | Varies (~2T free per lab)  |
 
     
 <pre>
 <b>Caution:</b>
-* We do NOT use the head node (ghpcc06) to process big data. We use the cluster nodes to process it.
+* We do NOT use the head node (hpcc04) to process big data. We use the cluster nodes to process it.
 How do we reach the nodes?
 </pre>
 
@@ -94,19 +79,19 @@ How do we reach the nodes?
 
 First command will be "ssh" to connect to the UMASS cluster. If you're using windows, please use PuTTY or similar program to make SSH connection.
 
-	$ ssh username@ghpcc06.umassrc.org
+	$ ssh username@hpc.umassmed.edu
 	
 
-Let’s verify that we are at the right place. In this case only run "hostname", not the output of the command (ghpcc06).
+Let’s verify that we are at the right place. In this case only run "hostname", not the output of the command (hpcc04).
 
 	$ hostname
-	ghpcc06
+	hpcc04
 	
-You need to see "ghpcc06" in your terminal as an output. ghpcc06 is our "head node". 
+You need to see "hpcc04" in your terminal as an output. hpcc04 is our "head node". 
 
 ### Reaching the Nodes
 
-We do NOT use the head node (ghpcc06) to process big data.
+We do NOT use the head node (hpcc04) to process big data.
 We use the cluster nodes to process it.
 
 How do we reach the nodes?
@@ -120,7 +105,7 @@ Job Scheduler is a software that manages the resources of a cluster system. It m
 It puts the jobs in a (priority) queue and executes them on a node when the requested resources become available.
 
 There are many Job Schedulers available. 
-In MGHPCC,
+In HPC,
 
 	LSF (Load Sharing Facility)
    
@@ -188,7 +173,7 @@ We will be using the queues interactive , short and long.
 
 ### Job Scheduling
 
-In a system like MGHPCC, where there are over 10K cores and tens of thousands of jobs and hundreds of users, specifying the right parameters can make a big difference!
+In a system like HPC, where there are over 10K cores and tens of thousands of jobs and hundreds of users, specifying the right parameters can make a big difference!
 
 Let’s try to understand how a job scheduler works on a hypothetical example. The IBM LSF system works differently but using similar principles.
 
@@ -351,17 +336,17 @@ you need to submit it to the long queue.
 
 - Do not run programs on the head node that will take longer than 5 minutes or that will require gigabytes of memory. Instead submit such commands as jobs. You can also use the interactive queue for command line access to the nodes. This is mandatory!
 
-- Remember that MGHPCC is a shared resource among the five campuses of UMass!
+- Remember that HPC is a shared resource among the five campuses of UMass!
 
-- Keep in mind that you are probably sharing the same nearline and project space quota with your lab members. Be considerate when using it!
+- Keep in mind that you are probably sharing the same pi space quota with your lab members. Be considerate when using it!
 
-- Keep your password secure.
+- Keep your private key files secure.
 
 - Backup your data.
 
 - Keep your files organized
 
-- Do not put genomic data in your home folder. Process data in the project space and use nearline for long term storage
+- Do not put genomic data in your home folder. Process data in the /pi space
 
 - Delete unnecessary intermediate files
 
@@ -370,15 +355,15 @@ you need to submit it to the long queue.
 - Do not process big data in the head node. Always submit jobs instead.
 
 For more detailed information, see
-<http://wiki.umassrc.org/>
+<http://hpc.umassmed.edu/>
 
-### Most Important MGHPCC Policy
+### Most Important HPC Policy
 
 - ***Do not use the head node for big jobs!***
 
 - Do not run programs on the head node that will take longer than 5 minutes or that will require gigabytes of memory. Instead submit such commands as jobs. You can also use the interactive queue for command line access to the nodes. ***This is mandatory!***
 
-- On the head node (ghpcc06), using alignment software, samtools, bedtools and etc, R, Perl , Python Scripts and etc. for deep sequencing data is a ***very bad*** idea!
+- On the head node (hpcc04), using alignment software, samtools, bedtools and etc, R, Perl , Python Scripts and etc. for deep sequencing data is a ***very bad*** idea!
 
 - You are likely to get a warning and / or termination of your jobs if you do so.
 

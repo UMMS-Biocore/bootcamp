@@ -1,4 +1,4 @@
-Session 2 cont.: Usefull commands and tools
+Session 1 cont.: Usefull commands and tools (OPTIONAL)
 ========
 
 Expected learning outcome
@@ -8,7 +8,6 @@ We will learn some usefull commands that will help you to use linux. We will als
 
 Overview
 ========
-  * [Class Materials](#class-materials)
   * [Introduction](#introduction)
   * [Processes Management](#processes-management)
   * [Pipes](#pipes)
@@ -16,15 +15,6 @@ Overview
   * [AWK Command](#awk-command)
   * [vi Editor](#vi-editor)
   * [Session Homework](#session-homework)
-
-## Class Materials
-You can follow the class materials below.
-
-<b>1. Session 2.2: Useful linux commands and tools</b><br />
-
-<div align="left">
-  <a href="https://www.youtube.com/watch?v=vrwklLU-Ic8"><img src="https://img.youtube.com/vi/vrwklLU-Ic8/0.jpg" alt="Session 2.2"></a>
-</div>
 
 ## Introduction
 There are a couple of more commands that is required to learn to be more comfortable in linux environment. In this session we will learn processes in management, pipe usage, grep, awk, sed commands that are usefull for text manupilation and text search in files and vi editor.
@@ -219,9 +209,9 @@ For example, if we only want to list username and the name of the directories we
 	$ cd ~/bootcamp/RNA-Seq
 	$ ls -l
 	total 38
-	drwxrwxr-x 2 ak97w umw_manuel_garber  51 Apr  7 23:44 mm10
-	drwxrwxr-x 2 ak97w umw_manuel_garber  34 Apr  7 23:46 progs
-	drwxrwxr-x 2 ak97w umw_manuel_garber 408 Apr  7 23:32 reads
+	drwxrwxr-x 2 your_user your_group  51 Apr  7 23:44 mm10
+	drwxrwxr-x 2 your_user your_group  34 Apr  7 23:46 progs
+	drwxrwxr-x 2 your_user your_group 408 Apr  7 23:32 reads
 
 Let's list column 3 which is user id and column 9 and put space in between these columns.
 
@@ -269,16 +259,16 @@ Now we can build the necessary command to kill those dummy jobs.
 
 	$ bjobs 
 	JOBID      USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
-	4358754    ak97w   RUN   short      ghpcc06     c41b01      job1       Apr 14 17:36
-	4358755    ak97w   RUN   short      ghpcc06     c41b01      job2       Apr 14 17:36
-	4358756    ak97w   RUN   short      ghpcc06     c41b01      job3       Apr 14 17:36
+	4358754    alper.k   RUN   interactiv hpcc04      r640c26    job1       Apr 14 17:36
+	4358755    alper.k   RUN   interactiv hpcc04      r640c26     job2       Apr 14 17:36
+	4358756    alper.k   RUN   interactiv hpcc04      r640c26     job3       Apr 14 17:36
 
 To print the jobs where their job names include "job", we can use a command below;
 
 	$ bjobs | grep job
-	4358754    ak97w   RUN   short      ghpcc06     c41b01      job1       Apr 14 17:36
-	4358755    ak97w   RUN   short      ghpcc06     c41b01      job2       Apr 14 17:36
-	4358756    ak97w   RUN   short      ghpcc06     c41b01      job3       Apr 14 17:36
+	4358754    alper.k   RUN   interactiv hpcc04      r640c26    job1       Apr 14 17:36
+	4358755    alper.k   RUN   interactiv hpcc04      r640c26    job2       Apr 14 17:36
+	4358756    alper.k   RUN   interactiv hpcc04      r640c26    job3       Apr 14 17:36
 
 As you can see, it skipped the first line (header line). Now we can print the job IDs.
 

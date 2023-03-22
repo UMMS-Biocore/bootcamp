@@ -1,16 +1,12 @@
-# Session 3 cont.: SAM/BAM alignment files
+# Session 1 cont.: SAM/BAM alignment files
 
 ## Class Materials
 
 You can follow the class materials below.
 
-<b>1. Session 3.3: SAM/BAM Files</b><br />
+<b>1. Session 1.3: SAM/BAM Files</b><br />
 
-<div align="left">
-  <a href="https://www.youtube.com/watch?v=56BIJEntE8w"><img src="https://img.youtube.com/vi/56BIJEntE8w/0.jpg" alt="Session 3.3"></a>
-</div>
-
-Slides: [SAM/BAM file formats](Session3.3_general_pipeline_alignment_files.pptx)
+Slides: [SAM/BAM file formats](Session1_general_pipeline_alignment_files.pptx)
 
 ## SAM files
 
@@ -19,7 +15,7 @@ SAM is an acronym for Sequence Alignment/Mapping
 It is not common to find a sam file since they take up a lot of space, but here is a small example. Since it is a text file, you can view it just as you had been viewing all other text files we have worked with:
 
 ```
-$ head /project/umw_biocore/class/mm_example.sam
+$ head /pi/alper.kucukural-umw/umw_biocore/class//mm_example.sam
 ```
 
 ## BAM files
@@ -52,19 +48,19 @@ samtools merge
 - Use the view command to print the first 10 alignments of this bam file:
 
 ```
-$ samtools view /project/umw_biocore/class/mm_example.bam | head
+$ samtools view /pi/alper.kucukural-umw/umw_biocore/class//mm_example.bam | head
 ```
 
 - Count the number of records in this file:
 
 ```
-$ samtools view /project/umw_biocore/class/mm_example.bam | wc -l
+$ samtools view /pi/alper.kucukural-umw/umw_biocore/class//mm_example.bam | wc -l
 ```
 
 - View the header only for the same bam file (by default only reads are returned)
 
 ```
-$ samtools view -H /project/umw_biocore/class/mm_example.bam | head
+$ samtools view -H /pi/alper.kucukural-umw/umw_biocore/class//mm_example.bam | head
 ```
 
 Headers may or may not be present in SAM/BAM files, and they always start with the @ character. The last line in the header includes the command used to generate the bam file and is useful to store a record of the parameters used for the alignment!

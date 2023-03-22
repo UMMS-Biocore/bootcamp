@@ -4,13 +4,9 @@
 
 You can follow the class materials below.
 
-<b>1. Session 3.1: Genomic Resources</b><br />
+<b>1. Session 1.3: Genomic Resources</b><br />
 
-<div align="left">
-  <a href="https://www.youtube.com/watch?v=npREJXTlJPM"><img src="https://img.youtube.com/vi/npREJXTlJPM/0.jpg" alt="Session 3.1"></a>
-</div>
-
-Slides: [Introduction to Sequencing Analysis](Session3.1_sequencing_introduction.pptx)
+Slides: [Introduction to Sequencing Analysis](Session1_sequencing_introduction.pptx)
 
 ## Finding genomes
 
@@ -31,9 +27,9 @@ In each organism directory, there can be one or more reference genome assemblies
 ```
 $ ls -l /share/data/umw_biocore/genome_data/mouse/
 total 102
-drwxr-xr-x 7 gxy11w umw_manuel_garber 2801 Aug 18  2019 mm10
-drwxrwxr-x 3 gxy11w umw_manuel_garber  506 Nov  5 17:21 mm10_meta
-drwxr-xr-x 3 gxy11w umw_manuel_garber 1384 Apr 25  2019 mm9
+drwxr-xr-x 7 onur.yukselen-umw alper.kucukural-umw2801 Aug 18  2019 mm10
+drwxrwxr-x 3 onur.yukselen-umw alper.kucukural-umw 506 Nov  5 17:21 mm10_meta
+drwxr-xr-x 3 onur.yukselen-umw alper.kucukural-umw1384 Apr 25  2019 mm9
 ```
 
 Using the human (hg38) reference, we can easily see how many chromosomes are in this annotation and their length in nucleotides:
