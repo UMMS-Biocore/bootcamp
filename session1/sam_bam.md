@@ -15,7 +15,7 @@ SAM is an acronym for Sequence Alignment/Mapping
 It is not common to find a sam file since they take up a lot of space, but here is a small example. Since it is a text file, you can view it just as you had been viewing all other text files we have worked with:
 
 ```
-$ head /pi/alper.kucukural-umw/umw_biocore/class//mm_example.sam
+$ head /pi/alper.kucukural-umw/umw_biocore/class/mm_example.sam
 ```
 
 ## BAM files
