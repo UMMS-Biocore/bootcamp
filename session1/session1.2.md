@@ -360,7 +360,7 @@ For more detailed information, see
 
 - You are likely to get a warning and / or termination of your jobs if you do so.
 
-For questions: <hpcc-support@umassmed.edu>
+For questions: <hpc-admins@umassmed.edu>
 
 ### Session2 Homework:
 
