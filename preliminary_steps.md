@@ -49,20 +49,20 @@ ssh -i ~/.ssh/id_ecdsa yourclusterusername@hpc.umassmed.edu
 ## Step 3: Setup Connection for Dolphinnext/Viafoundry
 
 1. Visit the Via Foundry website (https://viafoundry.umassmed.edu) and create SSH keys.
-   a. Click Profile Icon (at the top right) -> Click SSH Keys Tab -> Click Add SSH Key Button
-   b. Enter any name for your SSH key.
-  c. Click the "Create new keys" checkbox and click the "Generate Keys" button.
-   d. Copy your public SSH key and click the "Submit" button.
+   - Click Profile Icon (at the top right) -> Click SSH Keys Tab -> Click Add SSH Key Button
+   - Enter any name for your SSH key.
+   - Click the "Create new keys" checkbox and click the "Generate Keys" button.
+   - Copy your public SSH key and click the "Submit" button.
 2. Visit the HPC site and add SSH Keys to your account:
-   a. Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create
-   Note: Please use your UMASS email as username and email password for login.
+   - Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create
+   - Note: Please use your UMASS email as username and email password for login.
 3. At the Via Foundry website, Add a New Run environment for HPC
-   a. Click Profile Icon (at the top right) -> Click Run Environments Tab -> Click Add Environment Button
-   b. Choose the Profile Name "New UMASS SCI Cluster"
-   c. Enter your HPC username
-   d. Select your SSH Keys
-   e. Click "Check Connection" button to verify connection.
-   e. Click the "**save changes**" button.
+   - Click Profile Icon (at the top right) -> Click Run Environments Tab -> Click Add Environment Button
+   - Choose the Profile Name "New UMASS SCI Cluster"
+   - Enter your HPC username
+   - Select your SSH Keys
+   - Click "Check Connection" button to verify connection.
+   - Click the "**Save Changes**" button.
 
 
 ## Step 4: Project Space Requirements
