@@ -73,7 +73,7 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
 Let's start running some commands. First command will be "ssh" to connect to the UMASS cluster. If you're using windows, please use PuTTY or similar program to make SSH connection.
 
-	$ ssh username@hpcc04
+	$ ssh username@hpc.umassmed.edu
 	
 
 Let’s verify that we are at the right place. In this case only run "hostname", not the output of the command (ghpcc06).
@@ -196,7 +196,7 @@ Please write the command below and press "tab button" in your keyboard. It will 
 
 To load the desired version just type the rest of the version and press enter.  
 
-	$ module load star/2.7.10e  
+	$ module load star/2.7.10a  
 
 Run "which" command again to see the location of the command;
 
@@ -204,7 +204,7 @@ Run "which" command again to see the location of the command;
 	
 To unload a module (eg. when you want to use another STAR version), you can use **unload** command;
 
-	$ module unload star/2.7.10e  
+	$ module unload star/2.7.10a  
 
 To list all available modules in the cluster;
 
@@ -712,7 +712,7 @@ As an example to create a packed archive.tar without any compression (e.g. first
 If you want to pack and compress (with gzip) at the same time, use `-czvf` argument.
 
 	$ tar -czvf archive.tar.gz first my_new_file.txt mytree.txt
-	$ ls -l archive.tar
+	$ ls -l archive.tar.gz
 
 	
 Now, lets create a new directory called `back` and move our `archive.tar.gz` file into `back` directory. Then we can extract the content of archive.tar.gz by using `-xvzf` argument.
@@ -756,7 +756,7 @@ In the following example we are downloading an annotation file from <https://bio
 	$ cd ~/bootcamp/
 	$ mkdir genome
 	$ cd genome
-	$ wget https://bioinfo.umassmed.edu/pub/data/ucsc.gtf
+	$ wget --secure-protocol=TLSv1 https://bioinfo.umassmed.edu/pub/data/ucsc.gtf
 	$ ls -l
 
 Print first 10 lines using head command to see the content of the file.
