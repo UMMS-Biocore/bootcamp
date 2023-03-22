@@ -43,7 +43,7 @@ Looking at the output, notice two more details about FASTA files:
 
 ## FASTQ files
 
-During the homework exercise in [Session 1: Linux environment](session1/session1.md), you made a copy of several fastq files to your home directory:
+During the homework exercise in [Session 1: Linux environment](session1.md), you made a copy of several fastq files to your home directory:
 
 ```
 $ ls -l ~/bootcamp/RNA-Seq/reads/

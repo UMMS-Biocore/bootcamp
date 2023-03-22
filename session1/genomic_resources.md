@@ -26,10 +26,11 @@ In each organism directory, there can be one or more reference genome assemblies
 
 ```
 $ ls -l /share/data/umw_biocore/genome_data/mouse/
-total 102
-drwxr-xr-x 7 onur.yukselen-umw alper.kucukural-umw2801 Aug 18  2019 mm10
-drwxrwxr-x 3 onur.yukselen-umw alper.kucukural-umw 506 Nov  5 17:21 mm10_meta
-drwxr-xr-x 3 onur.yukselen-umw alper.kucukural-umw1384 Apr 25  2019 mm9
+total 192
+drwxrwxr-x 4 onur.yukselen-umw alper.kucukural-umw 12288 Sep 18  2020 mm10
+drwxrwxr-x 3 onur.yukselen-umw alper.kucukural-umw  8192 Jul 24  2020 mm10_gencode_m25
+drwxrwxr-x 3 onur.yukselen-umw alper.kucukural-umw  4096 Nov  5  2019 mm10_meta
+drwxrwxr-x 3 onur.yukselen-umw alper.kucukural-umw  8192 Apr 25  2019 mm9
 ```
 
 Using the human (hg38) reference, we can easily see how many chromosomes are in this annotation and their length in nucleotides:
