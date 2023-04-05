@@ -35,63 +35,6 @@ For Web interface, please enter cluster username and password:
   - Number of processors: 1
   - MB of memory per core: 64000
 
-### Installing R and R-Studio to your local computer (OPTIONAL)
-
-FOR THIS SESSION WE WILL USE RSTUDIO IN THE CLUSTER. YOU WILL NOT NEED TO INSTALL ANYTHING. THIS SECTION IS ONLY FOR YOUR FUTURE USE.
-
-If you want to repeat these steps in your own computer/laptop please follow the steps below.
-
-Please install R 4.2.3 into your local computer **to use it in the next session.**
-
-1. First please install R to your computer
-
-   <https://cran.r-project.org/>
-
-   For mac;
-   <https://cran.r-project.org/bin/macosx/base/R-4.2.3.pkg></br>
-
-   If you are using Apple Silicon Chip</br>
-   <https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.2.3-arm64.pkg> </br>
-
-   For windows;
-   <https://cran.r-project.org/bin/windows/base/R-4.2.3-win.exe>
-
-
-2. Second, please install R-Studio;
-
-   <https://rstudio.com/products/rstudio/download/>
-
-3. Please install DEBrowser to your local computer. This can take time to install all the packages.
-
-   Open R or RStudio and run the commands in R console, it will include most of the packages we will use;
-
-```
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-BiocManager::install("debrowser")
-```
-
-When it is asked. "Do you want to install from sources the package which needs compilation? (Yes/no/cancel)". If so, just type "n" for no, and hit Enter to continue.
-
-    Do you want to install from sources the package which needs compilation? (Yes/no/cancel) n
-
-It can ask to update old packages; please answer with "a"
-
-    Old packages: 'boot', 'class', 'foreign', 'KernSmooth', 'MASS', 'nnet', 'rlang', 'spatial'
-    Update all/some/none? [a/s/n]:
-
-But and it will ask again to install rlang from source. Answer it with "n"
-
-### Check debrowser
-
-Run the commands below. It should launch debrowser in your browser.
-
-    library(debrowser)
-    startDEBrowser()
-
-To stop debrowser, there is a stop button on the corner of the console.
-
 ## R Basics
 
 ### Packages
@@ -163,20 +106,6 @@ Let's use editor in R-Studio and keep what will do in this session a Rscript fil
 <img src="images/editor.png">
 
 - **Tip: To run any line in this editor in RStudio, please use Ctrl+Enter (for Windows) or Command+Enter (for Mac) to execute the line.**
-
-### Install packages if they are not install in your environment (OPTIONAL) ######
-
-In this session, they are already installed (YOU CAN SKIP THIS INSTALLATIONS) however, if they are not installed in your environment, please install the necessary packages we will use and load some sources we prepared for you to use in this session. For every line use Command+Enter (for Mac, or Ctrl+Enter for windows) to execute. Installing DESeq2 might take some time. While installing, when it asks an installation from source. Answer it with "n". Other than that you can upgrade other packages if it asks.
-
-    if (!requireNamespace("BiocManager", quietly = TRUE))
-      install.packages("BiocManager")
-
-    BiocManager::install("DESeq2")
-    BiocManager::install("edgeR")
-
-    install.packages("RColorBrewer")
-    install.packages("gplots")
-
 
 ### Source necessary functions
 
@@ -340,7 +269,6 @@ The fourth way of visualizing the data that is widely used in this type of analy
 
 Here we usually use normalized data and add a pseudocount value 0.1.
 
-
     ld <- log2(norm_data+0.1)
 
 - Alternatively, you can use the selected data without normalization `ld <- log2(sel_data+0.1)` and see the difference in the heatmap.
@@ -359,7 +287,6 @@ To plot only the cluster you can use the command below
 
     plot(hclust(distance, method = "complete"),
     main="Euclidean", xlab="")
-
 
 <img src="images/cluster_eucledian.png">
 
