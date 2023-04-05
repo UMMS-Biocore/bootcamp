@@ -109,7 +109,7 @@ Let's use editor in R-Studio and keep what will do in this session a Rscript fil
 
 ### Source necessary functions
 
-   source("/pi/alper.kucukural-umw/umw_biocore/class/funcs.R")
+    source("/pi/alper.kucukural-umw/umw_biocore/class/funcs.R")
 
 This file is also uploaded to the location below.
 
@@ -254,19 +254,6 @@ The fourth way of visualizing the data that is widely used in this type of analy
 
     norm_data<-getNormalizedMatrix(sel_data, method="TMM")
 
-    ## Loading required package: edgeR
-    ## Loading required package: limma
-    ##
-    ## Attaching package: 'limma'
-    ##
-    ## The following object is masked from 'package:DESeq2':
-    ##
-    ##     plotMA
-    ##
-    ## The following object is masked from 'package:BiocGenerics':
-    ##
-    ##     plotMA
-
 Here we usually use normalized data and add a pseudocount value 0.1.
 
     ld <- log2(norm_data+0.1)
@@ -294,8 +281,8 @@ To plot only the cluster you can use the command below
 
     cld <- t(cldt)
     heatmap.2(cld, Rowv=TRUE,dendrogram="column",
-              Colv=TRUE, col=redblue(256),labRow=NA,
-              density.info="none",trace="none", cexCol=0.8);
+        Colv=TRUE, col=redblue(256),labRow=NA,
+        density.info="none",trace="none", cexCol=0.8);
 
 <img src="images/heatmap_eucledian.png">
 
@@ -318,10 +305,10 @@ To plot only the cluster you can use the command below
 
 ##### The heatmap
 
-    	heatmap.2(cld, Rowv=TRUE,dendrogram="column",
-          Colv=TRUE, col=redblue(256),labRow=NA,
-          density.info="none",trace="none", cexCol=0.8,
-          hclust=function(x) hclust(x,method="complete"),
-          distfun=function(x) as.dist((1-cor(t(x)))/2))
+    heatmap.2(cld, Rowv=TRUE,dendrogram="column",
+        Colv=TRUE, col=redblue(256),labRow=NA,
+        density.info="none",trace="none", cexCol=0.8,
+        hclust=function(x) hclust(x,method="complete"),
+        distfun=function(x) as.dist((1-cor(t(x)))/2))
 
  <img src="images/heatmap_cor.png">
