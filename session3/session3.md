@@ -168,7 +168,6 @@ Let's use editor in R-Studio and keep what will do in this session a Rscript fil
 
 In this session, they are already installed (YOU CAN SKIP THIS INSTALLATIONS) however, if they are not installed in your environment, please install the necessary packages we will use and load some sources we prepared for you to use in this session. For every line use Command+Enter (for Mac, or Ctrl+Enter for windows) to execute. Installing DESeq2 might take some time. While installing, when it asks an installation from source. Answer it with "n". Other than that you can upgrade other packages if it asks.
 
-
     if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
 
@@ -177,6 +176,7 @@ In this session, they are already installed (YOU CAN SKIP THIS INSTALLATIONS) ho
 
     install.packages("RColorBrewer")
     install.packages("gplots")
+
 
 ### Source necessary functions
 
@@ -340,6 +340,7 @@ The fourth way of visualizing the data that is widely used in this type of analy
 
 Here we usually use normalized data and add a pseudocount value 0.1.
 
+
     ld <- log2(norm_data+0.1)
 
 - Alternatively, you can use the selected data without normalization `ld <- log2(sel_data+0.1)` and see the difference in the heatmap.
@@ -358,6 +359,7 @@ To plot only the cluster you can use the command below
 
     plot(hclust(distance, method = "complete"),
     main="Euclidean", xlab="")
+
 
 <img src="images/cluster_eucledian.png">
 
