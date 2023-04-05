@@ -108,13 +108,9 @@ getwd command will let you know your existing working directory
 
 ## R Tutorials
 
-After you connect RStudio. Let's use swirl to start learning R basics. First please load the library. 
+After you connect RStudio. Let's use swirl to start learning R basics. First please set the data directory and load the library. 
 
-    library("swirl")
-
-If swirl is not installed into your system, we will need to install it and load the library.
-
-    install.packages("swirl")
+    swirl_options(swirl_data_dir = file.path("~/swirl"))
     library("swirl")
 
 To start the tutorial just run the command below;
@@ -168,7 +164,9 @@ Let's use editor in R-Studio and keep what will do in this session a Rscript fil
 
 - **Tip: To run any line in this editor in RStudio, please use Ctrl+Enter (for Windows) or Command+Enter (for Mac) to execute the line.**
 
-If they are not installed in your environment, please install the necessary packages we will use and load some sources we prepared for you to use in this session. For every line use Command+Enter (for Mac, or Ctrl+Enter for windows) to execute. Installing DESeq2 might take some time. While installing, when it asks an installation from source. Answer it with "n". Other than that you can upgrade other packages if it asks.
+### Install packages if they are not install in your environment (OPTIONAL) ######
+
+In this session, they are already installed (YOU CAN SKIP THIS INSTALLATIONS) however, if they are not installed in your environment, please install the necessary packages we will use and load some sources we prepared for you to use in this session. For every line use Command+Enter (for Mac, or Ctrl+Enter for windows) to execute. Installing DESeq2 might take some time. While installing, when it asks an installation from source. Answer it with "n". Other than that you can upgrade other packages if it asks.
 
     if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
@@ -178,19 +176,19 @@ If they are not installed in your environment, please install the necessary pack
 
     install.packages("RColorBrewer")
     install.packages("gplots")
-    source("https://bioinfo.umassmed.edu/content/pub/funcs.R")
 
-We already made gene quantifications and merged expected counts into a single table using dolphinNext. If you haven't done your homework. Here we prepared another table using whole reads (not only using reduced reads) to give you an idea about the complete picture of DESeq analysis. Please download this file into your computer to ~/Downloads folder for example.
 
-<https://galaxyweb.umassmed.edu/pub/class/data.tsv>
+### Source necessary functions
 
-This file is also uploaded to the location below. If you are using R-Studio in the cluster. Please upload it to your home.
+   source("/pi/alper.kucukural-umw/umw_biocore/class/funcs.R")
 
-<img src="images/upload.png">
+This file is also uploaded to the location below.
 
 ### 1. Read the file
 
-    file <- "~/data.tsv"
+We already made gene quantifications and merged expected counts into a single table using ViaFoundry with whole reads (not only using reduced reads) to give you an idea about the complete picture of DESeq analysis.
+
+    file <- "/pi/alper.kucukural-umw/umw_biocore/class/data.tsv"
 
 - If you are using your own computer, **please change the directory above** to wherever your file is located. Use the full path.
 
@@ -342,7 +340,8 @@ The fourth way of visualizing the data that is widely used in this type of analy
 
 Here we usually use normalized data and add a pseudocount value 0.1.
 
-ld <- log2(norm_data+0.1)
+
+    ld <- log2(norm_data+0.1)
 
 - Alternatively, you can use the selected data without normalization `ld <- log2(sel_data+0.1)` and see the difference in the heatmap.
 
@@ -357,8 +356,10 @@ We can define different distance methods to calculate the distance between sampl
     distance<-dist(cldt, method = "euclidean")
 
 To plot only the cluster you can use the command below
-plot(hclust(distance, method = "complete"),
-main="Euclidean", xlab="")
+
+    plot(hclust(distance, method = "complete"),
+    main="Euclidean", xlab="")
+
 
 <img src="images/cluster_eucledian.png">
 
