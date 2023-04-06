@@ -52,9 +52,10 @@ getwd command will let you know your existing working directory
 ## R Tutorials
 
 After you connect RStudio. Let's use swirl to start learning R basics. First please set the data directory and load the library. 
-
-    swirl_options(swirl_data_dir = file.path("~/swirl"))
+    
     library("swirl")
+    swirl_options(swirl_data_dir = file.path("~/swirl"))
+
 
 To start the tutorial just run the command below;
 
