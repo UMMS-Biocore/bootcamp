@@ -44,10 +44,10 @@ Once logged in, click on the `Projects` section at the top menu and click the `A
 
 11. Next to `5. Collection Name`, type `rna-seq mousetest paired` and Click `Save Files`
 12. On the "Select/Add Input File" screen which should now have 6 entries, click "Save".
-13. For "mate", choose "pair"
-14. For genome_build, choose "mousetest"
+13. For `mate`, choose `pair`
+14. For `genome_build`, choose `mousetest`
 15. Leave the rest as defaults. Here run_FastQC, run_RSEM, and run_STAR inputs are enabled by default.
-16. Click Run in the top right. RNA-Seq pipeline runs typically take several minutes to complete for this dataset.
+16. Click **Run** button in the top right. RNA-Seq pipeline runs typically take several minutes to complete for this dataset.
 17. Navigate to the Log tab and click on log.txt to see progress on your run.
 18. Once the blue "Running" in the top right changes to a green "Completed" go to the Report tab to see the final reports.
 19. Click on MulitiQC, and scroll to find this plot, which shows aligned reads per library:
