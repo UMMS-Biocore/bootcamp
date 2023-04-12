@@ -23,4 +23,6 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 2. [Session 2: RNA-Seq data processing and analysis](session2/session2.md)</br></br>
 
-6. [Session 3: R and R Studio](session3/session3.md)</br></br>
+3. [Session 3: R and R Studio](session3/session3.md)</br></br>
+
+4. [Session 4: ViaFoundry Training - RNA-Seq Pipeline](session4/session4.md)</br></br>
