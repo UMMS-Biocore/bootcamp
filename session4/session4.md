@@ -29,7 +29,7 @@ Once logged in, click on the `Projects` section at the top menu and click the `A
 ```
 /share/data/umw_biocore/genome_data/mousetest/mm10/gz
 ```
-7. and click the magnifying glass icon. The box below should populate with files like so:
+7. and **click the magnifying glass button**. The box below should populate with files like so:
 
 <img src="rnaseq_images/addfiles1.png" width="99%">
 
