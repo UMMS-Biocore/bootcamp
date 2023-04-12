@@ -5,29 +5,29 @@ To understand the basics of Foundry, and do RNA-Seq analysis with sample mouse d
 
 # Before you start
 
-Please go to https://dev.viafoundry.net and login into your account. If you have an issue about login, please let us know about it (support@viascientific.com). We will set an account for you.
+Please go to https://viafoundry.umassmed.edu/ and login into your account. If you have a login issue, please let us know about it (BiocoreStaff@umassmed.edu). We will set up an account for you.
 
 Creating a Run
 ========
 
-Once logged in, click on the `Projects` section at the top menu and click `Add a New Project` button. This is the place to configure your project. To access pipelines, click `Pipelines` tab and then click `Add Pipeline` button. 
+Once logged in, click on the `Projects` section at the top menu and click the `Add a New Project` button. Enter your project name and click OK. This is the place to configure your project. To access pipelines, click the `Pipelines` tab and then click the `Add Pipeline` button. 
 
 <img src="rnaseq_images/addpipeline1.png" width="99%">
 
-1. Click on `Add` button on "RNA-Seq Pipeline" and close the window. 
+1. Click on the `Add` button on "RNA-Seq Pipeline" and close the window. 
 
 <img src="rnaseq_images/addpipeline2.png" width="99%">
 
-2. Now click `Run` button of the pipeline on the table.
+2. Now click the `Run` button of the pipeline on the table.
 
 <img src="rnaseq_images/addpipeline3.png" width="99%">
 
-3. Run page will be loaded. Under Run Environment, select "Via Demo Environment(AWS Batch)"
+3. Run page will be loaded. Under Run Environment, select "New UMASS SCI Cluster"
 4. Under User Inputs, next to `reads`, click `Enter File`
-5. Click `Add File` button to enter new files.
+5. Click the `Add File` button to enter new files.
 6. Next to "1. File Location", enter:
 ```
-s3://viascientific/run_data/test_data/fastq_mouse
+/share/data/umw_biocore/genome_data/mousetest/mm10/gz
 ```
 7. and click the magnifying glass icon. The box below should populate with files like so:
 
@@ -38,7 +38,7 @@ s3://viascientific/run_data/test_data/fastq_mouse
 
 <img src="rnaseq_images/addfiles2.png" width="99%">
 
-10. Click `Add All Files` button. You should now see 6 entries below.
+10. Click the `Add All Files` button. You should now see 6 entries below.
 
 <img src="rnaseq_images/addfiles3.png" width="99%">
 
@@ -46,7 +46,7 @@ s3://viascientific/run_data/test_data/fastq_mouse
 12. On the "Select/Add Input File" screen which should now have 6 entries, click "Save".
 13. For "mate", choose "pair"
 14. For genome_build, choose "mousetest"
-15. Leave the rest as defaults
+15. Leave the rest as defaults. Here run_FastQC, run_RSEM, and run_STAR inputs are enabled by default.
 16. Click Run in the top right. RNA-Seq pipeline runs typically take several minutes to complete for this dataset.
 17. Navigate to the Log tab and click on log.txt to see progress on your run.
 18. Once the blue "Running" in the top right changes to a green "Completed" go to the Report tab to see the final reports.
@@ -58,7 +58,7 @@ s3://viascientific/run_data/test_data/fastq_mouse
 
 <img src="rnaseq_images/report2.png" width="99%">
 
-21. Click on RSEM Summary to download count table:
+21. Click on RSEM Summary to download the count table:
 
 <img src="rnaseq_images/report3.png" width="99%">
 
@@ -66,4 +66,4 @@ s3://viascientific/run_data/test_data/fastq_mouse
 
 <img src="rnaseq_images/report4.png" width="99%">
 
-Congratulations! You have run and tested a RNA-Seq pipeline on Foundry!
+Congratulations! You have run and tested an RNA-Seq pipeline on Foundry!
