@@ -80,6 +80,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("debrowser")
 ```
 </p>
+</details>
 
 ### Start DEBrowser
 
