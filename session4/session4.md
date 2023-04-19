@@ -23,9 +23,10 @@ Once logged in, click on the `Projects` section at the top menu and click the `A
 <img src="rnaseq_images/addpipeline3.png" width="99%">
 
 3. Run page will be loaded. Under Run Environment, select "New UMASS SCI Cluster"
-4. Under User Inputs, next to `reads`, click `Enter File`
-5. Click the `Add File` button to enter new files.
-6. Next to "1. File Location", enter:
+4. Enter your work directory in cluster. (e.g. /home/{your_cluster_username}/foundry/)
+5. Under User Inputs, next to `reads`, click `Enter File`
+6. Click the `Add File` button to enter new files.
+7. Next to "1. File Location", enter:
 ```
 /share/data/umw_biocore/genome_data/mousetest/mm10/gz
 ```
