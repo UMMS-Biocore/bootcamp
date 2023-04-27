@@ -97,14 +97,14 @@ Pick the genome by (27) selecting "human_hg38_gencode_v32_cellranger_v6" in the 
 scRNA_Analysis_module settings
 ========
 
-The scRNA_Analysis_module is module that will take the count matrix(ces) from Cellranger pipeline, and conduct downstream analysis such as filtering of low read count cells and multiplets, Normalization, Dimension Reduction and Clustering. The results of this module are several html files and files that can be interactively explored by using Shiny Apps and CellxGene browser.
+The scRNA_Analysis_module is a module that will take the count matrix(ces) from the Cellranger pipeline, and conduct downstream analysis such as filtering of low read count cells and multiplets, Normalization, Dimension Reduction and Clustering. The results of this module are several html files and files that can be interactively explored by using Shiny Apps and CellxGene browser.
 
 From here I will introduce the options in this module. 
 
 ## Metadata (Totally Optional)
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure2.png" width="60%"> </p>
 
-In this option the user can input a tab-delimited table as metadata sheet. The metadata sheet must includes one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically addes all the information in the metadata to the scRNA_Analysis_module.
+In this option the user can input a tab-delimited table as the metadata sheet. The metadata sheet must include one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically adds all the information in the metadata to the scRNA_Analysis_module.
 
 ## LoadData
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure3.png" width="60%"> </p>
@@ -113,21 +113,21 @@ In this option the user can input a tab-delimited table as metadata sheet. The m
 
 In this section the user can input how they want to filter their data, how the data needs to be normalized and whether the empty droplets and multiplets needs to be filtered out from the data.
 
-The min/maxTranscript and minMaxGenes are the lower and upper bounds of the UMI counts and gene counts per cells. These options are specified using quantile (ranging from 0 to 1). The default is to remove cells with genes and UMI counts higher than 99th percentile or lower than 1st percentile.
+The min/maxTranscript and minMaxGenes are the lower and upper bounds of the UMI counts and gene counts per cell. These options are specified using quantile (ranging from 0 to 1). The default is to remove cells with genes and UMI counts higher than 99th percentile or lower than 1st percentile.
 
-The percent_mt and percent_ribo allow user to specify the upper bound of mitochondrial contents and ribosomal contents. The values can range from 0 to 100 in these two options.
+The percent_mt and percent_ribo allow users to specify the upper bound of mitochondrial contents and ribosomal contents. The values can range from 0 to 100 in these two options.
 
-The RawInput and DoubletRemoval options allow user to specify whether the empty droplets and multiplets needs to be removed from the dataset. In the cellranger pipeline they are set as "Yes".
+The RawInput and DoubletRemoval options allow users to specify whether the empty droplets and multiplets need to be removed from the dataset. In the cellranger pipeline they are set as "Yes".
 
-The RemoveMitoGenes and RemoveRiboGenes (Not on the figure, but just below the RemoveMitoGenes option) allow user to remove genes that encode mitochondrial and ribosomal genes. Although it is highly not recommended, user can use the options to remove these genes.
+The RemoveMitoGenes and RemoveRiboGenes (Not on the figure, but just below the RemoveMitoGenes option) allow users to remove genes that encode mitochondrial and ribosomal genes. Although it is highly not recommended, users can use the options to remove these genes.
 
 ## PCA_and_Batch_Effect_Correction
 
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure6.png" width="60%"> </p>
 
-In this section the user can specify how the Principal component analysis is conducted and whether Batche effect correction is needed.
+In this section the user can specify how the Principal component analysis is conducted and whether Batch effect correction is needed.
 
-The option "Weighted Nearest Network assay" will allow user to enter the name of another assay (scATAC,ADT etc) so that the analysis will leverage the multi-omic information from the sample.
+The option "Weighted Nearest Network assay" will allow users to enter the name of another assay (scATAC,ADT etc) so that the analysis will leverage the multi-omic information from the sample.
 
 ## Clustering_and_Find_Markers
 
@@ -174,13 +174,18 @@ In this report there is also a preliminary clustering analysis of the data. The 
 
 QC Reports is a html report of quality control and QC steps. On the top left side there is a category which can be used to navigate through the pages.
 
+### QC Section
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure2.png" width="70%"> </p>
 
 The QC section uses violin plots and scatter plots to visualize the data quality.
 
+### Doublet Classification Section
+
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure3.png" width="70%"> </p>
 
 The Doublet Classification section shows the results of doublet classification. As the figure shows the doublets tend to have higher number of genes and UMIs per cell than that of the singlets.
+
+### Filtering Section
 
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure4.png" width="70%"> </p>
 
@@ -190,11 +195,48 @@ The Filtering section shows the results of filtering. As the figure shows the ce
 
 The final report is a html file that has similar structure as the QC report. 
 
+### Aggregated QC Section
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure1.png" width="70%"> </p>
 
-The first section of final report is an violin plots showing QC metrics of all the samples in the dataset. It is useful when the user wants to compare the quality of different samples.
+The Aggregated QC section uses multiple violin plots to show QC metrics of all the samples in the dataset. It is useful when the user wants to compare the quality of different samples.
+
+### PCA Section
 
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure2.png" width="70%"> </p>
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure3.png" width="70%"> </p>
 
-The section section of the final report is the information of the principal component analysis. The genes that are significant contributors to the top principal components and the amount of variance being explained by each principal component are visualized in this section.
+The PCA section of the final report is the information of the principal component analysis. The genes that are significant contributors to the top principal components and the amount of variance being explained by each principal component are visualized in this section.
+
+### UMAP and tSNE Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure4.png" width="70%"> </p>
+
+The UMAP and tSNE section shows the UMAP and tSNE plot of the dataset. If there are multiple samples in the dataset, the UMAP and tSNE can be used to visualize potential batch effect.
+
+### Clustering Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure5.png" width="70%"> </p>
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure7.png" width="70%"> </p>
+
+The clustering section the processing of selecting the optimal parameter for clustering and how the clusters are distributed over UMAP and tSNE plot. The module iterates through parameters within the range set up by users and uses the quality index of clusters to select the best parameter.
+
+### Cluster Marker Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure8.png" width="70%"> </p>
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure9.png" width="70%"> </p>
+
+The Cluster Marker section shows an interactive table that allows users to explore the top up-regulated genes in each cluster and a heatmap of the expressions of the top marker genes.
+
+### Cluster Results Quality Control Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure10.png" width="70%"> </p>
+
+This section uses violon plots to show the distribution of genes, UMIs and percentage of mitochondrial contents per cell over cluster. This section is useful to explore whether some clusters are driven by cells with poor quality.
+
+
+
+
+
+
