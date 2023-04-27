@@ -235,6 +235,21 @@ The Cluster Marker section shows an interactive table that allows users to explo
 
 This section uses violon plots to show the distribution of genes, UMIs and percentage of mitochondrial contents per cell over cluster. This section is useful to explore whether some clusters are driven by cells with poor quality.
 
+## CellxGene Visualization
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/CellxGene.figure1.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/CellxGene.figure2.png" width="70%"> </p>
+
+By clicking Launch button, users can explore the analyzed data interactively using CellxGene browser.
+
+## iSEE Visualization
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/iSEE.figure1.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/iSEE.figure2.png" width="70%"> </p>
+
+By clicking Launch button, users can explore the analyzed data interactively using iSEE shiny app.
+
+
 
 
 
