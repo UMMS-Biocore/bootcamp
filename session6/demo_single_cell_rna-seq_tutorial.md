@@ -111,9 +111,27 @@ In this option the user can input a tab-delimited table as metadata sheet. The m
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure4.png" width="60%"> </p>
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure5.png" width="60%"> </p>
 
-In this option the user can input how they want to filter their data, how the data needs to be normalized and whether the empty droplets and multiplets needs to be filtered out from the data.
+In this section the user can input how they want to filter their data, how the data needs to be normalized and whether the empty droplets and multiplets needs to be filtered out from the data.
+
+The min/maxTranscript and minMaxGenes are the lower and upper bounds of the UMI counts and gene counts per cells. These options are specified using quantile (ranging from 0 to 1). The default is to remove cells with genes and UMI counts higher than 99th percentile or lower than 1st percentile.
+
+The percent_mt and percent_ribo allow user to specify the upper bound of mitochondrial contents and ribosomal contents. The values can range from 0 to 100 in these two options.
+
+The RawInput and DoubletRemoval options allow user to specify whether the empty droplets and multiplets needs to be removed from the dataset. In the cellranger pipeline they are set as "Yes".
 
 The RemoveMitoGenes and RemoveRiboGenes (Not on the figure, but just below the RemoveMitoGenes option) allow user to remove genes that encode mitochondrial and ribosomal genes. Although it is highly not recommended, user can use the options to remove these genes.
+
+## PCA_and_Batch_Effect_Correction
+
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure6.png" width="60%"> </p>
+
+In this section the user can specify how the Principal component analysis is conducted and whether Batche effect correction is needed.
+
+The option "Weighted Nearest Network assay" will allow user to enter the name of another assay (scATAC,ADT etc) so that the analysis will leverage the multi-omic information from the sample.
+
+## Clustering_and_Find_Markers
+
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure7.png" width="60%"> </p>
 
 
 
