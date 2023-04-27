@@ -89,21 +89,59 @@ This will return to the `Change Input File` window. (22) Click "Save" again.
 
 Since this sample has paired end reads, (23) ensure the `mate` dropdown is set to "pair". To finish the `Metadata` section (24) click "Enter File".
 
-<p align="center"> <img src="sc-rnaseq_images/user_inputs1.png" width="60%"> </p>
-
-Metadata can be entered in three ways: Via a path to a file in the cloud, dropping a local file into the box, or in simple cases directly in the table. Notice the sample name is pulled in from the sample selection. To finish the table (25) fill in the "Condition" column with `pmbc_1k_v3` and (26) click "Save".
-
-<p align="center"> <img src="sc-rnaseq_images/metadata.png" width="70%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/user_inputs1.new.png" width="60%"> </p>
 
 
 Pick the genome by (27) selecting "human_hg38_gencode_v32_cellranger_v6" in the `genome_build` dropdown. 
 
-***
+scRNA_Analysis_module settings
+========
 
+The scRNA_Analysis_module is a module that will take the count matrix(ces) from the Cellranger pipeline, and conduct downstream analysis such as filtering of low read count cells and multiplets, Normalization, Dimension Reduction and Clustering. The results of this module are several html files and files that can be interactively explored by using Shiny Apps and CellxGene browser.
+
+From here I will introduce the options in this module. 
+
+## Metadata (Totally Optional)
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure2.png" width="60%"> </p>
+
+In this option the user can input a tab-delimited table as the metadata sheet. The metadata sheet must include one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically adds all the information in the metadata to the scRNA_Analysis_module.
+
+## LoadData
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure3.png" width="60%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure4.png" width="60%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure5.png" width="60%"> </p>
+
+In this section the user can input how they want to filter their data, how the data needs to be normalized and whether the empty droplets and multiplets needs to be filtered out from the data.
+
+The min/maxTranscript and minMaxGenes are the lower and upper bounds of the UMI counts and gene counts per cell. These options are specified using quantile (ranging from 0 to 1). The default is to remove cells with genes and UMI counts higher than 99th percentile or lower than 1st percentile.
+
+The percent_mt and percent_ribo allow users to specify the upper bound of mitochondrial contents and ribosomal contents. The values can range from 0 to 100 in these two options.
+
+The RawInput and DoubletRemoval options allow users to specify whether the empty droplets and multiplets need to be removed from the dataset. In the cellranger pipeline they are set as "Yes".
+
+The RemoveMitoGenes and RemoveRiboGenes (Not on the figure, but just below the RemoveMitoGenes option) allow users to remove genes that encode mitochondrial and ribosomal genes. Although it is highly not recommended, users can use the options to remove these genes.
+
+## PCA_and_Batch_Effect_Correction
+
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure6.png" width="60%"> </p>
+
+In this section the user can specify how the Principal component analysis is conducted and whether Batch effect correction is needed.
+
+The option "Weighted Nearest Network assay" will allow users to enter the name of another assay (scATAC,ADT etc) so that the analysis will leverage the multi-omic information from the sample.
+
+## Clustering_and_Find_Markers
+
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure7.png" width="60%"> </p>
+
+In order to find the best parameter for the clustering algorithm, the module will scan parameters from the minimum resolution to the maximum resolution specified here. The default settings worked for most datasets we have tested the module on.
+
+The "# of Principal Components" allows you to select the number of PCs to be used in the clustering analysis. Any integer between 2 and 100 can be used. However if the user is not sure about the number of PCs to use, 0 can be used as input and the best number will be predicted by the module.
+
+***
 
 In conclusion, all settings should be set to "yes", except `run_Aggregate_Libraries` and `genome_build` which was set to "human_hg38_gencode_v32_cellranger_v6".
 
-<p align="center"> <img src="sc-rnaseq_images/user_inputs6.png" width="60%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/user_input6.new.png" width="60%"> </p>
 
 ***
 
@@ -111,28 +149,10 @@ Finally, to submit the run (36) click "Run" in the top right and (37) select "St
 
 <p align="center"> <img src="sc-rnaseq_images/start.png" width="80%"> </p>
 
-Analyzing Reports
+Analysis Results
 ========
-* RNA-Seq pipeline runs typically take 2.5 hours (if you enter custom genome sequence) to complete for this dataset.
-* Navigate to the Log tab and click on log.txt to see progress on your run.
-* Once the blue "Running" in the top right changes to a green "Completed" go to the Report tab to see the final reports.
-* While waiting for the run to finish, you can check the example finalized run: https://www.viafoundry.com/run/101
 
-***
-
-## Executing scRNA Seurat 10x Module (Optional)
-* Instead of running whole 10x pipeline, you might execute only scRNA Seurat 10x Module too. This module would take 10 minutes to run.
-1. Go to your `new project` by clicking on the `Projects` drop down on the top menu and clicking on your `new project`.
-2. Click `Pipeline Tab` and click `Add Pipeline` Button.
-3. In the `Add pipeline` window, click the `Add` button for the `scRNA Seurat 10x` and close the window. 
-4. Click the `Run` button of the `scRNA Seurat 10x` on the table.
-5. Choose Run Environment as `Via Run Environment (AWS Batch)`
-6. Choose genome_build as `human_hg38_gencode_v32_cellranger_v6`
-7. Click `Enter File` for Metadata. Fill in the "Sample" column with "pbmc_1k_v3_S1" and "Condition" column with `pmbc_1k_v3` click "Save".
-8. Enter 101 for Data_Path which is the already finished 10x pipeline run id.
-9. Click Run Button at the top right.
-
-***
+<p align="center"> <img src="sc-rnaseq_images/OverviewofReports.png" width="80%"> </p>
 
 ## Multiqc
 [multiQC](https://multiqc.info) will aggregate the [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) quality control report of each fastq file in the pipeline. The aggregation of multiple FastQC reports helps users to view the quality control of multiple fastq files easily.
@@ -148,56 +168,90 @@ In this report there is also a preliminary clustering analysis of the data. The 
 
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsCellrangerAnalysis.png" width="70%"> </p>
 
-## Qc Plots
-The cellranger software in the pipeline will generate a count matrix from input fastq files. The count matrix will be analyzed using R package [Seurat](https://satijalab.org/seurat/). In this html file the number of genes and number of UMIs ([Unique Molecular Identifiers](https://dnatech.genomecenter.ucdavis.edu/faqs/what-are-umis-and-why-are-they-used-in-high-throughput-sequencing/)) for each cell is plotted using violin plot and scatter plots.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRQC.png" width="70%"> </p>
+## QC Reports
 
-## Filtering Reports
-In this html file the filtering criteria will be shown and the number of cells before and after the filtering will be shown.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRFilter.png" width="70%"> </p>
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRFilter.results.png" width="50%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure1.png" width="70%"> </p>
+
+QC Reports is a html report of quality control and QC steps. On the top left side there is a category which can be used to navigate through the pages.
+
+### QC Section
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure2.png" width="70%"> </p>
+
+The QC section uses violin plots and scatter plots to visualize the data quality.
+
+### Doublet Classification Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure3.png" width="70%"> </p>
+
+The Doublet Classification section shows the results of doublet classification. As the figure shows the doublets tend to have higher number of genes and UMIs per cell than that of the singlets.
+
+### Filtering Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure4.png" width="70%"> </p>
+
+The Filtering section shows the results of filtering. As the figure shows the cells that will be filtered out will have either too high or too low number of genes and UMIs per cell.
+
+## Final Reports
+
+The final report is a html file that has similar structure as the QC report. 
+
+### Aggregated QC Section
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure1.png" width="70%"> </p>
+
+The Aggregated QC section uses multiple violin plots to show QC metrics of all the samples in the dataset. It is useful when the user wants to compare the quality of different samples.
+
+### PCA Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure2.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure3.png" width="70%"> </p>
+
+The PCA section of the final report is the information of the principal component analysis. The genes that are significant contributors to the top principal components and the amount of variance being explained by each principal component are visualized in this section.
+
+### UMAP and tSNE Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure4.png" width="70%"> </p>
+
+The UMAP and tSNE section shows the UMAP and tSNE plot of the dataset. If there are multiple samples in the dataset, the UMAP and tSNE can be used to visualize potential batch effect.
+
+### Clustering Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure5.png" width="70%"> </p>
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure7.png" width="70%"> </p>
+
+The clustering section the processing of selecting the optimal parameter for clustering and how the clusters are distributed over UMAP and tSNE plot. The module iterates through parameters within the range set up by users and uses the quality index of clusters to select the best parameter.
+
+### Cluster Marker Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure8.png" width="70%"> </p>
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure9.png" width="70%"> </p>
+
+The Cluster Marker section shows an interactive table that allows users to explore the top up-regulated genes in each cluster and a heatmap of the expressions of the top marker genes.
+
+### Cluster Results Quality Control Section
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure10.png" width="70%"> </p>
+
+This section uses violon plots to show the distribution of genes, UMIs and percentage of mitochondrial contents per cell over cluster. This section is useful to explore whether some clusters are driven by cells with poor quality.
+
+## CellxGene Visualization
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/CellxGene.figure1.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/CellxGene.figure2.png" width="70%"> </p>
+
+By clicking Launch button, users can explore the analyzed data interactively using CellxGene browser.
+
+## iSEE Visualization
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/iSEE.figure1.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/iSEE.figure2.png" width="70%"> </p>
+
+By clicking Launch button, users can explore the analyzed data interactively using iSEE shiny app.
 
 
-## Embedding Report
-In this html file the dimension reduction results are shown.
-In the single cell RNA-Seq analysis there are two layers of dimension reduction: Principal component analysis (PCA) and UMAP/tSNE.
-### Prinicple component analysis (PCA)
-Prinicple component analysis (PCA) is used to reduce the dimensionality of the data. The rationale of this analysis is that not all the genes in the scRNA-Seq data are contributing to the variations in gene expression profiles of cells due to the sparsity of data. PCA uses all the genes in the data and constructs a series of artificial dimensions ("Principal components") which are linear combinations of the gene expression profiles. 
-For each Principal component the amount of variation explained and how genes contributed to the Principal component are calculated. In the figures below you can see an elbow plot of amount of variation explained: it shows that the amount of variation explained by Principal component decreases "exponentially", which means that using the top 15-20 Principal components can capture enough differences in the dataset and we can just use these Principal components in the downstream analysis.
-The heatmap in the figure below shows what and how genes contributed to different Principal components. Most of these genes in the figure are immune cell type markers, which means that the Principal components are capturing differences between immune cell populations. 
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRDR.PCA.png" width="70%"> </p>
-
-### tSNE and UMAP
-Although PCA is very helpful and robust in the dimension reduction and generates biologically meaningful results, it is not good enough for the visualization. For visualization the pipeline generates [tSNE](https://lvdmaaten.github.io/tsne) and [UMAP](https://arxiv.org/abs/1802.03426), which is shown in this section.
-
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRDR.TSNE.UMAP.png" width="60%"> </p>
 
 
 
-## Cluster Reports, Marker Reports and Markers
-Cluster reports and Marker Reports are two html files generated by [Rmarkdown](https://rmarkdown.rstudio.com). The Markers section provided a tsv file of marker genes for each cluster.
-### Description
-The unsupervised clustering is used to group cells into populations so users do not need to look at a few thousand cells one at a time. After the clustering, genes that are significantly up and down regulated in each cell population are calculated: these genes can help users to identify the identity of cell populations.
-### Cluster Reports
-The report will visualize the clustering results, which is shown below.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRCluster.vis.png" width="70%"> </p>
-Another important visualization is plotting QC metrics of cells against the clustering results. This is to ensure that the clustering results are not significantly biased by the different sequencing depth and coverage of cells in the dataset.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRCluster.QC.png" width="70%"> </p>
 
-### Marker Reports
-In this section the up-regulated genes in each cell population defined by clustering algorithm are visualized using heatmap. The figure below is an example of such a heatmap.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRCluster.Markers.png" width="70%"> </p>
-
-### Markers
-In this section the full list of gene markers of each cell population is ready to be viewed and downloaded.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRCluster.Markers.ready.png" width="70%"> </p>
-
-
-## Singler Rmd Report
-Singler Rmd Report and Marker Reports is a html file generated by [Rmarkdown](https://rmarkdown.rstudio.com). 
-[SingleR](https://doi.org/10.1038/s41590-018-0276-y) is an algorithm that annotates single cell RNA-Seq dataset based on gene markers of each cell population from clustering and a corresponding reference map. In this section the results of this SingleR annotation are shown.
-<p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsRSingleR.png" width="70%"> </p>
-
-## Annot Out, Seurat H5ad and Shinyapp
-In these sections the goal is to visualize end results of single cell RNA-Seq dataset using custom shiny Apps and [cellxgene](https://cellxgene.cziscience.com).
 
