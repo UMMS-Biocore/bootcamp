@@ -104,6 +104,15 @@ From here I will introduce the options in this module.
 ## Metadata (Totally Optional)
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure2.png" width="60%"> </p>
 
+In this option the user can input a tab-delimited table as metadata sheet. The metadata sheet must includes one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically addes all the information in the metadata to the scRNA_Analysis_module.
+
+## LoadData
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure3.png" width="60%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure4.png" width="60%"> </p>
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure5.png" width="60%"> </p>
+
+In this option the user can input a tab-delimited table as metadata sheet. The metadata sheet must includes one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically addes all the information in the metadata to the scRNA_Analysis_module.
+
 
 
 
