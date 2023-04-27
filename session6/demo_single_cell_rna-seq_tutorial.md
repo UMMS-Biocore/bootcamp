@@ -99,9 +99,13 @@ scRNA_Analysis_module settings
 
 The scRNA_Analysis_module is module that will take the count matrix(ces) from Cellranger pipeline, and conduct downstream analysis such as filtering of low read count cells and multiplets, Normalization, Dimension Reduction and Clustering. The results of this module are several html files and files that can be interactively explored by using Shiny Apps and CellxGene browser.
 
-Here is an overview picture of the options in this module. 
+From here I will introduce the options in this module. 
 
-<p align="center"> <img src="sc-rnaseq_images/Overview.of.scRNA-analysis-module.png" width="100%"> </p>
+## Metadata (Totally Optional)
+<p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure2.png" width="60%"> </p>
+
+
+
 
 
 
