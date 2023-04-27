@@ -168,5 +168,33 @@ In this report there is also a preliminary clustering analysis of the data. The 
 
 <p align="center"> <p align="center"> <img src="sc-rnaseq_images/ResultsCellrangerAnalysis.png" width="70%"> </p>
 
+## QC Reports
 
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure1.png" width="70%"> </p>
 
+QC Reports is a html report of quality control and QC steps. On the top left side there is a category which can be used to navigate through the pages.
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure2.png" width="70%"> </p>
+
+The QC section uses violin plots and scatter plots to visualize the data quality.
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure3.png" width="70%"> </p>
+
+The Doublet Classification section shows the results of doublet classification. As the figure shows the doublets tend to have higher number of genes and UMIs per cell than that of the singlets.
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/QCReports.figure4.png" width="70%"> </p>
+
+The Filtering section shows the results of filtering. As the figure shows the cells that will be filtered out will have either too high or too low number of genes and UMIs per cell.
+
+## Final Reports
+
+The final report is a html file that has similar structure as the QC report. 
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure1.png" width="70%"> </p>
+
+The first section of final report is an violin plots showing QC metrics of all the samples in the dataset. It is useful when the user wants to compare the quality of different samples.
+
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure2.png" width="70%"> </p>
+<p align="center"> <p align="center"> <img src="sc-rnaseq_images/FinalReport.figure3.png" width="70%"> </p>
+
+The section section of the final report is the information of the principal component analysis. The genes that are significant contributors to the top principal components and the amount of variance being explained by each principal component are visualized in this section.
