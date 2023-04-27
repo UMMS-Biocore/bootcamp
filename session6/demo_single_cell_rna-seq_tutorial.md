@@ -111,7 +111,9 @@ In this option the user can input a tab-delimited table as metadata sheet. The m
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure4.png" width="60%"> </p>
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure5.png" width="60%"> </p>
 
-In this option the user can input a tab-delimited table as metadata sheet. The metadata sheet must includes one column named "Sample", which includes the name(s) of the sample(s) that match(es) the "Name" specified in the previous "Enter File section". The process automatically addes all the information in the metadata to the scRNA_Analysis_module.
+In this option the user can input how they want to filter their data, how the data needs to be normalized and whether the empty droplets and multiplets needs to be filtered out from the data.
+
+The RemoveMitoGenes and RemoveRiboGenes (Not on the figure, but just below the RemoveMitoGenes option) allow user to remove genes that encode mitochondrial and ribosomal genes. Although it is highly not recommended, user can use the options to remove these genes.
 
 
 
