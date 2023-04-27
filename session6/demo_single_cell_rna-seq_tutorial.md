@@ -133,13 +133,9 @@ The option "Weighted Nearest Network assay" will allow user to enter the name of
 
 <p align="center"> <img src="sc-rnaseq_images/runscRNA_Analysis.figure7.png" width="60%"> </p>
 
+In order to find the best parameter for the clustering algorithm, the module will scan parameters from the minimum resolution to the maximum resolution specified here. The default settings worked for most datasets we have tested the module on.
 
-
-
-
-
-
-
+The "# of Principal Components" allows you to select the number of PCs to be used in the clustering analysis. Any integer between 2 and 100 can be used. However if the user is not sure about the number of PCs to use, 0 can be used as input and the best number will be predicted by the module.
 
 ***
 
