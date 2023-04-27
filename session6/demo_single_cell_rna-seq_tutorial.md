@@ -94,6 +94,20 @@ Since this sample has paired end reads, (23) ensure the `mate` dropdown is set t
 
 Pick the genome by (27) selecting "human_hg38_gencode_v32_cellranger_v6" in the `genome_build` dropdown. 
 
+scRNA_Analysis_module settings
+========
+
+The scRNA_Analysis_module is module that will take the count matrix(ces) from Cellranger pipeline, and conduct downstream analysis such as filtering of low read count cells and multiplets, Normalization, Dimension Reduction and Clustering. The results of this module are several html files and files that can be interactively explored by using Shiny Apps and CellxGene browser.
+
+Here is an overview picture of the options in this module. 
+
+<p align="center"> <img src="sc-rnaseq_images/Overview.of.scRNA-analysis-module.png" width="100%"> </p>
+
+
+
+
+
+
 ***
 
 In conclusion, all settings should be set to "yes", except `run_Aggregate_Libraries` and `genome_build` which was set to "human_hg38_gencode_v32_cellranger_v6".
