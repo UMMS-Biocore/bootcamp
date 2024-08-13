@@ -18,6 +18,7 @@ In order to make an SSH connection to your account, you need to use program like
 
 1. **Generate the Key:**
    - Run `puttygen` or `puttygen.exe`.
+   <img src="images/putty-1puttygenappsearch.png">
    - Click the 'Generate' button.
    - Follow the instructions to move your mouse to generate randomness.
    - (Optional) Enter a passphrase in the 'Key passphrase' field and confirm it in the 'Confirm passphrase' field. This passphrase will be required each time you log into the HPC cluster.
