@@ -32,18 +32,19 @@ In order to make an SSH connection to your account, you need to use program like
 
       <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-3savepublickey.png" width="50%">
 
-   - Copy all the text in the box under "Public key for pasting into OpenSSH authorized_keys file" and paste it into the portal at [https://hpcportal.umassmed.edu/PublicKeys](https://hpcportal.umassmed.edu/PublicKeys).
+   - Copy all the text in the box under "Public key for pasting into OpenSSH authorized_keys file" and paste it into the portal at [https://hpcportal.umassmed.edu/PublicKeys](https://hpcportal.umassmed.edu/PublicKeys). (Please use your UMASS email as username and email password for login.)
    
       Example public key:
       ```
       ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHOGOPn5IaOL
       +yjA6KbIFVO5qoSq8rYWehXx9smUolajt5kGj71yEugchGs3BH
-      dvE3zptIGbLt4uXRyJxb4JtgBOqnYq43o3AeFGhqSfcamWid/d
-      1IbXr7Ii6gYmGKJwquIGU9d29IWHvLaFICnxZKFXxtsJRxZcc0
-      XLN1eKRxz/nj3jIMUIG1iFYelyrk6I4nZ0zcBYGFTt76xln1Yb
-      QCehM0fOFhMw2xyuxT8tGfixHSc+b0Lcie7UijYPAB+G9mMKzR
-      bQaBFzbeX9ecyU1dUTM1WrgbNKavGXv0QcmW9iFJTPxphFEH rsa-key-20240813
+      ...
+      Xv0QcmW9iFJTPxphFEH rsa-key-20240813
       ```
+
+      - Please click "Create New" button
+      - KeyName: Any name (e.g. My Laptop Key)
+      - KeyValue: Public Key from your laptop.
 
       <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
 
@@ -122,7 +123,11 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
    - Open the following portal: [UMassMed HPC Public Keys](https://hpcportal.umassmed.edu/PublicKeys).
    - Copy the contents of your public key (`id_ecdsa.pub`) and paste it into the portal.
 
-   <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+      - Please click "Create New" button
+      - KeyName: Any name (e.g. My Laptop Key)
+      - KeyValue: Public Key from your laptop.
+
+         <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
 
 4. **Using Non-Default Key Names (Optional):**
    - If you choose a name other than the default for your keys, you'll need to specify the location of your private key when authenticating via SSH.
@@ -138,8 +143,13 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
    - Click the "Create new keys" checkbox and click the "Generate Keys" button.
    - Copy your public SSH key and click the "Submit" button.
 2. Visit the HPC site and add SSH Keys to your account:
-   - Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create
-   - Note: Please use your UMASS email as username and email password for login.
+   - Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create  (Please use your UMASS email as username and email password for login.)
+   - Please click "Create New" button
+   - KeyName: Any name (e.g. Viafoundry Key)
+   - KeyValue: Public Key from Foundry website.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+
 3. At the Via Foundry website, Add a New Run environment for HPC
    - Click Profile Icon (at the top right) -> Click Run Environments Tab -> Click Add Environment Button
    - Choose the Profile Name "New UMASS SCI Cluster"
