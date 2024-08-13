@@ -45,6 +45,8 @@ In order to make an SSH connection to your account, you need to use program like
       bQaBFzbeX9ecyU1dUTM1WrgbNKavGXv0QcmW9iFJTPxphFEH rsa-key-20240813
       ```
 
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+
    - Click the 'Save private key' button and save the private key file (e.g., `private.ppk`). Remember the file name and location.
 
       <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-3saveprivatekey.png" width="50%">
@@ -119,6 +121,8 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 3. **Upload the Public Key:**
    - Open the following portal: [UMassMed HPC Public Keys](https://hpcportal.umassmed.edu/PublicKeys).
    - Copy the contents of your public key (`id_ecdsa.pub`) and paste it into the portal.
+
+   <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
 
 4. **Using Non-Default Key Names (Optional):**
    - If you choose a name other than the default for your keys, you'll need to specify the location of your private key when authenticating via SSH.
