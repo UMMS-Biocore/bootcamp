@@ -16,19 +16,74 @@ In order to make an SSH connection to your account, you need to use program like
 
 &nbsp;&nbsp;&nbsp;&nbsp;**A1.** Download and open PuTTY from <a href="https://www.putty.org/" target="_blank">their website</a>.
 
-- Run 'puttygen.exe'
-- Click on the 'Generate' button.
-- Follow instructions to move your mouse.
-- Enter a passphrase that you will remember in the 'Key passphrase' section. Enter the same passphrase in the 'Confirm passphrase' section.
-- Copy all the text in the box under "Public key for pasting into OpenSSH authorized_keys file and paste into the portal, https://hpcportal.umassmed.edu/PublicKeys
-- Click the 'Save private key' button and save the private key file. Remember the name and location of where you save the private key.
-- Run 'putty.exe'
-- If you don't already have a session created for connecting to the SCI cluster, enter 'hpc.umassmed.edu' as the hostname and saved session name and click the 'Save' button to create one.
-- Select your 'hpc.umassmed.edu' session from the session list and select 'Load'.
-- In the putty configuration for your saved SCI connection expand the 'Connection' category, then the 'SSH' category and then select the 'Auth' category.
-- Under 'Private key file for authentication' you can enter the location and name of your private key, or select the 'Browse' button to locate the private key.
-- Once you've set the location of the private key, go back to the 'Session' category, make sure 'hpc.umassmed.edu' is still selected, and press the 'Save' button.
-- Now when you launch the 'hpc.umassmed.edu' session putty knows the public key to try. It will prompt you for the passphrase you set for the private key.
+1. **Generate the Key:**
+   - Run `puttygen` or `puttygen.exe`.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-1puttygensearch.png" width="50%">
+
+   - Click the 'Generate' button.
+
+   - Follow the instructions to move your mouse to generate randomness.
+   - (Optional) Enter a passphrase in the 'Key passphrase' field and confirm it in the 'Confirm passphrase' field. This passphrase will be required each time you log into the HPC cluster.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-2generatekey.png" width="50%">
+
+   - Click the 'Save public key' button and save the public key file (e.g., `public.key`). This file can be used later if needed.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-3savepublickey.png" width="50%">
+
+   - Copy all the text in the box under "Public key for pasting into OpenSSH authorized_keys file" and paste it into the portal at [https://hpcportal.umassmed.edu/PublicKeys](https://hpcportal.umassmed.edu/PublicKeys). (Please use your UMASS email as username and email password for login.)
+   
+      Example public key:
+      ```
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHOGOPn5IaOL
+      +yjA6KbIFVO5qoSq8rYWehXx9smUolajt5kGj71yEugchGs3BH
+      ...
+      Xv0QcmW9iFJTPxphFEH rsa-key-20240813
+      ```
+
+      - Please click "Create New" button
+      - KeyName: Any name (e.g. My Laptop Key)
+      - KeyValue: Public Key from your laptop.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+
+   - Click the 'Save private key' button and save the private key file (e.g., `private.ppk`). Remember the file name and location.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-3saveprivatekey.png" width="50%">
+
+   - You can now close the `puttygen` application.
+
+2. **Configure Putty for SSH Connection:**
+   - Run `putty.exe` or the Putty application (not `puttygen`).
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-1puttysearch.png" width="50%">
+
+   - If you don’t already have a session created for connecting to the SCI cluster, enter `hpc.umassmed.edu` as the hostname.
+   - In the 'Saved Sessions' field, enter a name for the session (e.g., `HPC UMASS`) and click the 'Save' button to create a session for quick access.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-5savesession.png" width="50%">
+
+      After Clicking on Save button:
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-5savesession2.png" width="50%">
+
+   - Select your `HPC UMASS` session from the session list and click 'Load'.
+   - In the Putty configuration, expand the 'Connection' category, then expand the 'SSH' category, and expand the 'Auth' category and then select 'Credentials' section.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-6credentials.png" width="50%">
+
+   - In the 'Credentials' section, under 'Private key file for authentication', click 'Browse' and locate your private key file (e.g., `private.ppk`).
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/putty-6credentials2.png" width="50%">
+
+   - After setting the location of the private key, go back to the 'Session' category, ensure that the `HPC UMASS` session is selected, and click 'Save'.
+   - Now, when you launch the `HPC UMASS` session, Putty will use the configured public key. It will prompt you to enter the passphrase you set for the private key.
+
+3. **Important Notes:**
+   - **Username:** On the connection screen, enter your cluster username (e.g., `onur.yukselen-umw`).
+   - **Passphrase:** When entering your passphrase, you won’t see any characters displayed as you type. Just type it and press Enter.
+   - **Quick Access:** Since you configured your SSH connection session, each time you open Putty, you can simply select the `HPC UMASS` session, click 'Load', and then click 'Open' to connect.
 
 ### B. If you're using Linux or MacOS
 
@@ -38,13 +93,47 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
     
 <img src="https://raw.githubusercontent.com/UMMS-Biocore/dolphinnext/master/docs/dolphinNext/dolphinnext_images/terminal.png" width="80%">
     
-- From the command prompt, please run 'ssh-keygen -t ecdsa -b 521' and accept the default locations for the file locations unless you already have keys with those names. Setting a password for the key file is strongly encouraged.
-- You should end up with two keys, the private one (defaults to id_ecdsa) and the public one (defaults to id_ecdsa.pub). Please paste the contents of the public key into the portal, https://hpcportal.umassmed.edu/PublicKeys
-- If you choose a name other than the default for your keys, you will need to tell ssh where to find the private key to authenticate. You can do this by specifying "-i /path/to/your/private/key", or by creating a ~/.ssh/config file and adding a Host entry, e.g.:
-	
-```
-ssh -i ~/.ssh/id_ecdsa yourclusterusername@hpc.umassmed.edu
-```
+1. **Generate the SSH Key:**
+   - From your command prompt, run the following command:
+     ```
+     ssh-keygen -t ecdsa -b 521
+     ```
+   - When prompted, accept the default file locations unless you already have keys with those names. Setting a password for the key file is strongly recommended.
+
+2. **Locate Your Keys:**
+   - You should end up with two keys in `~/.ssh` folder, use `cd ~/.ssh` command to enter that folder and `ls` command to see files:
+      ```
+      cd ~/.ssh
+      ls
+      ```
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal1.png" width="50%">
+
+     - **Private key:** By default, this will be named `id_ecdsa`.
+     - **Public key:** By default, this will be named `id_ecdsa.pub`.
+     Use cat command to print public key file content.
+
+     ```
+     cat id_ecdsa.pub
+     ```
+
+     <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal2.png" width="50%">
+
+3. **Upload the Public Key:**
+   - Open the following portal: [UMassMed HPC Public Keys](https://hpcportal.umassmed.edu/PublicKeys).
+   - Copy the contents of your public key (`id_ecdsa.pub`) and paste it into the portal.
+
+      - Please click "Create New" button
+      - KeyName: Any name (e.g. My Laptop Key)
+      - KeyValue: Public Key from your laptop.
+
+         <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+
+4. **Using Non-Default Key Names (Optional):**
+   - If you choose a name other than the default for your keys, you'll need to specify the location of your private key when authenticating via SSH.
+       ```
+       ssh -i /path/to/your/private/key yourclusterusername@hpc.umassmed.edu
+       ```
 
 ## Step 3: Setup Connection for Dolphinnext/Viafoundry
 
@@ -54,8 +143,13 @@ ssh -i ~/.ssh/id_ecdsa yourclusterusername@hpc.umassmed.edu
    - Click the "Create new keys" checkbox and click the "Generate Keys" button.
    - Copy your public SSH key and click the "Submit" button.
 2. Visit the HPC site and add SSH Keys to your account:
-   - Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create
-   - Note: Please use your UMASS email as username and email password for login.
+   - Add your public SSH key to the HPC site: https://hpcportal.umassmed.edu/PublicKeys/Create  (Please use your UMASS email as username and email password for login.)
+   - Please click "Create New" button
+   - KeyName: Any name (e.g. Viafoundry Key)
+   - KeyValue: Public Key from Foundry website.
+
+      <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
+
 3. At the Via Foundry website, Add a New Run environment for HPC
    - Click Profile Icon (at the top right) -> Click Run Environments Tab -> Click Add Environment Button
    - Choose the Profile Name "New UMASS SCI Cluster"
