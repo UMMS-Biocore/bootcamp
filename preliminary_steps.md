@@ -1,11 +1,19 @@
+# Preliminary Steps
+1. [Step 1: Register for access to the HPC](#step-1-register-for-access-to-the-hpc-high-performance-computing-cluster)
+2. [Step 2: Setup SSH Connection for your Computer](#step-2-setup-ssh-connection-for-your-computer)
+    1. [If you're using Windows](#a-if-youre-using-windows)
+    2. [If you're using Linux or MacOS](#b-if-youre-using-linux-or-macos)
+3. [Step 3: Setup Connection for Via Foundry](#step-3-setup-connection-for-via-foundry)
+3. [Step 4: Project Space Requirements](#step-4-project-space-requirements)
+
 ## Step 1: Register for access to the HPC (High Performance Computing Cluster)
 
 The registration form can be found at <a href="https://hpc.umassmed.edu/wiki/index.php?title=Welcome_to_the_Scientific_Computing_for_Innovation_Cluster#Requesting_an_Account" target="_blank">HPC website</a>. Once the HPC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPC Admins group with your HPC account user name.
 
 
-## Step 2: Connecting to your account 
+## Step 2: Setup SSH Connection for your Computer
 
-In order to use the pipelines in ViaFoundry/DolphinNext, you need access your cluster account. 
+In order to use the pipelines in Via Foundry, you need access your cluster account. 
 
 #### Troubleshooting: If you're getting "Operation timed out" errors, try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
 You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
@@ -111,7 +119,7 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
      - **Private key:** By default, this will be named `id_ecdsa`.
      - **Public key:** By default, this will be named `id_ecdsa.pub`.
-     Use cat command to print public key file content.
+     - Use `cat` command to print public key file content:
 
      ```
      cat id_ecdsa.pub
@@ -129,13 +137,17 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
          <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
 
-4. **Using Non-Default Key Names (Optional):**
+4. **Connect with SSH command:**
+   - Default approach to login your HPC account:
+      ```
+      ssh yourclusterusername@hpc.umassmed.edu
+      ```
    - If you choose a name other than the default for your keys, you'll need to specify the location of your private key when authenticating via SSH.
        ```
        ssh -i /path/to/your/private/key yourclusterusername@hpc.umassmed.edu
        ```
 
-## Step 3: Setup Connection for Dolphinnext/Viafoundry
+## Step 3: Setup Connection for Via Foundry
 
 1. Visit the Via Foundry website (https://viafoundry.umassmed.edu) and create SSH keys.
    - Click Profile Icon (at the top right) -> Click SSH Keys Tab -> Click Add SSH Key Button
