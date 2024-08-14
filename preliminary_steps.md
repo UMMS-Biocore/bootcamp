@@ -137,11 +137,13 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 
          <img src="https://raw.githubusercontent.com/onuryukselen/bootcamp/master/images/mac-terminal3.png" width="50%">
 
+
 4. **Connect with SSH command:**
    - Default approach to login your HPC account:
       ```
       ssh yourclusterusername@hpc.umassmed.edu
       ```
+      
    - If you choose a name other than the default for your keys, you'll need to specify the location of your private key when authenticating via SSH.
        ```
        ssh -i /path/to/your/private/key yourclusterusername@hpc.umassmed.edu
