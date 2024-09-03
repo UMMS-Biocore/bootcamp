@@ -1,4 +1,4 @@
-# Sequence Analysis Bootcamp Winter 2023
+# Sequence Analysis Bootcamp Spring 2024
 
 This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
