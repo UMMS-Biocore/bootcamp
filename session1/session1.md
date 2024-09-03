@@ -17,11 +17,21 @@ To understand the basics of Linux environment, how to use command line and to fa
 Overview
 ========
   * [Introduction](#introduction)
+  * [Class Materials](#class-materials)
   * [Before you start](#before-you-start)
   * [Getting Started](#getting-started)
   * [Basic Commands](#basic-commands)
   * [File transfer from your laptop to cluster using FileZilla](#file-transfer-from-your-laptop-to-cluster-using-FileZilla)
   * [Session1 Homework](#session1-homework)
+
+## Class Materials
+
+You can follow the class materials below.
+
+<b>Session 1: </b><br />
+
+  * [Bootcamp Overview](Session1_Via_Foundry_Intro.pptx)
+  * [Introduction to Sequencing Analysis](Session1_Intro_to_sequencing.pptx)
 
 ## Introduction
 
