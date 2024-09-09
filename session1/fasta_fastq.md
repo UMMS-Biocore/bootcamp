@@ -1,17 +1,5 @@
 # Session 3 cont.: FASTA and FASTQ files
 
-## Class Materials
-
-You can follow the class materials below.
-
-<b>1. Session 3.2: Genomic Resources</b><br />
-
-<div align="left">
-  <a href="https://www.youtube.com/watch?v=gc-wIrxpSMw"><img src="https://img.youtube.com/vi/gc-wIrxpSMw/0.jpg" alt="Session 3.2"></a>
-</div>
-
-Slides: [Fasta/Fastq file formats](Session3.2_sequence_file_formats.pptx)
-
 ## FASTA files
 
 Now you learned the location of the genomes in the cluster, find a fasta file for the mouse reference (mm10)

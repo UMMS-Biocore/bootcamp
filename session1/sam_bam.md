@@ -1,13 +1,5 @@
 # Session 1 cont.: SAM/BAM alignment files
 
-## Class Materials
-
-You can follow the class materials below.
-
-<b>1. Session 1.3: SAM/BAM Files</b><br />
-
-Slides: [SAM/BAM file formats](Session1_general_pipeline_alignment_files.pptx)
-
 ## SAM files
 
 SAM is an acronym for Sequence Alignment/Mapping
