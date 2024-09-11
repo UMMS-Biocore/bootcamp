@@ -3,6 +3,14 @@ Expected learning outcome
 
 To understand the basics of Foundry, and do RNA-Seq analysis with sample mouse data.
 
+## Class Materials
+
+You can follow the class materials below.
+
+<b>Session 2: </b><br />
+
+  * [Session2 Sequencing Analysis](Session2-sequence_analysis.pptx)
+
 # Before you start
 
 Please go to https://viafoundry.umassmed.edu/ and login into your account. If you have a login issue, please let us know about it (BiocoreStaff@umassmed.edu). We will set up an account for you.
