@@ -9,7 +9,9 @@ You can follow the class materials below.
 
 <b>Session 2: </b><br />
 
-  * [Session2 Sequencing Analysis](Session2-sequence_analysis.pptx)
+  * [Session2 Sequence Analysis](Session2-sequence_analysis.pptx)
+  * [Session2 Sequence Analysis - Record](https://www.youtube.com/watch?v=zkIz2QvjSF4)
+  * [Session2 Via Foundry: Running pipelines - Record](https://youtu.be/pC1WHwU_pTw)
 
 # Before you start
 

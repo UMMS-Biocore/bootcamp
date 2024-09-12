@@ -4,7 +4,7 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 - If you haven't join into ViaFoundry/Dolphin Group, please follow steps in our [ViaFoundry/Dolphin guide](preliminary_steps.md).
 
-1. [Session 1: Linux environment](session1/session1.md)</br>
+1. [Session 1: Introduction to Bootcamp](session1/session1.md)</br>
 
    [Session 1.1: UMass Cluster (Optional)](session1/session1.2.md)</br>
 
