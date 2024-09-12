@@ -31,7 +31,8 @@ You can follow the class materials below.
 <b>Session 1: </b><br />
 
   * [Bootcamp Overview](Session1_Via_Foundry_Intro.pptx)
-  * [Introduction to Sequencing Analysis](Session1_Intro_to_sequencing.pptx)
+  * [Introduction to Sequencing Analysis and File Formats](Session1_Intro_to_sequencing.pptx)
+  * [Introduction to Sequencing Analysis and File Formats - Record](https://youtu.be/1iHDQUr_mcE)
 
 ## Introduction
 
