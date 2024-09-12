@@ -800,7 +800,7 @@ The information you need is below;
 
 - mm10.fa file is located /share/data/umw_biocore/genome_data/mousetest/mm10/mm10.fa
 - ucsc.gtf file is located /share/data/umw_biocore/genome_data/mousetest/mm10/ucsc.gtf
-- rsem.to.table.pl file is located at https://bioinfo.umassmed.edu/pub/rsem.to.table.pl
+- rsem.to.table.pl file is located at https://web.dolphinnext.com/umw_biocore/class/bootcamp/RNA-Seq/progs/rsem.to.table.pl
 - fastq files are located /share/data/umw_biocore/genome_data/mousetest/mm10/fastq.quantification/
 
 When you run tree function the output should look like below;
