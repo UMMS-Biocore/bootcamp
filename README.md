@@ -18,6 +18,8 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 2. [Session 2: ViaFoundry Training - RNA-Seq Pipeline](session2/session2.md)</br></br>
 
+3. [Session 3: scRNA-Seq Analysis](session3/demo_single_cell_rna-seq_tutorial.md)</br></br>
+
 <!---
 2. [Session 2: RNA-Seq data processing and analysis](session2/session2.md)</br></br>
 
@@ -27,5 +29,4 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 5. [Session 5: Differential expression analysis with DEBrowser](session5/session5.md)</br></br>
 
-6. [Session 6: scRNA-Seq Analysis](session6/demo_single_cell_rna-seq_tutorial.md)</br></br>
 --->
