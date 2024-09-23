@@ -10,6 +10,7 @@ You can follow the class materials below.
 <b>Session 3: </b><br />
 
   * [Session3 scRNA-Seq Introduction](Session3_single_cell_intro.pptx)
+  * [Session3 scRNA-Seq Introduction Record](https://youtu.be/bRWlOf36m6k)
   * [Session3 scRNA-Seq Analysis](Session3_Single_Cell_Analysis.pptx)
   * [Session3 scRNA-Seq Tutorial](Session3_Single_Cell_Analysis_Tutorial.pptx)
 
