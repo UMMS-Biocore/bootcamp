@@ -1,0 +1,11 @@
+sample_name	group	batch	condition	time
+D01_Ctrl_0h	ctrl	A	Ctrl	0h
+D01_Lps_1h	1h	A	Lps	1h
+D01_Lps_2h	2h	A	Lps	2h
+D01_Lps_4h	4h	A	Lps	4h
+D01_Lps_6h	6h	A	Lps	6h
+D09_Ctrl_0h	ctrl	B	Ctrl	0h
+D09_Lps_1h	1h	B	Lps	1h
+D09_Lps_2h	2h	B	Lps	2h
+D09_Lps_4h	4h	B	Lps	4h
+D09_Lps_6h	6h	B	Lps	6h
