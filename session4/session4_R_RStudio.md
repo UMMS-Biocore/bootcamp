@@ -1,4 +1,4 @@
-# Session 3: R and RStudio
+# Session 4: R and RStudio
 
 # Expected learning outcome
 

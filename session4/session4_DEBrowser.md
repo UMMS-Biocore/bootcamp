@@ -1,4 +1,4 @@
-# Session 5: Differential expression analysis with DEBrowser
+# Session 4: Differential expression analysis with DEBrowser
 
 ## Expected learning outcome
 
