@@ -1,0 +1,558 @@
+---
+title: "Differential Expression Analysis"
+author: "Via Scientific Bootcamp"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r, include=FALSE}
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+library(DESeq2)
+library(tidyr)
+library(DT)
+library(scales)
+
+set.seed(1)
+```
+
+# Introduction
+
+Differential gene expression analysis has become an increasingly popular tool in determining and viewing up and/or down expressed genes between two or more sets of samples. The goal of Differential expression analysis is to find genes, transcripts, or regions whose difference in expression/count is higher than expected by chance, after accounting for the variance within condition. DESeq2 is one of the highly used packages in R available via Bioconductor and is designed to normalize count data from high-throughput sequencing assays such as RNA-Seq and test for differential expression.
+
+## DESeq2
+
+DESeq2 is one of the highly used packages in R available via Bioconductor and is designed to normalize count data from high-throughput sequencing assays such as RNA-Seq and test for differential expression via a negative bionomial distribution.
+
+See the [manual](https://www.bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html) and [paper](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8) for more information about DESeq2
+
+### Alternative DE Software
+
+[edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html), [sleuth](https://pachterlab.github.io/sleuth_walkthroughs/trapnell/analysis.html), and [limma](https://bioconductor.org/packages/release/bioc/html/limma.html) are additional differential expression software packages that will not be covered in this course.
+
+### Installing DESeq2
+
+DESeq2 is available in R from the bioconductor repository. Full installation instructions can be found [here](https://bioconductor.org/packages/release/bioc/html/DESeq2.html). In short, the following commands are usually sufficient to install DESeq2:
+
+```
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("DESeq2")
+```
+
+### Running DESeq2
+
+#### DESeq2 Expects Un-normalized Counts
+
+DESeq2 has an internal normalization strategy for library size. Therefore, it requires un-normalized counts as input.
+
+#### Input Data
+
+Testing models of DESeq2 (and other DE packages) are based on negative binomial distribution which require count data as the input. This data obtained from RNA-Seq or other high-throughput sequencing experiments in the form of matrix. Each row of the matrix represents a different event (gene or transcript) and there is a column for each sample. At least two replicates per condition are required for DESeq2.
+
+```{r, warning=FALSE}
+options(scipen=999)
+
+counts = read.delim("data/donnard_counts.txt", check.names=FALSE) %>%
+        select(-transcript)
+
+datatable(counts, rownames = FALSE)
+```
+
+Different genes are expressed at very different levels within the cell. A particular gene can be expressed at very different levels in different cell types or under different physiological conditions. The human genome is estimated to have about 20,000 different genes - but most cell types only express about 6,000 genes at any given time. Therefore, in any particular cell type or condition, most genes might not be expressed. Below one sees the distribution of expression across genes is very skewed.
+
+```{r, warning=FALSE}
+ggplot(counts, aes(x=D01_Ctrl_0h)) +
+  theme_classic() +
+  xlab("Raw Counts per Gene") +
+  ylab("Number of Genes") +
+  geom_histogram(fill='grey',bins=100)
+```
+
+Zooming in on expression values of 0-100 shows a little more information, but it is still difficult to see what is going on. Most genes are very lowly expressed, but a small number have a very high expression.
+
+```{r, warning=FALSE}
+ggplot(counts, aes(x=D01_Ctrl_0h)) +
+  theme_classic() +
+  xlab("Raw Counts per Gene") +
+  ylab("Number of Genes") +
+  scale_x_continuous(limits=c(-1,100)) +
+  geom_histogram(fill='grey',bins=100)
+```
+
+Instead, one often looks at the "log10" transformation of expression. This allows one to better visualize the expression distribution.
+
+```{r, warning=FALSE}
+ggplot(counts, aes(x=D01_Ctrl_0h)) +
+  theme_classic() +
+  xlab("Counts per Gene") +
+  ylab("Number of Genes") +
+  scale_x_continuous(trans='log10', breaks=c(.1,1,10,100,1000,10000,100000,1000000), name='Raw Counts') +
+  geom_histogram(fill='grey',bins=100) +
+  geom_vline(xintercept=10, linetype=2, color='firebrick')
+```
+
+```{r, warning=FALSE}
+ggplot(counts, aes(x=D01_Ctrl_0h, y=D09_Ctrl_0h)) +
+  theme_classic() +
+  scale_x_continuous(trans='log10') +
+  scale_y_continuous(trans='log10') +
+  geom_point(color='grey', size=.4, alpha=.3) +
+  geom_abline(slope=1, linetype=2)
+
+ggplot(counts, aes(x=D01_Ctrl_0h, y=D09_Lps_1h)) +
+  theme_classic() +
+  scale_x_continuous(trans='log10') +
+  scale_y_continuous(trans='log10') +
+  geom_point(color='grey', size=.4, alpha=.3) +
+  geom_abline(slope=1, linetype=2)
+```
+
+### Pre-filtering raw data
+
+```{r}
+counts = counts %>% tibble::column_to_rownames("gene") %>% as.matrix()
+mode(counts) = 'integer'
+
+keep = rowSums(counts >= 10) >= 2
+filtered_counts = counts[keep,]
+```
+
+### Running DESeq2
+
+```{r, warning=FALSE, message=FALSE}
+metadata = read.delim("data/donnard_metadata.txt") %>% select(sample_name, group) %>% tibble::column_to_rownames("sample_name")
+
+dds = DESeqDataSetFromMatrix(countData = filtered_counts, colData = metadata, design = ~group)
+dds$group = relevel(dds$group, ref = "ctrl")
+res = DESeq(dds)
+results = as.data.frame(results(res, contrast=c('group', '1h', 'ctrl'))) %>% 
+  mutate(padj = replace_na(padj, 1)) %>% 
+  tibble::rownames_to_column('gene') %>% 
+  mutate(Status = case_when(padj < .05 & log2FoldChange < 0 ~ "Downregulated",
+                            padj < .05 & log2FoldChange > 0 ~ "Upregulated",
+                            TRUE ~ "No Change"
+  
+    )) %>% arrange(padj)
+```
+
+### DESeq2 Results
+
+```{r, warning=FALSE}
+datatable(results,
+        rownames=FALSE,
+        extensions = 'Buttons',
+        options=list(
+          columnDefs=list(list(visible=FALSE, targets=c(7))),
+          dom = 'lftBipr',
+          buttons = list(
+            list(extend = 'csvHtml5', text='Download', filename = "deseq2_results", extension='.tsv', fieldBoundary='', fieldSeparator='\t')
+           )
+        )
+  ) %>% 
+  formatRound(columns=c('baseMean', 'log2FoldChange', 'lfcSE', 'stat', 'pvalue', 'padj'), digits=4) %>%
+  formatSignif(columns=c("pvalue", "padj"), digits=4) %>%
+  formatStyle('Status',target = 'row', color = styleEqual(c("No Change", "Upregulated", "Downregulated"), c('black', 'firebrick', 'steelblue')))
+```
+
+#### p-value
+
+A p-value, or probability value, is a number describing how likely it is that your data would have occurred under the null hypothesis of your statistical test (usually the null hypothesis is that there is no difference between two conditions).
+
+#### MA Plot
+
+An MA plot is useful way to visualize expression, fold change, and significance in one plot. Each point represents a single gene. The x-axis is the measurement of expression of that gene across the two conditions (points on the right are more highly expressed than points on the left). The y-axis is a measurement of fold change (in log2) between the treatment group and the control (points that are above the line are more expressed in the treatment group, points that are below the line are more expressed in the control). Points are colored based on if they are considered significantly differentially expressed or not as reported by DESeq2. One can see how as expression increases, the log2FoldChange (effect size) doesn't have to be as large to achieve a significant p-value. Said another way, one tends to be more confident in the ability to detect fold changes when expression is high. Notice that sometimes there are non-significant (grey) points with large fold changes - this occurs when there is disagreement between replicates within either the control or treatment group.
+
+```{r}
+ggplot(results, aes(x=baseMean, y=log2FoldChange, color=Status, alpha=Status, size=Status)) +
+  theme_classic() +
+  scale_x_continuous(trans='log10', name='Expression') +
+  scale_alpha_manual(values=c("Upregulated"=1, "No Change"=.3, "Downregulated"=1)) +
+  scale_size_manual(values=c("Upregulated"=2, "No Change"=1, "Downregulated"=2)) +
+  scale_color_manual(values=c("Upregulated"="firebrick", "No Change"='grey', 'Downregulated'='steelblue')) +
+  geom_point() +
+  geom_hline(yintercept=0, linetype=2, color='black')
+```
+
+#### Volcano Plot
+
+A volcano plot is another useful way to visualize both the magnitude of change (effect size) and significance. Just like an MA plot, each point represents a single gene. The x-axis is the fold change (log2). Points further from the center have a stronger change (where points on the left are more expressed in the control and points on the right are more expressed in the treatment). The y-axis is a measurement of significance or the adjusted p-value (specifically the -log10 of the adjusted p-value). Points towards the top are more significantly differentially expressed.
+
+```{r}
+ggplot(results, aes(x=log2FoldChange, y=padj, color=Status, alpha=Status, size=Status)) +
+  theme_classic() +
+  theme(legend.position = 'none') +
+  scale_x_continuous(name="Fold Change (log2)") +
+  scale_y_continuous(trans=c("log10", "reverse"), name='Significance', labels=trans_format('log10',math_format(10^.x)), breaks=c(1, 10^-50, 10^-100, 10^-150, 10^-200, 10^-250)) +
+  scale_alpha_manual(values=c("Upregulated"=1, "No Change"=.3, "Downregulated"=1)) +
+  scale_size_manual(values=c("Upregulated"=2, "No Change"=1, "Downregulated"=2)) +
+  scale_color_manual(values=c("Upregulated"="firebrick", "No Change"='grey', 'Downregulated'='steelblue')) +
+  geom_point() +
+  geom_vline(xintercept=0, linetype=2)
+```
+
+### False Positives and False Negatives
+
+If one imagines a population of 100,000 individuals and where for some trait or measurement there is a mean of 15 and a standard deviation of 1 the distribution might look like this:
+
+```{r, warning=FALSE}
+population_15 = rnorm(100000, mean=15)
+
+distribution_15 = ggplot() + 
+  theme_classic() +
+  xlab("Measurement") +
+  ylab("Number of Individuals") +
+  scale_x_continuous(limits=c(5,25)) +
+  geom_histogram(aes(population_15), bins=100, fill='grey', alpha=.5)
+
+distribution_15
+```
+
+One could then repeatedly randomly draw (sample) three random individuals from the population (notated by the three dashed lines) and calculate the average. Here are four of the many possible samplings:
+
+```{r, warning=FALSE}
+random_sample_plot = function(population, sample_size, distribution_plot) {
+  sample = sample(population, size=sample_size)
+  return(
+    distribution_plot + geom_vline(xintercept=sample, linetype=2, color='black') + annotate('text', x=Inf, y=Inf, vjust=1, hjust=1, label=paste0("Mean: ", round(mean(sample), 3)))
+  )
+}
+
+sample_plot_1 = random_sample_plot(population_15, 3, distribution_15)
+sample_plot_2 = random_sample_plot(population_15, 3, distribution_15)
+sample_plot_3 = random_sample_plot(population_15, 3, distribution_15)
+sample_plot_4 = random_sample_plot(population_15, 3, distribution_15)
+
+grid.arrange(sample_plot_1, sample_plot_2, sample_plot_3, sample_plot_4, ncol=2)
+```
+
+In general, the expectation is that the average of the sampling to be close to the population mean. Occationally, the sampled individuals might all come from the same tail of the distribution, leading to a sample mean that doesn't represent the population mean very well - although rare this is expected to occur.
+
+```{r, warning=FALSE}
+sample_x = c(12.5, 12.56, 12.72)
+distribution_15 + geom_vline(xintercept=sample_x, linetype=2, color='black') + annotate('text', x=Inf, y=Inf, vjust=1, hjust=1, label=paste0("Mean: ", round(mean(sample_x), 3)))
+```
+
+Taken further, we can draw two sets of three individuals, compute the averages of the two groups indendently, and perform a Student's t-test to assess if they are different. In this case, we know that they are being drawn from the same distribution, so should return a p-value greater than .05.
+
+```{r, warning=FALSE}
+double_random_sample_plot = function(population, sample_size, distribution_plot) {
+  sampleA = sample(population, size=sample_size)
+  sampleB = sample(population, size=sample_size)
+  pvalue = t.test(sampleA, sampleB)$p.value
+  return(
+    distribution_plot + 
+      geom_vline(xintercept=sampleA, linetype=2, color='black') + 
+      geom_vline(xintercept=sampleB, linetype=2, color='steelblue') + 
+      annotate('text', x=Inf, y=Inf, vjust=1, hjust=1, label=paste0("Mean A: ", round(mean(sampleA), 3)), color='black') +
+      annotate('text', x=Inf, y=Inf, vjust=2.5, hjust=1, label=paste0("Mean B: ", round(mean(sampleB), 3)), color='steelblue') +
+      annotate('text', x=Inf, y=Inf, vjust=4, hjust=1, label=paste0("p-value: ", round(pvalue, 3)), color='firebrick')
+  )
+}
+
+double_sample_plot_1 = double_random_sample_plot(population_15, 3, distribution_15)
+double_sample_plot_2 = double_random_sample_plot(population_15, 3, distribution_15)
+double_sample_plot_3 = double_random_sample_plot(population_15, 3, distribution_15)
+double_sample_plot_4 = double_random_sample_plot(population_15, 3, distribution_15)
+
+grid.arrange(double_sample_plot_1, double_sample_plot_2, double_sample_plot_3, double_sample_plot_4, ncol=2)
+```
+
+```{r}
+run_multiple_t_tests = function(populationA, populationB, sample_size, num_comparisons) {
+  return(sapply(1:num_comparisons, function(x) t.test(sample(populationA, size=sample_size), sample(populationB, size=sample_size), var.equal=TRUE)$p.value))
+}
+```
+
+Repeating the process of drawing two subsamples from the same population and performing a Student's t-test 100,000 times yields a uniform distribution of p-values:
+
+```{r, warning=FALSE}
+pvalue = run_multiple_t_tests(population_15, population_15, 3, 100000)
+
+n_sig = sum(pvalue <= .05)
+n_nonsig = sum(pvalue > .05)
+
+ggplot() + 
+  theme_classic() +
+  geom_histogram(aes(pvalue), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.3, vjust=1, label=n_sig) +
+  annotate('text', x=0, y=Inf, hjust=-1 , vjust=1, label=n_nonsig)
+```
+
+Using a significance cutoff of .05, of the 100,000 times the sampling was performed, `r n_nonsig` yielded a "non-significant" p-value and `r n_sig` (or `r round(n_sig / 100000, 4)`%) return a "significant" p-value. Since the samplings came from the exact same distribution, the `r n_sig` significant results are "false positives". This is the definition of a significance cutoff - by setting it at .05 one is accepting a false posiitve rate of 5%.
+
+Now consider a drug treatment that is known to cause the measurement to increase by three. Compared to the original grey distribution (untreated individuals) - the distribution of treated individuals (blue) is shifted to the right:
+
+```{r, warning=FALSE}
+population_18 = rnorm(100000, mean=18)
+
+double_distribution = ggplot() + 
+  theme_classic() +
+  xlab("Measurement") +
+  ylab("Number of Individuals") +
+  scale_x_continuous(limits=c(5,25)) +
+  geom_histogram(aes(population_15), bins=100, fill='grey', alpha=.5) +
+  geom_histogram(aes(population_18), bins=100, fill='steelblue', alpha=.5)
+
+double_distribution 
+```
+
+Now if samples of three individuals are drawn from each population and a Student's t-test is performed, we expect the p-value to be more significant.
+
+```{r, warning=FALSE}
+double_random_sample_plot_two_distributions = function(populationA, populationB, sample_size, distribution_plot) {
+  sampleA = sample(populationA, size=sample_size)
+  sampleB = sample(populationB, size=sample_size)
+  pvalue = t.test(sampleA, sampleB)$p.value
+  return(
+    distribution_plot + 
+      geom_vline(xintercept=sampleA, linetype=2, color='black') + 
+      geom_vline(xintercept=sampleB, linetype=2, color='steelblue') + 
+      annotate('text', x=Inf, y=Inf, vjust=1, hjust=1, label=paste0("Mean A: ", round(mean(sampleA), 3)), color='black') +
+      annotate('text', x=Inf, y=Inf, vjust=2.5, hjust=1, label=paste0("Mean B: ", round(mean(sampleB), 3)), color='steelblue') +
+      annotate('text', x=Inf, y=Inf, vjust=4, hjust=1, label=paste0("p-value: ", round(pvalue, 3)), color='firebrick')
+  )
+}
+
+double_sample_plot_two_distributions_1 = double_random_sample_plot_two_distributions(population_15, population_18, 3, double_distribution)
+double_sample_plot_two_distributions_2 = double_random_sample_plot_two_distributions(population_15, population_18, 3, double_distribution)
+double_sample_plot_two_distributions_3 = double_random_sample_plot_two_distributions(population_15, population_18, 3, double_distribution)
+double_sample_plot_two_distributions_4 = double_random_sample_plot_two_distributions(population_15, population_18, 3, double_distribution)
+
+grid.arrange(double_sample_plot_two_distributions_1, double_sample_plot_two_distributions_2, double_sample_plot_two_distributions_3, double_sample_plot_two_distributions_4, ncol=2)
+```
+
+Repeating the process of drawing two subsamples from the two populations and performing a Student's t-test 100,000 times yields left-skewed distribution.
+
+```{r}
+pvalue = run_multiple_t_tests(population_15, population_18, 3, 100000)
+
+n_sig = sum(pvalue <= .05)
+n_nonsig = sum(pvalue > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.5, vjust=1, label=n_sig) +
+  annotate('text', x=0, y=Inf, hjust=-1 , vjust=1, label=n_nonsig)
+```
+
+Using a significance cutoff of .05, of the 100,000 times the sampling was performed, `r n_sig` yielded a "significant" p-value and `r n_nonsig` (or `r round(n_nonsig / 100000, 4)`%) return a "non-significant" p-value. Since the samplings came different distributions, the `r n_nonsig` significant results are "false negatives".
+
+The false negative rate is influenced by several factors
+
+### {.tabset .tabset-pills}
+
+#### Size of Subsample
+
+Increasing the sample size from 3 to 5 reduces the false positive rate.
+
+```{r}
+pvalue = run_multiple_t_tests(population_15, population_18, 5, 100000)
+
+n_sig = sum(pvalue <= .05)
+n_nonsig = sum(pvalue > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.5, vjust=1, label=n_sig) +
+  annotate('text', x=.1, y=Inf, vjust=1, label=n_nonsig)
+```
+
+#### Difference in Distribution Mean
+
+Increasing the shift in the means reduces the false positive rate.
+
+```{r, warning=FALSE}
+population_20 = rnorm(100000, mean=20)
+
+ggplot() + 
+  theme_classic() +
+  xlab("Measurement") +
+  ylab("Number of Individuals") +
+  scale_x_continuous(limits=c(5,25)) +
+  geom_histogram(aes(population_15), bins=100, fill='grey', alpha=.5) +
+  geom_histogram(aes(population_20), bins=100, fill='steelblue', alpha=.5)
+
+pvalue = run_multiple_t_tests(population_15, population_20, 3, 100000)
+
+n_sig = sum(pvalue <= .05)
+n_nonsig = sum(pvalue > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.5, vjust=1, label=n_sig) +
+  annotate('text', x=.1, y=Inf, vjust=1, label=n_nonsig)
+```
+
+#### Difference in Distribution Variance
+
+Decreasing the variation of the population reduces the false positive rate.
+
+```{r, warning=FALSE}
+population_15_narrow = rnorm(100000, mean=15, sd=.5)
+population_18_narrow = rnorm(100000, mean=18, sd=.5)
+
+ggplot() + 
+  theme_classic() +
+  xlab("Measurement") +
+  ylab("Number of Individuals") +
+  scale_x_continuous(limits=c(5,25)) +
+  geom_histogram(aes(population_15_narrow), bins=100, fill='grey', alpha=.5) +
+  geom_histogram(aes(population_18_narrow), bins=100, fill='steelblue', alpha=.5)
+
+pvalue = run_multiple_t_tests(population_15_narrow, population_18_narrow, 3, 100000)
+
+n_sig = sum(pvalue <= .05)
+n_nonsig = sum(pvalue > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.5, vjust=1, label=n_sig) +
+  annotate('text', x=.1, y=Inf, vjust=1, label=n_nonsig)
+```
+
+### Multiple Hypothesis Testing in RNA-seq
+
+When performing an RNA-seq experiment, the perturbation response of thousands of genes is being simultaneously measured. Each gene will have a different shift in distribution from the untreated to treated condition. Often, the expectation is that most genes won't be affected. This situation is akin to the above example when two subsamples were performed on the same distribution. The affected genes represent subsampling from different populations (with a different shift for every gene).
+
+```{r}
+fraction_affected = .1
+num_genes = 6000
+```
+
+Assuming there are `r num_genes` genes that are expressed in a cell type, and the treatment affects `r fraction_affected*100`% of genes (`r fraction_affected*num_genes`):
+
+The 5,400 unaffected genes are best model by the situation above where two sampling were drawn from the same distribution:
+
+```{r}
+pvalue_unaffected = run_multiple_t_tests(population_15, population_15, 4, num_genes * (1-fraction_affected))
+
+n_sig = sum(pvalue_unaffected <= .05)
+n_nonsig = sum(pvalue_unaffected > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue_unaffected), breaks=seq(0,1,.01), fill='grey') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.3, vjust=1, label=n_sig) +
+  annotate('text', x=0, y=Inf, hjust=-1 , vjust=1, label=n_nonsig)
+
+unaffected = data.frame(pvalue=pvalue_unaffected) %>% mutate(Class='Unaffected')
+```
+
+The `r num_genes*fraction_affected` affected genes are best modeled by the situation above where two subsamples were drawn from separate populations (for simplification, we'll assume the shift is the same for all affected genes):
+
+```{r}
+pvalue_affected = run_multiple_t_tests(population_15, population_18, 5, num_genes*fraction_affected)
+
+n_sig = sum(pvalue_affected <= .05)
+n_nonsig = sum(pvalue_affected > .05)
+
+ggplot() + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  geom_histogram(aes(pvalue_affected), breaks=seq(0,1,.01), fill='steelblue') +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate('text', x=0, y=Inf, hjust=.5, vjust=1, label=n_sig) +
+  annotate('text', x=.1, y=Inf, vjust=1, label=n_nonsig)
+
+affected = data.frame(pvalue=pvalue_affected) %>% mutate(Class="Affected")
+```
+
+```{r}
+all_genes = unaffected %>% add_row(affected)
+
+true_positives = nrow(all_genes %>% filter(Class=='Affected', pvalue <= .05))
+false_negatives = nrow(all_genes %>% filter(Class=='Affected', pvalue > .05))
+false_positives = nrow(all_genes %>% filter(Class=='Unaffected', pvalue <= .05))
+true_negatives = nrow(all_genes %>% filter(Class=='Unaffected', pvalue > .05))
+
+ggplot(all_genes, aes(x=pvalue, fill=Class)) + 
+  theme_classic() +
+  ylab("Number of T-tests") +
+  scale_fill_manual(values=c("steelblue", "grey")) +
+  geom_histogram(breaks=seq(0,1,.01)) +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=1, label=paste0("True Positives: ", true_positives, " (", round(true_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=2.5, label=paste0("True Negatives: ", true_negatives, " (", round(true_negatives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=4, label=paste0("False Positives: ", false_positives, " (", round(false_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=5.5, label=paste0("False Negatives: ", false_negatives, " (", round(false_negatives/num_genes*100, 2), "%)"))
+  
+```
+
+# Bonferroni Correction
+
+One of the most conservative methods of multiple hypothesis correction is Bonferroni correction - where p-values are adjusted proportional to the number of tests that are made.
+
+```{r}
+all_genes$Bonferroni = p.adjust(all_genes$pvalue, method='bonferroni')
+
+true_positives = nrow(all_genes %>% filter(Class=='Affected', Bonferroni <= .05))
+false_negatives = nrow(all_genes %>% filter(Class=='Affected', Bonferroni > .05))
+false_positives = nrow(all_genes %>% filter(Class=='Unaffected', Bonferroni <= .05))
+true_negatives = nrow(all_genes %>% filter(Class=='Unaffected', Bonferroni > .05))
+
+ggplot(all_genes, aes(x=Bonferroni, fill=Class)) + 
+  theme_classic() +
+  xlab("Bonferroni Adjusted p-value") +
+  ylab("Number of T-tests") +
+  scale_fill_manual(values=c("steelblue", "grey")) +
+  geom_histogram(breaks=seq(0,1,.01)) +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=1, label=paste0("True Positives: ", true_positives, " (", round(true_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=2.5, label=paste0("True Negatives: ", true_negatives, " (", round(true_negatives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=4, label=paste0("False Positives: ", false_positives, " (", round(false_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=5.5, label=paste0("False Negatives: ", false_negatives, " (", round(false_negatives/num_genes*100, 2), "%)"))
+```
+
+### False Discovery Rate (FDR) Correction
+
+FDR is a commonly used procedure for multiple hypothesis correction that corrects p-values to fit an expected distribution.
+
+```{r}
+all_genes$fdr = p.adjust(all_genes$pvalue, method='fdr')
+
+true_positives = nrow(all_genes %>% filter(Class=='Affected', fdr <= .05))
+false_negatives = nrow(all_genes %>% filter(Class=='Affected', fdr > .05))
+false_positives = nrow(all_genes %>% filter(Class=='Unaffected', fdr <= .05))
+true_negatives = nrow(all_genes %>% filter(Class=='Unaffected', fdr > .05))
+
+ggplot(all_genes, aes(x=fdr, fill=Class)) + 
+  theme_classic() +
+  xlab("FDR Adjusted p-value") +
+  ylab("Number of T-tests") +
+  scale_fill_manual(values=c("steelblue", "grey")) +
+  geom_histogram(breaks=seq(0,1,.01)) +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=1, label=paste0("True Positives: ", true_positives, " (", round(true_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=2.5, label=paste0("True Negatives: ", true_negatives, " (", round(true_negatives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=4, label=paste0("False Positives: ", false_positives, " (", round(false_positives/num_genes*100, 2), "%)")) +
+  annotate("text", x=1, y=Inf, hjust=1, vjust=5.5, label=paste0("False Negatives: ", false_negatives, " (", round(false_negatives/num_genes*100, 2), "%)"))
+
+ggplot(all_genes, aes(x=pvalue, y=fdr, color=Class)) +
+  theme_classic() +
+  xlab("Raw p-value") +
+  ylab("FDR Adjusted p-value") +
+  scale_color_manual(values=c('steelblue', 'grey')) +
+  geom_point() +
+  geom_vline(xintercept = .05, linetype=2, color='firebrick') +
+  geom_hline(yintercept = .05, linetype=2, color='firebrick')
+```
