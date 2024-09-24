@@ -20,9 +20,11 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
 3. [Session 3: scRNA-Seq Analysis](session3/session3.md)</br></br>
    
-4. [Session 4: Differential expression analysis in Foundry](session4/session4_DE_module_in_Foundry.md)</br></br>
+4. [Session 4: Differential expression analysis in R](https://web.dolphinnext.com/umw_biocore/class/bootcamp/session4_Differential_Expression_Presentation.html)</br>
 
-   [Session 4: R and R Studio](session4/session4_R_RStudio.md)</br></br>
+   [Session 4: Differential expression analysis in Foundry](session4/session4_DE_module_in_Foundry.md)</br>
 
-   [Session 5: Differential expression analysis with DEBrowser](session4/session4_DEBrowser.md)</br></br>
+   [Session 4: R and R Studio](session4/session4_R_RStudio.md)</br>
+
+   [Session 5: Differential expression analysis with DEBrowser](session4/session4_DEBrowser.md)</br>
 
