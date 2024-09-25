@@ -26,5 +26,5 @@ This bootcamp intend to use UMMS Cluster and requires UMMS cluster account.
 
    [Session 4: R and R Studio](session4/session4_R_RStudio.md)</br>
 
-   [Session 5: Differential expression analysis with DEBrowser](session4/session4_DEBrowser.md)</br>
+   [Session 4: Differential expression analysis with DEBrowser](session4/session4_DEBrowser.md)</br>
 
