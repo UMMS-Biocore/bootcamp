@@ -152,6 +152,7 @@ If you are a MacOS or Linux user, you can make an SSH connection by using **Term
 ## Step 3: Setup Connection for Via Foundry
 
 1. Visit the Via Foundry website (https://viafoundry.umassmed.edu) and create SSH keys.
+   - To login, UMASS users can use their **UMASS email address** and **UMASS email password**. (need help: support@viascientific.com)
    - Click your profile avatar (top-right) → Credentials tab.
    - Click **Create credential**.
    - Set Credential type to **SSH** and enter any name.
