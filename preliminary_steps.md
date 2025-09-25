@@ -25,7 +25,7 @@ You can find the details at this <a href="https://umassmed.sharepoint.com/sites/
 
 In order to make an SSH connection to your account, you need to use program like PuTTY.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**A1.** Download and open PuTTY from <a href="https://www.putty.org/" target="_blank">their website</a>.
+&nbsp;&nbsp;&nbsp;&nbsp;**A1.** Download and open PuTTY from <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank">their website</a>.
 
 1. **Generate the Key:**
    - Run `puttygen` or `puttygen.exe`.
