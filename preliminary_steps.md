@@ -8,7 +8,10 @@
 
 ## Step 1: Register for access to the HPC (High Performance Computing Cluster)
 
-The registration form can be found at <a href="https://hpc.umassmed.edu/wiki/index.php?title=Welcome_to_the_Scientific_Computing_for_Innovation_Cluster#Requesting_an_Account" target="_blank">HPC website</a>. Once the HPC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPC Admins group with your HPC account user name.
+The registration form can be found at <a href="https://hpc.umassmed.edu/wiki/index.php?title=Welcome_to_the_Scientific_Computing_for_Innovation_Cluster#Requesting_an_Account" target="_blank">HPC website</a> (If you're getting "**Operation timed out**" errors, try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
+You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.)
+
+Once the HPC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPC Admins group with your HPC account user name.
 
 
 ## Step 2: Setup SSH Connection for your Computer
