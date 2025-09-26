@@ -13,13 +13,28 @@ You can find the details at this <a href="https://umassmed.sharepoint.com/sites/
 
 Once the HPC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPC Admins group with your HPC account user name.
 
+## Step 2 - Connect to the HPC Cluster
 
-## Step 2: Setup SSH Connection for your Computer
+You can connect in two ways. Choose Option A (web browser) if you don’t want to install anything. Choose Option B (SSH from your computer) if you prefer using your local terminal.
 
-In order to use the pipelines in Via Foundry, you need access your cluster account. 
-
-#### Troubleshooting: If you're getting "Operation timed out" errors, try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
+#### If you're getting "Operation timed out" errors, try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
 You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
+
+### Option A: Connect via Web Browser (Open OnDemand)
+
+1. If you are **off-campus**, connect to the **UMASS VPN** first.  
+2. Go to **https://ood.umassmed.edu**.  
+3. In the top menu, click **Clusters** → **SCI Cluster Shell Access**.  
+4. A web terminal opens. You’re now logged into your cluster account.
+
+<img width="936" height="159" alt="Screenshot" src="https://github.com/user-attachments/assets/42b5fb4d-ba63-45b2-bb05-d6c50798d9e7" />
+
+<img width="1129" height="275" alt="Screenshot 2025-09-26 at 9 22 52 AM" src="https://github.com/user-attachments/assets/097f8ebd-a8ca-469d-841d-da736a50666a" />
+
+
+## Option B: Connect via SSH from Your Computer
+
+Use this if you prefer your own terminal (macOS, Linux, or Windows PowerShell).
 
 ### A. If you're using Windows
 
