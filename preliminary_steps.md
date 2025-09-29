@@ -1,10 +1,14 @@
 # Preliminary Steps
+
 1. [Step 1: Register for access to the HPC](#step-1-register-for-access-to-the-hpc-high-performance-computing-cluster)
-2. [Step 2: Setup SSH Connection for your Computer](#step-2-setup-ssh-connection-for-your-computer)
-    1. [If you're using Windows](#a-if-youre-using-windows)
-    2. [If you're using Linux or MacOS](#b-if-youre-using-linux-or-macos)
+2. [Step 2: Connect to the HPC Cluster](#step-2-connect-to-the-hpc-cluster)
+    - [Option A: Connect via Web Browser](#option-a-connect-via-web-browser)
+    - [Option B: Connect via SSH from Your Computer](#option-b-connect-via-ssh-from-your-computer)
+        - [If you're using Windows](#a-if-youre-using-windows)
+        - [If you're using Linux or MacOS](#b-if-youre-using-linux-or-macos)
 3. [Step 3: Setup Connection for Via Foundry](#step-3-setup-connection-for-via-foundry)
-3. [Step 4: Project Space Requirements](#step-4-project-space-requirements)
+4. [Step 4: Project Space Requirements](#step-4-project-space-requirements)
+
 
 ## Step 1: Register for access to the HPC (High Performance Computing Cluster)
 
@@ -13,14 +17,14 @@ You can find the details at this <a href="https://umassmed.sharepoint.com/sites/
 
 Once the HPC Admins receives your registration form, they will send an email to your PI requesting the PI’s permission to give you access. After it’s approved you will receive an email from the HPC Admins group with your HPC account user name.
 
-## Step 2 - Connect to the HPC Cluster
+## Step 2: Connect to the HPC Cluster
 
 You can connect in two ways. Choose Option A (web browser) if you don’t want to install anything. Choose Option B (SSH from your computer) if you prefer using your local terminal.
 
 #### If you're getting "Operation timed out" errors, try installing VPN software (eg. Pulse Secure) to access UMass Medical School network.
 You can find the details at this <a href="https://umassmed.sharepoint.com/sites/information-technology/SitePages/VPN-Connect.aspx" target="_blank">UMass Medical School Link</a>.
 
-### Option A: Connect via Web Browser (Open OnDemand)
+### Option A: Connect via Web Browser
 
 1. If you are **off-campus**, connect to the **UMASS VPN** first.  
 2. Go to **https://ood.umassmed.edu**.  
@@ -32,11 +36,11 @@ You can find the details at this <a href="https://umassmed.sharepoint.com/sites/
 <img width="1129" height="275" alt="Screenshot 2025-09-26 at 9 22 52 AM" src="https://github.com/user-attachments/assets/097f8ebd-a8ca-469d-841d-da736a50666a" />
 
 
-## Option B: Connect via SSH from Your Computer
+### Option B: Connect via SSH from Your Computer
 
 Use this if you prefer your own terminal (macOS, Linux, or Windows PowerShell).
 
-### A. If you're using Windows
+#### A. If you're using Windows
 
 In order to make an SSH connection to your account, you need to use program like PuTTY.
 
@@ -111,7 +115,7 @@ In order to make an SSH connection to your account, you need to use program like
    - **Passphrase:** When entering your passphrase, you won’t see any characters displayed as you type. Just type it and press Enter.
    - **Quick Access:** Since you configured your SSH connection session, each time you open Putty, you can simply select the `HPC UMASS` session, click 'Load', and then click 'Open' to connect.
 
-### B. If you're using Linux or MacOS
+#### B. If you're using Linux or MacOS
 
 If you are a MacOS or Linux user, you can make an SSH connection by using **Terminal**, a console program included with the operating system.
 
